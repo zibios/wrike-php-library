@@ -35,7 +35,7 @@ abstract class AbstractEnum
     }
 
     /**
-     * @return array
+     * @return array|string[]
      */
     public static function getKeys()
     {
@@ -52,7 +52,7 @@ abstract class AbstractEnum
     {
         self::assertIsValidValue($value);
 
-        return array_search($value, static::toArray(), true);
+        return (string) array_search($value, static::toArray(), true);
     }
 
     /**
