@@ -16,5 +16,7 @@ after_script:
   - php ocular.phar code-coverage:upload --format=php-clover build/clover.xml
   - vendor/bin/test-reporter --coverage-report=build/clover.xml
 addons:
-    code_climate:
-        repo_token: 46cfe35f7943ee911b3e46cd0b2735c512b5122ffb4bcecf8baecfb4f635deb1
+  code_climate:
+    repo_token: 46cfe35f7943ee911b3e46cd0b2735c512b5122ffb4bcecf8baecfb4f635deb1
+notifications:
+  email: false
