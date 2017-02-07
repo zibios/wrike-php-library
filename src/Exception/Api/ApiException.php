@@ -38,10 +38,6 @@ class ApiException extends Exception
      */
     public static function getExceptionIdentifier()
     {
-        if (static::STATUS_CODE === null || static::STATUS_NAME === null) {
-            throw new \UnderflowException('Empty status code or status name');
-        }
-
         return static::calculateExceptionIdentifier(static::STATUS_CODE, static::STATUS_NAME);
     }
 

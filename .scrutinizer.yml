@@ -27,7 +27,6 @@ checks:
         naming_conventions:
             local_variable: '^[a-z][a-zA-Z0-9]*$'
             abstract_class_name: ^Abstract|Factory$
-            utility_class_name: 'Utils?$'
             constant_name: '^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$'
             property_name: '^[a-z][a-zA-Z0-9]*$'
             method_name: '^(?:[a-z]|__)[a-zA-Z0-9]*$'
@@ -49,7 +48,6 @@ checks:
         avoid_perl_style_comments: true
         avoid_multiple_statements_on_same_line: true
         avoid_fixme_comments: true
-        align_assignments: true
         custom_coding_standard:
             ruleset_path: phpcs.xml
 
