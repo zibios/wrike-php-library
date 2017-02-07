@@ -25,10 +25,10 @@ Project status
 [![Packagist Version](https://img.shields.io/packagist/v/zibios/wrike-php-library.svg)](https://packagist.org/packages/zibios/wrike-php-library)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/{ToDo}/mini.png)](https://insight.sensiolabs.com/projects/{ToDo})
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/{ToDo})](https://www.codacy.com/app/zibios/wrike-php-library)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/28d43ffe-fa9a-4afa-893e-fc9b2e080d09/mini.png)](https://insight.sensiolabs.com/projects/28d43ffe-fa9a-4afa-893e-fc9b2e080d09)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b3b1cf6321040fa910c0c1c335b5ba1)](https://www.codacy.com/app/zibios/wrike-php-library)
 [![Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-library)
-[![Dependency Status](https://www.versioneye.com/user/projects/{ToDo}/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/{ToDo})
+[![Dependency Status](https://www.versioneye.com/user/projects/5899f1acc71294004c4c3322/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5899f1acc71294004c4c3322)
 
 [All badges](docs/Badges.md)
 
