@@ -15,9 +15,9 @@ engines:
       rulesets: "codesize.xml"
 ratings:
   paths:
-  - "**.php"
+    - "**.php"
 exclude_paths:
-- build/**/*
-- docs/**/*
-- tests/**/*
-- vendor/**/*
+  - build/**/*
+  - docs/**/*
+  - tests/**/*
+  - vendor/**/*
