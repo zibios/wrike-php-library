@@ -35,7 +35,7 @@ Project status
 **Required for v0.1.0 version**
 - [x] Connect to external services (packagist, travis, scrutinizer, ...)
 - [x] Decouple repository
-- [ ] Establishing some common rules for all external services
+- [x] Establishing some common rules for all external services
 - [ ] Wrike OAuth 2.0 implementation
 - [ ] Wrike Web-hooks implementation
 - [ ] Architecture refactoring: "More KISS, or more SOLID, that is the question"
