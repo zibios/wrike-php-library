@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ruleset name="wrike-php-library-rules">
+    <description>
+        WrikePhpLibrary ruleset for PHPCS
+    </description>
+
+    <rule ref="PSR2" />
+
+    <file>./src</file>
+    <exclude-pattern>./vendor/*</exclude-pattern>
+</ruleset>
