@@ -73,8 +73,37 @@ abstract class ResourceTestCase extends TestCase
         foreach ($transformerClasses as $transformerClass) {
             $api = $this->prepareApiWithClientMock($methodData, $transformerClass);
             $response = $this->prepareResponseForMethod($methodData, $api);
-            $this->prepareAssertsForMethod($methodData, $transformerClass, $response);
+            $this->executeAssertsForMethod($methodData, $transformerClass, $response);
         }
+    }
+
+    /**
+     * @param array $methodData
+     *
+     * @dataProvider methodsProvider
+     */
+    public function test_clientException($methodData)
+    {
+        $clientException = new \Exception();
+
+        $clientMock = $this->getMock(ClientInterface::class);
+        $clientMock->expects(self::any())
+            ->method('transformApiException')
+            ->with(self::equalTo($clientException))
+            ->willReturn($clientException);
+        $clientMock->expects($this->any())
+            ->method('executeRequestForParams')
+            ->willThrowException($clientException);
+        $transformer = new RawResponseTransformer();
+        $api = new Api($clientMock, $transformer);
+
+        $e = null;
+        try {
+            $this->prepareResponseForMethod($methodData, $api);
+        } catch (\Exception $e) {
+
+        }
+        self::assertSame($clientException, $e);
     }
 
     /**
@@ -141,7 +170,7 @@ abstract class ResourceTestCase extends TestCase
      * @param string $transformerClass
      * @param mixed $response
      */
-    private function prepareAssertsForMethod(array $methodData, $transformerClass, $response)
+    private function executeAssertsForMethod(array $methodData, $transformerClass, $response)
     {
         $bodyArray = [];
         switch ($transformerClass) {

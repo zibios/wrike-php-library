@@ -89,9 +89,15 @@ Run PHPUnit tests:
 Reference
 ---------
 
-[Wrike PHP Library](https://github.com/zibios/wrike-php-library)
+**Internal**
 
-[Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk)
+Full configured [Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk)
+
+[Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) for Wrike PHP Library
+
+[HTTP Client plugin](https://github.com/zibios/wrike-php-guzzle) for Wrike PHP Library
+
+**External**
 
 Official [Wrike API Documentation](https://developers.wrike.com/documentation/api/overview)
 

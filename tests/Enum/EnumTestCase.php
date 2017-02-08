@@ -55,12 +55,21 @@ abstract class EnumTestCase extends TestCase
         $enums = call_user_func([$this->sourceClass, 'toArray']);
         self::assertInternalType('array', $enums);
         self::assertCount($this->enumCount, $enums, $this->sourceClass);
+
+        $enums = $this->object->toArray();
+        self::assertInternalType('array', $enums);
+        self::assertCount($this->enumCount, $enums, $this->sourceClass);
     }
 
     public function test_getKeys()
     {
         $enums = call_user_func([$this->sourceClass, 'toArray']);
         $keys = call_user_func([$this->sourceClass, 'getKeys']);
+        self::assertInternalType('array', $keys);
+        self::assertSame(array_keys($enums), $keys);
+
+        $enums = $this->object->toArray();
+        $keys = $this->object->getKeys();
         self::assertInternalType('array', $keys);
         self::assertSame(array_keys($enums), $keys);
     }
@@ -77,12 +86,27 @@ abstract class EnumTestCase extends TestCase
             $key = call_user_func([$this->sourceClass, 'getKey'], $value);
             self::assertSame($value, $enums[$key]);
         }
+        /** @var array $enums */
+        $enums = $this->object->toArray();
+        /** @var array $values */
+        $values = $this->object->getValues();
+        self::assertInternalType('array', $values);
+        foreach ($values as $value) {
+            self::assertInternalType('string', $value);
+            $key = $this->object->getKey($value);
+            self::assertSame($value, $enums[$key]);
+        }
     }
 
     public function test_getValues()
     {
         $enums = call_user_func([$this->sourceClass, 'toArray']);
         $values = call_user_func([$this->sourceClass, 'getValues']);
+        self::assertInternalType('array', $values);
+        self::assertSame(array_values($enums), $values);
+
+        $enums = $this->object->toArray();
+        $values = $this->object->getValues();
         self::assertInternalType('array', $values);
         self::assertSame(array_values($enums), $values);
     }
@@ -97,6 +121,17 @@ abstract class EnumTestCase extends TestCase
         foreach ($keys as $key) {
             self::assertInternalType('string', $key);
             $value = call_user_func([$this->sourceClass, 'getValue'], $key);
+            self::assertSame($value, $enums[$key]);
+        }
+
+        /** @var array $enums */
+        $enums = $this->object->toArray();
+        /** @var array $keys */
+        $keys = $this->object->getKeys();
+        self::assertInternalType('array', $keys);
+        foreach ($keys as $key) {
+            self::assertInternalType('string', $key);
+            $value = $this->object->getValue($key);
             self::assertSame($value, $enums[$key]);
         }
     }
