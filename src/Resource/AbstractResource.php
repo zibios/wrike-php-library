@@ -97,19 +97,18 @@ abstract class AbstractResource implements ResourceInterface
      */
     private function prepareRequestPathForResourceMethod($resourceMethod, $id)
     {
-        $requestPathFormat = $this->calculateRequestPathFormat(
-            $resourceMethod,
-            $this->getResourceMethodConfiguration()
-        );
+        $requestPathFormat = $this->calculateRequestPathFormat($resourceMethod);
 
         switch ($resourceMethod) {
             case ResourceMethodEnum::GET_ALL:
                 $this->assertIsNull($id);
-                return sprintf($requestPathFormat, $id);
+                $path = sprintf($requestPathFormat, $id);
+                break;
 
             case ResourceMethodEnum::GET_BY_IDS:
                 $this->assertIsValidIdArray($id);
-                return sprintf($requestPathFormat, implode(',', $id));
+                $path = sprintf($requestPathFormat, implode(',', $id));
+                break;
 
             case ResourceMethodEnum::GET_ALL_IN_ACCOUNT:
             case ResourceMethodEnum::CREATE_IN_ACCOUNT:
@@ -117,23 +116,25 @@ abstract class AbstractResource implements ResourceInterface
             case ResourceMethodEnum::UPDATE:
             case ResourceMethodEnum::DELETE:
                 $this->assertIsValidIdString($id);
-                return sprintf($requestPathFormat, $id);
+                $path = sprintf($requestPathFormat, $id);
+                break;
 
             default:
                 throw new \InvalidArgumentException(sprintf('"%s" resource method not yet supported', $resourceMethod));
         }
+
+        return $path;
     }
 
     /**
      * @param string $resourceMethod
      *
-     * @param array $resourceMethodConfiguration
-     *
      * @return string
      * @throws \InvalidArgumentException
      */
-    private function calculateRequestPathFormat($resourceMethod, $resourceMethodConfiguration)
+    private function calculateRequestPathFormat($resourceMethod)
     {
+        $resourceMethodConfiguration = $this->getResourceMethodConfiguration();
         if (array_key_exists($resourceMethod, $resourceMethodConfiguration) === false) {
             throw new \InvalidArgumentException();
         }

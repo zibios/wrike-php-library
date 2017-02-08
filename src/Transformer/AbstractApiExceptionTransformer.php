@@ -27,6 +27,21 @@ use Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException;
 abstract class AbstractApiExceptionTransformer implements ApiExceptionTransformerInterface
 {
     /**
+     * @var array
+     */
+    protected $supportedApiExceptions = [
+        AccessForbiddenException::class,
+        InvalidParameterException::class,
+        InvalidRequestException::class,
+        MethodNotFoundException::class,
+        NotAllowedException::class,
+        NotAuthorizedException::class,
+        ParameterRequiredException::class,
+        ResourceNotFoundException::class,
+        ServerErrorException::class,
+    ];
+
+    /**
      * @param \Exception $exception
      * @param int $errorStatusCode
      * @param string $errorStatusName
@@ -35,20 +50,9 @@ abstract class AbstractApiExceptionTransformer implements ApiExceptionTransforme
      */
     protected function transformByStatusCodeAndName(\Exception $exception, $errorStatusCode, $errorStatusName)
     {
-        $supportedApiExceptions = [
-            AccessForbiddenException::class,
-            InvalidParameterException::class,
-            InvalidRequestException::class,
-            MethodNotFoundException::class,
-            NotAllowedException::class,
-            NotAuthorizedException::class,
-            ParameterRequiredException::class,
-            ResourceNotFoundException::class,
-            ServerErrorException::class,
-        ];
 
         $incomingIdentifier = ApiException::calculateExceptionIdentifier($errorStatusCode, $errorStatusName);
-        foreach ($supportedApiExceptions as $apiExceptionClass) {
+        foreach ($this->supportedApiExceptions as $apiExceptionClass) {
             $supportedIdentifier = call_user_func([$apiExceptionClass, 'getExceptionIdentifier']);
             if ($incomingIdentifier === $supportedIdentifier) {
                 return new $apiExceptionClass($exception);
