@@ -25,7 +25,7 @@ use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
  */
 class Api implements ApiInterface
 {
-    const BASE_URI = 'https://www.wrike.com/api/v3/';
+    const BASE_URI = 'https://www.wrike.com/api/v3';
 
     /**
      * @var ClientInterface
