@@ -35,3 +35,9 @@ Collection of all badges for WrikePhpLibrary package
 **Code Climate**
 [![Code Climate](https://codeclimate.com/github/zibios/wrike-php-library/badges/gpa.svg)](https://codeclimate.com/github/zibios/wrike-php-library)
 [![Test Coverage](https://codeclimate.com/github/zibios/wrike-php-library/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-php-library/coverage)
+
+**HHVM**
+[![HHVM Status](http://hhvm.h4cc.de/badge/zibios/wrike-php-library.svg)](http://hhvm.h4cc.de/package/zibios/wrike-php-library)
+
+**Coveralls**
+[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-library/badge.svg)](https://coveralls.io/github/zibios/wrike-php-library)
