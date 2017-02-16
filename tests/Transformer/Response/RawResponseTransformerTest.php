@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -11,11 +12,11 @@
 namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response;
 
 use Psr\Http\Message\ResponseInterface;
-use Zibios\WrikePhpLibrary\Transformer\Response\RawResponseTransformer;
 use Zibios\WrikePhpLibrary\Tests\Transformer\ResponseTransformerTestCase;
+use Zibios\WrikePhpLibrary\Transformer\Response\RawResponseTransformer;
 
 /**
- * Raw Response Transformer Test
+ * Raw Response Transformer Test.
  */
 class RawResponseTransformerTest extends ResponseTransformerTestCase
 {
@@ -24,9 +25,6 @@ class RawResponseTransformerTest extends ResponseTransformerTestCase
         $this->object = new RawResponseTransformer();
     }
 
-    /**
-     *
-     */
     public function test_transform()
     {
         $responseMock = $this->getMockForAbstractClass(ResponseInterface::class);

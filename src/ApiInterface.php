@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -16,7 +17,7 @@ use Zibios\WrikePhpLibrary\Resource\InvitationResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 
 /**
- * General Wrike Api Interface
+ * General Wrike Api Interface.
  */
 interface ApiInterface
 {

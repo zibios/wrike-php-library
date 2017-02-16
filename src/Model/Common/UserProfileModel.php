@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,28 +14,29 @@ namespace Zibios\WrikePhpLibrary\Model\Common;
 use Zibios\WrikePhpLibrary\Model\ResourceModelInterface;
 
 /**
- * User Profile Model
+ * User Profile Model.
  */
 class UserProfileModel implements ResourceModelInterface
 {
     /**
-     * Account ID
+     * Account ID.
      *
      * @var string|null
      */
     protected $accountId;
 
     /**
-     * Email address associated with account
+     * Email address associated with account.
      *
      * @var string|null
      */
     protected $email;
 
     /**
-     * Role in account
+     * Role in account.
      *
      * Enum: User, Collaborator
+     *
      * @see \Zibios\WrikePhpLibrary\Enum\UserRoleEnum
      *
      * @var string|null
@@ -42,21 +44,21 @@ class UserProfileModel implements ResourceModelInterface
     protected $role;
 
     /**
-     * Is user external
+     * Is user external.
      *
      * @var bool|null
      */
     protected $external;
 
     /**
-     * Is user account admin
+     * Is user account admin.
      *
      * @var bool|null
      */
     protected $admin;
 
     /**
-     * Is user account owner
+     * Is user account owner.
      *
      * @var bool|null
      */

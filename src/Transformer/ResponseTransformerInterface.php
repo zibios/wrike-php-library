@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,13 +14,13 @@ namespace Zibios\WrikePhpLibrary\Transformer;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Response Transformer Interface
+ * Response Transformer Interface.
  */
 interface ResponseTransformerInterface
 {
     /**
      * @param ResponseInterface $response
-     * @param string $resourceClass
+     * @param string            $resourceClass
      *
      * @return mixed
      */

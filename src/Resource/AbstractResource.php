@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -16,7 +17,7 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
- * Resource Abstract
+ * Resource Abstract.
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
@@ -33,7 +34,7 @@ abstract class AbstractResource implements ResourceInterface
     protected $responseTransformer;
 
     /**
-     * @param ClientInterface $client
+     * @param ClientInterface              $client
      * @param ResponseTransformerInterface $responseTransformer
      */
     public function __construct(
@@ -50,12 +51,11 @@ abstract class AbstractResource implements ResourceInterface
     abstract protected function getResourceMethodConfiguration();
 
     /**
-     * @param string $requestMethod
-     * @param string $resourceMethod
-     * @param array $params
+     * @param string            $requestMethod
+     * @param string            $resourceMethod
+     * @param array             $params
      * @param string|array|null $id
      *
-     * @return mixed
      * @throws \RuntimeException
      * @throws \LogicException
      * @throws \Exception
@@ -69,6 +69,8 @@ abstract class AbstractResource implements ResourceInterface
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ParameterRequiredException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ResourceNotFoundException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException
+     *
+     * @return mixed
      */
     protected function executeRequest($requestMethod, $resourceMethod, array $params, $id)
     {
@@ -89,11 +91,12 @@ abstract class AbstractResource implements ResourceInterface
     }
 
     /**
-     * @param string $resourceMethod
+     * @param string            $resourceMethod
      * @param string|array|null $id
      *
-     * @return string
      * @throws \InvalidArgumentException
+     *
+     * @return string
      */
     private function prepareRequestPathForResourceMethod($resourceMethod, $id)
     {
@@ -129,8 +132,9 @@ abstract class AbstractResource implements ResourceInterface
     /**
      * @param string $resourceMethod
      *
-     * @return string
      * @throws \InvalidArgumentException
+     *
+     * @return string
      */
     private function calculateRequestPathFormat($resourceMethod)
     {

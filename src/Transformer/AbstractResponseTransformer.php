@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,7 +15,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
 /**
- * Abstract Response Transformer
+ * Abstract Response Transformer.
  */
 abstract class AbstractResponseTransformer implements ResponseTransformerInterface
 {
@@ -41,8 +42,9 @@ abstract class AbstractResponseTransformer implements ResponseTransformerInterfa
     /**
      * @param ResponseInterface $response
      *
-     * @return string
      * @throws \RuntimeException
+     *
+     * @return string
      */
     protected function transformToStringBody(ResponseInterface $response)
     {
@@ -52,8 +54,9 @@ abstract class AbstractResponseTransformer implements ResponseTransformerInterfa
     /**
      * @param ResponseInterface $response
      *
-     * @return array
      * @throws \RuntimeException
+     *
+     * @return array
      */
     protected function transformToArrayBody(ResponseInterface $response)
     {

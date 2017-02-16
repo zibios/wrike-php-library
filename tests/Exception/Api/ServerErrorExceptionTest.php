@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,7 +14,7 @@ namespace Zibios\WrikePhpLibrary\Tests\Exception\Api;
 use Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException;
 
 /**
- * Server Error Exception Test
+ * Server Error Exception Test.
  */
 class ServerErrorExceptionTest extends ApiExceptionTestCase
 {

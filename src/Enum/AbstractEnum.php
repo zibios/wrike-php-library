@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -11,7 +12,7 @@
 namespace Zibios\WrikePhpLibrary\Enum;
 
 /**
- * Abstract Enum
+ * Abstract Enum.
  */
 abstract class AbstractEnum
 {
@@ -45,8 +46,9 @@ abstract class AbstractEnum
     /**
      * @param mixed $value
      *
-     * @return string
      * @throws \InvalidArgumentException
+     *
+     * @return string
      */
     public static function getKey($value)
     {
@@ -80,8 +82,9 @@ abstract class AbstractEnum
     /**
      * @param string $key
      *
-     * @return mixed
      * @throws \InvalidArgumentException
+     *
+     * @return mixed
      */
     public static function getValue($key)
     {
@@ -109,9 +112,9 @@ abstract class AbstractEnum
     }
 
     /**
-     * @throws \InvalidArgumentException
-     *
      * @param mixed $value
+     *
+     * @throws \InvalidArgumentException
      */
     public static function assertIsValidValue($value)
     {

@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,19 +14,19 @@ namespace Zibios\WrikePhpLibrary\Model\Invitation;
 use Zibios\WrikePhpLibrary\Model\ResponseModelInterface;
 
 /**
- * Invitation Response Model
+ * Invitation Response Model.
  */
 class InvitationResponseModel implements ResponseModelInterface
 {
     /**
-     * Kind of response
+     * Kind of response.
      *
      * @var string|null
      */
     protected $kind;
 
     /**
-     * Collection of response s
+     * Collection of response s.
      *
      * @var array|InvitationResourceModel[]|null
      */

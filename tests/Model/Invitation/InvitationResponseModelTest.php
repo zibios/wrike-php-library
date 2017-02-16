@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,7 +15,7 @@ use Zibios\WrikePhpLibrary\Model\Invitation\InvitationResponseModel;
 use Zibios\WrikePhpLibrary\Tests\Model\ResponseModelTestCase;
 
 /**
- * Invitation Response Model Test
+ * Invitation Response Model Test.
  */
 class InvitationResponseModelTest extends ResponseModelTestCase
 {

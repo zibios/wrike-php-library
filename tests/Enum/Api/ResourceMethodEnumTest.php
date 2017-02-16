@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,7 +15,7 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Tests\Enum\EnumTestCase;
 
 /**
- * Resource Method Enum Test
+ * Resource Method Enum Test.
  */
 class ResourceMethodEnumTest extends EnumTestCase
 {

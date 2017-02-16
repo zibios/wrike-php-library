@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,12 +14,12 @@ namespace Zibios\WrikePhpLibrary\Model\Invitation;
 use Zibios\WrikePhpLibrary\Model\ResourceModelInterface;
 
 /**
- * Invitation Resource Model
+ * Invitation Resource Model.
  */
 class InvitationResourceModel implements ResourceModelInterface
 {
     /**
-     * Invitation ID
+     * Invitation ID.
      *
      * Comment: Invitation ID
      *
@@ -27,7 +28,7 @@ class InvitationResourceModel implements ResourceModelInterface
     protected $id;
 
     /**
-     * Account ID
+     * Account ID.
      *
      * Comment: Account ID
      *
@@ -36,31 +37,32 @@ class InvitationResourceModel implements ResourceModelInterface
     protected $accountId;
 
     /**
-     * First name
+     * First name.
      *
      * @var string|null
      */
     protected $firstName;
 
     /**
-     * Last name
+     * Last name.
      *
      * @var string|null
      */
     protected $lastName;
 
     /**
-     * Invitation Title
+     * Invitation Title.
      *
      * @var string|null
      */
     protected $email;
 
     /**
-     * Status
+     * Status.
      *
      * Invitation status
      * Enum: Pending, Accepted, Declined, Cancelled
+     *
      * @see \Zibios\WrikePhpLibrary\Enum\InvitationStatusEnum
      *
      * @var string|null
@@ -68,7 +70,7 @@ class InvitationResourceModel implements ResourceModelInterface
     protected $status;
 
     /**
-     * Inviter Contact ID
+     * Inviter Contact ID.
      *
      * Comment: Contact ID
      *
@@ -77,7 +79,7 @@ class InvitationResourceModel implements ResourceModelInterface
     protected $inviterUserId;
 
     /**
-     * Date when invitation was created
+     * Date when invitation was created.
      *
      * Format: yyyy-MM-dd'T'HH:mm:ss'Z'
      *
@@ -86,7 +88,7 @@ class InvitationResourceModel implements ResourceModelInterface
     protected $invitationDate;
 
     /**
-     * Date when the invitation was resolved
+     * Date when the invitation was resolved.
      *
      * Format: yyyy-MM-dd'T'HH:mm:ss'Z'
      * Comment: Optional
@@ -96,9 +98,10 @@ class InvitationResourceModel implements ResourceModelInterface
     protected $resolvedDate;
 
     /**
-     * Invited user role
+     * Invited user role.
      *
      * Enum: User, Collaborator
+     *
      * @see \Zibios\WrikePhpLibrary\Enum\UserRoleEnum
      *
      * @var string|null
@@ -106,7 +109,7 @@ class InvitationResourceModel implements ResourceModelInterface
     protected $role;
 
     /**
-     * Is user external
+     * Is user external.
      *
      * @var bool|null
      */

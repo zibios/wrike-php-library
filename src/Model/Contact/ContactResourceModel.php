@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -15,14 +16,14 @@ use Zibios\WrikePhpLibrary\Model\Common\UserProfileModel;
 use Zibios\WrikePhpLibrary\Model\ResourceModelInterface;
 
 /**
- * Contact Resource Model
+ * Contact Resource Model.
  *
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
 class ContactResourceModel implements ResourceModelInterface
 {
     /**
-     * Contact ID
+     * Contact ID.
      *
      * Comment: Contact ID
      *
@@ -31,23 +32,24 @@ class ContactResourceModel implements ResourceModelInterface
     protected $id;
 
     /**
-     * First name
+     * First name.
      *
      * @var string|null
      */
     protected $firstName;
 
     /**
-     * Last name
+     * Last name.
      *
      * @var string|null
      */
     protected $lastName;
 
     /**
-     * Type of the user
+     * Type of the user.
      *
      * Enum: Person, Group
+     *
      * @see \Zibios\WrikePhpLibrary\Enum\UserTypeEnum
      *
      * @var string|null
@@ -55,49 +57,49 @@ class ContactResourceModel implements ResourceModelInterface
     protected $type;
 
     /**
-     * List of user profiles in accounts accessible for requesting user
+     * List of user profiles in accounts accessible for requesting user.
      *
      * @var array|UserProfileModel[]|null
      */
     protected $profiles;
 
     /**
-     * Avatar URL
+     * Avatar URL.
      *
      * @var string|null
      */
     protected $avatarUrl;
 
     /**
-     * Timezone Id, e.g 'America/New_York'
+     * Timezone Id, e.g 'America/New_York'.
      *
      * @var string|null
      */
     protected $timezone;
 
     /**
-     * Locale
+     * Locale.
      *
      * @var string|null
      */
     protected $locale;
 
     /**
-     * True if user is deleted, false otherwise
+     * True if user is deleted, false otherwise.
      *
      * @var bool|null
      */
     protected $deleted;
 
     /**
-     * Field is present and set to true only for requesting user
+     * Field is present and set to true only for requesting user.
      *
      * @var bool|null
      */
     protected $me;
 
     /**
-     * List of group members contact IDs (field is present only for groups)
+     * List of group members contact IDs (field is present only for groups).
      *
      * Comment: Contact ID array
      *
@@ -118,7 +120,7 @@ class ContactResourceModel implements ResourceModelInterface
     protected $metadata;
 
     /**
-     * Field is present and set to true for My Team (default) group
+     * Field is present and set to true for My Team (default) group.
      *
      * Comment: Optional
      *
@@ -127,7 +129,7 @@ class ContactResourceModel implements ResourceModelInterface
     protected $myTeam;
 
     /**
-     * User Title
+     * User Title.
      *
      * Comment: Optional
      *
@@ -136,7 +138,7 @@ class ContactResourceModel implements ResourceModelInterface
     protected $title;
 
     /**
-     * User Company Name
+     * User Company Name.
      *
      * Comment: Optional
      *
@@ -145,7 +147,7 @@ class ContactResourceModel implements ResourceModelInterface
     protected $companyName;
 
     /**
-     * User phone
+     * User phone.
      *
      * Comment: Optional
      *
@@ -154,7 +156,7 @@ class ContactResourceModel implements ResourceModelInterface
     protected $phone;
 
     /**
-     * User location
+     * User location.
      *
      * Comment: Optional
      *

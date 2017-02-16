@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -11,7 +12,7 @@
 namespace Zibios\WrikePhpLibrary\Exception\Api;
 
 /**
- * Invalid Request Exception
+ * Invalid Request Exception.
  *
  * Thrown when the Wrike API returns a 400 error code and "invalid_request" error value.
  * Request HTTP type is invalid, request critical data is absent or malformed (e.g., no attachment body).

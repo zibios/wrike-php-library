@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -15,7 +16,7 @@ use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 
 /**
- * Api Exception Test Case
+ * Api Exception Test Case.
  */
 abstract class ApiExceptionTestCase extends TestCase
 {
@@ -38,7 +39,7 @@ abstract class ApiExceptionTestCase extends TestCase
     }
 
     /**
-     * Test exception inheritance
+     * Test exception inheritance.
      */
     public function test_ExceptionExtendProperClasses()
     {

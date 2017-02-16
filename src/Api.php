@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -18,9 +19,10 @@ use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
- * General Wrike Api
+ * General Wrike Api.
  *
  * Entry point for all Wrike API operations.
+ *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Api implements ApiInterface
@@ -58,7 +60,7 @@ class Api implements ApiInterface
     protected $invitationResource;
 
     /**
-     * @param ClientInterface $client
+     * @param ClientInterface              $client
      * @param ResponseTransformerInterface $responseTransformer
      */
     public function __construct(

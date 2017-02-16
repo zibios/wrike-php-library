@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,7 +14,7 @@ namespace Zibios\WrikePhpLibrary\Enum\Api;
 use Zibios\WrikePhpLibrary\Enum\AbstractEnum;
 
 /**
- * Request Path Format Enum
+ * Request Path Format Enum.
  */
 class RequestPathFormatEnum extends AbstractEnum
 {

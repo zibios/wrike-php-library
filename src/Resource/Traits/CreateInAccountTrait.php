@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,15 +15,14 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 
 /**
- * CreateInAccount Trait
+ * CreateInAccount Trait.
  */
 trait CreateInAccountTrait
 {
     /**
-     * @param string $id
+     * @param string     $id
      * @param array|null $params
      *
-     * @return mixed
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ResourceNotFoundException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ParameterRequiredException
@@ -35,6 +35,8 @@ trait CreateInAccountTrait
      * @throws \LogicException
      * @throws \InvalidArgumentException
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function createInAccount($id, array $params = [])
     {
@@ -47,12 +49,11 @@ trait CreateInAccountTrait
     }
 
     /**
-     * @param string $requestMethod
-     * @param string $requestScope
-     * @param array $params
+     * @param string       $requestMethod
+     * @param string       $requestScope
+     * @param array        $params
      * @param string|array $id
      *
-     * @return mixed
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ResourceNotFoundException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ParameterRequiredException
@@ -65,6 +66,8 @@ trait CreateInAccountTrait
      * @throws \LogicException
      * @throws \InvalidArgumentException
      * @throws \Exception
+     *
+     * @return mixed
      */
     abstract protected function executeRequest(
         $requestMethod,

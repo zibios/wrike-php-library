@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -23,7 +24,7 @@ use Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 
 /**
- * Api Exception Transformer Test
+ * Api Exception Transformer Test.
  */
 class ApiExceptionTransformerTest extends TestCase
 {
@@ -59,7 +60,7 @@ class ApiExceptionTransformerTest extends TestCase
     }
 
     /**
-     * @param int $errorStatusCode
+     * @param int    $errorStatusCode
      * @param string $errorStatusName
      * @param string $expectedExceptionClass
      *

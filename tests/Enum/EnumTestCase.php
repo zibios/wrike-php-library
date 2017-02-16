@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,7 +15,7 @@ use Zibios\WrikePhpLibrary\Enum\AbstractEnum;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 
 /**
- * Enum Test Case
+ * Enum Test Case.
  */
 abstract class EnumTestCase extends TestCase
 {
@@ -42,7 +43,7 @@ abstract class EnumTestCase extends TestCase
     }
 
     /**
-     * Test enum inheritance
+     * Test enum inheritance.
      */
     public function test_EnumExtendProperClasses()
     {
@@ -154,7 +155,7 @@ abstract class EnumTestCase extends TestCase
 
     /**
      * @param mixed $key
-     * @param boolean $isValid
+     * @param bool  $isValid
      *
      * @dataProvider enumKeysProvider
      */
@@ -198,7 +199,7 @@ abstract class EnumTestCase extends TestCase
 
     /**
      * @param mixed $value
-     * @param boolean $isValid
+     * @param bool  $isValid
      *
      * @dataProvider enumValuesProvider
      */

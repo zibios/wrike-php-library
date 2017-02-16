@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,7 +15,7 @@ use Zibios\WrikePhpLibrary\Model\ResourceModelInterface;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 
 /**
- * Resource Model Test Case
+ * Resource Model Test Case.
  */
 abstract class ResourceModelTestCase extends TestCase
 {
@@ -42,7 +43,7 @@ abstract class ResourceModelTestCase extends TestCase
     }
 
     /**
-     * Test exception inheritance
+     * Test exception inheritance.
      */
     public function test_ExtendProperClasses()
     {

@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -11,7 +12,7 @@
 namespace Zibios\WrikePhpLibrary\Exception\Api;
 
 /**
- * Parameter Required Exception
+ * Parameter Required Exception.
  *
  * Thrown when the Wrike API returns a 400 error code and "parameter_required" error value.
  * Required parameter is absent.

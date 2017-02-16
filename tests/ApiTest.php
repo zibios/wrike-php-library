@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -19,7 +20,7 @@ use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
- * Api Test
+ * Api Test.
  */
 class ApiTest extends TestCase
 {
@@ -31,6 +32,7 @@ class ApiTest extends TestCase
         $clientMock = $this->getMock(ClientInterface::class);
         $transformerMock = $this->getMock(ResponseTransformerInterface::class);
         $stdClass = new \stdClass();
+
         return [
             // [client, transformer, isValid]
             [$clientMock, $transformerMock, true],
@@ -46,7 +48,7 @@ class ApiTest extends TestCase
     /**
      * @param mixed $client
      * @param mixed $transformer
-     * @param boolean $isValid
+     * @param bool  $isValid
      *
      * @dataProvider constructorParamsProvider
      */
@@ -88,7 +90,7 @@ class ApiTest extends TestCase
     }
 
     /**
-     * @param Api $api
+     * @param Api    $api
      * @param string $getContactResource
      * @param string $expectedResourceClass
      *
@@ -128,7 +130,7 @@ class ApiTest extends TestCase
     }
 
     /**
-     * Test properties methods
+     * Test properties methods.
      */
     public function test_getSetBearerToken()
     {

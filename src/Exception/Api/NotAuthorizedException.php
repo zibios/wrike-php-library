@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -11,7 +12,7 @@
 namespace Zibios\WrikePhpLibrary\Exception\Api;
 
 /**
- * Not Authorized Exception
+ * Not Authorized Exception.
  *
  * Thrown when the Wrike API returns a 401 error code and "not_authorized" error value.
  * User is not authorized (authorization is invalid, malformed or expired).

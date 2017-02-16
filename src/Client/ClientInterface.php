@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,7 +15,7 @@ use Psr\Http\Message\ResponseInterface;
 use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 
 /**
- * Client Interface
+ * Client Interface.
  */
 interface ClientInterface
 {
@@ -33,11 +34,12 @@ interface ClientInterface
     /**
      * @param string $requestMethod
      * @param string $path
-     * @param array $params
+     * @param array  $params
      *
-     * @return ResponseInterface
      * @throws \Exception
      * @throws ApiException
+     *
+     * @return ResponseInterface
      */
     public function executeRequestForParams($requestMethod, $path, array $params);
 

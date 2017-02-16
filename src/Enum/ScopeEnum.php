@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -11,7 +12,7 @@
 namespace Zibios\WrikePhpLibrary\Enum;
 
 /**
- * Scope Enum
+ * Scope Enum.
  */
 class ScopeEnum extends AbstractEnum
 {

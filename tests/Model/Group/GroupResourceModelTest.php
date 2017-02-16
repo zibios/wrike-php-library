@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,7 +15,7 @@ use Zibios\WrikePhpLibrary\Model\Group\GroupResourceModel;
 use Zibios\WrikePhpLibrary\Tests\Model\ResourceModelTestCase;
 
 /**
- * Group Resource Model Test
+ * Group Resource Model Test.
  */
 class GroupResourceModelTest extends ResourceModelTestCase
 {

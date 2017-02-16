@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -10,13 +11,12 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Zibios\WrikePhpLibrary\Api;
+use Zibios\WrikePhpLibrary\Client\ClientInterface;
 use Zibios\WrikePhpLibrary\Resource\AbstractResource;
 use Zibios\WrikePhpLibrary\Resource\ResourceInterface;
-use Zibios\WrikePhpLibrary\Client\ClientInterface;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 use Zibios\WrikePhpLibrary\Transformer\Response\ArrayBodyTransformer;
 use Zibios\WrikePhpLibrary\Transformer\Response\RawBodyTransformer;
@@ -25,7 +25,7 @@ use Zibios\WrikePhpLibrary\Transformer\Response\StringBodyTransformer;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
- * Resource Test Case
+ * Resource Test Case.
  */
 abstract class ResourceTestCase extends TestCase
 {
@@ -39,7 +39,7 @@ abstract class ResourceTestCase extends TestCase
     protected $sourceClass;
 
     /**
-     * Test exception inheritance
+     * Test exception inheritance.
      */
     public function test_ExtendProperClasses()
     {
@@ -101,13 +101,33 @@ abstract class ResourceTestCase extends TestCase
         try {
             $this->prepareResponseForMethod($methodData, $api);
         } catch (\Exception $e) {
-
         }
         self::assertSame($clientException, $e);
     }
 
+    public function test_testMethodsProvider()
+    {
+        $class = new \ReflectionClass($this->sourceClass);
+        $expectedMethodNames = $class->getMethods(\ReflectionMethod::IS_PUBLIC);
+
+        $methodsProviderArray = $this->methodsProvider();
+        $coveredMethodNames = [];
+        foreach ($methodsProviderArray as $methodsProviderRow) {
+            $coveredMethodName = $methodsProviderRow[0]['methodName'];
+            $coveredMethodNames[$coveredMethodName] = $coveredMethodName;
+        }
+
+        /** @var \ReflectionMethod $expectedMethodName */
+        foreach ($expectedMethodNames as $expectedMethodName) {
+            if ($expectedMethodName->getName() === '__construct') {
+                continue;
+            }
+            self::assertArrayHasKey($expectedMethodName->getName(), $coveredMethodNames);
+        }
+    }
+
     /**
-     * @param array $methodData
+     * @param array  $methodData
      * @param string $transformerClass
      *
      * @return \Zibios\WrikePhpLibrary\Api
@@ -135,7 +155,7 @@ abstract class ResourceTestCase extends TestCase
     }
 
     /**
-     * @param array $methodData
+     * @param array                       $methodData
      * @param \Zibios\WrikePhpLibrary\Api $api
      *
      * @return mixed
@@ -166,31 +186,31 @@ abstract class ResourceTestCase extends TestCase
     }
 
     /**
-     * @param array $methodData
+     * @param array  $methodData
      * @param string $transformerClass
-     * @param mixed $response
+     * @param mixed  $response
      */
     private function executeAssertsForMethod(array $methodData, $transformerClass, $response)
     {
         $bodyArray = [];
         switch ($transformerClass) {
             case RawResponseTransformer::class:
-                /** @var ResponseInterface $response */
+                /* @var ResponseInterface $response */
                 self::assertInstanceOf(ResponseInterface::class, $response);
                 $bodyArray = json_decode($response->getBody()->getContents(), true);
                 break;
             case RawBodyTransformer::class:
-                /** @var StreamInterface $response */
+                /* @var StreamInterface $response */
                 self::assertInstanceOf(StreamInterface::class, $response);
                 $bodyArray = json_decode($response->getContents(), true);
                 break;
             case StringBodyTransformer::class:
-                /** @var array $response */
+                /* @var array $response */
                 self::assertInternalType('string', $response);
                 $bodyArray = json_decode($response, true);
                 break;
             case ArrayBodyTransformer::class:
-                /** @var array $response */
+                /* @var array $response */
                 self::assertInternalType('array', $response);
                 $bodyArray = $response;
                 break;
@@ -200,26 +220,5 @@ abstract class ResourceTestCase extends TestCase
         }
 
         self::assertEquals(json_decode($methodData['body'], true), $bodyArray);
-    }
-
-    public function test_testMethodsProvider()
-    {
-        $class = new \ReflectionClass($this->sourceClass);
-        $expectedMethodNames = $class->getMethods(\ReflectionMethod::IS_PUBLIC);
-
-        $methodsProviderArray = $this->methodsProvider();
-        $coveredMethodNames = [];
-        foreach ($methodsProviderArray as $methodsProviderRow) {
-            $coveredMethodName = $methodsProviderRow[0]['methodName'];
-            $coveredMethodNames[$coveredMethodName] = $coveredMethodName;
-        }
-
-        /** @var \ReflectionMethod $expectedMethodName */
-        foreach ($expectedMethodNames as $expectedMethodName) {
-            if ($expectedMethodName->getName() === '__construct') {
-                continue;
-            }
-            self::assertArrayHasKey($expectedMethodName->getName(), $coveredMethodNames);
-        }
     }
 }

@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,7 +14,7 @@ namespace Zibios\WrikePhpLibrary\Exception\Api;
 use Exception;
 
 /**
- * General Wrike Api Exception
+ * General Wrike Api Exception.
  *
  * Thrown when the Client returns an HTTP error that isn't handled by other dedicated exceptions.
  */
@@ -33,8 +34,9 @@ class ApiException extends Exception
     }
 
     /**
-     * @return string
      * @throws \UnderflowException
+     *
+     * @return string
      */
     public static function getExceptionIdentifier()
     {
@@ -42,7 +44,7 @@ class ApiException extends Exception
     }
 
     /**
-     * @param int $errorStatusCode
+     * @param int    $errorStatusCode
      * @param string $errorStatusName
      *
      * @return string

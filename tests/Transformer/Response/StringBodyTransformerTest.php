@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -12,11 +13,11 @@ namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use Zibios\WrikePhpLibrary\Transformer\Response\StringBodyTransformer;
 use Zibios\WrikePhpLibrary\Tests\Transformer\ResponseTransformerTestCase;
+use Zibios\WrikePhpLibrary\Transformer\Response\StringBodyTransformer;
 
 /**
- * String Body Transformer Test
+ * String Body Transformer Test.
  */
 class StringBodyTransformerTest extends ResponseTransformerTestCase
 {
@@ -25,9 +26,6 @@ class StringBodyTransformerTest extends ResponseTransformerTestCase
         $this->object = new StringBodyTransformer();
     }
 
-    /**
-     *
-     */
     public function test_transform()
     {
         $responseString = '{"key": "value"}';

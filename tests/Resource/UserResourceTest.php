@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -10,12 +11,12 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
-use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
+use Zibios\WrikePhpLibrary\Resource\UserResource;
 
 /**
- * User Resource Test
+ * User Resource Test.
  */
 class UserResourceTest extends ResourceTestCase
 {

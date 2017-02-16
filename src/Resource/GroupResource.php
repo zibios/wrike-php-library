@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -10,16 +11,16 @@
 
 namespace Zibios\WrikePhpLibrary\Resource;
 
+use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
+use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\CreateInAccountTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllInAccountTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
-use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
-use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 
 /**
- * Group Resource
+ * Group Resource.
  */
 class GroupResource extends AbstractResource
 {

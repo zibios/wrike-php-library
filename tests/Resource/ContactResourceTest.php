@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -10,12 +11,12 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
-use Zibios\WrikePhpLibrary\Resource\ContactResource;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
+use Zibios\WrikePhpLibrary\Resource\ContactResource;
 
 /**
- * Contact Resource Test
+ * Contact Resource Test.
  */
 class ContactResourceTest extends ResourceTestCase
 {

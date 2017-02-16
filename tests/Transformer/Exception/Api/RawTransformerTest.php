@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -10,11 +11,11 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Transformer\Exception\Api;
 
-use Zibios\WrikePhpLibrary\Transformer\Exception\Api\RawTransformer;
 use Zibios\WrikePhpLibrary\Tests\Transformer\ApiExceptionTransformerTestCase;
+use Zibios\WrikePhpLibrary\Transformer\Exception\Api\RawTransformer;
 
 /**
- * Raw Transformer Test
+ * Raw Transformer Test.
  */
 class RawTransformerTest extends ApiExceptionTransformerTestCase
 {

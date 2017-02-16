@@ -1,0 +1,10 @@
+preset: symfony
+
+enabled:
+  - phpdoc_order
+  - ordered_use
+
+finder :
+  exclude :
+    - vendor
+

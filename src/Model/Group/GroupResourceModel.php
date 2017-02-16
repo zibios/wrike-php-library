@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,12 +15,12 @@ use Zibios\WrikePhpLibrary\Model\Common\MetadataModel;
 use Zibios\WrikePhpLibrary\Model\ResourceModelInterface;
 
 /**
- * Group Resource Model
+ * Group Resource Model.
  */
 class GroupResourceModel implements ResourceModelInterface
 {
     /**
-     * Contact ID
+     * Contact ID.
      *
      * Comment: Contact ID
      *
@@ -28,7 +29,7 @@ class GroupResourceModel implements ResourceModelInterface
     protected $id;
 
     /**
-     * Account ID
+     * Account ID.
      *
      * Comment: Account ID
      *
@@ -37,14 +38,14 @@ class GroupResourceModel implements ResourceModelInterface
     protected $accountId;
 
     /**
-     * Group Title
+     * Group Title.
      *
      * @var string|null
      */
     protected $title;
 
     /**
-     * List of group members user IDs
+     * List of group members user IDs.
      *
      * Comment: Contact ID list
      *
@@ -53,7 +54,7 @@ class GroupResourceModel implements ResourceModelInterface
     protected $memberIds;
 
     /**
-     * List of child group IDs
+     * List of child group IDs.
      *
      * Comment: Contact ID list
      *
@@ -62,7 +63,7 @@ class GroupResourceModel implements ResourceModelInterface
     protected $childIds;
 
     /**
-     * List of parent group IDs
+     * List of parent group IDs.
      *
      * Comment: Contact ID list
      *
@@ -71,7 +72,7 @@ class GroupResourceModel implements ResourceModelInterface
     protected $parentIds;
 
     /**
-     * Avatar URL
+     * Avatar URL.
      *
      * @var string|null
      */
@@ -79,7 +80,7 @@ class GroupResourceModel implements ResourceModelInterface
 
     /**
      * Field is present and set to true for My Team (default) group
-     * Optional
+     * Optional.
      *
      * Comment: Optional
      *
@@ -91,7 +92,7 @@ class GroupResourceModel implements ResourceModelInterface
      * List of group metadata entries
      * Metadata entry key-value pair
      * Metadata entries are isolated on per-client (application) basis
-     * Optional
+     * Optional.
      *
      * Comment: Optional
      *

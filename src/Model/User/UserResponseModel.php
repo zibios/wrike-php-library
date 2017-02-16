@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,12 +14,12 @@ namespace Zibios\WrikePhpLibrary\Model\User;
 use Zibios\WrikePhpLibrary\Model\ResponseModelInterface;
 
 /**
- * User Response Model
+ * User Response Model.
  */
 class UserResponseModel implements ResponseModelInterface
 {
     /**
-     * Kind of response
+     * Kind of response.
      *
      * @var string|null
      */

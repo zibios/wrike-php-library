@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -11,7 +12,7 @@
 namespace Zibios\WrikePhpLibrary\Exception\Api;
 
 /**
- * Method Not Found Exception
+ * Method Not Found Exception.
  *
  * Thrown when the Wrike API returns a 404 error code and "method_not_found" error value.
  * Requested API method does not exist.

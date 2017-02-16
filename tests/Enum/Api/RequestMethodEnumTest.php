@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,7 +15,7 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Tests\Enum\EnumTestCase;
 
 /**
- * Request Method Enum Test
+ * Request Method Enum Test.
  */
 class RequestMethodEnumTest extends EnumTestCase
 {

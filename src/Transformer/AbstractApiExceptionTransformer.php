@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -22,7 +23,7 @@ use Zibios\WrikePhpLibrary\Exception\Api\ResourceNotFoundException;
 use Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException;
 
 /**
- * Abstract Api Exception Transformer
+ * Abstract Api Exception Transformer.
  */
 abstract class AbstractApiExceptionTransformer implements ApiExceptionTransformerInterface
 {
@@ -43,14 +44,13 @@ abstract class AbstractApiExceptionTransformer implements ApiExceptionTransforme
 
     /**
      * @param \Exception $exception
-     * @param int $errorStatusCode
-     * @param string $errorStatusName
+     * @param int        $errorStatusCode
+     * @param string     $errorStatusName
      *
      * @return ApiException
      */
     protected function transformByStatusCodeAndName(\Exception $exception, $errorStatusCode, $errorStatusName)
     {
-
         $incomingIdentifier = ApiException::calculateExceptionIdentifier($errorStatusCode, $errorStatusName);
         foreach ($this->supportedApiExceptions as $apiExceptionClass) {
             $supportedIdentifier = call_user_func([$apiExceptionClass, 'getExceptionIdentifier']);

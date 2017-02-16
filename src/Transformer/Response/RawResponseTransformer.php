@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,13 +15,13 @@ use Psr\Http\Message\ResponseInterface;
 use Zibios\WrikePhpLibrary\Transformer\AbstractResponseTransformer;
 
 /**
- * Raw Response Transformer
+ * Raw Response Transformer.
  */
 class RawResponseTransformer extends AbstractResponseTransformer
 {
     /**
      * @param ResponseInterface $response
-     * @param string $resourceClass
+     * @param string            $resourceClass
      *
      * @return ResponseInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)

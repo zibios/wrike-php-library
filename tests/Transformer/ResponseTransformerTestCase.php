@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -15,11 +16,10 @@ use Psr\Http\Message\StreamInterface;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 
 /**
- * Abstract Response Transformer Test Case
+ * Abstract Response Transformer Test Case.
  */
 abstract class ResponseTransformerTestCase extends TestCase
 {
-
     /**
      * @return array
      */
@@ -37,6 +37,7 @@ abstract class ResponseTransformerTestCase extends TestCase
             ->willReturn($bodyMock);
 
         $stdClass = new \stdClass();
+
         return [
             // [response, resourceClass, isValid]
             [$responseMock, 'unimportant', true],
@@ -48,7 +49,7 @@ abstract class ResponseTransformerTestCase extends TestCase
     /**
      * @param mixed $response
      * @param mixed $resourceClass
-     * @param boolean $isValid
+     * @param bool  $isValid
      *
      * @dataProvider transformParamsProvider
      */

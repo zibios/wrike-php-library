@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,12 +14,12 @@ namespace Zibios\WrikePhpLibrary\Tests\Enum;
 use Zibios\WrikePhpLibrary\Enum\UserRoleEnum;
 
 /**
- * Stub Enum
+ * Stub Enum.
  */
 class StubEnum extends UserRoleEnum
 {
     /**
-     * User
+     * User.
      */
     const FOO = 'BAR';
 }

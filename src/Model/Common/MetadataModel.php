@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,12 +14,12 @@ namespace Zibios\WrikePhpLibrary\Model\Common;
 use Zibios\WrikePhpLibrary\Model\ResourceModelInterface;
 
 /**
- * Metadata Model
+ * Metadata Model.
  */
 class MetadataModel implements ResourceModelInterface
 {
     /**
-     * Key should be less than 50 symbols and match following regular expression ([A-Za-z0-9_-]+)
+     * Key should be less than 50 symbols and match following regular expression ([A-Za-z0-9_-]+).
      *
      * @var string|null
      */
@@ -26,7 +27,7 @@ class MetadataModel implements ResourceModelInterface
 
     /**
      * Value should be less than 1000 symbols, compatible with JSON string.
-     * Use JSON 'null' in order to remove metadata entry
+     * Use JSON 'null' in order to remove metadata entry.
      *
      * @var string|null
      */

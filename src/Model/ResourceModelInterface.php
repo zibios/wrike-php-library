@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -11,9 +12,8 @@
 namespace Zibios\WrikePhpLibrary\Model;
 
 /**
- * Resource Model Interface
+ * Resource Model Interface.
  */
 interface ResourceModelInterface
 {
-
 }

@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -14,7 +15,7 @@ use Zibios\WrikePhpLibrary\Model\Common\MetadataModel;
 use Zibios\WrikePhpLibrary\Tests\Model\ResourceModelTestCase;
 
 /**
- * Metadata Model Test
+ * Metadata Model Test.
  */
 class MetadataModelTest extends ResourceModelTestCase
 {

@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,9 +14,8 @@ namespace Zibios\WrikePhpLibrary\Tests\Transformer;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 
 /**
- * Abstract Api Exception Transformer Test Case
+ * Abstract Api Exception Transformer Test Case.
  */
 abstract class ApiExceptionTransformerTestCase extends TestCase
 {
-
 }

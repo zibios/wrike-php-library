@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,7 +14,7 @@ namespace Zibios\WrikePhpLibrary\Tests\Enum;
 use Zibios\WrikePhpLibrary\Enum\UserRoleEnum;
 
 /**
- * User Role Enum Test
+ * User Role Enum Test.
  */
 class UserRoleEnumTest extends EnumTestCase
 {

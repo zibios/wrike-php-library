@@ -1,6 +1,7 @@
 <?php
-/**
- * This file is part of the WrikePhpLibrary package.
+
+/*
+ * This file is part of the zibios/wrike-php-library package.
  *
  * (c) Zbigniew Ślązak
  *
@@ -13,19 +14,19 @@ namespace Zibios\WrikePhpLibrary\Model\Common;
 use Zibios\WrikePhpLibrary\Model\ResourceModelInterface;
 
 /**
- * Avatar Model
+ * Avatar Model.
  */
 class AvatarModel implements ResourceModelInterface
 {
     /**
-     * Group letters (2 symbols max), ex. ZS
+     * Group letters (2 symbols max), ex. ZS.
      *
      * @var string|null
      */
     protected $letters;
 
     /**
-     * Hex color code, ex. #fe73a1
+     * Hex color code, ex. #fe73a1.
      *
      * @var string|null
      */
