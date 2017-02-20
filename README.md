@@ -33,6 +33,8 @@ Project status
 
 [All badges](docs/Badges.md)
 
+[All zibios/wrike-* badges](docs/AllWrikeBadges.md)
+
 **Required for v0.1.0 version**
 - [x] Connect to external services (packagist, travis, scrutinizer, ...)
 - [x] Decouple repository
