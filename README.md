@@ -8,14 +8,16 @@ Wrike PHP LIBRARY
 Introduction
 ------------
 
-**This is generic library for [Wrike](https://www.wrike.com/) online project management software tools.**
+**This is generic library for [Wrike](https://www.wrike.com/) (online project management software) REST API.**
 
 This package contains general documentation for all features.
-
-For general purpose please check [full configured Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk).
-For none standard purposes please check [generic Wrike PHP Library](https://github.com/zibios/wrike-php-library),
-[HTTP Client plugin](https://github.com/zibios/wrike-php-guzzle),
-and [response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer).
+This package is decoupled from unnecessary dependencies and can't be used without additional HTTP Client plugin.
+* For general purpose please check full configured [Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk) - **recommended for most users**.
+* For Symfony2 / Symfony3 please check full configured [Wrike bundle](https://github.com/zibios/wrike-bundle) based on this library
+* For none standard purposes please check:
+  * this generic [Wrike PHP Library](https://github.com/zibios/wrike-php-library)
+  * [HTTP Client plugin](https://github.com/zibios/wrike-php-guzzle) based on [guzzlehttp/guzzle](https://github.com/guzzle/guzzle) package
+  * [response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) based on [jms/serializer](https://github.com/schmittjoh/serializer) package
 
 Project status
 --------------
@@ -68,6 +70,7 @@ Project status
 
 Installation
 ------------
+
 To try it yourself clone the repository:
 
 ```bash
@@ -87,6 +90,24 @@ Run PHPUnit tests:
 ./vendor/bin/phpunit
 ``` 
 
+Usage
+------------
+
+```php
+// @see zibios/wrike-php-sdk
+$api = ApiFactory::createForBearerToken(<PermanentToken>);
+
+$allContacts = $api->getContactResource()->getAll();
+$selectedContact = $api->getContactResource()->getById(<ContactId>);
+```
+
+Response can be returned in various formats according to used response transformer:
+* Psr\Http\Message\ResponseInterface for RawResponseTransformer
+* Psr\Http\Message\StreamInterface for RawBodyTransformer (containing Body part from Psr\Http\Message\ResponseInterface)
+* JSON string for StringBodyTransformer (containing Psr\Http\Message\ResponseInterface body casted to string)
+* Array for ArrayBodyTransformer (containing Psr\Http\Message\ResponseInterface body decoded to Array)
+* Zibios\WrikePhpLibrary\Model\ResponseModelInterface - [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer)
+* Zibios\WrikePhpLibrary\Model\ResourceModelInterface - [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer)
 
 Reference
 ---------
@@ -94,6 +115,8 @@ Reference
 **Internal**
 
 Full configured [Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk)
+
+Full configured [Symfony bundle](https://github.com/zibios/wrike-bundle) based on Wrike PHP SDK
 
 [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) for Wrike PHP Library
 
