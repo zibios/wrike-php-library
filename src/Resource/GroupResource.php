@@ -13,9 +13,9 @@ namespace Zibios\WrikePhpLibrary\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\Traits\CreateInAccountTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\CreateForAccountTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllInAccountTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForAccountTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 
@@ -24,9 +24,9 @@ use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
  */
 class GroupResource extends AbstractResource
 {
-    use GetAllInAccountTrait;
+    use GetAllForAccountTrait;
     use GetByIdTrait;
-    use CreateInAccountTrait;
+    use CreateForAccountTrait;
     use UpdateTrait;
     use DeleteTrait;
 
@@ -36,9 +36,9 @@ class GroupResource extends AbstractResource
     protected function getResourceMethodConfiguration()
     {
         return [
-            ResourceMethodEnum::GET_ALL_IN_ACCOUNT => RequestPathFormatEnum::GROUPS_IN_ACCOUNT,
+            ResourceMethodEnum::GET_ALL_FOR_ACCOUNT => RequestPathFormatEnum::GROUPS_FOR_ACCOUNT,
             ResourceMethodEnum::GET_BY_ID => RequestPathFormatEnum::GROUPS_BY_ID,
-            ResourceMethodEnum::CREATE_IN_ACCOUNT => RequestPathFormatEnum::GROUPS_IN_ACCOUNT,
+            ResourceMethodEnum::CREATE_FOR_ACCOUNT => RequestPathFormatEnum::GROUPS_FOR_ACCOUNT,
             ResourceMethodEnum::UPDATE => RequestPathFormatEnum::GROUPS_BY_ID,
             ResourceMethodEnum::DELETE => RequestPathFormatEnum::GROUPS_BY_ID,
         ];

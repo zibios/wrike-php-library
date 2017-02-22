@@ -13,17 +13,17 @@ namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\UserResource;
+use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
 
 /**
- * User Resource Test.
+ * Workflow Resource Test.
  */
-class UserResourceTest extends ResourceTestCase
+class WorkflowResourceTest extends ResourceTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = UserResource::class;
+    protected $sourceClass = WorkflowResource::class;
 
     /**
      * @return array
@@ -31,24 +31,34 @@ class UserResourceTest extends ResourceTestCase
     public function methodsProvider()
     {
         $baseData = [
-            'endpointPath' => sprintf('users/%s', self::UNIQUE_ID),
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getUserResource',
+            'resourceGetter' => 'getWorkflowResource',
             'propertyValue' => self::VALID_ID,
-            'additionalParams' => [self::UNIQUE_ID],
         ];
 
         return [
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_BY_ID,
+                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
+                    'endpointPath' => sprintf('accounts/%s/workflows', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::POST,
+                    'methodName' => ResourceMethodEnum::CREATE_FOR_ACCOUNT,
+                    'endpointPath' => sprintf('accounts/%s/workflows', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
             [
                 [
                     'requestMethod' => RequestMethodEnum::PUT,
                     'methodName' => ResourceMethodEnum::UPDATE,
+                    'endpointPath' => sprintf('workflows/%s', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
         ];

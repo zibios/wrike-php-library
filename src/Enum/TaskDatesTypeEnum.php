@@ -9,13 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Model\User;
-
-use Zibios\WrikePhpLibrary\Model\ResourceModelInterface;
+namespace Zibios\WrikePhpLibrary\Enum;
 
 /**
- * User Resource Model.
+ * Task Dates Type Enum.
  */
-class UserResourceModel implements ResourceModelInterface
+class TaskDatesTypeEnum extends AbstractEnum
 {
+    const BACKLOG = 'Backlog';
+    const MILESTONE = 'Milestone';
+    const PLANNED = 'Planned';
 }

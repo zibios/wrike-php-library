@@ -15,9 +15,9 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 
 /**
- * GetAllInAccount Trait.
+ * GetAllForFolder Trait.
  */
-trait GetAllInAccountTrait
+trait GetAllForFolderTrait
 {
     /**
      * @param string     $id
@@ -38,11 +38,11 @@ trait GetAllInAccountTrait
      *
      * @return mixed
      */
-    public function getAllInAccount($id, array $params = [])
+    public function getAllForFolder($id, array $params = [])
     {
         return $this->executeRequest(
             RequestMethodEnum::GET,
-            ResourceMethodEnum::GET_ALL_IN_ACCOUNT,
+            ResourceMethodEnum::GET_ALL_FOR_FOLDER,
             $params,
             $id
         );

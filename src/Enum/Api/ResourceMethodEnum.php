@@ -19,10 +19,19 @@ use Zibios\WrikePhpLibrary\Enum\AbstractEnum;
 class ResourceMethodEnum extends AbstractEnum
 {
     const GET_ALL = 'getAll';
-    const GET_ALL_IN_ACCOUNT = 'getAllInAccount';
+    const GET_ALL_FOR_ACCOUNT = 'getAllForAccount';
+    const GET_ALL_FOR_FOLDER = 'getAllForFolder';
+    const GET_ALL_FOR_TASK = 'getAllForTask';
+    const GET_ALL_FOR_CONTACT = 'getAllForContact';
     const GET_BY_ID = 'getById';
     const GET_BY_IDS = 'getByIds';
-    const CREATE_IN_ACCOUNT = 'createInAccount';
+    const CREATE_FOR_ACCOUNT = 'createForAccount';
+    const CREATE_FOR_FOLDER = 'createForFolder';
+    const CREATE_FOR_TASK = 'createForTask';
+    const COPY = 'copy';
     const UPDATE = 'update';
     const DELETE = 'delete';
+    const DOWNLOAD = 'download';
+    const DOWNLOAD_PREVIEW = 'downloadPreview';
+    const GET_PUBLIC_URL = 'getPublicUrl';
 }

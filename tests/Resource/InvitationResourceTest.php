@@ -11,7 +11,7 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
-use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
+use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\InvitationResource;
 
@@ -38,32 +38,36 @@ class InvitationResourceTest extends ResourceTestCase
 
         return [
             [
-                $baseData + [
-                    'methodName' => ResourceMethodEnum::GET_ALL_IN_ACCOUNT,
-                    'endpointPath' => sprintf(RequestPathFormatEnum::INVITATIONS_IN_ACCOUNT, self::UNIQUE_ID),
+                [
+                    'requestMethod' => RequestMethodEnum::GET,
+                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
+                    'endpointPath' => sprintf('accounts/%s/invitations', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
-                ],
+                ] + $baseData,
             ],
             [
-                $baseData + [
-                    'methodName' => ResourceMethodEnum::CREATE_IN_ACCOUNT,
-                    'endpointPath' => sprintf(RequestPathFormatEnum::INVITATIONS_IN_ACCOUNT, self::UNIQUE_ID),
+                [
+                    'requestMethod' => RequestMethodEnum::POST,
+                    'methodName' => ResourceMethodEnum::CREATE_FOR_ACCOUNT,
+                    'endpointPath' => sprintf('accounts/%s/invitations', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
-                ],
+                ] + $baseData,
             ],
             [
-                $baseData + [
+                [
+                    'requestMethod' => RequestMethodEnum::PUT,
                     'methodName' => ResourceMethodEnum::UPDATE,
-                    'endpointPath' => sprintf(RequestPathFormatEnum::INVITATIONS_BY_ID, self::UNIQUE_ID),
+                    'endpointPath' => sprintf('invitations/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
-                ],
+                ] + $baseData,
             ],
             [
-                $baseData + [
+                [
+                    'requestMethod' => RequestMethodEnum::DELETE,
                     'methodName' => ResourceMethodEnum::DELETE,
-                    'endpointPath' => sprintf(RequestPathFormatEnum::INVITATIONS_BY_ID, self::UNIQUE_ID),
+                    'endpointPath' => sprintf('invitations/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
-                ],
+                ] + $baseData,
             ],
         ];
     }

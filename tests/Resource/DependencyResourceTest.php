@@ -13,17 +13,17 @@ namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\GroupResource;
+use Zibios\WrikePhpLibrary\Resource\DependencyResource;
 
 /**
- * Group Resource Test.
+ * Dependency Resource Test.
  */
-class GroupResourceTest extends ResourceTestCase
+class DependencyResourceTest extends ResourceTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = GroupResource::class;
+    protected $sourceClass = DependencyResource::class;
 
     /**
      * @return array
@@ -32,7 +32,7 @@ class GroupResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getGroupResource',
+            'resourceGetter' => 'getDependencyResource',
             'propertyValue' => self::VALID_ID,
         ];
 
@@ -40,24 +40,32 @@ class GroupResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_BY_ID,
-                    'endpointPath' => sprintf('groups/%s', self::UNIQUE_ID),
+                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_TASK,
+                    'endpointPath' => sprintf('tasks/%s/dependencies', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/groups', self::UNIQUE_ID),
+                    'methodName' => ResourceMethodEnum::GET_BY_ID,
+                    'endpointPath' => sprintf('dependencies/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
             [
                 [
+                    'requestMethod' => RequestMethodEnum::GET,
+                    'methodName' => ResourceMethodEnum::GET_BY_IDS,
+                    'endpointPath' => sprintf('dependencies/%s', implode(',', [self::UNIQUE_ID])),
+                    'additionalParams' => [[self::UNIQUE_ID]],
+                ] + $baseData,
+            ],
+            [
+                [
                     'requestMethod' => RequestMethodEnum::POST,
-                    'methodName' => ResourceMethodEnum::CREATE_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/groups', self::UNIQUE_ID),
+                    'methodName' => ResourceMethodEnum::CREATE_FOR_TASK,
+                    'endpointPath' => sprintf('tasks/%s/dependencies', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
@@ -65,7 +73,7 @@ class GroupResourceTest extends ResourceTestCase
                 [
                     'requestMethod' => RequestMethodEnum::PUT,
                     'methodName' => ResourceMethodEnum::UPDATE,
-                    'endpointPath' => sprintf('groups/%s', self::UNIQUE_ID),
+                    'endpointPath' => sprintf('dependencies/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
@@ -73,7 +81,7 @@ class GroupResourceTest extends ResourceTestCase
                 [
                     'requestMethod' => RequestMethodEnum::DELETE,
                     'methodName' => ResourceMethodEnum::DELETE,
-                    'endpointPath' => sprintf('groups/%s', self::UNIQUE_ID),
+                    'endpointPath' => sprintf('dependencies/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],

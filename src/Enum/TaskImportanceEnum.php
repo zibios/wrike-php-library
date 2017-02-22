@@ -9,11 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Model;
+namespace Zibios\WrikePhpLibrary\Enum;
 
 /**
- * Response Model Interface.
+ * Task Importance Enum.
  */
-interface ResponseModelInterface
+class TaskImportanceEnum extends AbstractEnum
 {
+    const HIGH = 'High';
+    const NORMAL = 'Normal';
+    const LOW = 'Low';
 }

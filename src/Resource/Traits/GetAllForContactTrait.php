@@ -15,9 +15,9 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 
 /**
- * CreateInAccount Trait.
+ * GetAllForContact Trait.
  */
-trait CreateInAccountTrait
+trait GetAllForContactTrait
 {
     /**
      * @param string     $id
@@ -38,11 +38,11 @@ trait CreateInAccountTrait
      *
      * @return mixed
      */
-    public function createInAccount($id, array $params = [])
+    public function getAllForContact($id, array $params = [])
     {
         return $this->executeRequest(
-            RequestMethodEnum::POST,
-            ResourceMethodEnum::CREATE_IN_ACCOUNT,
+            RequestMethodEnum::GET,
+            ResourceMethodEnum::GET_ALL_FOR_CONTACT,
             $params,
             $id
         );

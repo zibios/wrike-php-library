@@ -13,17 +13,17 @@ namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\UserResource;
+use Zibios\WrikePhpLibrary\Resource\ColorResource;
 
 /**
- * User Resource Test.
+ * Color Resource Test.
  */
-class UserResourceTest extends ResourceTestCase
+class ColorResourceTest extends ResourceTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = UserResource::class;
+    protected $sourceClass = ColorResource::class;
 
     /**
      * @return array
@@ -31,25 +31,18 @@ class UserResourceTest extends ResourceTestCase
     public function methodsProvider()
     {
         $baseData = [
-            'endpointPath' => sprintf('users/%s', self::UNIQUE_ID),
+            'requestMethod' => RequestMethodEnum::GET,
+            'endpointPath' => 'colors',
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getUserResource',
+            'resourceGetter' => 'getColorResource',
             'propertyValue' => self::VALID_ID,
-            'additionalParams' => [self::UNIQUE_ID],
+            'additionalParams' => [],
+            'methodName' => ResourceMethodEnum::GET_ALL,
         ];
 
         return [
             [
-                [
-                    'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_BY_ID,
-                ] + $baseData,
-            ],
-            [
-                [
-                    'requestMethod' => RequestMethodEnum::PUT,
-                    'methodName' => ResourceMethodEnum::UPDATE,
-                ] + $baseData,
+                $baseData,
             ],
         ];
     }

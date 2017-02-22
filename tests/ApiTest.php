@@ -13,10 +13,22 @@ namespace Zibios\WrikePhpLibrary\Tests;
 
 use Zibios\WrikePhpLibrary\Api;
 use Zibios\WrikePhpLibrary\Client\ClientInterface;
+use Zibios\WrikePhpLibrary\Resource\AccountResource;
+use Zibios\WrikePhpLibrary\Resource\AttachmentResource;
+use Zibios\WrikePhpLibrary\Resource\ColorResource;
+use Zibios\WrikePhpLibrary\Resource\CommentResource;
 use Zibios\WrikePhpLibrary\Resource\ContactResource;
+use Zibios\WrikePhpLibrary\Resource\CustomFieldResource;
+use Zibios\WrikePhpLibrary\Resource\DependencyResource;
+use Zibios\WrikePhpLibrary\Resource\FolderResource;
 use Zibios\WrikePhpLibrary\Resource\GroupResource;
+use Zibios\WrikePhpLibrary\Resource\IdResource;
 use Zibios\WrikePhpLibrary\Resource\InvitationResource;
+use Zibios\WrikePhpLibrary\Resource\TaskResource;
+use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
+use Zibios\WrikePhpLibrary\Resource\VersionResource;
+use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
@@ -74,7 +86,7 @@ class ApiTest extends TestCase
     /**
      * @return array
      */
-    public function getResourceProvider()
+    public function resourceProvider()
     {
         $clientMock = $this->getMock(ClientInterface::class);
         $transformerMock = $this->getMock(ResponseTransformerInterface::class);
@@ -86,6 +98,18 @@ class ApiTest extends TestCase
             [$api, 'getUserResource', UserResource::class],
             [$api, 'getGroupResource', GroupResource::class],
             [$api, 'getInvitationResource', InvitationResource::class],
+            [$api, 'getAccountResource', AccountResource::class],
+            [$api, 'getWorkflowResource', WorkflowResource::class],
+            [$api, 'getCustomFieldResource', CustomFieldResource::class],
+            [$api, 'getFolderResource', FolderResource::class],
+            [$api, 'getTaskResource', TaskResource::class],
+            [$api, 'getCommentResource', CommentResource::class],
+            [$api, 'getDependencyResource', DependencyResource::class],
+            [$api, 'getTimelogResource', TimelogResource::class],
+            [$api, 'getAttachmentResource', AttachmentResource::class],
+            [$api, 'getVersionResource', VersionResource::class],
+            [$api, 'getIdResource', IdResource::class],
+            [$api, 'getColorResource', ColorResource::class],
         ];
     }
 
@@ -94,7 +118,7 @@ class ApiTest extends TestCase
      * @param string $getContactResource
      * @param string $expectedResourceClass
      *
-     * @dataProvider getResourceProvider
+     * @dataProvider resourceProvider
      */
     public function test_getResource($api, $getContactResource, $expectedResourceClass)
     {
@@ -108,7 +132,7 @@ class ApiTest extends TestCase
         $class = new \ReflectionClass(Api::class);
         $expectedMethodNames = $class->getMethods(\ReflectionMethod::IS_PUBLIC);
 
-        $resourceProviderArray = $this->getResourceProvider();
+        $resourceProviderArray = $this->resourceProvider();
         $coveredMethodNames = [];
         foreach ($resourceProviderArray as $resourceProviderRow) {
             $coveredMethodName = $resourceProviderRow[1];
@@ -122,10 +146,14 @@ class ApiTest extends TestCase
         ];
 
         foreach ($expectedMethodNames as $expectedMethodName) {
-            if (in_array($expectedMethodName->getName(), $excludedMethods)) {
+            if (in_array($expectedMethodName->getName(), $excludedMethods, true)) {
                 continue;
             }
-            self::assertArrayHasKey($expectedMethodName->getName(), $coveredMethodNames);
+            self::assertArrayHasKey(
+                $expectedMethodName->getName(),
+                $coveredMethodNames,
+                sprintf('%s not covered by tests', $expectedMethodName->getName())
+            );
         }
     }
 
@@ -137,7 +165,7 @@ class ApiTest extends TestCase
         $testValue = 'testValue';
 
         $clientMock = $this->getMock(ClientInterface::class);
-        $clientMock->expects($this->any())
+        $clientMock->expects(self::any())
             ->method('getBearerToken')
             ->willReturn($testValue);
         $transformerMock = $this->getMock(ResponseTransformerInterface::class);

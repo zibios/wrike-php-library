@@ -9,11 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Model;
+namespace Zibios\WrikePhpLibrary\Enum;
 
 /**
- * Resource Model Interface.
+ * Task Status Enum.
  */
-interface ResourceModelInterface
+class TaskStatusEnum extends AbstractEnum
 {
+    const ACTIVE = 'Active';
+    const COMPLETED = 'Completed';
+    const DEFERRED = 'Deferred';
+    const CANCELLED = 'Cancelled';
 }

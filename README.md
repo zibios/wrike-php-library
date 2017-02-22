@@ -41,32 +41,32 @@ Project status
 - [x] Connect to external services (packagist, travis, scrutinizer, ...)
 - [x] Decouple repository
 - [x] Establishing some common rules for all external services
-- [ ] Wrike OAuth 2.0 implementation
-- [ ] Wrike Web-hooks implementation
 - [ ] Architecture refactoring: "More KISS, or more SOLID, that is the question"
 - [ ] Code Review
 - [ ] Test suite refactoring
 - [ ] Resource implementation finalize
 - [ ] Test suite finalize
 - [ ] Documentation prepare
+- [ ] Wrike OAuth 2.0 implementation
+- [ ] Wrike Web-hooks implementation
 
 **Resources implementation status**
 - [x] Contacts
 - [x] Users
 - [x] Groups
 - [x] Invitations
-- [ ] Accounts
-- [ ] Workflows
-- [ ] Custom Fields
-- [ ] Folders and Projects
-- [ ] Tasks
-- [ ] Comments
-- [ ] Dependencies
-- [ ] Timelogs
-- [ ] Attachments
-- [ ] Version
-- [ ] IDs
-- [ ] Colors
+- [x] Accounts
+- [x] Workflows
+- [x] Custom Fields
+- [x] Folders and Projects
+- [x] Tasks
+- [x] Comments
+- [x] Dependencies
+- [x] Timelogs
+- [x] Attachments
+- [x] Version
+- [x] IDs
+- [x] Colors
 
 Installation
 ------------

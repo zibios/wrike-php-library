@@ -11,17 +11,17 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\SubscriptionTypeEnum;
 
 /**
- * Optional Field Enum Test.
+ * Subscription Type Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class SubscriptionTypeEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = SubscriptionTypeEnum::class;
 
     /**
      * @var int

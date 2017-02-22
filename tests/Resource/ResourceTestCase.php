@@ -126,6 +126,13 @@ abstract class ResourceTestCase extends TestCase
         }
     }
 
+    public function returnExceptionCallback()
+    {
+        $args = func_get_args();
+
+        return $args[0];
+    }
+
     /**
      * @param array  $methodData
      * @param string $transformerClass
@@ -135,18 +142,26 @@ abstract class ResourceTestCase extends TestCase
     private function prepareApiWithClientMock($methodData, $transformerClass)
     {
         $bodyMock = $this->getMockForAbstractClass(StreamInterface::class);
-        $bodyMock->expects($this->any())
+        $bodyMock->expects(self::any())
             ->method('getContents')
             ->willReturn($methodData['body']);
 
         $responseMock = $this->getMockForAbstractClass(ResponseInterface::class);
-        $responseMock->expects($this->any())
+        $responseMock->expects(self::any())
             ->method('getBody')
             ->willReturn($bodyMock);
 
         $clientMock = $this->getMock(ClientInterface::class);
-        $clientMock->expects($this->any())
+        $clientMock->expects(self::any())
+            ->method('transformApiException')
+            ->will($this->returnCallback([$this, 'returnExceptionCallback']));
+        $clientMock->expects(self::any())
             ->method('executeRequestForParams')
+            ->with(
+                self::equalTo($methodData['requestMethod']),
+                self::equalTo($methodData['endpointPath']),
+                self::equalTo([])
+            )
             ->willReturn($responseMock);
 
         $transformer = new $transformerClass();

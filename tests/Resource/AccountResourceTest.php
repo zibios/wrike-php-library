@@ -13,17 +13,17 @@ namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\UserResource;
+use Zibios\WrikePhpLibrary\Resource\AccountResource;
 
 /**
- * User Resource Test.
+ * Account Resource Test.
  */
-class UserResourceTest extends ResourceTestCase
+class AccountResourceTest extends ResourceTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = UserResource::class;
+    protected $sourceClass = AccountResource::class;
 
     /**
      * @return array
@@ -31,24 +31,34 @@ class UserResourceTest extends ResourceTestCase
     public function methodsProvider()
     {
         $baseData = [
-            'endpointPath' => sprintf('users/%s', self::UNIQUE_ID),
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getUserResource',
+            'resourceGetter' => 'getAccountResource',
             'propertyValue' => self::VALID_ID,
-            'additionalParams' => [self::UNIQUE_ID],
         ];
 
         return [
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
+                    'methodName' => ResourceMethodEnum::GET_ALL,
+                    'endpointPath' => 'accounts',
+                    'additionalParams' => [],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_BY_ID,
+                    'endpointPath' => sprintf('accounts/%s', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
             [
                 [
                     'requestMethod' => RequestMethodEnum::PUT,
                     'methodName' => ResourceMethodEnum::UPDATE,
+                    'endpointPath' => sprintf('accounts/%s', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
         ];

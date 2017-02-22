@@ -17,7 +17,32 @@ namespace Zibios\WrikePhpLibrary\Enum;
 class OptionalFieldEnum extends AbstractEnum
 {
     /**
-     * Contact metadata.
+     * Metadata.
      */
     const METADATA = 'metadata';
+
+    /**
+     * Subscription.
+     */
+    const SUBSCRIPTION = 'subscription';
+
+    /**
+     * Custom Fields.
+     */
+    const CUSTOM_FIELDS = 'customFields';
+
+    /**
+     * Brief Description.
+     */
+    const BRIEF_DESCRIPTION = 'briefDescription';
+
+    /**
+     * Custom Column Ids.
+     */
+    const CUSTOM_COLUMN_IDS = 'customColumnIds';
+
+    /**
+     * Attachment Count.
+     */
+    const ATTACHMENT_COUNT = 'attachmentCount';
 }

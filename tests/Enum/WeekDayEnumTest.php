@@ -11,20 +11,20 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\WeekDayEnum;
 
 /**
- * Optional Field Enum Test.
+ * Week Day Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class WeekDayEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = WeekDayEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 6;
+    protected $enumCount = 7;
 }

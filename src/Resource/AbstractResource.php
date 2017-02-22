@@ -77,10 +77,11 @@ abstract class AbstractResource implements ResourceInterface
         RequestMethodEnum::assertIsValidValue($requestMethod);
         ResourceMethodEnum::assertIsValidValue($resourceMethod);
 
+        $requestPathForResourceMethod = $this->prepareRequestPathForResourceMethod($resourceMethod, $id);
         try {
             $response = $this->client->executeRequestForParams(
                 $requestMethod,
-                $this->prepareRequestPathForResourceMethod($resourceMethod, $id),
+                $requestPathForResourceMethod,
                 $params
             );
         } catch (\Exception $e) {
@@ -93,6 +94,8 @@ abstract class AbstractResource implements ResourceInterface
     /**
      * @param string            $resourceMethod
      * @param string|array|null $id
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      *
      * @throws \InvalidArgumentException
      *
@@ -113,11 +116,20 @@ abstract class AbstractResource implements ResourceInterface
                 $path = sprintf($requestPathFormat, implode(',', $id));
                 break;
 
-            case ResourceMethodEnum::GET_ALL_IN_ACCOUNT:
-            case ResourceMethodEnum::CREATE_IN_ACCOUNT:
+            case ResourceMethodEnum::GET_ALL_FOR_ACCOUNT:
+            case ResourceMethodEnum::GET_ALL_FOR_FOLDER:
+            case ResourceMethodEnum::GET_ALL_FOR_TASK:
+            case ResourceMethodEnum::GET_ALL_FOR_CONTACT:
+            case ResourceMethodEnum::CREATE_FOR_ACCOUNT:
+            case ResourceMethodEnum::CREATE_FOR_FOLDER:
+            case ResourceMethodEnum::CREATE_FOR_TASK:
             case ResourceMethodEnum::GET_BY_ID:
             case ResourceMethodEnum::UPDATE:
             case ResourceMethodEnum::DELETE:
+            case ResourceMethodEnum::COPY:
+            case ResourceMethodEnum::DOWNLOAD:
+            case ResourceMethodEnum::DOWNLOAD_PREVIEW:
+            case ResourceMethodEnum::GET_PUBLIC_URL:
                 $this->assertIsValidIdString($id);
                 $path = sprintf($requestPathFormat, $id);
                 break;

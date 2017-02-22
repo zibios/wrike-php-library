@@ -13,17 +13,17 @@ namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\ContactResource;
+use Zibios\WrikePhpLibrary\Resource\FolderResource;
 
 /**
- * Contact Resource Test.
+ * Folder Resource Test.
  */
-class ContactResourceTest extends ResourceTestCase
+class FolderResourceTest extends ResourceTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = ContactResource::class;
+    protected $sourceClass = FolderResource::class;
 
     /**
      * @return array
@@ -32,7 +32,7 @@ class ContactResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getContactResource',
+            'resourceGetter' => 'getFolderResource',
             'propertyValue' => self::VALID_ID,
         ];
 
@@ -41,7 +41,7 @@ class ContactResourceTest extends ResourceTestCase
                 [
                     'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_ALL,
-                    'endpointPath' => 'contacts',
+                    'endpointPath' => 'folders',
                     'additionalParams' => [],
                 ] + $baseData,
             ],
@@ -49,7 +49,15 @@ class ContactResourceTest extends ResourceTestCase
                 [
                     'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/contacts', self::UNIQUE_ID),
+                    'endpointPath' => sprintf('accounts/%s/folders', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::GET,
+                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_FOLDER,
+                    'endpointPath' => sprintf('folders/%s/folders', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
@@ -57,7 +65,7 @@ class ContactResourceTest extends ResourceTestCase
                 [
                     'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_BY_ID,
-                    'endpointPath' => sprintf('contacts/%s', self::UNIQUE_ID),
+                    'endpointPath' => sprintf('folders/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
@@ -65,15 +73,39 @@ class ContactResourceTest extends ResourceTestCase
                 [
                     'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_BY_IDS,
-                    'endpointPath' => sprintf('contacts/%s', implode(',', [self::UNIQUE_ID])),
+                    'endpointPath' => sprintf('folders/%s', implode(',', [self::UNIQUE_ID])),
                     'additionalParams' => [[self::UNIQUE_ID]],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::POST,
+                    'methodName' => ResourceMethodEnum::CREATE_FOR_FOLDER,
+                    'endpointPath' => sprintf('folders/%s/folders', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::POST,
+                    'methodName' => ResourceMethodEnum::COPY,
+                    'endpointPath' => sprintf('copy_folder/%s', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
             [
                 [
                     'requestMethod' => RequestMethodEnum::PUT,
                     'methodName' => ResourceMethodEnum::UPDATE,
-                    'endpointPath' => sprintf('contacts/%s', self::UNIQUE_ID),
+                    'endpointPath' => sprintf('folders/%s', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::DELETE,
+                    'methodName' => ResourceMethodEnum::DELETE,
+                    'endpointPath' => sprintf('folders/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],

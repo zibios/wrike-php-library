@@ -11,20 +11,20 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\UserTypeEnum;
 
 /**
- * Optional Field Enum Test.
+ * User Type Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class UserTypeEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = UserTypeEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 6;
+    protected $enumCount = 2;
 }

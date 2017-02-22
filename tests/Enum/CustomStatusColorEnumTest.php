@@ -11,20 +11,20 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\CustomStatusColorEnum;
 
 /**
- * Optional Field Enum Test.
+ * CustomS tatus Color Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class CustomStatusColorEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = CustomStatusColorEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 6;
+    protected $enumCount = 13;
 }
