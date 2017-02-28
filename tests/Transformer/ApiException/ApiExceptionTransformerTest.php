@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Tests\Transformer\Exception\Api;
+namespace Zibios\WrikePhpLibrary\Tests\Transformer\ApiException;
 
 use Zibios\WrikePhpLibrary\Exception\Api\AccessForbiddenException;
 use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
@@ -71,8 +71,20 @@ class ApiExceptionTransformerTest extends TestCase
         $exception = new \Exception();
         $transformer = new ApiExceptionTransformerStub();
 
-        $normalizedException = $transformer->transformByStatusCodeAndName($exception, $errorStatusCode, $errorStatusName);
-        self::assertInstanceOf($expectedExceptionClass, $normalizedException, sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException)));
-        self::assertInstanceOf(ApiException::class, $normalizedException, sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException)));
+        $normalizedException = $transformer->transformByStatusCodeAndName(
+            $exception,
+            $errorStatusCode,
+            $errorStatusName
+        );
+        self::assertInstanceOf(
+            $expectedExceptionClass,
+            $normalizedException,
+            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException))
+        );
+        self::assertInstanceOf(
+            ApiException::class,
+            $normalizedException,
+            sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException))
+        );
     }
 }

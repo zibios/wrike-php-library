@@ -34,7 +34,7 @@ class VersionResourceTest extends ResourceTestCase
             'requestMethod' => RequestMethodEnum::GET,
             'endpointPath' => 'version',
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getVersionResource',
+            'resourceClass' => VersionResource::class,
             'propertyValue' => self::VALID_ID,
             'additionalParams' => [],
             'methodName' => ResourceMethodEnum::GET_ALL,

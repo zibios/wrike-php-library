@@ -32,7 +32,7 @@ class WorkflowResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getWorkflowResource',
+            'resourceClass' => WorkflowResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

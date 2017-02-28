@@ -32,7 +32,7 @@ class AttachmentResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getAttachmentResource',
+            'resourceClass' => AttachmentResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

@@ -9,21 +9,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response;
+namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response\Psr;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use Zibios\WrikePhpLibrary\Tests\Transformer\ResponseTransformerTestCase;
-use Zibios\WrikePhpLibrary\Transformer\Response\RawBodyTransformer;
+use Zibios\WrikePhpLibrary\Transformer\Response\Psr\PsrBodyTransformer;
 
 /**
- * Raw Body Transformer Test.
+ * Psr Body Transformer Test.
  */
-class RawBodyTransformerTest extends ResponseTransformerTestCase
+class PsrBodyTransformerTest extends PsrResponseTransformerTestCase
 {
     public function setUp()
     {
-        $this->object = new RawBodyTransformer();
+        $this->object = new PsrBodyTransformer();
     }
 
     public function test_transform()

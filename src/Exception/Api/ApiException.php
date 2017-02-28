@@ -32,25 +32,4 @@ class ApiException extends Exception
     {
         parent::__construct($e->getMessage(), $e->getCode(), $e);
     }
-
-    /**
-     * @throws \UnderflowException
-     *
-     * @return string
-     */
-    public static function getExceptionIdentifier()
-    {
-        return static::calculateExceptionIdentifier(static::STATUS_CODE, static::STATUS_NAME);
-    }
-
-    /**
-     * @param int    $errorStatusCode
-     * @param string $errorStatusName
-     *
-     * @return string
-     */
-    public static function calculateExceptionIdentifier($errorStatusCode, $errorStatusName)
-    {
-        return sprintf('%s%s', $errorStatusCode, $errorStatusName);
-    }
 }

@@ -32,7 +32,7 @@ class GroupResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getGroupResource',
+            'resourceClass' => GroupResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

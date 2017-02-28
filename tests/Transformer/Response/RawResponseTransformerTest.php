@@ -11,14 +11,13 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response;
 
-use Psr\Http\Message\ResponseInterface;
-use Zibios\WrikePhpLibrary\Tests\Transformer\ResponseTransformerTestCase;
+use Zibios\WrikePhpLibrary\Tests\TestCase;
 use Zibios\WrikePhpLibrary\Transformer\Response\RawResponseTransformer;
 
 /**
  * Raw Response Transformer Test.
  */
-class RawResponseTransformerTest extends ResponseTransformerTestCase
+class RawResponseTransformerTest extends TestCase
 {
     public function setUp()
     {
@@ -27,9 +26,9 @@ class RawResponseTransformerTest extends ResponseTransformerTestCase
 
     public function test_transform()
     {
-        $responseMock = $this->getMockForAbstractClass(ResponseInterface::class);
+        $responseMock = new \stdClass();
         $returnedResponse = $this->object->transform($responseMock, 'unimportant');
 
-        $this->assertSame($responseMock, $returnedResponse);
+        self::assertSame($responseMock, $returnedResponse);
     }
 }

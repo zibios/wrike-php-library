@@ -9,20 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Tests\Transformer\Exception\Api;
+namespace Zibios\WrikePhpLibrary\Tests\Transformer\ApiException;
 
-use Zibios\WrikePhpLibrary\Tests\Transformer\ApiExceptionTransformerTestCase;
-use Zibios\WrikePhpLibrary\Transformer\Exception\Api\RawTransformer;
+use Zibios\WrikePhpLibrary\Transformer\ApiException\RawExceptionTransformer;
 
 /**
- * Raw Transformer Test.
+ * Raw Exception Transformer Test.
  */
-class RawTransformerTest extends ApiExceptionTransformerTestCase
+class RawExceptionTransformerTest extends ApiExceptionTransformerTestCase
 {
     public function test_transform()
     {
         $exception = new \Exception();
-        $transformer = new RawTransformer();
+        $transformer = new RawExceptionTransformer();
         self::assertSame($exception, $transformer->transform($exception));
     }
 }

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Transformer;
+namespace Zibios\WrikePhpLibrary\Transformer\ApiException;
 
 use Zibios\WrikePhpLibrary\Exception\Api\AccessForbiddenException;
 use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
@@ -21,6 +21,7 @@ use Zibios\WrikePhpLibrary\Exception\Api\NotAuthorizedException;
 use Zibios\WrikePhpLibrary\Exception\Api\ParameterRequiredException;
 use Zibios\WrikePhpLibrary\Exception\Api\ResourceNotFoundException;
 use Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException;
+use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 
 /**
  * Abstract Api Exception Transformer.
@@ -51,10 +52,10 @@ abstract class AbstractApiExceptionTransformer implements ApiExceptionTransforme
      */
     protected function transformByStatusCodeAndName(\Exception $exception, $errorStatusCode, $errorStatusName)
     {
-        $incomingIdentifier = ApiException::calculateExceptionIdentifier($errorStatusCode, $errorStatusName);
         foreach ($this->supportedApiExceptions as $apiExceptionClass) {
-            $supportedIdentifier = call_user_func([$apiExceptionClass, 'getExceptionIdentifier']);
-            if ($incomingIdentifier === $supportedIdentifier) {
+            $statusCode = constant($apiExceptionClass.'::STATUS_CODE');
+            $statusName = constant($apiExceptionClass.'::STATUS_NAME');
+            if ($errorStatusCode === $statusCode && $errorStatusName === $statusName) {
                 return new $apiExceptionClass($exception);
             }
         }

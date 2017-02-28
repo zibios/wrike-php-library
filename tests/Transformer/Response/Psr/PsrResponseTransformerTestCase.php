@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Tests\Transformer;
+namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response\Psr;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
@@ -18,7 +18,7 @@ use Zibios\WrikePhpLibrary\Tests\TestCase;
 /**
  * Abstract Response Transformer Test Case.
  */
-abstract class ResponseTransformerTestCase extends TestCase
+abstract class PsrResponseTransformerTestCase extends TestCase
 {
     /**
      * @return array

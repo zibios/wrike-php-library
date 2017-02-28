@@ -9,27 +9,25 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response;
+namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response\Psr;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use Zibios\WrikePhpLibrary\Tests\Transformer\ResponseTransformerTestCase;
-use Zibios\WrikePhpLibrary\Transformer\Response\ArrayBodyTransformer;
+use Zibios\WrikePhpLibrary\Transformer\Response\Psr\StringBodyTransformer;
 
 /**
- * Array Body Transformer Test.
+ * String Body Transformer Test.
  */
-class ArrayBodyTransformerTest extends ResponseTransformerTestCase
+class StringBodyTransformerTest extends PsrResponseTransformerTestCase
 {
     public function setUp()
     {
-        $this->object = new ArrayBodyTransformer();
+        $this->object = new StringBodyTransformer();
     }
 
     public function test_transform()
     {
-        $responseArray = ['key' => 'value', 'number' => 100];
-        $responseString = json_encode($responseArray);
+        $responseString = '{"key": "value"}';
         $bodyMock = $this->getMockForAbstractClass(StreamInterface::class);
         $bodyMock->expects($this->any())
             ->method('getContents')
@@ -38,9 +36,8 @@ class ArrayBodyTransformerTest extends ResponseTransformerTestCase
         $responseMock->expects($this->any())
             ->method('getBody')
             ->willReturn($bodyMock);
-
         $returnedResponse = $this->object->transform($responseMock, 'unimportant');
 
-        $this->assertSame($responseArray, $returnedResponse);
+        $this->assertSame($responseString, $returnedResponse);
     }
 }

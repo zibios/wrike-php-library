@@ -32,7 +32,7 @@ class ContactResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getContactResource',
+            'resourceClass' => ContactResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

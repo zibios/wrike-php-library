@@ -9,22 +9,34 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Transformer;
+namespace Zibios\WrikePhpLibrary\Transformer\Response\Psr;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
+use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
+use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
  * Abstract Response Transformer.
  */
-abstract class AbstractResponseTransformer implements ResponseTransformerInterface
+abstract class AbstractPsrResponseTransformer implements ResponseTransformerInterface
 {
+    /**
+     * @param string $responseFormat
+     *
+     * @return bool
+     */
+    public function isSupportedResponseFormat($responseFormat)
+    {
+        return $responseFormat === ResponseFormatEnum::PSR_RESPONSE;
+    }
+
     /**
      * @param ResponseInterface $response
      *
      * @return ResponseInterface
      */
-    protected function transformToRawResponse(ResponseInterface $response)
+    protected function transformToPsrResponse(ResponseInterface $response)
     {
         return $response;
     }
@@ -34,9 +46,9 @@ abstract class AbstractResponseTransformer implements ResponseTransformerInterfa
      *
      * @return StreamInterface
      */
-    protected function transformToRawBody(ResponseInterface $response)
+    protected function transformToPsrBody(ResponseInterface $response)
     {
-        return $this->transformToRawResponse($response)->getBody();
+        return $this->transformToPsrResponse($response)->getBody();
     }
 
     /**
@@ -48,7 +60,7 @@ abstract class AbstractResponseTransformer implements ResponseTransformerInterfa
      */
     protected function transformToStringBody(ResponseInterface $response)
     {
-        return $this->transformToRawBody($response)->getContents();
+        return $this->transformToPsrBody($response)->getContents();
     }
 
     /**

@@ -11,18 +11,23 @@
 
 namespace Zibios\WrikePhpLibrary\Transformer;
 
-use Psr\Http\Message\ResponseInterface;
-
 /**
  * Response Transformer Interface.
  */
 interface ResponseTransformerInterface
 {
     /**
-     * @param ResponseInterface $response
-     * @param string            $resourceClass
+     * @param string $responseFormat
+     *
+     * @return bool
+     */
+    public function isSupportedResponseFormat($responseFormat);
+
+    /**
+     * @param mixed  $response
+     * @param string $resourceClass
      *
      * @return mixed
      */
-    public function transform(ResponseInterface $response, $resourceClass);
+    public function transform($response, $resourceClass);
 }

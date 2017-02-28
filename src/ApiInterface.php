@@ -34,18 +34,6 @@ use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
 interface ApiInterface
 {
     /**
-     * @return string
-     */
-    public function getBearerToken();
-
-    /**
-     * @param string $bearerToken
-     *
-     * @return $this
-     */
-    public function setBearerToken($bearerToken);
-
-    /**
      * @return ContactResource
      */
     public function getContactResource();

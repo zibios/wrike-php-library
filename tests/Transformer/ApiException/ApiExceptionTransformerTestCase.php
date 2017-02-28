@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Tests\Transformer;
+namespace Zibios\WrikePhpLibrary\Tests\Transformer\ApiException;
 
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 

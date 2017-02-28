@@ -32,7 +32,7 @@ class InvitationResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getInvitationResource',
+            'resourceClass' => InvitationResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

@@ -32,7 +32,7 @@ class TimelogResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getTimelogResource',
+            'resourceClass' => TimelogResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

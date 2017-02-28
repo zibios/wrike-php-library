@@ -20,11 +20,19 @@ use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 interface ClientInterface
 {
     /**
+     * Response Format Identifier.
+     *
+     * Custom name which identify respose format: PsrResponse, JsonBody
+     *
+     * @see \Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum
+     *
      * @return string
      */
-    public function getBearerToken();
+    public function getResponseFormat();
 
     /**
+     * Bearer Token setter.
+     *
      * @param string $bearerToken
      *
      * @return $this
@@ -42,11 +50,4 @@ interface ClientInterface
      * @return ResponseInterface
      */
     public function executeRequestForParams($requestMethod, $path, array $params);
-
-    /**
-     * @param \Exception $exception
-     *
-     * @return \Exception|ApiException
-     */
-    public function transformApiException(\Exception $exception);
 }

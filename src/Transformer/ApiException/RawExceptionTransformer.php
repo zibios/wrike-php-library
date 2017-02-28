@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Transformer\Exception\Api;
+namespace Zibios\WrikePhpLibrary\Transformer\ApiException;
 
-use Zibios\WrikePhpLibrary\Transformer\AbstractApiExceptionTransformer;
+use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 
 /**
- * Raw Transformer.
+ * Raw Exception Transformer.
  */
-class RawTransformer extends AbstractApiExceptionTransformer
+class RawExceptionTransformer implements ApiExceptionTransformerInterface
 {
     /**
      * @param \Exception $exception

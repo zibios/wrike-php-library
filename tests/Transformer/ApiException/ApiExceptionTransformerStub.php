@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Tests\Transformer\Exception\Api;
+namespace Zibios\WrikePhpLibrary\Tests\Transformer\ApiException;
 
-use Zibios\WrikePhpLibrary\Transformer\AbstractApiExceptionTransformer;
+use Zibios\WrikePhpLibrary\Transformer\ApiException\AbstractApiExceptionTransformer;
 
 /**
  * Api Exception Transformer Stub.

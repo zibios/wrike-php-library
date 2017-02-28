@@ -32,7 +32,7 @@ class DependencyResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getDependencyResource',
+            'resourceClass' => DependencyResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

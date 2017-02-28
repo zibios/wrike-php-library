@@ -11,37 +11,37 @@
 
 namespace Zibios\WrikePhpLibrary\Tests;
 
-use Zibios\WrikePhpLibrary\Api;
+use Zibios\WrikePhpLibrary\ImmutableApi;
 use Zibios\WrikePhpLibrary\Transformer\ApiException\RawExceptionTransformer;
 use Zibios\WrikePhpLibrary\Transformer\Response\RawResponseTransformer;
 
 /**
- * Api Test.
+ * Immutable Api Test.
  */
-class ApiTest extends ApiTestCase
+class ImmutableApiTest extends ApiTestCase
 {
     /**
-     * @var Api
+     * @var ImmutableApi
      */
     protected $object;
 
     /**
      * @var string
      */
-    protected $sourceClass = Api::class;
+    protected $sourceClass = ImmutableApi::class;
 
-    public function test_mutableMethods()
+    public function test_immutableMethods()
     {
-        $response = $this->object->setBearerToken('test');
-        self::assertSame($this->object, $response);
+        $response = $this->object->recreateForNewBearerToken('test');
+        self::assertNotSame($this->object, $response);
         self::assertInstanceOf($this->sourceClass, $response);
 
-        $response = $this->object->setResponseTransformer(new RawResponseTransformer());
-        self::assertSame($this->object, $response);
+        $response = $this->object->recreateForNewResponseTransformer(new RawResponseTransformer());
+        self::assertNotSame($this->object, $response);
         self::assertInstanceOf($this->sourceClass, $response);
 
-        $response = $this->object->setApiExceptionTransformer(new RawExceptionTransformer());
-        self::assertSame($this->object, $response);
+        $response = $this->object->recreateForNewApiExceptionTransformer(new RawExceptionTransformer());
+        self::assertNotSame($this->object, $response);
         self::assertInstanceOf($this->sourceClass, $response);
     }
 }

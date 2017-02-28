@@ -14,6 +14,7 @@ namespace Zibios\WrikePhpLibrary\Resource;
 use Zibios\WrikePhpLibrary\Client\ClientInterface;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
+use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
@@ -29,20 +30,36 @@ abstract class AbstractResource implements ResourceInterface
     protected $client;
 
     /**
+     * @var string
+     */
+    protected $bearerToken = '';
+
+    /**
      * @var ResponseTransformerInterface
      */
     protected $responseTransformer;
 
     /**
-     * @param ClientInterface              $client
-     * @param ResponseTransformerInterface $responseTransformer
+     * @var ApiExceptionTransformerInterface
+     */
+    protected $apiExceptionTransformer;
+
+    /**
+     * @param ClientInterface                  $client
+     * @param ResponseTransformerInterface     $responseTransformer
+     * @param ApiExceptionTransformerInterface $apiExceptionTransformer
+     * @param string                           $bearerToken
      */
     public function __construct(
         ClientInterface $client,
-        ResponseTransformerInterface $responseTransformer
+        ResponseTransformerInterface $responseTransformer,
+        ApiExceptionTransformerInterface $apiExceptionTransformer,
+        $bearerToken
     ) {
         $this->client = $client;
         $this->responseTransformer = $responseTransformer;
+        $this->apiExceptionTransformer = $apiExceptionTransformer;
+        $this->bearerToken = $bearerToken;
     }
 
     /**
@@ -61,14 +78,6 @@ abstract class AbstractResource implements ResourceInterface
      * @throws \Exception
      * @throws \InvalidArgumentException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\AccessForbiddenException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\InvalidParameterException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\InvalidRequestException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\NotAllowedException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\NotAuthorizedException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\ParameterRequiredException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\ResourceNotFoundException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException
      *
      * @return mixed
      */
@@ -85,7 +94,7 @@ abstract class AbstractResource implements ResourceInterface
                 $params
             );
         } catch (\Exception $e) {
-            throw $this->client->transformApiException($e);
+            throw $this->apiExceptionTransformer->transform($e);
         }
 
         return $this->responseTransformer->transform($response, static::class);

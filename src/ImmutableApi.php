@@ -11,7 +11,6 @@
 
 namespace Zibios\WrikePhpLibrary;
 
-use Zibios\WrikePhpLibrary\Traits\AssertIsValidBearerToken;
 use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
@@ -23,10 +22,8 @@ use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
-class Api extends AbstractApi implements MutableApiInterface
+class ImmutableApi extends AbstractApi implements ImmutableApiInterface
 {
-    use AssertIsValidBearerToken;
-
     /**
      * @param string $bearerToken
      *
@@ -34,35 +31,32 @@ class Api extends AbstractApi implements MutableApiInterface
      *
      * @return $this
      */
-    public function setBearerToken($bearerToken)
+    public function recreateForNewBearerToken($bearerToken)
     {
-        $this->assertIsValidBearerToken($bearerToken);
-        $this->bearerToken = $bearerToken;
-
-        return $this;
+        return new self($this->client, $this->responseTransformer, $this->apiExceptionTransformer, $bearerToken);
     }
 
     /**
      * @param ApiExceptionTransformerInterface $apiExceptionTransformer
      *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function setApiExceptionTransformer(ApiExceptionTransformerInterface $apiExceptionTransformer)
+    public function recreateForNewApiExceptionTransformer(ApiExceptionTransformerInterface $apiExceptionTransformer)
     {
-        $this->apiExceptionTransformer = $apiExceptionTransformer;
-
-        return $this;
+        return new self($this->client, $this->responseTransformer, $apiExceptionTransformer, $this->bearerToken);
     }
 
     /**
      * @param ResponseTransformerInterface $responseTransformer
      *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function setResponseTransformer(ResponseTransformerInterface $responseTransformer)
+    public function recreateForNewResponseTransformer(ResponseTransformerInterface $responseTransformer)
     {
-        $this->responseTransformer = $responseTransformer;
-
-        return $this;
+        return new self($this->client, $responseTransformer, $this->apiExceptionTransformer, $this->bearerToken);
     }
 }

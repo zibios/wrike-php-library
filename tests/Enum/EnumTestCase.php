@@ -47,16 +47,26 @@ abstract class EnumTestCase extends TestCase
      */
     public function test_EnumExtendProperClasses()
     {
-        self::assertInstanceOf(AbstractEnum::class, $this->object, sprintf('"%s" should extend "%s"', get_class($this->object), AbstractEnum::class));
-        self::assertInstanceOf($this->sourceClass, $this->object, sprintf('"%s" should extend "%s"', get_class($this->object), $this->sourceClass));
+        self::assertInstanceOf(
+            AbstractEnum::class,
+            $this->object,
+            sprintf('"%s" should extend "%s"', get_class($this->object), AbstractEnum::class)
+        );
+        self::assertInstanceOf(
+            $this->sourceClass,
+            $this->object,
+            sprintf('"%s" should extend "%s"', get_class($this->object), $this->sourceClass)
+        );
     }
 
     public function test_toArray()
     {
+        // Static access
         $enums = call_user_func([$this->sourceClass, 'toArray']);
         self::assertInternalType('array', $enums);
         self::assertCount($this->enumCount, $enums, $this->sourceClass);
 
+        // Instantiated access
         $enums = $this->object->toArray();
         self::assertInternalType('array', $enums);
         self::assertCount($this->enumCount, $enums, $this->sourceClass);
@@ -64,11 +74,13 @@ abstract class EnumTestCase extends TestCase
 
     public function test_getKeys()
     {
+        // Static access
         $enums = call_user_func([$this->sourceClass, 'toArray']);
         $keys = call_user_func([$this->sourceClass, 'getKeys']);
         self::assertInternalType('array', $keys);
         self::assertSame(array_keys($enums), $keys);
 
+        // Instantiated access
         $enums = $this->object->toArray();
         $keys = $this->object->getKeys();
         self::assertInternalType('array', $keys);
@@ -77,6 +89,7 @@ abstract class EnumTestCase extends TestCase
 
     public function test_getKey()
     {
+        // Static access
         /** @var array $enums */
         $enums = call_user_func([$this->sourceClass, 'toArray']);
         /** @var array $values */
@@ -87,6 +100,8 @@ abstract class EnumTestCase extends TestCase
             $key = call_user_func([$this->sourceClass, 'getKey'], $value);
             self::assertSame($value, $enums[$key]);
         }
+
+        // Instantiated access
         /** @var array $enums */
         $enums = $this->object->toArray();
         /** @var array $values */
@@ -101,11 +116,13 @@ abstract class EnumTestCase extends TestCase
 
     public function test_getValues()
     {
+        // Static access
         $enums = call_user_func([$this->sourceClass, 'toArray']);
         $values = call_user_func([$this->sourceClass, 'getValues']);
         self::assertInternalType('array', $values);
         self::assertSame(array_values($enums), $values);
 
+        // Instantiated access
         $enums = $this->object->toArray();
         $values = $this->object->getValues();
         self::assertInternalType('array', $values);
@@ -114,6 +131,7 @@ abstract class EnumTestCase extends TestCase
 
     public function test_getValue()
     {
+        // Static access
         /** @var array $enums */
         $enums = call_user_func([$this->sourceClass, 'toArray']);
         /** @var array $keys */
@@ -125,6 +143,7 @@ abstract class EnumTestCase extends TestCase
             self::assertSame($value, $enums[$key]);
         }
 
+        // Instantiated access
         /** @var array $enums */
         $enums = $this->object->toArray();
         /** @var array $keys */
@@ -161,7 +180,11 @@ abstract class EnumTestCase extends TestCase
      */
     public function test_assertIsValidKey($key, $isValid)
     {
-        self::assertEquals($isValid, call_user_func([$this->sourceClass, 'isValidKey'], $key), sprintf('"%s"', print_r($key, true)));
+        self::assertEquals(
+            $isValid,
+            call_user_func([$this->sourceClass, 'isValidKey'], $key),
+            sprintf('"%s"', print_r($key, true))
+        );
         $e = null;
         $exceptionOccurred = false;
         $exceptionClass = '';
@@ -173,11 +196,25 @@ abstract class EnumTestCase extends TestCase
         }
 
         if ($isValid === true) {
-            self::assertFalse($exceptionOccurred, sprintf('assertIsValidKey should not throw exception but "%s" exception occurred!', $exceptionClass));
+            self::assertFalse(
+                $exceptionOccurred,
+                sprintf('assertIsValidKey should not throw exception but "%s" exception occurred!', $exceptionClass)
+            );
         }
         if ($isValid === false) {
-            self::assertTrue($exceptionOccurred, sprintf('assertIsValidKey should throw exception but exception not occurred!'));
-            self::assertInstanceOf(\InvalidArgumentException::class, $e, sprintf('assertIsValidKey should throw %s exception but %s exception occurred!', \InvalidArgumentException::class, $exceptionClass));
+            self::assertTrue(
+                $exceptionOccurred,
+                sprintf('assertIsValidKey should throw exception but exception not occurred!')
+            );
+            self::assertInstanceOf(
+                \InvalidArgumentException::class,
+                $e,
+                sprintf(
+                    'assertIsValidKey should throw %s exception but %s exception occurred!',
+                    \InvalidArgumentException::class,
+                    $exceptionClass
+                )
+            );
         }
     }
 
@@ -217,11 +254,25 @@ abstract class EnumTestCase extends TestCase
         }
 
         if ($isValid === true) {
-            self::assertFalse($exceptionOccurred, sprintf('assertIsValidValue should not throw exception but "%s" exception occurred!', $exceptionClass));
+            self::assertFalse(
+                $exceptionOccurred,
+                sprintf('assertIsValidValue should not throw exception but "%s" exception occurred!', $exceptionClass)
+            );
         }
         if ($isValid === false) {
-            self::assertTrue($exceptionOccurred, sprintf('assertIsValidValue should throw exception but exception not occurred!'));
-            self::assertInstanceOf(\InvalidArgumentException::class, $e, sprintf('assertIsValidValue should throw %s exception but %s exception occurred!', \InvalidArgumentException::class, $exceptionClass));
+            self::assertTrue(
+                $exceptionOccurred,
+                sprintf('assertIsValidValue should throw exception but exception not occurred!')
+            );
+            self::assertInstanceOf(
+                \InvalidArgumentException::class,
+                $e,
+                sprintf(
+                    'assertIsValidValue should throw %s exception but %s exception occurred!',
+                    \InvalidArgumentException::class,
+                    $exceptionClass
+                )
+            );
         }
     }
 

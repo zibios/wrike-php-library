@@ -34,7 +34,7 @@ class IdResourceTest extends ResourceTestCase
             'requestMethod' => RequestMethodEnum::GET,
             'endpointPath' => 'ids',
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getIdResource',
+            'resourceClass' => IdResource::class,
             'propertyValue' => self::VALID_ID,
             'additionalParams' => [],
             'methodName' => ResourceMethodEnum::GET_ALL,

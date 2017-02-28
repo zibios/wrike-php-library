@@ -9,38 +9,39 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Transformer\Response;
+namespace Zibios\WrikePhpLibrary\Transformer\Response\Json;
 
-use Psr\Http\Message\StreamInterface;
+use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
- * Raw Response Transformer.
+ * Array Transformer.
  */
-class RawResponseTransformer implements ResponseTransformerInterface
+class ArrayTransformer implements ResponseTransformerInterface
 {
     /**
      * @param string $responseFormat
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
      * @return bool
      */
     public function isSupportedResponseFormat($responseFormat)
     {
-        return true;
+        return $responseFormat === ResponseFormatEnum::JSON_BODY;
     }
 
     /**
      * @param mixed  $response
      * @param string $resourceClass
      *
-     * @throws \InvalidArgumentException
-     *
-     * @return StreamInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
+     *
+     * @return array
      */
     public function transform($response, $resourceClass)
     {
-        return $response;
+        return json_decode($response, true);
     }
 }

@@ -9,27 +9,26 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Transformer\Response;
+namespace Zibios\WrikePhpLibrary\Transformer\Response\Psr;
 
 use Psr\Http\Message\ResponseInterface;
-use Zibios\WrikePhpLibrary\Transformer\AbstractResponseTransformer;
 
 /**
- * Array Body Transformer.
+ * Psr Response Transformer.
  */
-class ArrayBodyTransformer extends AbstractResponseTransformer
+class PsrResponseTransformer extends AbstractPsrResponseTransformer
 {
     /**
      * @param ResponseInterface $response
      * @param string            $resourceClass
      *
-     * @throws \RuntimeException
+     * @throws \InvalidArgumentException
      *
-     * @return array
+     * @return ResponseInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function transform(ResponseInterface $response, $resourceClass)
+    public function transform($response, $resourceClass)
     {
-        return $this->transformToArrayBody($response);
+        return $this->transformToPsrResponse($response);
     }
 }

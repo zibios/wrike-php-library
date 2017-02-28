@@ -32,7 +32,7 @@ class CustomFieldResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getCustomFieldResource',
+            'resourceClass' => CustomFieldResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

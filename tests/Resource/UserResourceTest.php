@@ -33,7 +33,7 @@ class UserResourceTest extends ResourceTestCase
         $baseData = [
             'endpointPath' => sprintf('users/%s', self::UNIQUE_ID),
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getUserResource',
+            'resourceClass' => UserResource::class,
             'propertyValue' => self::VALID_ID,
             'additionalParams' => [self::UNIQUE_ID],
         ];

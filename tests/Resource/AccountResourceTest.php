@@ -32,7 +32,7 @@ class AccountResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getAccountResource',
+            'resourceClass' => AccountResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

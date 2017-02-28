@@ -13,15 +13,17 @@ namespace Zibios\WrikePhpLibrary\Tests\Resource;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use Zibios\WrikePhpLibrary\Api;
 use Zibios\WrikePhpLibrary\Client\ClientInterface;
 use Zibios\WrikePhpLibrary\Resource\AbstractResource;
 use Zibios\WrikePhpLibrary\Resource\ResourceInterface;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
-use Zibios\WrikePhpLibrary\Transformer\Response\ArrayBodyTransformer;
-use Zibios\WrikePhpLibrary\Transformer\Response\RawBodyTransformer;
+use Zibios\WrikePhpLibrary\Transformer\ApiException\RawExceptionTransformer;
+use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
+use Zibios\WrikePhpLibrary\Transformer\Response\Psr\ArrayBodyTransformer;
+use Zibios\WrikePhpLibrary\Transformer\Response\Psr\PsrBodyTransformer;
+use Zibios\WrikePhpLibrary\Transformer\Response\Psr\PsrResponseTransformer;
+use Zibios\WrikePhpLibrary\Transformer\Response\Psr\StringBodyTransformer;
 use Zibios\WrikePhpLibrary\Transformer\Response\RawResponseTransformer;
-use Zibios\WrikePhpLibrary\Transformer\Response\StringBodyTransformer;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
@@ -43,12 +45,34 @@ abstract class ResourceTestCase extends TestCase
      */
     public function test_ExtendProperClasses()
     {
-        $clientMock = $this->getMockForAbstractClass(ClientInterface::class);
-        $responseTransformerMock = $this->getMockForAbstractClass(ResponseTransformerInterface::class);
-        $resource = new $this->sourceClass($clientMock, $responseTransformerMock);
+        $bearerTokenMock = 'token';
+        $responseFormatMock = 'responseFormat';
+        $clientMock = $this->getMock(ClientInterface::class);
+        $clientMock->expects(self::any())
+            ->method('getResponseFormat')
+            ->willReturn($responseFormatMock);
+        $responseTransformerMock = $this->getMock(ResponseTransformerInterface::class);
+        $responseTransformerMock->expects(self::any())
+            ->method('isSupportedResponseFormat')
+            ->willReturn(true);
+        $apiExceptionTransformerMock = $this->getMock(ApiExceptionTransformerInterface::class);
+        $resource = new $this->sourceClass(
+            $clientMock,
+            $responseTransformerMock,
+            $apiExceptionTransformerMock,
+            $bearerTokenMock
+        );
 
-        self::assertInstanceOf(AbstractResource::class, $resource, sprintf('"%s" should extend "%s"', get_class($resource), AbstractResource::class));
-        self::assertInstanceOf(ResourceInterface::class, $resource, sprintf('"%s" should extend "%s"', get_class($resource), ResourceInterface::class));
+        self::assertInstanceOf(
+            AbstractResource::class,
+            $resource,
+            sprintf('"%s" should extend "%s"', get_class($resource), AbstractResource::class)
+        );
+        self::assertInstanceOf(
+            ResourceInterface::class,
+            $resource,
+            sprintf('"%s" should extend "%s"', get_class($resource), ResourceInterface::class)
+        );
     }
 
     /**
@@ -64,45 +88,18 @@ abstract class ResourceTestCase extends TestCase
     public function test_methods($methodData)
     {
         $transformerClasses = [
-            RawResponseTransformer::class,
-            RawBodyTransformer::class,
+            PsrResponseTransformer::class,
+            PsrBodyTransformer::class,
             StringBodyTransformer::class,
             ArrayBodyTransformer::class,
+            RawResponseTransformer::class,
         ];
 
         foreach ($transformerClasses as $transformerClass) {
-            $api = $this->prepareApiWithClientMock($methodData, $transformerClass);
-            $response = $this->prepareResponseForMethod($methodData, $api);
+            $resource = $this->prepareResourceWithClientMock($methodData, $transformerClass);
+            $response = $this->prepareResponseForMethod($methodData, $resource);
             $this->executeAssertsForMethod($methodData, $transformerClass, $response);
         }
-    }
-
-    /**
-     * @param array $methodData
-     *
-     * @dataProvider methodsProvider
-     */
-    public function test_clientException($methodData)
-    {
-        $clientException = new \Exception();
-
-        $clientMock = $this->getMock(ClientInterface::class);
-        $clientMock->expects(self::any())
-            ->method('transformApiException')
-            ->with(self::equalTo($clientException))
-            ->willReturn($clientException);
-        $clientMock->expects($this->any())
-            ->method('executeRequestForParams')
-            ->willThrowException($clientException);
-        $transformer = new RawResponseTransformer();
-        $api = new Api($clientMock, $transformer);
-
-        $e = null;
-        try {
-            $this->prepareResponseForMethod($methodData, $api);
-        } catch (\Exception $e) {
-        }
-        self::assertSame($clientException, $e);
     }
 
     public function test_testMethodsProvider()
@@ -137,9 +134,9 @@ abstract class ResourceTestCase extends TestCase
      * @param array  $methodData
      * @param string $transformerClass
      *
-     * @return \Zibios\WrikePhpLibrary\Api
+     * @return AbstractResource
      */
-    private function prepareApiWithClientMock($methodData, $transformerClass)
+    private function prepareResourceWithClientMock($methodData, $transformerClass)
     {
         $bodyMock = $this->getMockForAbstractClass(StreamInterface::class);
         $bodyMock->expects(self::any())
@@ -153,9 +150,6 @@ abstract class ResourceTestCase extends TestCase
 
         $clientMock = $this->getMock(ClientInterface::class);
         $clientMock->expects(self::any())
-            ->method('transformApiException')
-            ->will($this->returnCallback([$this, 'returnExceptionCallback']));
-        $clientMock->expects(self::any())
             ->method('executeRequestForParams')
             ->with(
                 self::equalTo($methodData['requestMethod']),
@@ -164,31 +158,36 @@ abstract class ResourceTestCase extends TestCase
             )
             ->willReturn($responseMock);
 
-        $transformer = new $transformerClass();
+        $responseTransformer = new $transformerClass();
 
-        return new Api($clientMock, $transformer);
+        return new $methodData['resourceClass'](
+            $clientMock,
+            $responseTransformer,
+            new RawExceptionTransformer(),
+            'test'
+        );
     }
 
     /**
-     * @param array                       $methodData
-     * @param \Zibios\WrikePhpLibrary\Api $api
+     * @param array            $methodData
+     * @param AbstractResource $resource
      *
      * @return mixed
      */
-    private function prepareResponseForMethod(array $methodData, $api)
+    private function prepareResponseForMethod(array $methodData, AbstractResource $resource)
     {
         $response = null;
         switch (count($methodData['additionalParams'])) {
             case 0:
-                $response = $api->{$methodData['resourceGetter']}()->{$methodData['methodName']}();
+                $response = $resource->{$methodData['methodName']}();
                 break;
             case 1:
-                $response = $api->{$methodData['resourceGetter']}()->{$methodData['methodName']}(
+                $response = $resource->{$methodData['methodName']}(
                     $methodData['additionalParams'][0]
                 );
                 break;
             case 2:
-                $response = $api->{$methodData['resourceGetter']}()->{$methodData['methodName']}(
+                $response = $resource->{$methodData['methodName']}(
                     $methodData['additionalParams'][0],
                     $methodData['additionalParams'][1]
                 );
@@ -209,12 +208,12 @@ abstract class ResourceTestCase extends TestCase
     {
         $bodyArray = [];
         switch ($transformerClass) {
-            case RawResponseTransformer::class:
+            case PsrResponseTransformer::class:
                 /* @var ResponseInterface $response */
                 self::assertInstanceOf(ResponseInterface::class, $response);
                 $bodyArray = json_decode($response->getBody()->getContents(), true);
                 break;
-            case RawBodyTransformer::class:
+            case PsrBodyTransformer::class:
                 /* @var StreamInterface $response */
                 self::assertInstanceOf(StreamInterface::class, $response);
                 $bodyArray = json_decode($response->getContents(), true);
@@ -228,6 +227,11 @@ abstract class ResourceTestCase extends TestCase
                 /* @var array $response */
                 self::assertInternalType('array', $response);
                 $bodyArray = $response;
+                break;
+            case RawResponseTransformer::class:
+                /* @var ResponseInterface $response */
+                self::assertInstanceOf(ResponseInterface::class, $response);
+                $bodyArray = json_decode($response->getBody()->getContents(), true);
                 break;
             default:
                 self::assertTrue(false);

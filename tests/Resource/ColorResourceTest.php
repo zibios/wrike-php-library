@@ -34,7 +34,7 @@ class ColorResourceTest extends ResourceTestCase
             'requestMethod' => RequestMethodEnum::GET,
             'endpointPath' => 'colors',
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getColorResource',
+            'resourceClass' => ColorResource::class,
             'propertyValue' => self::VALID_ID,
             'additionalParams' => [],
             'methodName' => ResourceMethodEnum::GET_ALL,

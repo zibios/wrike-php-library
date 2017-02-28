@@ -32,7 +32,7 @@ class TaskResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getTaskResource',
+            'resourceClass' => TaskResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

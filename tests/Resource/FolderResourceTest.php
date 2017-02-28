@@ -32,7 +32,7 @@ class FolderResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getFolderResource',
+            'resourceClass' => FolderResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 

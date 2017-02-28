@@ -32,7 +32,7 @@ class CommentResourceTest extends ResourceTestCase
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
-            'resourceGetter' => 'getCommentResource',
+            'resourceClass' => CommentResource::class,
             'propertyValue' => self::VALID_ID,
         ];
 
