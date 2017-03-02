@@ -15,18 +15,18 @@ use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
- * General Wrike Api Interface.
+ * Api Interface for immutable operations.
  */
 interface ImmutableApiInterface extends ApiInterface
 {
     /**
-     * @param string $bearerToken
+     * @param string $accessToken
      *
      * @throws \InvalidArgumentException
      *
      * @return $this
      */
-    public function recreateForNewBearerToken($bearerToken);
+    public function recreateForNewAccessToken($accessToken);
 
     /**
      * @param ApiExceptionTransformerInterface $apiExceptionTransformer

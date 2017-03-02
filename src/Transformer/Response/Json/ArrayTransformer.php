@@ -15,7 +15,7 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
- * Array Transformer.
+ * Array Transformer for JSON string response from HTTP Client.
  */
 class ArrayTransformer implements ResponseTransformerInterface
 {

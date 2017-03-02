@@ -14,8 +14,10 @@ namespace Zibios\WrikePhpLibrary\Resource;
 use Zibios\WrikePhpLibrary\Client\ClientInterface;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
+use Zibios\WrikePhpLibrary\Resource\Helpers\RequestPathProcessor;
 use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
+use Zibios\WrikePhpLibrary\Validator\AccessTokenValidator;
 
 /**
  * Resource Abstract.
@@ -25,44 +27,79 @@ use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 abstract class AbstractResource implements ResourceInterface
 {
     /**
+     * Concrete HTTP client.
+     *
      * @var ClientInterface
      */
     protected $client;
 
     /**
+     * Access Token.
+     *
+     * Access Token must be added to request Headers.
+     * 'Authorization: Bearer Access-Token'
+     *
      * @var string
      */
-    protected $bearerToken = '';
+    protected $accessToken = '';
 
     /**
+     * Response Transformer.
+     *
+     * Transform PSR Response or JSON string from HTTP Client to another format: Array, Object, ...
+     *
      * @var ResponseTransformerInterface
      */
     protected $responseTransformer;
 
     /**
+     * Api Exception transformer.
+     *
+     * Transform Exceptions throw by HTTP Client to another Exceptions.
+     *
+     * @see \Zibios\WrikePhpLibrary\Exception\Api\ApiException
+     *
      * @var ApiExceptionTransformerInterface
      */
     protected $apiExceptionTransformer;
 
     /**
+     * Helper for request path calculations.
+     *
+     * @var RequestPathProcessor
+     */
+    protected $requestPathProcessor;
+
+    /**
+     * Resource constructor.
+     *
      * @param ClientInterface                  $client
      * @param ResponseTransformerInterface     $responseTransformer
      * @param ApiExceptionTransformerInterface $apiExceptionTransformer
-     * @param string                           $bearerToken
+     * @param string                           $accessToken
      */
     public function __construct(
         ClientInterface $client,
         ResponseTransformerInterface $responseTransformer,
         ApiExceptionTransformerInterface $apiExceptionTransformer,
-        $bearerToken
+        $accessToken
     ) {
+        AccessTokenValidator::isValidOrEmpty($accessToken);
+
         $this->client = $client;
         $this->responseTransformer = $responseTransformer;
         $this->apiExceptionTransformer = $apiExceptionTransformer;
-        $this->bearerToken = $bearerToken;
+        $this->accessToken = $accessToken;
+
+        $this->requestPathProcessor = new RequestPathProcessor();
     }
 
     /**
+     * Return connection array ResourceMethod => RequestPathFormat.
+     *
+     * @see \Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum
+     * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum
+     *
      * @return array
      */
     abstract protected function getResourceMethodConfiguration();
@@ -73,11 +110,10 @@ abstract class AbstractResource implements ResourceInterface
      * @param array             $params
      * @param string|array|null $id
      *
-     * @throws \RuntimeException
-     * @throws \LogicException
-     * @throws \Exception
-     * @throws \InvalidArgumentException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
+     * @throws \LogicException
+     * @throws \InvalidArgumentException
+     * @throws \Exception
      *
      * @return mixed
      */
@@ -85,126 +121,26 @@ abstract class AbstractResource implements ResourceInterface
     {
         RequestMethodEnum::assertIsValidValue($requestMethod);
         ResourceMethodEnum::assertIsValidValue($resourceMethod);
+        AccessTokenValidator::isValid($this->accessToken);
 
-        $requestPathForResourceMethod = $this->prepareRequestPathForResourceMethod($resourceMethod, $id);
+        $requestPathForResourceMethod = $this->requestPathProcessor
+            ->prepareRequestPathForResourceMethod(
+                $resourceMethod,
+                $id,
+                $this->getResourceMethodConfiguration()
+            );
+
         try {
             $response = $this->client->executeRequestForParams(
                 $requestMethod,
                 $requestPathForResourceMethod,
-                $params
+                $params,
+                $this->accessToken
             );
         } catch (\Exception $e) {
             throw $this->apiExceptionTransformer->transform($e);
         }
 
         return $this->responseTransformer->transform($response, static::class);
-    }
-
-    /**
-     * @param string            $resourceMethod
-     * @param string|array|null $id
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return string
-     */
-    private function prepareRequestPathForResourceMethod($resourceMethod, $id)
-    {
-        $requestPathFormat = $this->calculateRequestPathFormat($resourceMethod);
-
-        switch ($resourceMethod) {
-            case ResourceMethodEnum::GET_ALL:
-                $this->assertIsNull($id);
-                $path = sprintf($requestPathFormat, $id);
-                break;
-
-            case ResourceMethodEnum::GET_BY_IDS:
-                $this->assertIsValidIdArray($id);
-                $path = sprintf($requestPathFormat, implode(',', $id));
-                break;
-
-            case ResourceMethodEnum::GET_ALL_FOR_ACCOUNT:
-            case ResourceMethodEnum::GET_ALL_FOR_FOLDER:
-            case ResourceMethodEnum::GET_ALL_FOR_TASK:
-            case ResourceMethodEnum::GET_ALL_FOR_CONTACT:
-            case ResourceMethodEnum::CREATE_FOR_ACCOUNT:
-            case ResourceMethodEnum::CREATE_FOR_FOLDER:
-            case ResourceMethodEnum::CREATE_FOR_TASK:
-            case ResourceMethodEnum::GET_BY_ID:
-            case ResourceMethodEnum::UPDATE:
-            case ResourceMethodEnum::DELETE:
-            case ResourceMethodEnum::COPY:
-            case ResourceMethodEnum::DOWNLOAD:
-            case ResourceMethodEnum::DOWNLOAD_PREVIEW:
-            case ResourceMethodEnum::GET_PUBLIC_URL:
-                $this->assertIsValidIdString($id);
-                $path = sprintf($requestPathFormat, $id);
-                break;
-
-            default:
-                throw new \InvalidArgumentException(sprintf('"%s" resource method not yet supported', $resourceMethod));
-        }
-
-        return $path;
-    }
-
-    /**
-     * @param string $resourceMethod
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return string
-     */
-    private function calculateRequestPathFormat($resourceMethod)
-    {
-        $resourceMethodConfiguration = $this->getResourceMethodConfiguration();
-        if (array_key_exists($resourceMethod, $resourceMethodConfiguration) === false) {
-            throw new \InvalidArgumentException();
-        }
-
-        return $resourceMethodConfiguration[$resourceMethod];
-    }
-
-    /**
-     * @param mixed $value
-     *
-     * @throws \InvalidArgumentException
-     */
-    private function assertIsNull($value)
-    {
-        if ($value !== null) {
-            throw new \InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @param mixed $value
-     *
-     * @throws \InvalidArgumentException
-     */
-    private function assertIsValidIdString($value)
-    {
-        if (is_string($value) === false || trim($value) === '' || strlen($value) > 16) {
-            throw new \InvalidArgumentException(sprintf('Invalid Id, should be not empty string!'));
-        }
-    }
-
-    /**
-     * @param mixed $value
-     *
-     * @throws \InvalidArgumentException
-     */
-    private function assertIsValidIdArray($value)
-    {
-        if (is_array($value) === false) {
-            throw new \InvalidArgumentException();
-        }
-
-        /** @var array $value */
-        foreach ($value as $id) {
-            $this->assertIsValidIdString($id);
-        }
     }
 }

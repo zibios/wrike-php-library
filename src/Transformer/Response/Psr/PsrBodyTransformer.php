@@ -15,7 +15,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
 /**
- * Psr Body Transformer.
+ * Psr Body Transformer for PSR Response from HTTP Client.
  */
 class PsrBodyTransformer extends AbstractPsrResponseTransformer
 {

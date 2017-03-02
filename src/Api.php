@@ -11,58 +11,55 @@
 
 namespace Zibios\WrikePhpLibrary;
 
-use Zibios\WrikePhpLibrary\Traits\AssertIsValidBearerToken;
 use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
+use Zibios\WrikePhpLibrary\Validator\AccessTokenValidator;
 
 /**
  * General Wrike Api.
  *
- * Entry point for all Wrike API operations.
+ * Entry point for all Wrike API operations. Immutable.
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
-class Api extends AbstractApi implements MutableApiInterface
+class Api extends AbstractApi implements ImmutableApiInterface
 {
-    use AssertIsValidBearerToken;
-
     /**
-     * @param string $bearerToken
+     * @param string $accessToken
      *
      * @throws \InvalidArgumentException
      *
      * @return $this
      */
-    public function setBearerToken($bearerToken)
+    public function recreateForNewAccessToken($accessToken)
     {
-        $this->assertIsValidBearerToken($bearerToken);
-        $this->bearerToken = $bearerToken;
+        AccessTokenValidator::assertIsValid($accessToken);
 
-        return $this;
+        return new self($this->client, $this->responseTransformer, $this->apiExceptionTransformer, $accessToken);
     }
 
     /**
      * @param ApiExceptionTransformerInterface $apiExceptionTransformer
      *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function setApiExceptionTransformer(ApiExceptionTransformerInterface $apiExceptionTransformer)
+    public function recreateForNewApiExceptionTransformer(ApiExceptionTransformerInterface $apiExceptionTransformer)
     {
-        $this->apiExceptionTransformer = $apiExceptionTransformer;
-
-        return $this;
+        return new self($this->client, $this->responseTransformer, $apiExceptionTransformer, $this->accessToken);
     }
 
     /**
      * @param ResponseTransformerInterface $responseTransformer
      *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function setResponseTransformer(ResponseTransformerInterface $responseTransformer)
+    public function recreateForNewResponseTransformer(ResponseTransformerInterface $responseTransformer)
     {
-        $this->responseTransformer = $responseTransformer;
-
-        return $this;
+        return new self($this->client, $responseTransformer, $this->apiExceptionTransformer, $this->accessToken);
     }
 }

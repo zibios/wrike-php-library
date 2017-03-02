@@ -26,7 +26,7 @@ class ResponseFormatEnum extends AbstractEnum
     const PSR_RESPONSE = 'PsrResponse';
 
     /**
-     *  Response is in JSON format.
+     *  Response is in JSON (string) format.
      */
     const JSON_BODY = 'JsonBody';
 }

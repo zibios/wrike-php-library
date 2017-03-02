@@ -14,7 +14,7 @@ namespace Zibios\WrikePhpLibrary\Transformer\Response\Psr;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Array Body Transformer.
+ * Array Body Transformer for PSR Response from HTTP Client.
  */
 class ArrayBodyTransformer extends AbstractPsrResponseTransformer
 {

@@ -30,18 +30,18 @@ class ApiTest extends ApiTestCase
      */
     protected $sourceClass = Api::class;
 
-    public function test_mutableMethods()
+    public function test_immutableMethods()
     {
-        $response = $this->object->setBearerToken('test');
-        self::assertSame($this->object, $response);
+        $response = $this->object->recreateForNewAccessToken('test');
+        self::assertNotSame($this->object, $response);
         self::assertInstanceOf($this->sourceClass, $response);
 
-        $response = $this->object->setResponseTransformer(new RawResponseTransformer());
-        self::assertSame($this->object, $response);
+        $response = $this->object->recreateForNewResponseTransformer(new RawResponseTransformer());
+        self::assertNotSame($this->object, $response);
         self::assertInstanceOf($this->sourceClass, $response);
 
-        $response = $this->object->setApiExceptionTransformer(new RawExceptionTransformer());
-        self::assertSame($this->object, $response);
+        $response = $this->object->recreateForNewApiExceptionTransformer(new RawExceptionTransformer());
+        self::assertNotSame($this->object, $response);
         self::assertInstanceOf($this->sourceClass, $response);
     }
 }

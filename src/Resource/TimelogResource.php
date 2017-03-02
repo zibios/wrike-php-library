@@ -39,6 +39,11 @@ class TimelogResource extends AbstractResource
     use DeleteTrait;
 
     /**
+     * Return connection array ResourceMethod => RequestPathFormat.
+     *
+     * @see \Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum
+     * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum
+     *
      * @return array
      */
     protected function getResourceMethodConfiguration()

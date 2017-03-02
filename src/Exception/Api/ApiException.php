@@ -17,6 +17,7 @@ use Exception;
  * General Wrike Api Exception.
  *
  * Thrown when the Client returns an HTTP error that isn't handled by other dedicated exceptions.
+ * Wrike API usually returns a specific error code and specific error value to identify error.
  */
 class ApiException extends Exception
 {

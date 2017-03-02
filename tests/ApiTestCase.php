@@ -39,7 +39,7 @@ abstract class ApiTestCase extends TestCase
 {
     public function setUp()
     {
-        $bearerTokenMock = 'token';
+        $accessTokenMock = 'token';
         $responseFormatMock = 'responseFormat';
         $clientMock = $this->getMock(ClientInterface::class);
         $clientMock->expects(self::any())
@@ -55,7 +55,7 @@ abstract class ApiTestCase extends TestCase
             $clientMock,
             $responseTransformerMock,
             $apiExceptionTransformerMock,
-            $bearerTokenMock
+            $accessTokenMock
         );
     }
 
@@ -64,7 +64,7 @@ abstract class ApiTestCase extends TestCase
      */
     public function constructorParamsProvider()
     {
-        $bearerTokenMock = 'token';
+        $accessTokenMock = 'token';
         $responseFormatMock = 'responseFormat';
         $clientMock = $this->getMock(ClientInterface::class);
         $clientMock->expects(self::any())
@@ -83,26 +83,27 @@ abstract class ApiTestCase extends TestCase
             ->willReturn(false);
 
         return [
-            // [client, responseTransformer, apiExceptionTransformer, bearerToken, isValid]
-            [$clientMock, $responseTransformerMock, $apiExceptionTransformerMock, $bearerTokenMock, true],
+            // [client, responseTransformer, apiExceptionTransformer, accessToken, isValid]
+            [$clientMock, $responseTransformerMock, $apiExceptionTransformerMock, $accessTokenMock, true],
+            [$clientMock, $responseTransformerMock, $apiExceptionTransformerMock, '', true],
 
             // test client params
-            [$stdClass, $responseTransformerMock, $apiExceptionTransformerMock, $bearerTokenMock, false],
-            [null, $responseTransformerMock, $apiExceptionTransformerMock, $bearerTokenMock, false],
+            [$stdClass, $responseTransformerMock, $apiExceptionTransformerMock, $accessTokenMock, false],
+            [null, $responseTransformerMock, $apiExceptionTransformerMock, $accessTokenMock, false],
 
             // test responseTransformer params
-            [$clientMock, $stdClass, $apiExceptionTransformerMock, $bearerTokenMock, false],
-            [$clientMock, null, $apiExceptionTransformerMock, $bearerTokenMock, false],
-            [$clientMock, $anotherResponseTransformerMock, $apiExceptionTransformerMock, $bearerTokenMock, false],
+            [$clientMock, $stdClass, $apiExceptionTransformerMock, $accessTokenMock, false],
+            [$clientMock, null, $apiExceptionTransformerMock, $accessTokenMock, false],
+            [$clientMock, $anotherResponseTransformerMock, $apiExceptionTransformerMock, $accessTokenMock, false],
 
             // test apiExceptionTransformer params
-            [$clientMock, $responseTransformerMock, $stdClass, $bearerTokenMock, false],
-            [$clientMock, $responseTransformerMock, null, $bearerTokenMock, false],
+            [$clientMock, $responseTransformerMock, $stdClass, $accessTokenMock, false],
+            [$clientMock, $responseTransformerMock, null, $accessTokenMock, false],
 
-            // test bearerToken params
-            [$clientMock, $responseTransformerMock, $apiExceptionTransformerMock, '', true],
+            // test accessToken params
             [$clientMock, $responseTransformerMock, $apiExceptionTransformerMock, $stdClass, false],
             [$clientMock, $responseTransformerMock, $apiExceptionTransformerMock, null, false],
+            [$clientMock, $responseTransformerMock, $apiExceptionTransformerMock, 123, false],
         ];
     }
 
@@ -110,7 +111,7 @@ abstract class ApiTestCase extends TestCase
      * @param mixed $client
      * @param mixed $responseTransformer
      * @param mixed $apiExceptionTransformerMock
-     * @param mixed $bearerToken
+     * @param mixed $accessToken
      * @param bool  $isValid
      *
      * @internal param mixed $transformer
@@ -120,12 +121,12 @@ abstract class ApiTestCase extends TestCase
         $client,
         $responseTransformer,
         $apiExceptionTransformerMock,
-        $bearerToken,
+        $accessToken,
         $isValid
     ) {
         $exceptionOccurred = false;
         try {
-            new $this->sourceClass($client, $responseTransformer, $apiExceptionTransformerMock, $bearerToken);
+            new $this->sourceClass($client, $responseTransformer, $apiExceptionTransformerMock, $accessToken);
         } catch (\Throwable $t) {
             $exceptionOccurred = true;
         } catch (\Exception $e) {
@@ -195,10 +196,10 @@ abstract class ApiTestCase extends TestCase
 
         $excludedMethods = [
             '__construct',
-            'recreateForNewBearerToken',
+            'recreateForNewAccessToken',
             'recreateForNewApiExceptionTransformer',
             'recreateForNewResponseTransformer',
-            'setBearerToken',
+            'setAccessToken',
             'setApiExceptionTransformer',
             'setResponseTransformer',
         ];

@@ -1,9 +1,7 @@
 Wrike PHP LIBRARY
 ================================
 
-**Proof of Concept - NOT YET USABLE!!!**
-
-**First usable version around 2017-03-01**
+**Alpha version, first usable version around 2017-03-06**
 
 Introduction
 ------------
@@ -38,35 +36,14 @@ Project status
 [All zibios/wrike-* badges](docs/AllWrikeBadges.md)
 
 **Required for v0.1.0 version**
-- [x] Connect to external services (packagist, travis, scrutinizer, ...)
-- [x] Decouple repository
-- [x] Establishing some common rules for all external services
-- [ ] Architecture refactoring: "More KISS, or more SOLID, that is the question"
+- [ ] Architecture verify: "More KISS, or more SOLID, that is the question"
 - [ ] Code Review
-- [ ] Test suite refactoring
-- [ ] Resource implementation finalize
-- [ ] Test suite finalize
-- [ ] Documentation prepare
+- [ ] Documentation update
+- [ ] Test Suite update
+
+**Required for v1.0.0 version**
 - [ ] Wrike OAuth 2.0 implementation
 - [ ] Wrike Web-hooks implementation
-
-**Resources implementation status**
-- [x] Contacts
-- [x] Users
-- [x] Groups
-- [x] Invitations
-- [x] Accounts
-- [x] Workflows
-- [x] Custom Fields
-- [x] Folders and Projects
-- [x] Tasks
-- [x] Comments
-- [x] Dependencies
-- [x] Timelogs
-- [x] Attachments
-- [x] Version
-- [x] IDs
-- [x] Colors
 
 Installation
 ------------
@@ -92,22 +69,49 @@ Run PHPUnit tests:
 
 Usage
 ------------
+All operations are immutable and stateless.
 
 ```php
-// @see zibios/wrike-php-sdk
-$api = ApiFactory::createForBearerToken(<PermanentToken>);
+/**
+ * Standard API instance
+ *
+ * $api->set*() - returns the same Api instance
+ *
+ * @var ImmutableApiInterface $api
+ * @see zibios/wrike-php-sdk
+ */
+$api = ApiFactory::create(<PermanentToken>);
 
+$api->recreateForNewAccessToken(<PermanentToken>);
+
+$responseTransformer = new RawResponseTransformer();
+$api->recreateForNewResponseTransformer($responseTransformer);
+
+$apiExceptionTransformer = new RawExceptionTransformer();
+$api->recreateForNewApiExceptionTransformer($apiExceptionTransformer);
+
+...
+
+/**
+ * Resources usage
+ */
 $allContacts = $api->getContactResource()->getAll();
-$selectedContact = $api->getContactResource()->getById(<ContactId>);
+$allContactsForAccount = $api->getContactResource()->getAllForAccount($contactId);
+$selectedContact = $api->getContactResource()->getById($contactId);
+$selectedContacts = $api->getContactResource()->getByIds([$contactId, $anotherContactId]);
+$updatedContact = $api->getContactResource()->update($contactId, [<Params>]);
+
+...
+
 ```
 
 Response can be returned in various formats according to used response transformer:
-* Psr\Http\Message\ResponseInterface for RawResponseTransformer
-* Psr\Http\Message\StreamInterface for RawBodyTransformer (containing Body part from Psr\Http\Message\ResponseInterface)
+* Psr\Http\Message\ResponseInterface for PsrResponseTransformer
+* Psr\Http\Message\StreamInterface for PsrBodyTransformer (containing Body part from Psr\Http\Message\ResponseInterface)
 * JSON string for StringBodyTransformer (containing Psr\Http\Message\ResponseInterface body casted to string)
 * Array for ArrayBodyTransformer (containing Psr\Http\Message\ResponseInterface body decoded to Array)
-* Zibios\WrikePhpLibrary\Model\ResponseModelInterface - [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer)
-* Zibios\WrikePhpLibrary\Model\ResourceModelInterface - [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer)
+* Array for ArrayTransformer (containing JSON response decoded to Array)
+* Objects - check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer)
 
 Reference
 ---------

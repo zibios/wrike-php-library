@@ -22,15 +22,7 @@ trait DeleteTrait
     /**
      * @param string $id
      *
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\ResourceNotFoundException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\ParameterRequiredException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\NotAuthorizedException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\NotAllowedException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\InvalidRequestException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\InvalidParameterException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\AccessForbiddenException
      * @throws \LogicException
      * @throws \InvalidArgumentException
      * @throws \Exception
@@ -53,15 +45,7 @@ trait DeleteTrait
      * @param array        $params
      * @param string|array $id
      *
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\ServerErrorException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\ResourceNotFoundException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\ParameterRequiredException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\NotAuthorizedException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\NotAllowedException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\InvalidRequestException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\InvalidParameterException
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
-     * @throws \Zibios\WrikePhpLibrary\Exception\Api\AccessForbiddenException
      * @throws \LogicException
      * @throws \InvalidArgumentException
      * @throws \Exception

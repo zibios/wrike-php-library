@@ -45,7 +45,7 @@ abstract class ResourceTestCase extends TestCase
      */
     public function test_ExtendProperClasses()
     {
-        $bearerTokenMock = 'token';
+        $accessTokenMock = 'token';
         $responseFormatMock = 'responseFormat';
         $clientMock = $this->getMock(ClientInterface::class);
         $clientMock->expects(self::any())
@@ -60,7 +60,7 @@ abstract class ResourceTestCase extends TestCase
             $clientMock,
             $responseTransformerMock,
             $apiExceptionTransformerMock,
-            $bearerTokenMock
+            $accessTokenMock
         );
 
         self::assertInstanceOf(
@@ -138,6 +138,7 @@ abstract class ResourceTestCase extends TestCase
      */
     private function prepareResourceWithClientMock($methodData, $transformerClass)
     {
+        $accessTokenMock = 'test';
         $bodyMock = $this->getMockForAbstractClass(StreamInterface::class);
         $bodyMock->expects(self::any())
             ->method('getContents')
@@ -154,7 +155,8 @@ abstract class ResourceTestCase extends TestCase
             ->with(
                 self::equalTo($methodData['requestMethod']),
                 self::equalTo($methodData['endpointPath']),
-                self::equalTo([])
+                self::equalTo([]),
+                self::equalTo($accessTokenMock)
             )
             ->willReturn($responseMock);
 
@@ -164,7 +166,7 @@ abstract class ResourceTestCase extends TestCase
             $clientMock,
             $responseTransformer,
             new RawExceptionTransformer(),
-            'test'
+            $accessTokenMock
         );
     }
 

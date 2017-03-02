@@ -17,7 +17,7 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
- * Abstract Response Transformer.
+ * Abstract Response Transformer for PSR Response from HTTP Client.
  */
 abstract class AbstractPsrResponseTransformer implements ResponseTransformerInterface
 {

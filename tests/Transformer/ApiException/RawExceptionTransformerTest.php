@@ -11,12 +11,13 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Transformer\ApiException;
 
+use Zibios\WrikePhpLibrary\Tests\TestCase;
 use Zibios\WrikePhpLibrary\Transformer\ApiException\RawExceptionTransformer;
 
 /**
  * Raw Exception Transformer Test.
  */
-class RawExceptionTransformerTest extends ApiExceptionTransformerTestCase
+class RawExceptionTransformerTest extends TestCase
 {
     public function test_transform()
     {

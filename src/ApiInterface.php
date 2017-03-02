@@ -29,7 +29,7 @@ use Zibios\WrikePhpLibrary\Resource\VersionResource;
 use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
 
 /**
- * General Wrike Api Interface.
+ * General Wrike Api Interface for resource getters.
  */
 interface ApiInterface
 {

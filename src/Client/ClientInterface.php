@@ -16,13 +16,15 @@ use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 
 /**
  * Client Interface.
+ *
+ * Concrete Client should return response as JSON string or \Psr\Http\Message\ResponseInterface for unification.
  */
 interface ClientInterface
 {
     /**
      * Response Format Identifier.
      *
-     * Custom name which identify respose format: PsrResponse, JsonBody
+     * Custom name which identify response format: PsrResponse, JsonBody, ...
      *
      * @see \Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum
      *
@@ -31,23 +33,22 @@ interface ClientInterface
     public function getResponseFormat();
 
     /**
-     * Bearer Token setter.
+     * Request method.
      *
-     * @param string $bearerToken
+     * Generic format for HTTP client request method.
      *
-     * @return $this
-     */
-    public function setBearerToken($bearerToken);
-
-    /**
-     * @param string $requestMethod
-     * @param string $path
-     * @param array  $params
+     * @param string $requestMethod GT/POST/PUT/DELETE
+     * @param string $path          full path to REST resource without domain, ex. 'accounts/XXXXXXXX/contacts'
+     * @param array  $params        optional params for GET/POST request
+     * @param string $accessToken   Access Token for Wrike access
+     *
+     * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum
+     * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum
      *
      * @throws \Exception
      * @throws ApiException
      *
-     * @return ResponseInterface
+     * @return string|ResponseInterface
      */
-    public function executeRequestForParams($requestMethod, $path, array $params);
+    public function executeRequestForParams($requestMethod, $path, array $params, $accessToken);
 }

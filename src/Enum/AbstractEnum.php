@@ -22,6 +22,8 @@ abstract class AbstractEnum
     protected static $cache = [];
 
     /**
+     * Return all constants as Key => Value array.
+     *
      * @return array
      */
     public static function toArray()
@@ -36,6 +38,8 @@ abstract class AbstractEnum
     }
 
     /**
+     * Return all constants Keys as array.
+     *
      * @return array|string[]
      */
     public static function getKeys()
@@ -44,6 +48,8 @@ abstract class AbstractEnum
     }
 
     /**
+     * Return Enum Key for requested Value.
+     *
      * @param mixed $value
      *
      * @throws \InvalidArgumentException
@@ -58,6 +64,8 @@ abstract class AbstractEnum
     }
 
     /**
+     * Validate if Key is valid.
+     *
      * @param string $key
      *
      * @return bool
@@ -68,6 +76,8 @@ abstract class AbstractEnum
     }
 
     /**
+     * Throw exception if Key is not valid.
+     *
      * @param string $key
      *
      * @throws \InvalidArgumentException
@@ -80,6 +90,8 @@ abstract class AbstractEnum
     }
 
     /**
+     * Return Enum Value for requested Key.
+     *
      * @param string $key
      *
      * @throws \InvalidArgumentException
@@ -94,6 +106,8 @@ abstract class AbstractEnum
     }
 
     /**
+     * Return all constants Values as array.
+     *
      * @return array
      */
     public static function getValues()
@@ -102,6 +116,8 @@ abstract class AbstractEnum
     }
 
     /**
+     * Validate if Value is valid.
+     *
      * @param mixed $value
      *
      * @return bool
@@ -112,6 +128,8 @@ abstract class AbstractEnum
     }
 
     /**
+     * Throw exception if Value is not valid.
+     *
      * @param mixed $value
      *
      * @throws \InvalidArgumentException

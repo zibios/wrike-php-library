@@ -28,23 +28,19 @@ use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
 use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
-use Zibios\WrikePhpLibrary\Traits\AssertIsValidBearerToken;
-use Zibios\WrikePhpLibrary\Traits\AssertIsValidResponseFormatTrait;
 use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
+use Zibios\WrikePhpLibrary\Validator\AccessTokenValidator;
 
 /**
- * General Wrike Api.
+ * Abstract for General Wrike Api.
  *
- * Abstract entry point for all Wrike API operations.
+ * Entry point for all Wrike API operations.
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 abstract class AbstractApi implements ApiInterface
 {
-    use AssertIsValidBearerToken;
-    use AssertIsValidResponseFormatTrait;
-
     const BASE_URI = 'https://www.wrike.com/api/v3/';
 
     /**
@@ -55,7 +51,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @var string
      */
-    protected $bearerToken = '';
+    protected $accessToken = '';
 
     /**
      * @var ResponseTransformerInterface
@@ -68,10 +64,12 @@ abstract class AbstractApi implements ApiInterface
     protected $apiExceptionTransformer;
 
     /**
+     * Api constructor.
+     *
      * @param ClientInterface                  $client
      * @param ResponseTransformerInterface     $responseTransformer
      * @param ApiExceptionTransformerInterface $apiExceptionTransformer
-     * @param string                           $bearerToken
+     * @param string                           $accessToken
      *
      * @throws \InvalidArgumentException
      */
@@ -79,15 +77,18 @@ abstract class AbstractApi implements ApiInterface
         ClientInterface $client,
         ResponseTransformerInterface $responseTransformer,
         ApiExceptionTransformerInterface $apiExceptionTransformer,
-        $bearerToken
+        $accessToken = ''
     ) {
-        $this->assertIsValidBearerToken($bearerToken);
-        $this->assertIsValidResponseFormatTrait($client, $responseTransformer);
+        AccessTokenValidator::assertIsValidOrEmpty($accessToken);
+
+        if ($responseTransformer->isSupportedResponseFormat($client->getResponseFormat()) === false) {
+            throw new \InvalidArgumentException('Client not compatible with response transformer!');
+        }
 
         $this->client = $client;
         $this->responseTransformer = $responseTransformer;
         $this->apiExceptionTransformer = $apiExceptionTransformer;
-        $this->bearerToken = $bearerToken;
+        $this->accessToken = $accessToken;
     }
 
     /**
@@ -99,7 +100,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -112,7 +113,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -125,7 +126,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -138,7 +139,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -151,7 +152,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -164,7 +165,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -177,7 +178,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -190,7 +191,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -203,7 +204,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -216,7 +217,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -229,7 +230,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -242,7 +243,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -255,7 +256,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -268,7 +269,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -281,7 +282,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 
@@ -294,7 +295,7 @@ abstract class AbstractApi implements ApiInterface
             $this->client,
             $this->responseTransformer,
             $this->apiExceptionTransformer,
-            $this->bearerToken
+            $this->accessToken
         );
     }
 }
