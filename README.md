@@ -73,14 +73,24 @@ All operations are immutable and stateless.
 
 ```php
 /**
- * Standard API instance
- *
- * $api->set*() - returns the same Api instance
- *
- * @var ImmutableApiInterface $api
- * @see zibios/wrike-php-sdk
+ * Resources usage
  */
-$api = ApiFactory::create(<PermanentToken>);
+$api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
+
+$allContacts = $api->getContactResource()->getAll();
+$allContactsForAccount = $api->getContactResource()->getAllForAccount($contactId);
+$selectedContact = $api->getContactResource()->getById($contactId);
+$selectedContacts = $api->getContactResource()->getByIds([$contactId, $anotherContactId]);
+$updatedContact = $api->getContactResource()->update($contactId, [<Params>]);
+
+...
+
+/**
+ * Extended API usage
+ *
+ * $api->recreateForNew*() - returns new Api instance
+ */
+$api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
 
 $api->recreateForNewAccessToken(<PermanentToken>);
 
@@ -89,19 +99,6 @@ $api->recreateForNewResponseTransformer($responseTransformer);
 
 $apiExceptionTransformer = new RawExceptionTransformer();
 $api->recreateForNewApiExceptionTransformer($apiExceptionTransformer);
-
-...
-
-/**
- * Resources usage
- */
-$allContacts = $api->getContactResource()->getAll();
-$allContactsForAccount = $api->getContactResource()->getAllForAccount($contactId);
-$selectedContact = $api->getContactResource()->getById($contactId);
-$selectedContacts = $api->getContactResource()->getByIds([$contactId, $anotherContactId]);
-$updatedContact = $api->getContactResource()->update($contactId, [<Params>]);
-
-...
 
 ```
 
