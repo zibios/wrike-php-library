@@ -20,7 +20,8 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 trait DeleteTrait
 {
     /**
-     * @param string $id
+     * @param string     $id
+     * @param array|null $params
      *
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
@@ -29,12 +30,12 @@ trait DeleteTrait
      *
      * @return mixed
      */
-    public function delete($id)
+    public function delete($id, array $params = [])
     {
         return $this->executeRequest(
             RequestMethodEnum::DELETE,
             ResourceMethodEnum::DELETE,
-            [],
+            $params,
             $id
         );
     }
