@@ -64,7 +64,6 @@ class IdValidatorTest extends TestCase
             [123, false],
             ['', false],
             [' ', false],
-            ['1234567890123456', false],
         ];
     }
 
@@ -100,7 +99,6 @@ class IdValidatorTest extends TestCase
             [[123], false],
             [[''], false],
             [[' '], false],
-            [['1234567890123456'], false],
             [[], false],
             ['string', false],
             [null, false],

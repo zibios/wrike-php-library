@@ -45,7 +45,7 @@ class IdValidator
      */
     public static function isValidIdString($value)
     {
-        return is_string($value) && trim($value) !== '' && strlen($value) < 16;
+        return is_string($value) && trim($value) !== '';
     }
 
     /**
