@@ -37,6 +37,11 @@ use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
  */
 abstract class ApiTestCase extends TestCase
 {
+    /**
+     * @var ApiInterface
+     */
+    protected $object;
+
     public function setUp()
     {
         $accessTokenMock = 'token';
@@ -199,9 +204,7 @@ abstract class ApiTestCase extends TestCase
             'recreateForNewAccessToken',
             'recreateForNewApiExceptionTransformer',
             'recreateForNewResponseTransformer',
-            'setAccessToken',
-            'setApiExceptionTransformer',
-            'setResponseTransformer',
+            'normalizeParams',
         ];
 
         foreach ($expectedMethodNames as $expectedMethodName) {
@@ -214,5 +217,29 @@ abstract class ApiTestCase extends TestCase
                 sprintf('%s not covered by tests', $expectedMethodName->getName())
             );
         }
+    }
+
+    public function test_normalizeParams()
+    {
+        $resource = fopen(__FILE__, 'rb');
+        $inputParams = [
+            'one' => 'one',
+            'two' => 2,
+            'three' => true,
+            'four' => null,
+            'five' => ['one' => 'one', 'two' => 2],
+            'six' => $resource,
+        ];
+
+        $outputParams = [
+            'one' => 'one',
+            'two' => '2',
+            'three' => 'true',
+            'four' => 'null',
+            'five' => '{"one":"one","two":2}',
+            'six' => $resource,
+        ];
+
+        self::assertSame($outputParams, $this->object->normalizeParams($inputParams));
     }
 }

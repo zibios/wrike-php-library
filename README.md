@@ -1,7 +1,7 @@
 Wrike PHP LIBRARY
 ================================
 
-**Alpha version, first usable version around 2017-03-06**
+**Current version: 0.1.0, version 1.0.0 around 2017-04-01**
 
 Introduction
 ------------
@@ -35,15 +35,13 @@ Project status
 
 [All zibios/wrike-* badges](docs/AllWrikeBadges.md)
 
-**Required for v0.1.0 version**
-- [ ] Architecture verify: "More KISS, or more SOLID, that is the question"
+**Required for v1.0.0 version**
+- [ ] Architecture review: "More KISS, or more SOLID, that is the question"
 - [ ] Code Review
 - [ ] Documentation update
 - [ ] Test Suite update
-
-**Required for v1.0.0 version**
 - [ ] Wrike OAuth 2.0 implementation
-- [ ] Wrike Web-hooks implementation
+- [ ] Wrike Web-Hooks implementation
 
 Installation
 ------------
@@ -73,18 +71,47 @@ All operations are immutable and stateless.
 
 ```php
 /**
- * Resources usage
+ * Basic resources usage
  */
 $api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
 
-$allContacts = $api->getContactResource()->getAll();
-$allContactsForAccount = $api->getContactResource()->getAllForAccount($contactId);
+$params = $api->normalizeParams([
+    'fields' => ['metadata'],
+    'metadata' => ['key' => 'importantMetadataKey'],
+]);
+$allContacts = $api->getContactResource()->getAll($params);
+
+$params = $api->normalizeParams([
+    'metadata' => [
+        [
+            'key' => 'metadataKey',
+            'value' => 'metadataValue',
+        ]
+    ],
+]);
+$updatedContact = $api->getContactResource()->update($contactId, $params);
+
+$allContactsForAccount = $api->getContactResource()->getAllForAccount($accountId);
 $selectedContact = $api->getContactResource()->getById($contactId);
 $selectedContacts = $api->getContactResource()->getByIds([$contactId, $anotherContactId]);
-$updatedContact = $api->getContactResource()->update($contactId, [<Params>]);
+```
 
-...
+```php
+/**
+ * Params normalizer
+ */
+$params = $api->normalizeParams([
+    'foo' => 'test',
+    'bar' => ['test' => 'test'],
+]);
+// Array
+// (
+//     [foo] => test
+//     [bar] => {"test":"test"}
+// )
+```
 
+```php
 /**
  * Extended API usage
  *
@@ -92,14 +119,36 @@ $updatedContact = $api->getContactResource()->update($contactId, [<Params>]);
  */
 $api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
 
-$api->recreateForNewAccessToken(<PermanentToken>);
+$newApi = $api->recreateForNewAccessToken(<PermanentToken>);
 
 $responseTransformer = new RawResponseTransformer();
-$api->recreateForNewResponseTransformer($responseTransformer);
+$newApi = $api->recreateForNewResponseTransformer($responseTransformer);
 
 $apiExceptionTransformer = new RawExceptionTransformer();
-$api->recreateForNewApiExceptionTransformer($apiExceptionTransformer);
+$newApi = $api->recreateForNewApiExceptionTransformer($apiExceptionTransformer);
 
+```
+
+```php
+/**
+ * Exceptions
+ */
+
+/**
+ * Upload Attachment Request require two params: resource and name
+ */
+$params = $api->normalizeParams([
+    'resource' => fopen(__FILE__', 'rb'),
+    'name' => 'name.png',
+]);
+$updatedContact = $api->getAttachmentResource()->uploadForFolder($folderId, $params);
+$updatedContact = $api->getAttachmentResource()->uploadForTask($taskId, $params);
+
+/**
+ * Download Attachment Requests returns none transformed Psr\Http\Message\ResponseInterface
+ */
+$response = $api->getAttachmentResource()->download($attachmentId);
+$response = $api->getAttachmentResource()->downloadPreview($attachmentId);
 ```
 
 Response can be returned in various formats according to used response transformer:

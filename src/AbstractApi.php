@@ -298,4 +298,20 @@ abstract class AbstractApi implements ApiInterface
             $this->accessToken
         );
     }
+
+    /**
+     * @param array $params
+     *
+     * @return array
+     */
+    public function normalizeParams(array $params)
+    {
+        foreach ($params as $key => $value) {
+            if (is_string($value) === false && is_resource($value) === false) {
+                $params[$key] = json_encode($value);
+            }
+        }
+
+        return $params;
+    }
 }

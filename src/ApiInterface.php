@@ -112,4 +112,13 @@ interface ApiInterface
      * @return ColorResource
      */
     public function getColorResource();
+
+    /**
+     * Calculate params in array to format expected by Wrike Api.
+     *
+     * @param array $params
+     *
+     * @return array
+     */
+    public function normalizeParams(array $params);
 }
