@@ -62,6 +62,8 @@ class RequestPathProcessor
             case ResourceMethodEnum::DOWNLOAD:
             case ResourceMethodEnum::DOWNLOAD_PREVIEW:
             case ResourceMethodEnum::GET_PUBLIC_URL:
+            case ResourceMethodEnum::UPLOAD_FOR_FOLDER:
+            case ResourceMethodEnum::UPLOAD_FOR_TASK:
                 IdValidator::assertIsValidIdString($id);
                 $path = sprintf($requestPathFormat, $id);
                 break;

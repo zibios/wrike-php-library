@@ -34,4 +34,6 @@ class ResourceMethodEnum extends AbstractEnum
     const DOWNLOAD = 'download';
     const DOWNLOAD_PREVIEW = 'downloadPreview';
     const GET_PUBLIC_URL = 'getPublicUrl';
+    const UPLOAD_FOR_FOLDER = 'uploadForFolder';
+    const UPLOAD_FOR_TASK = 'uploadForTask';
 }

@@ -131,6 +131,18 @@ class RequestPathProcessorTest extends TestCase
                     'resourceMethodConfiguration' => [ResourceMethodEnum::GET_PUBLIC_URL => 'test/%s'],
                 ] + $baseData,
             ],
+            [
+                [
+                    'resourceMethod' => ResourceMethodEnum::UPLOAD_FOR_FOLDER,
+                    'resourceMethodConfiguration' => [ResourceMethodEnum::UPLOAD_FOR_FOLDER => 'test/%s'],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'resourceMethod' => ResourceMethodEnum::UPLOAD_FOR_TASK,
+                    'resourceMethodConfiguration' => [ResourceMethodEnum::UPLOAD_FOR_TASK => 'test/%s'],
+                ] + $baseData,
+            ],
         ];
     }
 

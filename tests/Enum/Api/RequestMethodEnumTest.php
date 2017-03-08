@@ -27,5 +27,5 @@ class RequestMethodEnumTest extends EnumTestCase
     /**
      * @var int
      */
-    protected $enumCount = 4;
+    protected $enumCount = 5;
 }

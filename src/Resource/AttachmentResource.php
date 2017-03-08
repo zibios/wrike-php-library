@@ -13,8 +13,8 @@ namespace Zibios\WrikePhpLibrary\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\Traits\CreateForFolderTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\CreateForTaskTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\UploadForFolderTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\UploadForTaskTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DownloadPreviewTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DownloadTrait;
@@ -37,8 +37,8 @@ class AttachmentResource extends AbstractResource
     use DownloadTrait;
     use DownloadPreviewTrait;
     use GetPublicUrlTrait;
-    use CreateForFolderTrait;
-    use CreateForTaskTrait;
+    use UploadForFolderTrait;
+    use UploadForTaskTrait;
     use UpdateTrait;
     use DeleteTrait;
 
@@ -60,8 +60,8 @@ class AttachmentResource extends AbstractResource
             ResourceMethodEnum::DOWNLOAD => RequestPathFormatEnum::ATTACHMENTS_DOWNLOAD,
             ResourceMethodEnum::DOWNLOAD_PREVIEW => RequestPathFormatEnum::ATTACHMENTS_DOWNLOAD_PREVIEW,
             ResourceMethodEnum::GET_PUBLIC_URL => RequestPathFormatEnum::ATTACHMENTS_URL,
-            ResourceMethodEnum::CREATE_FOR_FOLDER => RequestPathFormatEnum::ATTACHMENTS_FOR_FOLDER,
-            ResourceMethodEnum::CREATE_FOR_TASK => RequestPathFormatEnum::ATTACHMENTS_FOR_TASK,
+            ResourceMethodEnum::UPLOAD_FOR_FOLDER => RequestPathFormatEnum::ATTACHMENTS_FOR_FOLDER,
+            ResourceMethodEnum::UPLOAD_FOR_TASK => RequestPathFormatEnum::ATTACHMENTS_FOR_TASK,
             ResourceMethodEnum::UPDATE => RequestPathFormatEnum::ATTACHMENTS_BY_ID,
             ResourceMethodEnum::DELETE => RequestPathFormatEnum::ATTACHMENTS_BY_ID,
         ];

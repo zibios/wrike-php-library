@@ -95,16 +95,16 @@ class AttachmentResourceTest extends ResourceTestCase
             ],
             [
                 [
-                    'requestMethod' => RequestMethodEnum::POST,
-                    'methodName' => ResourceMethodEnum::CREATE_FOR_FOLDER,
+                    'requestMethod' => RequestMethodEnum::UPLOAD,
+                    'methodName' => ResourceMethodEnum::UPLOAD_FOR_FOLDER,
                     'endpointPath' => sprintf('folders/%s/attachments', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
             [
                 [
-                    'requestMethod' => RequestMethodEnum::POST,
-                    'methodName' => ResourceMethodEnum::CREATE_FOR_TASK,
+                    'requestMethod' => RequestMethodEnum::UPLOAD,
+                    'methodName' => ResourceMethodEnum::UPLOAD_FOR_TASK,
                     'endpointPath' => sprintf('tasks/%s/attachments', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,

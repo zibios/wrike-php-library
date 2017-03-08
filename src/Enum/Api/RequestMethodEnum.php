@@ -22,4 +22,5 @@ class RequestMethodEnum extends AbstractEnum
     const POST = 'POST';
     const PUT = 'PUT';
     const DELETE = 'DELETE';
+    const UPLOAD = 'UPLOAD';
 }
