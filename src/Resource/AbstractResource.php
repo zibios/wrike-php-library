@@ -141,6 +141,11 @@ abstract class AbstractResource implements ResourceInterface
             throw $this->apiExceptionTransformer->transform($e);
         }
 
+        if ($resourceMethod === ResourceMethodEnum::DOWNLOAD ||
+            $resourceMethod === ResourceMethodEnum::DOWNLOAD_PREVIEW) {
+            return $response;
+        }
+
         return $this->responseTransformer->transform($response, static::class);
     }
 }

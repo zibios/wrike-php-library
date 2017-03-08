@@ -11,6 +11,7 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response;
 
+use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 use Zibios\WrikePhpLibrary\Transformer\Response\RawResponseTransformer;
 
@@ -19,6 +20,11 @@ use Zibios\WrikePhpLibrary\Transformer\Response\RawResponseTransformer;
  */
 class RawResponseTransformerTest extends TestCase
 {
+    /**
+     * @var RawResponseTransformer
+     */
+    protected $object;
+
     public function setUp()
     {
         $this->object = new RawResponseTransformer();
@@ -30,5 +36,11 @@ class RawResponseTransformerTest extends TestCase
         $returnedResponse = $this->object->transform($responseMock, 'unimportant');
 
         self::assertSame($responseMock, $returnedResponse);
+    }
+
+    public function test_supportedFormat()
+    {
+        self::assertTrue($this->object->isSupportedResponseFormat(ResponseFormatEnum::PSR_RESPONSE));
+        self::assertTrue($this->object->isSupportedResponseFormat(ResponseFormatEnum::JSON_BODY));
     }
 }

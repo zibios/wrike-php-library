@@ -13,8 +13,6 @@ namespace Zibios\WrikePhpLibrary\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\Traits\UploadForFolderTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\UploadForTaskTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DownloadPreviewTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DownloadTrait;
@@ -24,6 +22,8 @@ use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForTaskTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetPublicUrlTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\UploadForFolderTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\UploadForTaskTrait;
 
 /**
  * Attachment Resource.

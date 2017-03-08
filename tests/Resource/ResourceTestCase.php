@@ -14,6 +14,7 @@ namespace Zibios\WrikePhpLibrary\Tests\Resource;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Zibios\WrikePhpLibrary\Client\ClientInterface;
+use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\AbstractResource;
 use Zibios\WrikePhpLibrary\Resource\ResourceInterface;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
@@ -208,6 +209,13 @@ abstract class ResourceTestCase extends TestCase
      */
     private function executeAssertsForMethod(array $methodData, $transformerClass, $response)
     {
+        if ($methodData['methodName'] === ResourceMethodEnum::DOWNLOAD ||
+            $methodData['methodName'] === ResourceMethodEnum::DOWNLOAD_PREVIEW) {
+            self::assertInstanceOf(ResponseInterface::class, $response);
+
+            return;
+        }
+
         $bodyArray = [];
         switch ($transformerClass) {
             case PsrResponseTransformer::class:

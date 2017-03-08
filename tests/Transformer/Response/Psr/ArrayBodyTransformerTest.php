@@ -20,6 +20,11 @@ use Zibios\WrikePhpLibrary\Transformer\Response\Psr\ArrayBodyTransformer;
  */
 class ArrayBodyTransformerTest extends PsrResponseTransformerTestCase
 {
+    /**
+     * @var ArrayBodyTransformer
+     */
+    protected $object;
+
     public function setUp()
     {
         $this->object = new ArrayBodyTransformer();

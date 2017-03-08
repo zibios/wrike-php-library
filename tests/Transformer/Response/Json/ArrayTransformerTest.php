@@ -11,6 +11,7 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response\Json;
 
+use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 use Zibios\WrikePhpLibrary\Transformer\Response\Json\ArrayTransformer;
 
@@ -19,6 +20,11 @@ use Zibios\WrikePhpLibrary\Transformer\Response\Json\ArrayTransformer;
  */
 class ArrayTransformerTest extends TestCase
 {
+    /**
+     * @var ArrayTransformer
+     */
+    protected $object;
+
     public function setUp()
     {
         $this->object = new ArrayTransformer();
@@ -32,5 +38,11 @@ class ArrayTransformerTest extends TestCase
         $returnedResponse = $this->object->transform($responseString, 'unimportant');
 
         $this->assertSame($responseArray, $returnedResponse);
+    }
+
+    public function test_supportedFormat()
+    {
+        self::assertTrue($this->object->isSupportedResponseFormat(ResponseFormatEnum::JSON_BODY));
+        self::assertFalse($this->object->isSupportedResponseFormat(ResponseFormatEnum::PSR_RESPONSE));
     }
 }

@@ -13,13 +13,20 @@ namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response\Psr;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
+use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
+use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
  * Abstract Response Transformer Test Case.
  */
 abstract class PsrResponseTransformerTestCase extends TestCase
 {
+    /**
+     * @var ResponseTransformerInterface
+     */
+    protected $object;
+
     /**
      * @return array
      */
@@ -70,5 +77,11 @@ abstract class PsrResponseTransformerTestCase extends TestCase
         if ($isValid === true) {
             self::assertFalse($exceptionOccurred);
         }
+    }
+
+    public function test_supportedFormat()
+    {
+        self::assertTrue($this->object->isSupportedResponseFormat(ResponseFormatEnum::PSR_RESPONSE));
+        self::assertFalse($this->object->isSupportedResponseFormat(ResponseFormatEnum::JSON_BODY));
     }
 }

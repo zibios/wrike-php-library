@@ -19,6 +19,11 @@ use Zibios\WrikePhpLibrary\Transformer\Response\Psr\PsrResponseTransformer;
  */
 class PsrResponseTransformerTest extends PsrResponseTransformerTestCase
 {
+    /**
+     * @var PsrResponseTransformer
+     */
+    protected $object;
+
     public function setUp()
     {
         $this->object = new PsrResponseTransformer();

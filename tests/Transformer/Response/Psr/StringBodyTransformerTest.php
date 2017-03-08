@@ -20,6 +20,11 @@ use Zibios\WrikePhpLibrary\Transformer\Response\Psr\StringBodyTransformer;
  */
 class StringBodyTransformerTest extends PsrResponseTransformerTestCase
 {
+    /**
+     * @var StringBodyTransformer
+     */
+    protected $object;
+
     public function setUp()
     {
         $this->object = new StringBodyTransformer();
