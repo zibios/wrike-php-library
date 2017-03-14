@@ -151,6 +151,111 @@ $response = $api->getAttachmentResource()->download($attachmentId);
 $response = $api->getAttachmentResource()->downloadPreview($attachmentId);
 ```
 
+```php
+/**
+ * All resource access methods
+ */
+$api->getAccountResource()->getAll();
+$api->getAccountResource()->getById($accountId);
+$api->getAccountResource()->update($accountId, $params);
+
+$api->getAttachmentResource()->getAllForAccount($accountId);
+$api->getAttachmentResource()->getAllForFolder($folderId);
+$api->getAttachmentResource()->getAllForTask($taskId);
+$api->getAttachmentResource()->getById($attachmentId);
+$api->getAttachmentResource()->update($attachmentId, $params);
+$api->getAttachmentResource()->uploadForFolder($attachmentId, $params);
+$api->getAttachmentResource()->uploadForTask($attachmentId, $params);
+$api->getAttachmentResource()->delete($attachmentId);
+$api->getAttachmentResource()->download($attachmentId);
+$api->getAttachmentResource()->downloadPreview($attachmentId);
+$api->getAttachmentResource()->getPublicUrl($attachmentId);
+
+$api->getColorResource()->getAll();
+
+$api->getCommentResource()->getAll();
+$api->getCommentResource()->getAllForAccount($accountId);
+$api->getCommentResource()->getAllForFolder($folderId);
+$api->getCommentResource()->getAllForTask($taskId);
+$api->getCommentResource()->getById($commentId);
+$api->getCommentResource()->getByIds([$commentId]);
+$api->getCommentResource()->update($commentId, $params);
+$api->getCommentResource()->createForFolder($folderId, $params);
+$api->getCommentResource()->createForTask($taskId, $params);
+$api->getCommentResource()->delete($commentId);
+
+$api->getContactResource()->getAll();
+$api->getContactResource()->getAllForAccount($accountId);
+$api->getContactResource()->getById($contactId);
+$api->getContactResource()->getByIds([$contactId]);
+$api->getContactResource()->update($contactId, $params);
+
+$api->getCustomFieldResource()->getAll();
+$api->getCustomFieldResource()->getAllForAccount($accountId);
+$api->getCustomFieldResource()->getById($customFieldId);
+$api->getCustomFieldResource()->getByIds([$customFieldId]);
+$api->getCustomFieldResource()->update($customFieldId, $params);
+$api->getCustomFieldResource()->createForAccount($accountId, $params);
+
+$api->getDependencyResource()->getAllForTask($taskId);
+$api->getDependencyResource()->getById($dependencyId);
+$api->getDependencyResource()->getByIds([$dependencyId]);
+$api->getDependencyResource()->update($dependencyId, $params);
+$api->getDependencyResource()->createForTask($taskId, $params);
+$api->getDependencyResource()->delete($dependencyId);
+
+$api->getFolderResource()->getAll();
+$api->getFolderResource()->getAllForAccount($accountId);
+$api->getFolderResource()->getAllForFolder($folderId);
+$api->getFolderResource()->getById($folderId);
+$api->getFolderResource()->getByIds([$folderId]);
+$api->getFolderResource()->update($folderId, $params);
+$api->getFolderResource()->createForFolder($folderId, $params);
+$api->getFolderResource()->copy($folderId, $params);
+$api->getFolderResource()->delete($folderId);
+
+$api->getGroupResource()->getAllForAccount($accountId);
+$api->getGroupResource()->getById($groupId);
+$api->getGroupResource()->update($groupId, $params);
+$api->getGroupResource()->createForAccount($accountId, $params);
+$api->getGroupResource()->delete($groupId);
+
+$api->getIdResource()->getAll($params); // $params required
+
+$api->getInvitationResource()->getAllForAccount($accountId);
+$api->getInvitationResource()->update($invitationId, $params);
+$api->getInvitationResource()->createForAccount($accountId, $params);
+$api->getInvitationResource()->delete($invitationId);
+
+$api->getTaskResource()->getAll();
+$api->getTaskResource()->getAllForAccount($accountId);
+$api->getTaskResource()->getAllForFolder($folderId);
+$api->getTaskResource()->getById($taskId);
+$api->getTaskResource()->getByIds([$taskId]);
+$api->getTaskResource()->update($taskId, $params);
+$api->getTaskResource()->createForFolder($folderId, $params);
+$api->getTaskResource()->delete($taskId);
+
+$api->getTimelogResource()->getAll();
+$api->getTimelogResource()->getAllForAccount($accountId);
+$api->getTimelogResource()->getAllForFolder($folderId);
+$api->getTimelogResource()->getAllForTask($taskId);
+$api->getTimelogResource()->getAllForContact($contactId);
+$api->getTimelogResource()->getById($timelogId);
+$api->getTimelogResource()->update($timelogId, $params);
+$api->getTimelogResource()->createForTask($taskId, $params);
+$api->getTimelogResource()->delete($timelogId);
+
+$api->getUserResource()->getById($userId);
+$api->getUserResource()->update($userId, $params);
+
+$api->getVersionResource()->getAll();
+
+$api->getWorkflowResource()->getAllForAccount($accountId);
+$api->getWorkflowResource()->update($workflowId, $params);
+$api->getWorkflowResource()->createForAccount($accountId, $params);
+```
+
 Response can be returned in various formats according to used response transformer:
 * Psr\Http\Message\ResponseInterface for PsrResponseTransformer
 * Psr\Http\Message\StreamInterface for PsrBodyTransformer (containing Body part from Psr\Http\Message\ResponseInterface)
