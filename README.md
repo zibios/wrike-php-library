@@ -138,7 +138,7 @@ $newApi = $api->recreateForNewApiExceptionTransformer($apiExceptionTransformer);
  * Upload Attachment Request require two params: resource and name
  */
 $params = $api->normalizeParams([
-    'resource' => fopen(__FILE__', 'rb'),
+    'resource' => fopen(__FILE__, 'rb'),
     'name' => 'name.png',
 ]);
 $updatedContact = $api->getAttachmentResource()->uploadForFolder($folderId, $params);
