@@ -36,11 +36,14 @@ Collection of all badges for WrikePhpLibrary package
 [![Code Climate](https://codeclimate.com/github/zibios/wrike-php-library/badges/gpa.svg)](https://codeclimate.com/github/zibios/wrike-php-library)
 [![Test Coverage](https://codeclimate.com/github/zibios/wrike-php-library/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-php-library/coverage)
 
-**HHVM**
-[![HHVM Status](http://hhvm.h4cc.de/badge/zibios/wrike-php-library.svg)](http://hhvm.h4cc.de/package/zibios/wrike-php-library)
-
 **Coveralls**
 [![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-library/badge.svg)](https://coveralls.io/github/zibios/wrike-php-library)
 
 **StyleCI**
 [![StyleCI](https://styleci.io/repos/80992179/shield?branch=master)](https://styleci.io/repos/80992179)
+
+**Coveralls**
+[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-library/badge.svg?branch=master)](https://coveralls.io/github/zibios/wrike-bundle?branch=master)
+
+**VersionEye**
+[![VersionEye](http://php-eye.com/badge/zibios/wrike-php-library/tested.svg)](http://php-eye.com/package/zibios/wrike-php-library)

@@ -1,8 +1,6 @@
 Wrike PHP LIBRARY
 ================================
 
-**Current version: 0.1.0, version 1.0.0 around 2017-05-01**
-
 Introduction
 ------------
 
@@ -30,18 +28,11 @@ Project status
 [![Test Coverage](https://codeclimate.com/github/zibios/wrike-php-library/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-php-library/coverage)
 [![Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-library)
 [![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-php-library.svg)](https://libraries.io/packagist/zibios%2Fwrike-php-library)
+[![VersionEye](http://php-eye.com/badge/zibios/wrike-php-library/tested.svg)](http://php-eye.com/package/zibios/wrike-php-library)
 
 [All badges](docs/Badges.md)
 
 [All zibios/wrike-* badges](docs/AllWrikeBadges.md)
-
-**Required for v1.0.0 version**
-- [ ] Architecture review: "More KISS, or more SOLID, that is the question"
-- [ ] Code Review
-- [ ] Documentation update
-- [ ] Test Suite update
-- [ ] Wrike OAuth 2.0 implementation
-- [ ] Wrike Web-Hooks implementation
 
 Installation
 ------------

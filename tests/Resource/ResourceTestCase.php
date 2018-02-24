@@ -229,7 +229,7 @@ abstract class ResourceTestCase extends TestCase
                 $bodyArray = json_decode($response->getContents(), true);
                 break;
             case StringBodyTransformer::class:
-                /* @var array $response */
+                /* @var string $response */
                 self::assertInternalType('string', $response);
                 $bodyArray = json_decode($response, true);
                 break;

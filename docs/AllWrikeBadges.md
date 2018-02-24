@@ -8,6 +8,7 @@ Collection of all badges for Wrike packages
 [![Test Coverage](https://codeclimate.com/github/zibios/wrike-php-library/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-php-library/coverage)
 [![Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-library)
 [![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-php-library.svg)](https://libraries.io/packagist/zibios%2Fwrike-php-library)
+[![VersionEye](http://php-eye.com/badge/zibios/wrike-php-library/tested.svg)](http://php-eye.com/package/zibios/wrike-php-library)
 
 **Full [WrikePhpSdk](https://github.com/zibios/wrike-php-sdk)**:
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-sdk/?branch=master)
@@ -16,6 +17,7 @@ Collection of all badges for Wrike packages
 [![Test Coverage](https://codeclimate.com/github/zibios/wrike-php-sdk/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-php-sdk/coverage)
 [![Build Status](https://travis-ci.org/zibios/wrike-php-sdk.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-sdk)
 [![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-php-sdk.svg)](https://libraries.io/packagist/zibios%2Fwrike-php-sdk)
+[![VersionEye](http://php-eye.com/badge/zibios/wrike-php-sdk/tested.svg)](http://php-eye.com/package/zibios/wrike-php-sdk)
 
 **Plugin [WrikePhpJmsserializer](https://github.com/zibios/wrike-php-jmsserializer)**:
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-jmsserializer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-jmsserializer/?branch=master)
@@ -24,6 +26,7 @@ Collection of all badges for Wrike packages
 [![Test Coverage](https://codeclimate.com/github/zibios/wrike-php-jmsserializer/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-php-jmsserializer/coverage)
 [![Build Status](https://travis-ci.org/zibios/wrike-php-jmsserializer.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-jmsserializer)
 [![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-php-jmsserializer.svg)](https://libraries.io/packagist/zibios%2Fwrike-php-jmsserializer)
+[![VersionEye](http://php-eye.com/badge/zibios/wrike-php-jmsserializer/tested.svg)](http://php-eye.com/package/zibios/wrike-php-jmsserializer)
 
 **Plugin [WrikePhpGuzzle](https://github.com/zibios/wrike-php-guzzle)**:
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-guzzle/?branch=master)
@@ -32,6 +35,7 @@ Collection of all badges for Wrike packages
 [![Test Coverage](https://codeclimate.com/github/zibios/wrike-php-guzzle/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-php-guzzle/coverage)
 [![Build Status](https://travis-ci.org/zibios/wrike-php-guzzle.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-guzzle)
 [![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-php-guzzle.svg)](https://libraries.io/packagist/zibios%2Fwrike-php-guzzle)
+[![VersionEye](http://php-eye.com/badge/zibios/wrike-php-guzzle/tested.svg)](http://php-eye.com/package/zibios/wrike-php-guzzle)
 
 **Symfony [WrikeBundle](https://github.com/zibios/wrike-bundle)**:
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-bundle/?branch=master)
@@ -40,3 +44,5 @@ Collection of all badges for Wrike packages
 [![Test Coverage](https://codeclimate.com/github/zibios/wrike-bundle/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-bundle/coverage)
 [![Build Status](https://travis-ci.org/zibios/wrike-bundle.svg?branch=master)](https://travis-ci.org/zibios/wrike-bundle)
 [![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-bundle.svg)](https://libraries.io/packagist/zibios%2Fwrike-bundle)
+[![VersionEye](http://php-eye.com/badge/zibios/wrike-bundle/tested.svg)](http://php-eye.com/package/zibios/wrike-bundle)
+
