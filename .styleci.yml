@@ -4,6 +4,9 @@ enabled:
   - phpdoc_order
   - ordered_use
 
+disabled:
+  - const_separation
+  - blank_line_before_break
 finder :
   exclude :
     - vendor
