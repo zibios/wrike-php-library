@@ -63,6 +63,7 @@ abstract class PsrResponseTransformerTestCase extends TestCase
     public function test_transformParams($response, $resourceClass, $isValid)
     {
         $exceptionOccurred = false;
+
         try {
             $this->object->transform($response, $resourceClass);
         } catch (\Throwable $t) {
@@ -71,10 +72,10 @@ abstract class PsrResponseTransformerTestCase extends TestCase
             $exceptionOccurred = true;
         }
 
-        if ($isValid === false) {
+        if (false === $isValid) {
             self::assertTrue($exceptionOccurred);
         }
-        if ($isValid === true) {
+        if (true === $isValid) {
             self::assertFalse($exceptionOccurred);
         }
     }

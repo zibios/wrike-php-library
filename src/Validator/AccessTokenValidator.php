@@ -23,7 +23,7 @@ class AccessTokenValidator
      */
     public static function isValid($value)
     {
-        return is_string($value) && trim($value) !== '';
+        return is_string($value) && '' !== trim($value);
     }
 
     /**
@@ -33,7 +33,7 @@ class AccessTokenValidator
      */
     public static function assertIsValid($value)
     {
-        if (self::isValid($value) === false) {
+        if (false === self::isValid($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid Access Token, should be not empty string!'));
         }
     }
@@ -45,7 +45,7 @@ class AccessTokenValidator
      */
     public static function isValidOrEmpty($value)
     {
-        return self::isValid($value) || $value === '';
+        return self::isValid($value) || '' === $value;
     }
 
     /**
@@ -55,7 +55,7 @@ class AccessTokenValidator
      */
     public static function assertIsValidOrEmpty($value)
     {
-        if (self::isValidOrEmpty($value) === false) {
+        if (false === self::isValidOrEmpty($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid Access Token, should be not empty string!'));
         }
     }

@@ -130,6 +130,7 @@ abstract class ApiTestCase extends TestCase
         $isValid
     ) {
         $exceptionOccurred = false;
+
         try {
             new $this->sourceClass($client, $responseTransformer, $apiExceptionTransformerMock, $accessToken);
         } catch (\Throwable $t) {
@@ -138,10 +139,10 @@ abstract class ApiTestCase extends TestCase
             $exceptionOccurred = true;
         }
 
-        if ($isValid === false) {
+        if (false === $isValid) {
             self::assertTrue($exceptionOccurred);
         }
-        if ($isValid === true) {
+        if (true === $isValid) {
             self::assertFalse($exceptionOccurred);
         }
     }

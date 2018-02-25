@@ -23,7 +23,7 @@ class IdValidator
      */
     public static function isNull($value)
     {
-        return $value === null;
+        return null === $value;
     }
 
     /**
@@ -33,7 +33,7 @@ class IdValidator
      */
     public static function assertIsNull($value)
     {
-        if (self::isNull($value) === false) {
+        if (false === self::isNull($value)) {
             throw new \InvalidArgumentException('Null expected!');
         }
     }
@@ -45,7 +45,7 @@ class IdValidator
      */
     public static function isValidIdString($value)
     {
-        return is_string($value) && trim($value) !== '';
+        return is_string($value) && '' !== trim($value);
     }
 
     /**
@@ -55,7 +55,7 @@ class IdValidator
      */
     public static function assertIsValidIdString($value)
     {
-        if (self::isValidIdString($value) === false) {
+        if (false === self::isValidIdString($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid Id, should be not empty string!'));
         }
     }
@@ -67,13 +67,13 @@ class IdValidator
      */
     public static function isValidIdArray($value)
     {
-        if (is_array($value) === false || count($value) === 0) {
+        if (false === is_array($value) || 0 === count($value)) {
             return false;
         }
 
         /** @var array $value */
         foreach ($value as $id) {
-            if (self::isValidIdString($id) === false) {
+            if (false === self::isValidIdString($id)) {
                 return false;
             }
         }
@@ -88,7 +88,7 @@ class IdValidator
      */
     public static function assertIsValidIdArray($value)
     {
-        if (self::isValidIdArray($value) === false) {
+        if (false === self::isValidIdArray($value)) {
             throw new \InvalidArgumentException();
         }
     }

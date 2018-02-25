@@ -141,8 +141,8 @@ abstract class AbstractResource implements ResourceInterface
             throw $this->apiExceptionTransformer->transform($e);
         }
 
-        if ($resourceMethod === ResourceMethodEnum::DOWNLOAD ||
-            $resourceMethod === ResourceMethodEnum::DOWNLOAD_PREVIEW) {
+        if (ResourceMethodEnum::DOWNLOAD === $resourceMethod ||
+            ResourceMethodEnum::DOWNLOAD_PREVIEW === $resourceMethod) {
             return $response;
         }
 

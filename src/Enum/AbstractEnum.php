@@ -86,7 +86,7 @@ abstract class AbstractEnum
      */
     public static function assertIsValidKey($key)
     {
-        if (self::isValidKey($key) === false) {
+        if (false === self::isValidKey($key)) {
             throw new \InvalidArgumentException('Wrong key.');
         }
     }
@@ -138,7 +138,7 @@ abstract class AbstractEnum
      */
     public static function assertIsValidValue($value)
     {
-        if (self::isValidValue($value) === false) {
+        if (false === self::isValidValue($value)) {
             throw new \InvalidArgumentException('Wrong value.');
         }
     }

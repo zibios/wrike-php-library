@@ -81,7 +81,7 @@ abstract class AbstractApi implements ApiInterface
     ) {
         AccessTokenValidator::assertIsValidOrEmpty($accessToken);
 
-        if ($responseTransformer->isSupportedResponseFormat($client->getResponseFormat()) === false) {
+        if (false === $responseTransformer->isSupportedResponseFormat($client->getResponseFormat())) {
             throw new \InvalidArgumentException('Client not compatible with response transformer!');
         }
 
@@ -307,7 +307,7 @@ abstract class AbstractApi implements ApiInterface
     public function normalizeParams(array $params)
     {
         foreach ($params as $key => $value) {
-            if (is_string($value) === false && is_resource($value) === false) {
+            if (false === is_string($value) && false === is_resource($value)) {
                 $params[$key] = json_encode($value);
             }
         }

@@ -26,7 +26,7 @@ class ArrayTransformer implements ResponseTransformerInterface
      */
     public function isSupportedResponseFormat($responseFormat)
     {
-        return $responseFormat === ResponseFormatEnum::JSON_BODY;
+        return ResponseFormatEnum::JSON_BODY === $responseFormat;
     }
 
     /**

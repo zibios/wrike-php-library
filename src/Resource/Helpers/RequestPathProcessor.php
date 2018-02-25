@@ -85,7 +85,7 @@ class RequestPathProcessor
      */
     private function calculateRequestPathFormat($resourceMethod, array $resourceMethodConfiguration)
     {
-        if (array_key_exists($resourceMethod, $resourceMethodConfiguration) === false) {
+        if (false === array_key_exists($resourceMethod, $resourceMethodConfiguration)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     'Resource "%s" Method not found in configuration keys [%s]',
