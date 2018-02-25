@@ -28,7 +28,7 @@ abstract class AbstractPsrResponseTransformer implements ResponseTransformerInte
      */
     public function isSupportedResponseFormat($responseFormat)
     {
-        return $responseFormat === ResponseFormatEnum::PSR_RESPONSE;
+        return ResponseFormatEnum::PSR_RESPONSE === $responseFormat;
     }
 
     /**

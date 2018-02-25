@@ -117,7 +117,7 @@ abstract class ResourceTestCase extends TestCase
 
         /** @var \ReflectionMethod $expectedMethodName */
         foreach ($expectedMethodNames as $expectedMethodName) {
-            if ($expectedMethodName->getName() === '__construct') {
+            if ('__construct' === $expectedMethodName->getName()) {
                 continue;
             }
             self::assertArrayHasKey($expectedMethodName->getName(), $coveredMethodNames);
@@ -209,8 +209,8 @@ abstract class ResourceTestCase extends TestCase
      */
     private function executeAssertsForMethod(array $methodData, $transformerClass, $response)
     {
-        if ($methodData['methodName'] === ResourceMethodEnum::DOWNLOAD ||
-            $methodData['methodName'] === ResourceMethodEnum::DOWNLOAD_PREVIEW) {
+        if (ResourceMethodEnum::DOWNLOAD === $methodData['methodName'] ||
+            ResourceMethodEnum::DOWNLOAD_PREVIEW === $methodData['methodName']) {
             self::assertInstanceOf(ResponseInterface::class, $response);
 
             return;

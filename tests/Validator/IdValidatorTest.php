@@ -43,6 +43,7 @@ class IdValidatorTest extends TestCase
         self::assertSame($isValid, IdValidator::isNull($value), sprintf('validation null "%s"', $value));
 
         $withoutException = true;
+
         try {
             IdValidator::assertIsNull($value);
         } catch (\Exception $e) {
@@ -78,6 +79,7 @@ class IdValidatorTest extends TestCase
         self::assertSame($isValid, IdValidator::isValidIdString($value), sprintf('validation string "%s"', $value));
 
         $withoutException = true;
+
         try {
             IdValidator::assertIsValidIdString($value);
         } catch (\Exception $e) {
@@ -116,6 +118,7 @@ class IdValidatorTest extends TestCase
         self::assertSame($isValid, IdValidator::isValidIdArray($value), sprintf('validation string "%s"', is_array($value) ? implode(', ', $value) : $value));
 
         $withoutException = true;
+
         try {
             IdValidator::assertIsValidIdArray($value);
         } catch (\Exception $e) {

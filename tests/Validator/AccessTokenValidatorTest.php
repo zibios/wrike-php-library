@@ -46,6 +46,7 @@ class AccessTokenValidatorTest extends TestCase
         self::assertSame($isValid, AccessTokenValidator::isValid($value), sprintf('validation string "%s"', $value));
 
         $withoutException = true;
+
         try {
             AccessTokenValidator::assertIsValid($value);
         } catch (\Exception $e) {
@@ -81,6 +82,7 @@ class AccessTokenValidatorTest extends TestCase
         self::assertSame($isValid, AccessTokenValidator::isValidOrEmpty($value), sprintf('validation string "%s"', $value));
 
         $withoutException = true;
+
         try {
             AccessTokenValidator::assertIsValidOrEmpty($value);
         } catch (\Exception $e) {
