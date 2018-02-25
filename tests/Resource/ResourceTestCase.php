@@ -48,15 +48,15 @@ abstract class ResourceTestCase extends TestCase
     {
         $accessTokenMock = 'token';
         $responseFormatMock = 'responseFormat';
-        $clientMock = $this->getMock(ClientInterface::class);
+        $clientMock = $this->getMockBuilder(ClientInterface::class)->getMock();
         $clientMock->expects(self::any())
             ->method('getResponseFormat')
             ->willReturn($responseFormatMock);
-        $responseTransformerMock = $this->getMock(ResponseTransformerInterface::class);
+        $responseTransformerMock = $this->getMockBuilder(ResponseTransformerInterface::class)->getMock();
         $responseTransformerMock->expects(self::any())
             ->method('isSupportedResponseFormat')
             ->willReturn(true);
-        $apiExceptionTransformerMock = $this->getMock(ApiExceptionTransformerInterface::class);
+        $apiExceptionTransformerMock = $this->getMockBuilder(ApiExceptionTransformerInterface::class)->getMock();
         $resource = new $this->sourceClass(
             $clientMock,
             $responseTransformerMock,
@@ -150,7 +150,7 @@ abstract class ResourceTestCase extends TestCase
             ->method('getBody')
             ->willReturn($bodyMock);
 
-        $clientMock = $this->getMock(ClientInterface::class);
+        $clientMock = $this->getMockBuilder(ClientInterface::class)->getMock();
         $clientMock->expects(self::any())
             ->method('executeRequestForParams')
             ->with(

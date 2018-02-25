@@ -46,15 +46,15 @@ abstract class ApiTestCase extends TestCase
     {
         $accessTokenMock = 'token';
         $responseFormatMock = 'responseFormat';
-        $clientMock = $this->getMock(ClientInterface::class);
+        $clientMock = $this->getMockBuilder(ClientInterface::class)->getMock();
         $clientMock->expects(self::any())
             ->method('getResponseFormat')
             ->willReturn($responseFormatMock);
-        $responseTransformerMock = $this->getMock(ResponseTransformerInterface::class);
+        $responseTransformerMock = $this->getMockBuilder(ResponseTransformerInterface::class)->getMock();
         $responseTransformerMock->expects(self::any())
             ->method('isSupportedResponseFormat')
             ->willReturn(true);
-        $apiExceptionTransformerMock = $this->getMock(ApiExceptionTransformerInterface::class);
+        $apiExceptionTransformerMock = $this->getMockBuilder(ApiExceptionTransformerInterface::class)->getMock();
 
         $this->object = new $this->sourceClass(
             $clientMock,
@@ -71,18 +71,18 @@ abstract class ApiTestCase extends TestCase
     {
         $accessTokenMock = 'token';
         $responseFormatMock = 'responseFormat';
-        $clientMock = $this->getMock(ClientInterface::class);
+        $clientMock = $this->getMockBuilder(ClientInterface::class)->getMock();
         $clientMock->expects(self::any())
             ->method('getResponseFormat')
             ->willReturn($responseFormatMock);
-        $responseTransformerMock = $this->getMock(ResponseTransformerInterface::class);
+        $responseTransformerMock = $this->getMockBuilder(ResponseTransformerInterface::class)->getMock();
         $responseTransformerMock->expects(self::any())
             ->method('isSupportedResponseFormat')
             ->willReturn(true);
-        $apiExceptionTransformerMock = $this->getMock(ApiExceptionTransformerInterface::class);
+        $apiExceptionTransformerMock = $this->getMockBuilder(ApiExceptionTransformerInterface::class)->getMock();
         $stdClass = new \stdClass();
 
-        $anotherResponseTransformerMock = $this->getMock(ResponseTransformerInterface::class);
+        $anotherResponseTransformerMock = $this->getMockBuilder(ResponseTransformerInterface::class)->getMock();
         $anotherResponseTransformerMock->expects(self::any())
             ->method('isSupportedResponseFormat')
             ->willReturn(false);
