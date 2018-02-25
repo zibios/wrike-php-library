@@ -13,6 +13,8 @@ namespace Zibios\WrikePhpLibrary\Enum;
 
 /**
  * Abstract Enum.
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
  */
 abstract class AbstractEnum
 {
