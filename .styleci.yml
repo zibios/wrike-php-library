@@ -7,6 +7,7 @@ enabled:
 disabled:
   - const_separation
   - blank_line_before_break
+
 finder :
   exclude :
     - vendor
