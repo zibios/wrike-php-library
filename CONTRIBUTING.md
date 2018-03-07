@@ -29,6 +29,10 @@ We use GitHub issues to track public bugs. Please ensure your description is
 clear and has sufficient instructions to be able to reproduce the issue.
 If possible please provide a minimal demo of the problem.
 
+## Security vulnerability disclosure
+Please report suspected security vulnerabilities in private to social.zibios@gmail.com, 
+Please do NOT create publicly viewable issues for suspected security vulnerabilities.
+
 ## Tests
 
 We're using [`phpunit/phpunit`](https://github.com/sebastianbergmann/phpunit) 
