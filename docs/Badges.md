@@ -47,3 +47,6 @@ Collection of all badges for WrikePhpLibrary package
 
 **VersionEye**
 [![VersionEye](http://php-eye.com/badge/zibios/wrike-php-library/tested.svg)](http://php-eye.com/package/zibios/wrike-php-library)
+
+**BestPractices**
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1690/badge)](https://bestpractices.coreinfrastructure.org/projects/1690)
