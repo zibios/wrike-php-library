@@ -1,5 +1,5 @@
-Wrike PHP LIBRARY
-================================
+Wrike PHP LIBRARY - Wrike API V3 & V4
+=====================================
 
 Introduction
 ------------
@@ -9,34 +9,60 @@ Introduction
 This package contains general documentation for all features.
 This package is decoupled from unnecessary dependencies and can't be used without additional HTTP Client plugin.
 * For general purpose please check full configured [Wrike PHP SDK](https://github.com/zibios/wrike-php-sdk) - **recommended for most users**.
-* For Symfony2 / Symfony3 please check full configured [Wrike bundle](https://github.com/zibios/wrike-bundle) based on this library
+* For Symfony Framework please check full configured [Wrike bundle](https://github.com/zibios/wrike-bundle) based on this library
 * For none standard purposes please check:
   * this generic [Wrike PHP Library](https://github.com/zibios/wrike-php-library)
   * [HTTP Client plugin](https://github.com/zibios/wrike-php-guzzle) based on [guzzlehttp/guzzle](https://github.com/guzzle/guzzle) package
   * [response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) based on [jms/serializer](https://github.com/schmittjoh/serializer) package
 
+Versions
+--------
+| Major Version | Wrike API | PHP Compatibility                  | Initial release | Support                        |
+|:-------------:|:---------:|:----------------------------------:|:---------------:|:------------------------------:|
+| V2            | V4        | PHP 7.1, PHP 7.2, TBD              | October, 2018   | TBD                            |
+| V1            | V3        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | February, 2018  | Support ends on February, 2019 |
+
 Project status
 --------------
+
+General
 
 [![Packagist License](https://img.shields.io/packagist/l/zibios/wrike-php-library.svg)](https://packagist.org/packages/zibios/wrike-php-library)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/zibios/wrike-php-library.svg)](https://packagist.org/packages/zibios/wrike-php-library)
 [![Packagist Version](https://img.shields.io/packagist/v/zibios/wrike-php-library.svg)](https://packagist.org/packages/zibios/wrike-php-library)
+[![Packagist Version](https://img.shields.io/packagist/php-v/zibios/wrike-php-library.svg)](https://packagist.org/packages/zibios/wrike-php-library)
+[![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-php-library.svg)](https://libraries.io/packagist/zibios%2Fwrike-php-library)
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=master)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1690/badge)](https://bestpractices.coreinfrastructure.org/projects/1690)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/28d43ffe-fa9a-4afa-893e-fc9b2e080d09/mini.png)](https://insight.sensiolabs.com/projects/28d43ffe-fa9a-4afa-893e-fc9b2e080d09)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b3b1cf6321040fa910c0c1c335b5ba1)](https://www.codacy.com/app/zibios/wrike-php-library)
-[![Test Coverage](https://codeclimate.com/github/zibios/wrike-php-library/badges/coverage.svg)](https://codeclimate.com/github/zibios/wrike-php-library/coverage)
-[![Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-library)
-[![Libraries.io](https://img.shields.io/librariesio/github/zibios/wrike-php-library.svg)](https://libraries.io/packagist/zibios%2Fwrike-php-library)
-[![VersionEye](http://php-eye.com/badge/zibios/wrike-php-library/tested.svg)](http://php-eye.com/package/zibios/wrike-php-library)
+[![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/73783acf5037a935c9c8/maintainability)](https://codeclimate.com/github/zibios/wrike-php-library/maintainability)
 
-[All badges](docs/Badges.md)
+Branch 'master'
 
-[All zibios/wrike-* badges](docs/AllWrikeBadges.md)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=master)
+[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/build.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/build-status/master)
+[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=master)
+[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-library)
+[![VersionEye](http://php-eye.com/badge/zibios/wrike-php-library/tested.svg?branch=master)](http://php-eye.com/package/zibios/wrike-php-library)
+[![StyleCI](https://styleci.io/repos/80992179/shield?branch=master)](https://styleci.io/repos/80992179)
+[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-library/badge.svg?branch=master)](https://coveralls.io/github/zibios/wrike-php-library?branch=master)
 
 Installation
 ------------
+Open a command console, enter your project directory and execute the
+following command to download the latest stable version of this bundle:
 
+```console
+$ composer require zibios/wrike-php-library "^1.0"
+```
+
+This command requires you to have Composer installed globally, as explained
+in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
+of the Composer documentation.
+
+Contribution
+------------
 To try it yourself clone the repository:
 
 ```bash
@@ -62,90 +88,10 @@ All operations are immutable and stateless.
 
 ```php
 /**
- * Basic resources usage
+ * Resources access methods
  */
 $api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
 
-$params = $api->normalizeParams([
-    'fields' => ['metadata'],
-    'metadata' => ['key' => 'importantMetadataKey'],
-]);
-$allContacts = $api->getContactResource()->getAll($params);
-
-$params = $api->normalizeParams([
-    'metadata' => [
-        [
-            'key' => 'metadataKey',
-            'value' => 'metadataValue',
-        ]
-    ],
-]);
-$updatedContact = $api->getContactResource()->update($contactId, $params);
-
-$allContactsForAccount = $api->getContactResource()->getAllForAccount($accountId);
-$selectedContact = $api->getContactResource()->getById($contactId);
-$selectedContacts = $api->getContactResource()->getByIds([$contactId, $anotherContactId]);
-```
-
-```php
-/**
- * Params normalizer
- */
-$params = $api->normalizeParams([
-    'foo' => 'test',
-    'bar' => ['test' => 'test'],
-]);
-// Array
-// (
-//     [foo] => test
-//     [bar] => {"test":"test"}
-// )
-```
-
-```php
-/**
- * Extended API usage
- *
- * $api->recreateForNew*() - returns new Api instance
- */
-$api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
-
-$newApi = $api->recreateForNewAccessToken(<PermanentToken>);
-
-$responseTransformer = new RawResponseTransformer();
-$newApi = $api->recreateForNewResponseTransformer($responseTransformer);
-
-$apiExceptionTransformer = new RawExceptionTransformer();
-$newApi = $api->recreateForNewApiExceptionTransformer($apiExceptionTransformer);
-
-```
-
-```php
-/**
- * Exceptions
- */
-
-/**
- * Upload Attachment Request require two params: resource and name
- */
-$params = $api->normalizeParams([
-    'resource' => fopen(__FILE__, 'rb'),
-    'name' => 'name.png',
-]);
-$updatedContact = $api->getAttachmentResource()->uploadForFolder($folderId, $params);
-$updatedContact = $api->getAttachmentResource()->uploadForTask($taskId, $params);
-
-/**
- * Download Attachment Requests returns none transformed Psr\Http\Message\ResponseInterface
- */
-$response = $api->getAttachmentResource()->download($attachmentId);
-$response = $api->getAttachmentResource()->downloadPreview($attachmentId);
-```
-
-```php
-/**
- * All resource access methods
- */
 $api->getAccountResource()->getAll();
 $api->getAccountResource()->getById($accountId);
 $api->getAccountResource()->update($accountId, $params);
@@ -247,13 +193,89 @@ $api->getWorkflowResource()->update($workflowId, $params);
 $api->getWorkflowResource()->createForAccount($accountId, $params);
 ```
 
-Response can be returned in various formats according to used response transformer:
-* Psr\Http\Message\ResponseInterface for PsrResponseTransformer
-* Psr\Http\Message\StreamInterface for PsrBodyTransformer (containing Body part from Psr\Http\Message\ResponseInterface)
-* JSON string for StringBodyTransformer (containing Psr\Http\Message\ResponseInterface body casted to string)
-* Array for ArrayBodyTransformer (containing Psr\Http\Message\ResponseInterface body decoded to Array)
-* Array for ArrayTransformer (containing JSON response decoded to Array)
-* Objects - check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer)
+```php
+/**
+ * Params normalizer
+ */
+$params = $api->normalizeParams([
+    'foo' => 'test',
+    'bar' => ['test' => 'test'],
+]);
+
+// Array
+// (
+//     [foo] => test
+//     [bar] => {"test":"test"}
+// )
+```
+
+```php
+/**
+ * Basic API usage
+ */
+$params = $api->normalizeParams([
+    'fields' => ['metadata'],
+    'metadata' => ['key' => 'importantMetadataKey'],
+]);
+$allContacts = $api->getContactResource()->getAll($params);
+
+$params = $api->normalizeParams([
+    'metadata' => [
+        [
+            'key' => 'metadataKey',
+            'value' => 'metadataValue',
+        ]
+    ],
+]);
+$updatedContact = $api->getContactResource()->update($contactId, $params);
+```
+
+```php
+/**
+ * Upload Attachment Request require two params: resource and name
+ */
+$params = $api->normalizeParams([
+    'resource' => fopen(__FILE__, 'rb'),
+    'name' => 'name.png',
+]);
+$updatedContact = $api->getAttachmentResource()->uploadForFolder($folderId, $params);
+$updatedContact = $api->getAttachmentResource()->uploadForTask($taskId, $params);
+
+/**
+ * Download Attachment Requests returns none transformed Psr\Http\Message\ResponseInterface
+ */
+$response = $api->getAttachmentResource()->download($attachmentId);
+$response = $api->getAttachmentResource()->downloadPreview($attachmentId);
+```
+
+```php
+/**
+ * Advanced API usage
+ *
+ * $api->recreateForNew*() - returns new Api instance
+ */
+$api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
+
+$newApi = $api->recreateForNewAccessToken(<PermanentToken>);
+
+$responseTransformer = new RawResponseTransformer();
+$newApi = $api->recreateForNewResponseTransformer($responseTransformer);
+
+$apiExceptionTransformer = new RawExceptionTransformer();
+$newApi = $api->recreateForNewApiExceptionTransformer($apiExceptionTransformer);
+```
+
+Response can be returned in various formats according to used response transformer
+
+| Transformer              | Response                           | Comment                                 |
+|:------------------------ |:-----------------------------------| --------------------------------------- |
+| PsrResponseTransformer   | Psr\Http\Message\ResponseInterface | PSR response                            |
+| PsrBodyTransformer       | Psr\Http\Message\StreamInterface   | PSR response body                       |
+| StringBodyTransformer    | JSON string                        | PSR response body casted to JSON string |
+| ArrayBodyTransformer     | array                              | PSR response body casted to array       |
+| ArrayTransformer         | array                              | JSON response casted to array           |
+| ResponseModelTransformer | ResponseModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
+| ResourceModelTransformer | ResourceModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
 
 Reference
 ---------
