@@ -25,7 +25,7 @@ Versions
 Project status
 --------------
 
-General
+**General**
 
 [![Packagist License](https://img.shields.io/packagist/l/zibios/wrike-php-library.svg)](https://packagist.org/packages/zibios/wrike-php-library)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/zibios/wrike-php-library.svg)](https://packagist.org/packages/zibios/wrike-php-library)
@@ -38,13 +38,12 @@ General
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b3b1cf6321040fa910c0c1c335b5ba1)](https://www.codacy.com/app/zibios/wrike-php-library)
 [![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/73783acf5037a935c9c8/maintainability)](https://codeclimate.com/github/zibios/wrike-php-library/maintainability)
 
-Branch 'master'
+**Branch 'master'**
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=master)
 [![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/build.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/build-status/master)
 [![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=master)
 [![Travis Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-library)
-[![VersionEye](http://php-eye.com/badge/zibios/wrike-php-library/tested.svg?branch=master)](http://php-eye.com/package/zibios/wrike-php-library)
 [![StyleCI](https://styleci.io/repos/80992179/shield?branch=master)](https://styleci.io/repos/80992179)
 [![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-library/badge.svg?branch=master)](https://coveralls.io/github/zibios/wrike-php-library?branch=master)
 
