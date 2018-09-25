@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -25,12 +27,12 @@ class StringBodyTransformerTest extends PsrResponseTransformerTestCase
      */
     protected $object;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->object = new StringBodyTransformer();
     }
 
-    public function test_transform()
+    public function test_transform(): void
     {
         $responseString = '{"key": "value"}';
         $bodyMock = $this->getMockForAbstractClass(StreamInterface::class);

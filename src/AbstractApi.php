@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -12,6 +14,7 @@
 namespace Zibios\WrikePhpLibrary;
 
 use Zibios\WrikePhpLibrary\Client\ClientInterface;
+use Zibios\WrikePhpLibrary\Resource\AbstractResource;
 use Zibios\WrikePhpLibrary\Resource\AccountResource;
 use Zibios\WrikePhpLibrary\Resource\AttachmentResource;
 use Zibios\WrikePhpLibrary\Resource\ColorResource;
@@ -41,7 +44,7 @@ use Zibios\WrikePhpLibrary\Validator\AccessTokenValidator;
  */
 abstract class AbstractApi implements ApiInterface
 {
-    const BASE_URI = 'https://www.wrike.com/api/v3/';
+    public const BASE_URI = 'https://www.wrike.com/api/v4/';
 
     /**
      * @var ClientInterface
@@ -81,33 +84,32 @@ abstract class AbstractApi implements ApiInterface
     ) {
         AccessTokenValidator::assertIsValidOrEmpty($accessToken);
 
-        if (false === $responseTransformer->isSupportedResponseFormat($client->getResponseFormat())) {
-            throw new \InvalidArgumentException('Client not compatible with response transformer!');
-        }
-
         $this->client = $client;
         $this->responseTransformer = $responseTransformer;
         $this->apiExceptionTransformer = $apiExceptionTransformer;
         $this->accessToken = $accessToken;
     }
 
-    /**
-     * @return ContactResource
-     */
-    public function getContactResource()
+    public function contacts(): ContactResource
     {
-        return new ContactResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        /** @var $resource ContactResource */
+        $resource = $this->getResource(ContactResource::class);
+
+        return $resource;
+    }
+
+    /**
+     * @deprecated getContactResource is deprecated and will be removed in 3.0.0. Use contacts().
+     */
+    public function getContactResource(): ContactResource
+    {
+        return $this->contacts();
     }
 
     /**
      * @return UserResource
      */
-    public function getUserResource()
+    public function getUserResource(): UserResource
     {
         return new UserResource(
             $this->client,
@@ -120,7 +122,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return GroupResource
      */
-    public function getGroupResource()
+    public function getGroupResource(): GroupResource
     {
         return new GroupResource(
             $this->client,
@@ -133,7 +135,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return InvitationResource
      */
-    public function getInvitationResource()
+    public function getInvitationResource(): InvitationResource
     {
         return new InvitationResource(
             $this->client,
@@ -146,7 +148,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return AccountResource
      */
-    public function getAccountResource()
+    public function getAccountResource(): AccountResource
     {
         return new AccountResource(
             $this->client,
@@ -159,7 +161,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return WorkflowResource
      */
-    public function getWorkflowResource()
+    public function getWorkflowResource(): WorkflowResource
     {
         return new WorkflowResource(
             $this->client,
@@ -172,7 +174,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return CustomFieldResource
      */
-    public function getCustomFieldResource()
+    public function getCustomFieldResource(): CustomFieldResource
     {
         return new CustomFieldResource(
             $this->client,
@@ -185,7 +187,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return FolderResource
      */
-    public function getFolderResource()
+    public function getFolderResource(): FolderResource
     {
         return new FolderResource(
             $this->client,
@@ -198,7 +200,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return TaskResource
      */
-    public function getTaskResource()
+    public function getTaskResource(): TaskResource
     {
         return new TaskResource(
             $this->client,
@@ -211,7 +213,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return CommentResource
      */
-    public function getCommentResource()
+    public function getCommentResource(): CommentResource
     {
         return new CommentResource(
             $this->client,
@@ -224,7 +226,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return DependencyResource
      */
-    public function getDependencyResource()
+    public function getDependencyResource(): DependencyResource
     {
         return new DependencyResource(
             $this->client,
@@ -237,7 +239,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return TimelogResource
      */
-    public function getTimelogResource()
+    public function getTimelogResource(): TimelogResource
     {
         return new TimelogResource(
             $this->client,
@@ -250,7 +252,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return AttachmentResource
      */
-    public function getAttachmentResource()
+    public function getAttachmentResource(): AttachmentResource
     {
         return new AttachmentResource(
             $this->client,
@@ -263,7 +265,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return VersionResource
      */
-    public function getVersionResource()
+    public function getVersionResource(): VersionResource
     {
         return new VersionResource(
             $this->client,
@@ -276,7 +278,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return IdResource
      */
-    public function getIdResource()
+    public function getIdResource(): IdResource
     {
         return new IdResource(
             $this->client,
@@ -289,7 +291,7 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return ColorResource
      */
-    public function getColorResource()
+    public function getColorResource(): ColorResource
     {
         return new ColorResource(
             $this->client,
@@ -304,14 +306,24 @@ abstract class AbstractApi implements ApiInterface
      *
      * @return array
      */
-    public function normalizeParams(array $params)
+    public function normalizeParams(array $params): array
     {
         foreach ($params as $key => $value) {
-            if (false === is_string($value) && false === is_resource($value)) {
+            if (false === \is_string($value) && false === \is_resource($value)) {
                 $params[$key] = json_encode($value);
             }
         }
 
         return $params;
+    }
+
+    private function getResource(string $resourceClass): AbstractResource
+    {
+        return new $resourceClass(
+            $this->client,
+            $this->responseTransformer,
+            $this->apiExceptionTransformer,
+            $this->accessToken
+        );
     }
 }

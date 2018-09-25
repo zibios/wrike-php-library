@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,7 +18,7 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class TaskDatesTypeEnum extends AbstractEnum
 {
-    const BACKLOG = 'Backlog';
-    const MILESTONE = 'Milestone';
-    const PLANNED = 'Planned';
+    public const BACKLOG = 'Backlog';
+    public const MILESTONE = 'Milestone';
+    public const PLANNED = 'Planned';
 }

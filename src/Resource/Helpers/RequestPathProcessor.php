@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -33,14 +35,19 @@ class RequestPathProcessor
      *
      * @return string
      */
-    public function prepareRequestPathForResourceMethod($resourceMethod, $id, array $resourceMethodConfiguration)
-    {
+    public function prepareRequestPathForResourceMethod(
+        $resourceMethod,
+        $id,
+        array $resourceMethodConfiguration
+    ): string {
         $requestPathFormat = $this->calculateRequestPathFormat($resourceMethod, $resourceMethodConfiguration);
 
         switch ($resourceMethod) {
             case ResourceMethodEnum::GET_ALL:
+            case ResourceMethodEnum::CREATE:
+            case ResourceMethodEnum::UPDATE_DEFAULT:
                 IdValidator::assertIsNull($id);
-                $path = sprintf($requestPathFormat, $id);
+                $path = $requestPathFormat;
                 break;
 
             case ResourceMethodEnum::GET_BY_IDS:
@@ -48,11 +55,10 @@ class RequestPathProcessor
                 $path = sprintf($requestPathFormat, implode(',', $id));
                 break;
 
-            case ResourceMethodEnum::GET_ALL_FOR_ACCOUNT:
             case ResourceMethodEnum::GET_ALL_FOR_FOLDER:
             case ResourceMethodEnum::GET_ALL_FOR_TASK:
             case ResourceMethodEnum::GET_ALL_FOR_CONTACT:
-            case ResourceMethodEnum::CREATE_FOR_ACCOUNT:
+            case ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY:
             case ResourceMethodEnum::CREATE_FOR_FOLDER:
             case ResourceMethodEnum::CREATE_FOR_TASK:
             case ResourceMethodEnum::GET_BY_ID:
@@ -83,7 +89,7 @@ class RequestPathProcessor
      *
      * @return string
      */
-    private function calculateRequestPathFormat($resourceMethod, array $resourceMethodConfiguration)
+    private function calculateRequestPathFormat($resourceMethod, array $resourceMethodConfiguration): string
     {
         if (false === array_key_exists($resourceMethod, $resourceMethodConfiguration)) {
             throw new \InvalidArgumentException(

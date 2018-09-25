@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -19,9 +21,9 @@ use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 interface ApiExceptionTransformerInterface
 {
     /**
-     * @param \Exception $exception
+     * @param \Throwable $exception
      *
-     * @return ApiException
+     * @return ApiException|\Throwable
      */
-    public function transform(\Exception $exception);
+    public function transform(\Throwable $exception): \Throwable;
 }

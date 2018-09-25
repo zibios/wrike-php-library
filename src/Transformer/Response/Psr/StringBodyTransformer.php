@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -28,7 +30,7 @@ class StringBodyTransformer extends AbstractPsrResponseTransformer
      * @return string
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function transform($response, $resourceClass)
+    public function transform(ResponseInterface $response, $resourceClass): string
     {
         return $this->transformToStringBody($response);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -31,87 +33,87 @@ use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
 /**
  * General Wrike Api Interface for resource getters.
  */
-interface ApiInterface
+interface ApiInterface extends DeprecatedApiInterface
 {
-    /**
-     * @return ContactResource
-     */
-    public function getContactResource();
-
-    /**
-     * @return UserResource
-     */
-    public function getUserResource();
-
-    /**
-     * @return GroupResource
-     */
-    public function getGroupResource();
-
-    /**
-     * @return InvitationResource
-     */
-    public function getInvitationResource();
-
-    /**
-     * @return AccountResource
-     */
-    public function getAccountResource();
-
-    /**
-     * @return WorkflowResource
-     */
-    public function getWorkflowResource();
-
-    /**
-     * @return CustomFieldResource
-     */
-    public function getCustomFieldResource();
-
-    /**
-     * @return FolderResource
-     */
-    public function getFolderResource();
-
-    /**
-     * @return TaskResource
-     */
-    public function getTaskResource();
-
-    /**
-     * @return CommentResource
-     */
-    public function getCommentResource();
-
-    /**
-     * @return DependencyResource
-     */
-    public function getDependencyResource();
-
-    /**
-     * @return TimelogResource
-     */
-    public function getTimelogResource();
-
-    /**
-     * @return AttachmentResource
-     */
-    public function getAttachmentResource();
-
-    /**
-     * @return VersionResource
-     */
-    public function getVersionResource();
-
-    /**
-     * @return IdResource
-     */
-    public function getIdResource();
-
-    /**
-     * @return ColorResource
-     */
-    public function getColorResource();
+//    /**
+//     * @return ContactResource
+//     */
+//    public function contacts(): ContactResource;
+//
+//    /**
+//     * @return UserResource
+//     */
+//    public function users(): UserResource;
+//
+//    /**
+//     * @return GroupResource
+//     */
+//    public function groups(): GroupResource;
+//
+//    /**
+//     * @return InvitationResource
+//     */
+//    public function invitations(): InvitationResource;
+//
+//    /**
+//     * @return AccountResource
+//     */
+//    public function accounts(): AccountResource;
+//
+//    /**
+//     * @return WorkflowResource
+//     */
+//    public function workflows(): WorkflowResource;
+//
+//    /**
+//     * @return CustomFieldResource
+//     */
+//    public function customFields(): CustomFieldResource;
+//
+//    /**
+//     * @return FolderResource
+//     */
+//    public function folders(): FolderResource;
+//
+//    /**
+//     * @return TaskResource
+//     */
+//    public function tasks(): TaskResource;
+//
+//    /**
+//     * @return CommentResource
+//     */
+//    public function comments(): CommentResource;
+//
+//    /**
+//     * @return DependencyResource
+//     */
+//    public function dependencies(): DependencyResource;
+//
+//    /**
+//     * @return TimelogResource
+//     */
+//    public function timelogs(): TimelogResource;
+//
+//    /**
+//     * @return AttachmentResource
+//     */
+//    public function attachments(): AttachmentResource;
+//
+//    /**
+//     * @return VersionResource
+//     */
+//    public function versions(): VersionResource;
+//
+//    /**
+//     * @return IdResource
+//     */
+//    public function ids(): IdResource;
+//
+//    /**
+//     * @return ColorResource
+//     */
+//    public function colors(): ColorResource;
 
     /**
      * Calculate params in array to format expected by Wrike Api.
@@ -120,5 +122,5 @@ interface ApiInterface
      *
      * @return array
      */
-    public function normalizeParams(array $params);
+    public function normalizeParams(array $params): array;
 }

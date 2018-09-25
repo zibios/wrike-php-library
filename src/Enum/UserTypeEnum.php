@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -19,12 +21,12 @@ class UserTypeEnum extends AbstractEnum
     /**
      * Person.
      */
-    const PERSON = 'Person';
+    public const PERSON = 'Person';
 
     /**
      * Group of users.
      *
      * Group userId can be used in folder/task sharing requests only. It has no effect in other operations.
      */
-    const GROUP = 'Group';
+    public const GROUP = 'Group';
 }

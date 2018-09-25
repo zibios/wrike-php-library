@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,9 +18,10 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DownloadPreviewTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DownloadTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForAccountTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForTaskTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdsTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetPublicUrlTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
@@ -30,10 +33,11 @@ use Zibios\WrikePhpLibrary\Resource\Traits\UploadForTaskTrait;
  */
 class AttachmentResource extends AbstractResource
 {
-    use GetAllForAccountTrait;
+    use GetAllTrait;
     use GetAllForFolderTrait;
     use GetAllForTaskTrait;
     use GetByIdTrait;
+    use GetByIdsTrait;
     use DownloadTrait;
     use DownloadPreviewTrait;
     use GetPublicUrlTrait;
@@ -50,13 +54,14 @@ class AttachmentResource extends AbstractResource
      *
      * @return array
      */
-    protected function getResourceMethodConfiguration()
+    protected function getResourceMethodConfiguration(): array
     {
         return [
-            ResourceMethodEnum::GET_ALL_FOR_ACCOUNT => RequestPathFormatEnum::ATTACHMENTS_FOR_ACCOUNT,
+            ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::ATTACHMENTS,
             ResourceMethodEnum::GET_ALL_FOR_FOLDER => RequestPathFormatEnum::ATTACHMENTS_FOR_FOLDER,
             ResourceMethodEnum::GET_ALL_FOR_TASK => RequestPathFormatEnum::ATTACHMENTS_FOR_TASK,
             ResourceMethodEnum::GET_BY_ID => RequestPathFormatEnum::ATTACHMENTS_BY_ID,
+            ResourceMethodEnum::GET_BY_IDS => RequestPathFormatEnum::ATTACHMENTS_BY_IDS,
             ResourceMethodEnum::DOWNLOAD => RequestPathFormatEnum::ATTACHMENTS_DOWNLOAD,
             ResourceMethodEnum::DOWNLOAD_PREVIEW => RequestPathFormatEnum::ATTACHMENTS_DOWNLOAD_PREVIEW,
             ResourceMethodEnum::GET_PUBLIC_URL => RequestPathFormatEnum::ATTACHMENTS_URL,

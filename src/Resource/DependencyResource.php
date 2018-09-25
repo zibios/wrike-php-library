@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -40,7 +42,7 @@ class DependencyResource extends AbstractResource
      *
      * @return array
      */
-    protected function getResourceMethodConfiguration()
+    protected function getResourceMethodConfiguration(): array
     {
         return [
             ResourceMethodEnum::GET_ALL_FOR_TASK => RequestPathFormatEnum::DEPENDENCIES_FOR_TASK,

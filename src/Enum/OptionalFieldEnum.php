@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -19,30 +21,30 @@ class OptionalFieldEnum extends AbstractEnum
     /**
      * Metadata.
      */
-    const METADATA = 'metadata';
+    public const METADATA = 'metadata';
 
     /**
      * Subscription.
      */
-    const SUBSCRIPTION = 'subscription';
+    public const SUBSCRIPTION = 'subscription';
 
     /**
      * Custom Fields.
      */
-    const CUSTOM_FIELDS = 'customFields';
+    public const CUSTOM_FIELDS = 'customFields';
 
     /**
      * Brief Description.
      */
-    const BRIEF_DESCRIPTION = 'briefDescription';
+    public const BRIEF_DESCRIPTION = 'briefDescription';
 
     /**
      * Custom Column Ids.
      */
-    const CUSTOM_COLUMN_IDS = 'customColumnIds';
+    public const CUSTOM_COLUMN_IDS = 'customColumnIds';
 
     /**
      * Attachment Count.
      */
-    const ATTACHMENT_COUNT = 'attachmentCount';
+    public const ATTACHMENT_COUNT = 'attachmentCount';
 }

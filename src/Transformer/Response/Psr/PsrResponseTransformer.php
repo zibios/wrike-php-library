@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -27,7 +29,7 @@ class PsrResponseTransformer extends AbstractPsrResponseTransformer
      * @return ResponseInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function transform($response, $resourceClass)
+    public function transform(ResponseInterface $response, $resourceClass): ResponseInterface
     {
         return $this->transformToPsrResponse($response);
     }

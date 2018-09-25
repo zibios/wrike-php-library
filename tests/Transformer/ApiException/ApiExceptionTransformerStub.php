@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -11,6 +13,7 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Transformer\ApiException;
 
+use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 use Zibios\WrikePhpLibrary\Transformer\ApiException\AbstractApiExceptionTransformer;
 
 /**
@@ -19,16 +22,16 @@ use Zibios\WrikePhpLibrary\Transformer\ApiException\AbstractApiExceptionTransfor
 class ApiExceptionTransformerStub extends AbstractApiExceptionTransformer
 {
     /**
-     * @param \Exception $e
+     * @param \Throwable $e
      *
-     * @return \Exception
+     * @return \Throwable
      */
-    public function transform(\Exception $e)
+    public function transform(\Throwable $e): \Throwable
     {
         return $e;
     }
 
-    public function transformByStatusCodeAndName(\Exception $exception, $errorStatusCode, $errorStatusName)
+    public function transformByStatusCodeAndName(\Throwable $exception, $errorStatusCode, $errorStatusName): ApiException
     {
         return parent::transformByStatusCodeAndName(
             $exception,

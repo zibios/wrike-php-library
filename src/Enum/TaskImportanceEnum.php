@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,7 +18,7 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class TaskImportanceEnum extends AbstractEnum
 {
-    const HIGH = 'High';
-    const NORMAL = 'Normal';
-    const LOW = 'Low';
+    public const HIGH = 'High';
+    public const NORMAL = 'Normal';
+    public const LOW = 'Low';
 }

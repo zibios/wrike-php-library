@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -22,7 +24,7 @@ class AccessTokenValidatorTest extends TestCase
     /**
      * @return array
      */
-    public function validTokenProvider()
+    public function validTokenProvider(): array
     {
         return [
             // value, isValid
@@ -41,7 +43,7 @@ class AccessTokenValidatorTest extends TestCase
      *
      * @dataProvider validTokenProvider
      */
-    public function test_isValidMethods($value, $isValid)
+    public function test_isValidMethods($value, $isValid): void
     {
         self::assertSame($isValid, AccessTokenValidator::isValid($value), sprintf('validation string "%s"', $value));
 
@@ -49,7 +51,7 @@ class AccessTokenValidatorTest extends TestCase
 
         try {
             AccessTokenValidator::assertIsValid($value);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $withoutException = false;
         }
         self::assertSame($isValid, $withoutException, sprintf('assert string "%s"', $value));
@@ -58,7 +60,7 @@ class AccessTokenValidatorTest extends TestCase
     /**
      * @return array
      */
-    public function validOrEmptyTokenProvider()
+    public function validOrEmptyTokenProvider(): array
     {
         return [
             // value, isValid
@@ -77,7 +79,7 @@ class AccessTokenValidatorTest extends TestCase
      *
      * @dataProvider validOrEmptyTokenProvider
      */
-    public function test_isValidOrEmptyMethods($value, $isValid)
+    public function test_isValidOrEmptyMethods($value, $isValid): void
     {
         self::assertSame($isValid, AccessTokenValidator::isValidOrEmpty($value), sprintf('validation string "%s"', $value));
 
@@ -85,7 +87,7 @@ class AccessTokenValidatorTest extends TestCase
 
         try {
             AccessTokenValidator::assertIsValidOrEmpty($value);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $withoutException = false;
         }
         self::assertSame($isValid, $withoutException, sprintf('assert string "%s"', $value));

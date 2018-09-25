@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -32,7 +34,7 @@ class Api extends AbstractApi implements ImmutableApiInterface
      *
      * @return $this
      */
-    public function recreateForNewAccessToken($accessToken)
+    public function recreateForNewAccessToken($accessToken): self
     {
         AccessTokenValidator::assertIsValid($accessToken);
 
@@ -46,7 +48,7 @@ class Api extends AbstractApi implements ImmutableApiInterface
      *
      * @return $this
      */
-    public function recreateForNewApiExceptionTransformer(ApiExceptionTransformerInterface $apiExceptionTransformer)
+    public function recreateForNewApiExceptionTransformer(ApiExceptionTransformerInterface $apiExceptionTransformer): self
     {
         return new self($this->client, $this->responseTransformer, $apiExceptionTransformer, $this->accessToken);
     }
@@ -58,7 +60,7 @@ class Api extends AbstractApi implements ImmutableApiInterface
      *
      * @return $this
      */
-    public function recreateForNewResponseTransformer(ResponseTransformerInterface $responseTransformer)
+    public function recreateForNewResponseTransformer(ResponseTransformerInterface $responseTransformer): self
     {
         return new self($this->client, $responseTransformer, $this->apiExceptionTransformer, $this->accessToken);
     }

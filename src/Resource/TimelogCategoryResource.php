@@ -18,9 +18,9 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
 
 /**
- * Color Resource.
+ * Timelog Category Resource.
  */
-class ColorResource extends AbstractResource
+class TimelogCategoryResource extends AbstractResource
 {
     use GetAllTrait;
 
@@ -35,7 +35,7 @@ class ColorResource extends AbstractResource
     protected function getResourceMethodConfiguration(): array
     {
         return [
-            ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::COLORS,
+            ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::TIMELOG_CATEGORIES,
         ];
     }
 }

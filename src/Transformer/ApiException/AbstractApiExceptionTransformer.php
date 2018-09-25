@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -44,17 +46,20 @@ abstract class AbstractApiExceptionTransformer implements ApiExceptionTransforme
     ];
 
     /**
-     * @param \Exception $exception
+     * @param \Throwable $exception
      * @param int        $errorStatusCode
      * @param string     $errorStatusName
      *
      * @return ApiException
      */
-    protected function transformByStatusCodeAndName(\Exception $exception, $errorStatusCode, $errorStatusName)
-    {
+    protected function transformByStatusCodeAndName(
+        \Throwable $exception,
+        $errorStatusCode,
+        $errorStatusName
+    ): ApiException {
         foreach ($this->supportedApiExceptions as $apiExceptionClass) {
-            $statusCode = constant($apiExceptionClass . '::STATUS_CODE');
-            $statusName = constant($apiExceptionClass . '::STATUS_NAME');
+            $statusCode = \constant($apiExceptionClass.'::STATUS_CODE');
+            $statusName = \constant($apiExceptionClass.'::STATUS_NAME');
             if ($errorStatusCode === $statusCode && $errorStatusName === $statusName) {
                 return new $apiExceptionClass($exception);
             }

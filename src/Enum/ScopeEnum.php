@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,15 +18,15 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class ScopeEnum extends AbstractEnum
 {
-    const SCOPE_DEFAULT = 'Default';
-    const WS_READ_ONLY = 'wsReadOnly';
-    const WS_READ_WRITE = 'wsReadWrite';
-    const AM_READ_ONLY_WORKFLOW = 'amReadOnlyWorkflow';
-    const AM_READ_WRITE_WORKFLOW = 'amReadWriteWorkflow';
-    const AM_READ_ONLY_INVITATION = 'amReadOnlyInvitation';
-    const AM_READ_WRITE_INVITATION = 'amReadWriteInvitation';
-    const AM_READ_ONLY_GROUP = 'amReadOnlyGroup';
-    const AM_READ_WRITE_GROUP = 'amReadWriteGroup';
-    const AM_READ_ONLY_USER = 'amReadOnlyUser';
-    const AM_READ_WRITE_USER = 'amReadWriteUser';
+    public const SCOPE_DEFAULT = 'Default';
+    public const WS_READ_ONLY = 'wsReadOnly';
+    public const WS_READ_WRITE = 'wsReadWrite';
+    public const AM_READ_ONLY_WORKFLOW = 'amReadOnlyWorkflow';
+    public const AM_READ_WRITE_WORKFLOW = 'amReadWriteWorkflow';
+    public const AM_READ_ONLY_INVITATION = 'amReadOnlyInvitation';
+    public const AM_READ_WRITE_INVITATION = 'amReadWriteInvitation';
+    public const AM_READ_ONLY_GROUP = 'amReadOnlyGroup';
+    public const AM_READ_WRITE_GROUP = 'amReadWriteGroup';
+    public const AM_READ_ONLY_USER = 'amReadOnlyUser';
+    public const AM_READ_WRITE_USER = 'amReadWriteUser';
 }

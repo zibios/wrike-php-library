@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -11,23 +13,18 @@
 
 namespace Zibios\WrikePhpLibrary\Transformer;
 
+use Psr\Http\Message\ResponseInterface;
+
 /**
  * Response Transformer Interface.
  */
 interface ResponseTransformerInterface
 {
     /**
-     * @param string $responseFormat
-     *
-     * @return bool
-     */
-    public function isSupportedResponseFormat($responseFormat);
-
-    /**
-     * @param mixed  $response
-     * @param string $resourceClass
+     * @param ResponseInterface $response
+     * @param string            $resourceClass
      *
      * @return mixed
      */
-    public function transform($response, $resourceClass);
+    public function transform(ResponseInterface $response, $resourceClass);
 }

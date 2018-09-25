@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -28,7 +30,7 @@ class WorkflowResourceTest extends ResourceTestCase
     /**
      * @return array
      */
-    public function methodsProvider()
+    public function methodsProvider(): array
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
@@ -40,17 +42,17 @@ class WorkflowResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/workflows', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
+                    'methodName' => ResourceMethodEnum::GET_ALL,
+                    'endpointPath' => 'workflows',
+                    'additionalParams' => [],
                 ] + $baseData,
             ],
             [
                 [
                     'requestMethod' => RequestMethodEnum::POST,
-                    'methodName' => ResourceMethodEnum::CREATE_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/workflows', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
+                    'methodName' => ResourceMethodEnum::CREATE,
+                    'endpointPath' => 'workflows',
+                    'additionalParams' => [],
                 ] + $baseData,
             ],
             [

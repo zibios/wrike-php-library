@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -13,9 +15,9 @@ namespace Zibios\WrikePhpLibrary\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\Traits\CreateForAccountTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\CreateTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForAccountTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 
 /**
@@ -23,8 +25,8 @@ use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
  */
 class InvitationResource extends AbstractResource
 {
-    use GetAllForAccountTrait;
-    use CreateForAccountTrait;
+    use GetAllTrait;
+    use CreateTrait;
     use UpdateTrait;
     use DeleteTrait;
 
@@ -36,11 +38,11 @@ class InvitationResource extends AbstractResource
      *
      * @return array
      */
-    protected function getResourceMethodConfiguration()
+    protected function getResourceMethodConfiguration(): array
     {
         return [
-            ResourceMethodEnum::GET_ALL_FOR_ACCOUNT => RequestPathFormatEnum::INVITATIONS_FOR_ACCOUNT,
-            ResourceMethodEnum::CREATE_FOR_ACCOUNT => RequestPathFormatEnum::INVITATIONS_FOR_ACCOUNT,
+            ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::INVITATIONS,
+            ResourceMethodEnum::CREATE => RequestPathFormatEnum::INVITATIONS,
             ResourceMethodEnum::UPDATE => RequestPathFormatEnum::INVITATIONS_BY_ID,
             ResourceMethodEnum::DELETE => RequestPathFormatEnum::INVITATIONS_BY_ID,
         ];

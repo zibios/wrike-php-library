@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -24,7 +26,6 @@ use Zibios\WrikePhpLibrary\Transformer\Response\Psr\ArrayBodyTransformer;
 use Zibios\WrikePhpLibrary\Transformer\Response\Psr\PsrBodyTransformer;
 use Zibios\WrikePhpLibrary\Transformer\Response\Psr\PsrResponseTransformer;
 use Zibios\WrikePhpLibrary\Transformer\Response\Psr\StringBodyTransformer;
-use Zibios\WrikePhpLibrary\Transformer\Response\RawResponseTransformer;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
@@ -32,9 +33,9 @@ use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
  */
 abstract class ResourceTestCase extends TestCase
 {
-    const UNIQUE_ID = 'uniqueId';
-    const VALID_ID = 'validId';
-    const INVALID_ID = 'wrongId';
+    public const UNIQUE_ID = 'uniqueId';
+    public const VALID_ID = 'validId';
+    public const INVALID_ID = 'wrongId';
 
     /**
      * @var string
@@ -44,18 +45,11 @@ abstract class ResourceTestCase extends TestCase
     /**
      * Test exception inheritance.
      */
-    public function test_ExtendProperClasses()
+    public function test_ExtendProperClasses(): void
     {
         $accessTokenMock = 'token';
-        $responseFormatMock = 'responseFormat';
         $clientMock = $this->getMockBuilder(ClientInterface::class)->getMock();
-        $clientMock->expects(self::any())
-            ->method('getResponseFormat')
-            ->willReturn($responseFormatMock);
         $responseTransformerMock = $this->getMockBuilder(ResponseTransformerInterface::class)->getMock();
-        $responseTransformerMock->expects(self::any())
-            ->method('isSupportedResponseFormat')
-            ->willReturn(true);
         $apiExceptionTransformerMock = $this->getMockBuilder(ApiExceptionTransformerInterface::class)->getMock();
         $resource = new $this->sourceClass(
             $clientMock,
@@ -67,33 +61,32 @@ abstract class ResourceTestCase extends TestCase
         self::assertInstanceOf(
             AbstractResource::class,
             $resource,
-            sprintf('"%s" should extend "%s"', get_class($resource), AbstractResource::class)
+            sprintf('"%s" should extend "%s"', \get_class($resource), AbstractResource::class)
         );
         self::assertInstanceOf(
             ResourceInterface::class,
             $resource,
-            sprintf('"%s" should extend "%s"', get_class($resource), ResourceInterface::class)
+            sprintf('"%s" should extend "%s"', \get_class($resource), ResourceInterface::class)
         );
     }
 
     /**
      * @return array
      */
-    abstract public function methodsProvider();
+    abstract public function methodsProvider(): array;
 
     /**
      * @param array $methodData
      *
      * @dataProvider methodsProvider
      */
-    public function test_methods($methodData)
+    public function test_methods($methodData): void
     {
         $transformerClasses = [
             PsrResponseTransformer::class,
             PsrBodyTransformer::class,
             StringBodyTransformer::class,
             ArrayBodyTransformer::class,
-            RawResponseTransformer::class,
         ];
 
         foreach ($transformerClasses as $transformerClass) {
@@ -103,7 +96,7 @@ abstract class ResourceTestCase extends TestCase
         }
     }
 
-    public function test_testMethodsProvider()
+    public function test_testMethodsProvider(): void
     {
         $class = new \ReflectionClass($this->sourceClass);
         $expectedMethodNames = $class->getMethods(\ReflectionMethod::IS_PUBLIC);
@@ -126,7 +119,7 @@ abstract class ResourceTestCase extends TestCase
 
     public function returnExceptionCallback()
     {
-        $args = func_get_args();
+        $args = \func_get_args();
 
         return $args[0];
     }
@@ -137,7 +130,7 @@ abstract class ResourceTestCase extends TestCase
      *
      * @return AbstractResource
      */
-    private function prepareResourceWithClientMock($methodData, $transformerClass)
+    private function prepareResourceWithClientMock($methodData, $transformerClass): AbstractResource
     {
         $accessTokenMock = 'test';
         $bodyMock = $this->getMockForAbstractClass(StreamInterface::class);
@@ -180,7 +173,7 @@ abstract class ResourceTestCase extends TestCase
     private function prepareResponseForMethod(array $methodData, AbstractResource $resource)
     {
         $response = null;
-        switch (count($methodData['additionalParams'])) {
+        switch (\count($methodData['additionalParams'])) {
             case 0:
                 $response = $resource->{$methodData['methodName']}();
                 break;
@@ -196,7 +189,7 @@ abstract class ResourceTestCase extends TestCase
                 );
                 break;
             default:
-                self::assertLessThanOrEqual(2, count($methodData['additionalParams']));
+                self::assertLessThanOrEqual(2, \count($methodData['additionalParams']));
         }
 
         return $response;
@@ -207,7 +200,7 @@ abstract class ResourceTestCase extends TestCase
      * @param string $transformerClass
      * @param mixed  $response
      */
-    private function executeAssertsForMethod(array $methodData, $transformerClass, $response)
+    private function executeAssertsForMethod(array $methodData, $transformerClass, $response): void
     {
         if (ResourceMethodEnum::DOWNLOAD === $methodData['methodName'] ||
             ResourceMethodEnum::DOWNLOAD_PREVIEW === $methodData['methodName']) {
@@ -238,16 +231,11 @@ abstract class ResourceTestCase extends TestCase
                 self::assertInternalType('array', $response);
                 $bodyArray = $response;
                 break;
-            case RawResponseTransformer::class:
-                /* @var ResponseInterface $response */
-                self::assertInstanceOf(ResponseInterface::class, $response);
-                $bodyArray = json_decode($response->getBody()->getContents(), true);
-                break;
             default:
                 self::assertTrue(false);
                 break;
         }
 
-        self::assertEquals(json_decode($methodData['body'], true), $bodyArray);
+        self::assertSame(json_decode($methodData['body'], true), $bodyArray);
     }
 }

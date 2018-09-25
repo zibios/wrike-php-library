@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -21,5 +23,5 @@ class StubEnum extends UserRoleEnum
     /**
      * User.
      */
-    const FOO = 'BAR';
+    public const FOO = 'BAR';
 }

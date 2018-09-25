@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -26,11 +28,11 @@ trait UploadForTaskTrait
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws \Throwable
      *
      * @return mixed
      */
-    public function uploadForTask($id, array $params = [])
+    public function uploadForTask(string $id, array $params = [])
     {
         return $this->executeRequest(
             RequestMethodEnum::UPLOAD,
@@ -49,13 +51,13 @@ trait UploadForTaskTrait
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws \Throwable
      *
      * @return mixed
      */
     abstract protected function executeRequest(
-        $requestMethod,
-        $requestScope,
+        string $requestMethod,
+        string $requestScope,
         array $params,
         $id
     );

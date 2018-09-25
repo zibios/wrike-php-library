@@ -257,7 +257,7 @@ $api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
 
 $newApi = $api->recreateForNewAccessToken(<PermanentToken>);
 
-$responseTransformer = new RawResponseTransformer();
+$responseTransformer = new ArrayBodyTransformer();
 $newApi = $api->recreateForNewResponseTransformer($responseTransformer);
 
 $apiExceptionTransformer = new RawExceptionTransformer();
@@ -272,7 +272,6 @@ Response can be returned in various formats according to used response transform
 | PsrBodyTransformer       | Psr\Http\Message\StreamInterface   | PSR response body                       |
 | StringBodyTransformer    | JSON string                        | PSR response body casted to JSON string |
 | ArrayBodyTransformer     | array                              | PSR response body casted to array       |
-| ArrayTransformer         | array                              | JSON response casted to array           |
 | ResponseModelTransformer | ResponseModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
 | ResourceModelTransformer | ResourceModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
 

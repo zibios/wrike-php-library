@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -17,9 +15,9 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 
 /**
- * GetAllForContact Trait.
+ * Create Trait.
  */
-trait GetAllForContactTrait
+trait CreateTrait
 {
     /**
      * @param string     $id
@@ -28,17 +26,17 @@ trait GetAllForContactTrait
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \Throwable
+     * @throws \Exception
      *
      * @return mixed
      */
-    public function getAllForContact(string $id, array $params = [])
+    public function create(array $params = [])
     {
         return $this->executeRequest(
-            RequestMethodEnum::GET,
-            ResourceMethodEnum::GET_ALL_FOR_CONTACT,
+            RequestMethodEnum::POST,
+            ResourceMethodEnum::CREATE,
             $params,
-            $id
+            null
         );
     }
 
@@ -51,7 +49,7 @@ trait GetAllForContactTrait
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \Throwable
+     * @throws \Exception
      *
      * @return mixed
      */

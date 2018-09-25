@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -25,12 +27,12 @@ class ArrayBodyTransformerTest extends PsrResponseTransformerTestCase
      */
     protected $object;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->object = new ArrayBodyTransformer();
     }
 
-    public function test_transform()
+    public function test_transform(): void
     {
         $responseArray = ['key' => 'value', 'number' => 100];
         $responseString = json_encode($responseArray);

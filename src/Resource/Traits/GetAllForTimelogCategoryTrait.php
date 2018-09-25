@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -15,9 +17,9 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 
 /**
- * GetAllForAccount Trait.
+ * GetAllForTimelogCategory Trait.
  */
-trait GetAllForAccountTrait
+trait GetAllForTimelogCategoryTrait
 {
     /**
      * @param string     $id
@@ -26,15 +28,15 @@ trait GetAllForAccountTrait
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws \Throwable
      *
      * @return mixed
      */
-    public function getAllForAccount($id, array $params = [])
+    public function getAllForTimelogCategory(string $id, array $params = [])
     {
         return $this->executeRequest(
             RequestMethodEnum::GET,
-            ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
+            ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY,
             $params,
             $id
         );
@@ -49,13 +51,13 @@ trait GetAllForAccountTrait
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws \Throwable
      *
      * @return mixed
      */
     abstract protected function executeRequest(
-        $requestMethod,
-        $requestScope,
+        string $requestMethod,
+        string $requestScope,
         array $params,
         $id
     );

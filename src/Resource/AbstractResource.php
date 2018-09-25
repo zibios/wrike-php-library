@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -82,7 +84,7 @@ abstract class AbstractResource implements ResourceInterface
         ClientInterface $client,
         ResponseTransformerInterface $responseTransformer,
         ApiExceptionTransformerInterface $apiExceptionTransformer,
-        $accessToken
+        string $accessToken
     ) {
         AccessTokenValidator::isValidOrEmpty($accessToken);
 
@@ -102,7 +104,7 @@ abstract class AbstractResource implements ResourceInterface
      *
      * @return array
      */
-    abstract protected function getResourceMethodConfiguration();
+    abstract protected function getResourceMethodConfiguration(): array;
 
     /**
      * @param string            $requestMethod
@@ -113,11 +115,11 @@ abstract class AbstractResource implements ResourceInterface
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws \Throwable
      *
      * @return mixed
      */
-    protected function executeRequest($requestMethod, $resourceMethod, array $params, $id)
+    protected function executeRequest(string $requestMethod, string $resourceMethod, array $params, $id)
     {
         RequestMethodEnum::assertIsValidValue($requestMethod);
         ResourceMethodEnum::assertIsValidValue($resourceMethod);
@@ -137,7 +139,7 @@ abstract class AbstractResource implements ResourceInterface
                 $params,
                 $this->accessToken
             );
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             throw $this->apiExceptionTransformer->transform($e);
         }
 

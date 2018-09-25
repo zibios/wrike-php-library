@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -13,7 +15,7 @@ namespace Zibios\WrikePhpLibrary\Tests;
 
 use Zibios\WrikePhpLibrary\Api;
 use Zibios\WrikePhpLibrary\Transformer\ApiException\RawExceptionTransformer;
-use Zibios\WrikePhpLibrary\Transformer\Response\RawResponseTransformer;
+use Zibios\WrikePhpLibrary\Transformer\Response\Psr\PsrResponseTransformer;
 
 /**
  * Api Test.
@@ -30,13 +32,13 @@ class ApiTest extends ApiTestCase
      */
     protected $sourceClass = Api::class;
 
-    public function test_immutableMethods()
+    public function test_immutableMethods(): void
     {
         $response = $this->object->recreateForNewAccessToken('test');
         self::assertNotSame($this->object, $response);
         self::assertInstanceOf($this->sourceClass, $response);
 
-        $response = $this->object->recreateForNewResponseTransformer(new RawResponseTransformer());
+        $response = $this->object->recreateForNewResponseTransformer(new PsrResponseTransformer());
         self::assertNotSame($this->object, $response);
         self::assertInstanceOf($this->sourceClass, $response);
 

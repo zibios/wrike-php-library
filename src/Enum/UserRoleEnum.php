@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -19,10 +21,10 @@ class UserRoleEnum extends AbstractEnum
     /**
      * User.
      */
-    const USER = 'User';
+    public const USER = 'User';
 
     /**
      * Collaborator.
      */
-    const COLLABORATOR = 'Collaborator';
+    public const COLLABORATOR = 'Collaborator';
 }

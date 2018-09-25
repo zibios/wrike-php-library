@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -18,22 +20,23 @@ use Zibios\WrikePhpLibrary\Enum\AbstractEnum;
  */
 class ResourceMethodEnum extends AbstractEnum
 {
-    const GET_ALL = 'getAll';
-    const GET_ALL_FOR_ACCOUNT = 'getAllForAccount';
-    const GET_ALL_FOR_FOLDER = 'getAllForFolder';
-    const GET_ALL_FOR_TASK = 'getAllForTask';
-    const GET_ALL_FOR_CONTACT = 'getAllForContact';
-    const GET_BY_ID = 'getById';
-    const GET_BY_IDS = 'getByIds';
-    const CREATE_FOR_ACCOUNT = 'createForAccount';
-    const CREATE_FOR_FOLDER = 'createForFolder';
-    const CREATE_FOR_TASK = 'createForTask';
-    const COPY = 'copy';
-    const UPDATE = 'update';
-    const DELETE = 'delete';
-    const DOWNLOAD = 'download';
-    const DOWNLOAD_PREVIEW = 'downloadPreview';
-    const GET_PUBLIC_URL = 'getPublicUrl';
-    const UPLOAD_FOR_FOLDER = 'uploadForFolder';
-    const UPLOAD_FOR_TASK = 'uploadForTask';
+    public const GET_ALL = 'getAll';
+    public const GET_ALL_FOR_FOLDER = 'getAllForFolder';
+    public const GET_ALL_FOR_TASK = 'getAllForTask';
+    public const GET_ALL_FOR_CONTACT = 'getAllForContact';
+    public const GET_ALL_FOR_TIMELOG_CATEGORY = 'getAllForTimelogCategory';
+    public const GET_BY_ID = 'getById';
+    public const GET_BY_IDS = 'getByIds';
+    public const CREATE = 'create';
+    public const CREATE_FOR_FOLDER = 'createForFolder';
+    public const CREATE_FOR_TASK = 'createForTask';
+    public const COPY = 'copy';
+    public const UPDATE = 'update';
+    public const UPDATE_DEFAULT = 'updateDefault';
+    public const DELETE = 'delete';
+    public const DOWNLOAD = 'download';
+    public const DOWNLOAD_PREVIEW = 'downloadPreview';
+    public const GET_PUBLIC_URL = 'getPublicUrl';
+    public const UPLOAD_FOR_FOLDER = 'uploadForFolder';
+    public const UPLOAD_FOR_TASK = 'uploadForTask';
 }
