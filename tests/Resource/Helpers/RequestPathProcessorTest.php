@@ -76,6 +76,14 @@ class RequestPathProcessorTest extends TestCase
             ],
             [
                 [
+                    'resourceMethod' => ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY,
+                    'resourceMethodConfiguration' => [ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY => 'test/%s'],
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
+            ],
+            [
+                [
                     'resourceMethod' => ResourceMethodEnum::CREATE,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::CREATE => 'test'],
                     'id' => null,
