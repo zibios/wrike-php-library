@@ -100,6 +100,7 @@ $api->getAttachmentResource()->getAllForAccount($accountId);
 $api->getAttachmentResource()->getAllForFolder($folderId);
 $api->getAttachmentResource()->getAllForTask($taskId);
 $api->getAttachmentResource()->getById($attachmentId);
+$api->getAttachmentResource()->getByIds([$attachmentId]);
 $api->getAttachmentResource()->update($attachmentId, $params);
 $api->getAttachmentResource()->uploadForFolder($attachmentId, $params);
 $api->getAttachmentResource()->uploadForTask($attachmentId, $params);
@@ -178,10 +179,13 @@ $api->getTimelogResource()->getAllForAccount($accountId);
 $api->getTimelogResource()->getAllForFolder($folderId);
 $api->getTimelogResource()->getAllForTask($taskId);
 $api->getTimelogResource()->getAllForContact($contactId);
+$api->getTimelogResource()->getAllForTimelogCategory($timelogCategoryId);
 $api->getTimelogResource()->getById($timelogId);
 $api->getTimelogResource()->update($timelogId, $params);
 $api->getTimelogResource()->createForTask($taskId, $params);
 $api->getTimelogResource()->delete($timelogId);
+
+$api->getTimelogCategoryResource()->getAll();
 
 $api->getUserResource()->getById($userId);
 $api->getUserResource()->update($userId, $params);
@@ -265,6 +269,9 @@ $apiExceptionTransformer = new RawExceptionTransformer();
 $newApi = $api->recreateForNewApiExceptionTransformer($apiExceptionTransformer);
 ```
 
+Response transformers
+---------------------
+
 Response can be returned in various formats according to used response transformer
 
 | Transformer              | Response                           | Comment                                 |
@@ -276,6 +283,27 @@ Response can be returned in various formats according to used response transform
 | ArrayTransformer         | array                              | JSON response casted to array           |
 | ResponseModelTransformer | ResponseModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
 | ResourceModelTransformer | ResourceModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
+
+ENUM's
+------
+
+- AttachmentTypeEnum
+- CustomFieldTypeEnum
+- CustomStatusColorEnum
+- DependencyRelationTypeEnum
+- InvitationStatusEnum
+- LegacyEntityTypeEnum
+- OptionalFieldEnum
+- ProjectStatusEnum
+- ScopeEnum
+- SubscriptionTypeEnum
+- TaskDatesTypeEnum
+- TaskImportanceEnum
+- TaskStatusEnum
+- TreeScopeEnum
+- UserRoleEnum
+- UserTypeEnum
+- WeekDayEnum
 
 Reference
 ---------

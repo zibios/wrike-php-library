@@ -29,7 +29,7 @@ trait UpdateDefaultTrait
      *
      * @return mixed
      */
-    public function UpdateDefault(array $params = [])
+    public function updateDefault(array $params = [])
     {
         return $this->executeRequest(
             RequestMethodEnum::PUT,
