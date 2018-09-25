@@ -39,8 +39,10 @@ class RequestPathProcessor
 
         switch ($resourceMethod) {
             case ResourceMethodEnum::GET_ALL:
+            case ResourceMethodEnum::CREATE:
+            case ResourceMethodEnum::UPDATE_DEFAULT:
                 IdValidator::assertIsNull($id);
-                $path = sprintf($requestPathFormat, $id);
+                $path = $requestPathFormat;
                 break;
 
             case ResourceMethodEnum::GET_BY_IDS:
@@ -48,11 +50,10 @@ class RequestPathProcessor
                 $path = sprintf($requestPathFormat, implode(',', $id));
                 break;
 
-            case ResourceMethodEnum::GET_ALL_FOR_ACCOUNT:
             case ResourceMethodEnum::GET_ALL_FOR_FOLDER:
             case ResourceMethodEnum::GET_ALL_FOR_TASK:
             case ResourceMethodEnum::GET_ALL_FOR_CONTACT:
-            case ResourceMethodEnum::CREATE_FOR_ACCOUNT:
+            case ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY:
             case ResourceMethodEnum::CREATE_FOR_FOLDER:
             case ResourceMethodEnum::CREATE_FOR_TASK:
             case ResourceMethodEnum::GET_BY_ID:

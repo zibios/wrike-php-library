@@ -40,17 +40,17 @@ class InvitationResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/invitations', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
+                    'methodName' => ResourceMethodEnum::GET_ALL,
+                    'endpointPath' => 'invitations',
+                    'additionalParams' => [],
                 ] + $baseData,
             ],
             [
                 [
                     'requestMethod' => RequestMethodEnum::POST,
-                    'methodName' => ResourceMethodEnum::CREATE_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/invitations', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
+                    'methodName' => ResourceMethodEnum::CREATE,
+                    'endpointPath' => 'invitations',
+                    'additionalParams' => [],
                 ] + $baseData,
             ],
             [

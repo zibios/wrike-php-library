@@ -79,12 +79,12 @@ class ApiExceptionTransformerTest extends TestCase
         self::assertInstanceOf(
             $expectedExceptionClass,
             $normalizedException,
-            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException))
+            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, \get_class($normalizedException))
         );
         self::assertInstanceOf(
             ApiException::class,
             $normalizedException,
-            sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException))
+            sprintf('"%s expected, "%s" received"', ApiException::class, \get_class($normalizedException))
         );
     }
 }

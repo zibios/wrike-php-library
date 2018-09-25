@@ -30,7 +30,7 @@ abstract class AbstractEnum
      */
     public static function toArray()
     {
-        $class = get_called_class();
+        $class = static::class;
         if (!array_key_exists($class, static::$cache)) {
             $reflection = new \ReflectionClass($class);
             static::$cache[$class] = $reflection->getConstants();

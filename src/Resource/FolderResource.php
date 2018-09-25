@@ -16,9 +16,8 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\CopyTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\CreateForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForAccountTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdsTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
@@ -29,7 +28,6 @@ use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 class FolderResource extends AbstractResource
 {
     use GetAllTrait;
-    use GetAllForAccountTrait;
     use GetAllForFolderTrait;
     use GetByIdTrait;
     use GetByIdsTrait;
@@ -50,7 +48,6 @@ class FolderResource extends AbstractResource
     {
         return [
             ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::FOLDERS,
-            ResourceMethodEnum::GET_ALL_FOR_ACCOUNT => RequestPathFormatEnum::FOLDERS_FOR_ACCOUNT,
             ResourceMethodEnum::GET_ALL_FOR_FOLDER => RequestPathFormatEnum::FOLDERS_FOR_FOLDER,
             ResourceMethodEnum::GET_BY_ID => RequestPathFormatEnum::FOLDERS_BY_ID,
             ResourceMethodEnum::GET_BY_IDS => RequestPathFormatEnum::FOLDERS_BY_IDS,

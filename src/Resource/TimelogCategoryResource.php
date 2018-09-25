@@ -13,20 +13,14 @@ namespace Zibios\WrikePhpLibrary\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\Traits\CreateTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 
 /**
- * Invitation Resource.
+ * Timelog Category Resource.
  */
-class InvitationResource extends AbstractResource
+class TimelogCategoryResource extends AbstractResource
 {
     use GetAllTrait;
-    use CreateTrait;
-    use UpdateTrait;
-    use DeleteTrait;
 
     /**
      * Return connection array ResourceMethod => RequestPathFormat.
@@ -39,10 +33,7 @@ class InvitationResource extends AbstractResource
     protected function getResourceMethodConfiguration()
     {
         return [
-            ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::INVITATIONS,
-            ResourceMethodEnum::CREATE => RequestPathFormatEnum::INVITATIONS,
-            ResourceMethodEnum::UPDATE => RequestPathFormatEnum::INVITATIONS_BY_ID,
-            ResourceMethodEnum::DELETE => RequestPathFormatEnum::INVITATIONS_BY_ID,
+            ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::TIMELOG_CATEGORIES,
         ];
     }
 }

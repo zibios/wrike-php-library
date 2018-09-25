@@ -56,14 +56,6 @@ class TimelogResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/timelogs', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
-                ] + $baseData,
-            ],
-            [
-                [
-                    'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_ALL_FOR_FOLDER,
                     'endpointPath' => sprintf('folders/%s/timelogs', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
@@ -74,6 +66,14 @@ class TimelogResourceTest extends ResourceTestCase
                     'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_ALL_FOR_TASK,
                     'endpointPath' => sprintf('tasks/%s/timelogs', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::GET,
+                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY,
+                    'endpointPath' => sprintf('timelog_categories/%s/timelogs', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],

@@ -48,14 +48,6 @@ class ContactResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/contacts', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
-                ] + $baseData,
-            ],
-            [
-                [
-                    'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_BY_ID,
                     'endpointPath' => sprintf('contacts/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],

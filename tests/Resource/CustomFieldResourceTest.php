@@ -48,14 +48,6 @@ class CustomFieldResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/customfields', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
-                ] + $baseData,
-            ],
-            [
-                [
-                    'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_BY_ID,
                     'endpointPath' => sprintf('customfields/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
@@ -72,9 +64,9 @@ class CustomFieldResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::POST,
-                    'methodName' => ResourceMethodEnum::CREATE_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/customfields', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
+                    'methodName' => ResourceMethodEnum::CREATE,
+                    'endpointPath' => 'customfields',
+                    'additionalParams' => [],
                 ] + $baseData,
             ],
             [

@@ -48,14 +48,6 @@ class FolderResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/folders', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
-                ] + $baseData,
-            ],
-            [
-                [
-                    'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_ALL_FOR_FOLDER,
                     'endpointPath' => sprintf('folders/%s/folders', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],

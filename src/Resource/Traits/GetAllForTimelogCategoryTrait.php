@@ -15,9 +15,9 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 
 /**
- * CreateForAccount Trait.
+ * GetAllForTimelogCategory Trait.
  */
-trait CreateForAccountTrait
+trait GetAllForTimelogCategoryTrait
 {
     /**
      * @param string     $id
@@ -30,11 +30,11 @@ trait CreateForAccountTrait
      *
      * @return mixed
      */
-    public function createForAccount($id, array $params = [])
+    public function getAllForTimelogCategory($id, array $params = [])
     {
         return $this->executeRequest(
-            RequestMethodEnum::POST,
-            ResourceMethodEnum::CREATE_FOR_ACCOUNT,
+            RequestMethodEnum::GET,
+            ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY,
             $params,
             $id
         );

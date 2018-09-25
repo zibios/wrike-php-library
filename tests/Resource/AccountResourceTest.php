@@ -47,18 +47,10 @@ class AccountResourceTest extends ResourceTestCase
             ],
             [
                 [
-                    'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_BY_ID,
-                    'endpointPath' => sprintf('accounts/%s', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
-                ] + $baseData,
-            ],
-            [
-                [
                     'requestMethod' => RequestMethodEnum::PUT,
-                    'methodName' => ResourceMethodEnum::UPDATE,
-                    'endpointPath' => sprintf('accounts/%s', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
+                    'methodName' => ResourceMethodEnum::UPDATE_DEFAULT,
+                    'endpointPath' => 'accounts',
+                    'additionalParams' => [],
                 ] + $baseData,
             ],
         ];

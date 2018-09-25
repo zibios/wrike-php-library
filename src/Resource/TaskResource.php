@@ -15,9 +15,8 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\CreateForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForAccountTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdsTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
@@ -28,7 +27,6 @@ use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 class TaskResource extends AbstractResource
 {
     use GetAllTrait;
-    use GetAllForAccountTrait;
     use GetAllForFolderTrait;
     use GetByIdTrait;
     use GetByIdsTrait;
@@ -48,7 +46,6 @@ class TaskResource extends AbstractResource
     {
         return [
             ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::TASKS,
-            ResourceMethodEnum::GET_ALL_FOR_ACCOUNT => RequestPathFormatEnum::TASKS_FOR_ACCOUNT,
             ResourceMethodEnum::GET_ALL_FOR_FOLDER => RequestPathFormatEnum::TASKS_FOR_FOLDER,
             ResourceMethodEnum::GET_BY_ID => RequestPathFormatEnum::TASKS_BY_ID,
             ResourceMethodEnum::GET_BY_IDS => RequestPathFormatEnum::TASKS_BY_IDS,

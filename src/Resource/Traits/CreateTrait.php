@@ -15,12 +15,11 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 
 /**
- * GetAllForAccount Trait.
+ * Create Trait.
  */
-trait GetAllForAccountTrait
+trait CreateTrait
 {
     /**
-     * @param string     $id
      * @param array|null $params
      *
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
@@ -30,13 +29,13 @@ trait GetAllForAccountTrait
      *
      * @return mixed
      */
-    public function getAllForAccount($id, array $params = [])
+    public function create(array $params = [])
     {
         return $this->executeRequest(
-            RequestMethodEnum::GET,
-            ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
+            RequestMethodEnum::POST,
+            ResourceMethodEnum::CREATE,
             $params,
-            $id
+            null
         );
     }
 

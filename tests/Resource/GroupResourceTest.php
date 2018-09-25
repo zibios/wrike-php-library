@@ -40,6 +40,14 @@ class GroupResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
+                    'methodName' => ResourceMethodEnum::GET_ALL,
+                    'endpointPath' => 'groups',
+                    'additionalParams' => [],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_BY_ID,
                     'endpointPath' => sprintf('groups/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],
@@ -47,18 +55,10 @@ class GroupResourceTest extends ResourceTestCase
             ],
             [
                 [
-                    'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/groups', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
-                ] + $baseData,
-            ],
-            [
-                [
                     'requestMethod' => RequestMethodEnum::POST,
-                    'methodName' => ResourceMethodEnum::CREATE_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/groups', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
+                    'methodName' => ResourceMethodEnum::CREATE,
+                    'endpointPath' => 'groups',
+                    'additionalParams' => [],
                 ] + $baseData,
             ],
             [

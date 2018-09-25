@@ -16,10 +16,9 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\CreateForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\CreateForTaskTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForAccountTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForTaskTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdsTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
@@ -30,7 +29,6 @@ use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 class CommentResource extends AbstractResource
 {
     use GetAllTrait;
-    use GetAllForAccountTrait;
     use GetAllForFolderTrait;
     use GetAllForTaskTrait;
     use GetByIdTrait;
@@ -52,7 +50,6 @@ class CommentResource extends AbstractResource
     {
         return [
             ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::COMMENTS,
-            ResourceMethodEnum::GET_ALL_FOR_ACCOUNT => RequestPathFormatEnum::COMMENTS_FOR_ACCOUNT,
             ResourceMethodEnum::GET_ALL_FOR_FOLDER => RequestPathFormatEnum::COMMENTS_FOR_FOLDER,
             ResourceMethodEnum::GET_ALL_FOR_TASK => RequestPathFormatEnum::COMMENTS_FOR_TASK,
             ResourceMethodEnum::GET_BY_ID => RequestPathFormatEnum::COMMENTS_BY_ID,

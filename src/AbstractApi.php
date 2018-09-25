@@ -12,6 +12,7 @@
 namespace Zibios\WrikePhpLibrary;
 
 use Zibios\WrikePhpLibrary\Client\ClientInterface;
+use Zibios\WrikePhpLibrary\Resource\AbstractResource;
 use Zibios\WrikePhpLibrary\Resource\AccountResource;
 use Zibios\WrikePhpLibrary\Resource\AttachmentResource;
 use Zibios\WrikePhpLibrary\Resource\ColorResource;
@@ -313,5 +314,15 @@ abstract class AbstractApi implements ApiInterface
         }
 
         return $params;
+    }
+
+    private function getResource(string $resourceClass): AbstractResource
+    {
+        return new $resourceClass(
+            $this->client,
+            $this->responseTransformer,
+            $this->apiExceptionTransformer,
+            $this->accessToken
+        );
     }
 }

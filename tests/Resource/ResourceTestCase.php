@@ -67,12 +67,12 @@ abstract class ResourceTestCase extends TestCase
         self::assertInstanceOf(
             AbstractResource::class,
             $resource,
-            sprintf('"%s" should extend "%s"', get_class($resource), AbstractResource::class)
+            sprintf('"%s" should extend "%s"', \get_class($resource), AbstractResource::class)
         );
         self::assertInstanceOf(
             ResourceInterface::class,
             $resource,
-            sprintf('"%s" should extend "%s"', get_class($resource), ResourceInterface::class)
+            sprintf('"%s" should extend "%s"', \get_class($resource), ResourceInterface::class)
         );
     }
 
@@ -248,6 +248,6 @@ abstract class ResourceTestCase extends TestCase
                 break;
         }
 
-        self::assertEquals(json_decode($methodData['body'], true), $bodyArray);
+        self::assertSame(json_decode($methodData['body'], true), $bodyArray);
     }
 }
