@@ -72,6 +72,14 @@ class AttachmentResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
+                    'methodName' => ResourceMethodEnum::GET_BY_IDS,
+                    'endpointPath' => sprintf('attachments/%s', implode(',', [self::UNIQUE_ID])),
+                    'additionalParams' => [[self::UNIQUE_ID]],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::DOWNLOAD,
                     'endpointPath' => sprintf('attachments/%s/download', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],

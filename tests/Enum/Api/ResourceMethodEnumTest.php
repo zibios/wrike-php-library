@@ -27,5 +27,5 @@ class ResourceMethodEnumTest extends EnumTestCase
     /**
      * @var int
      */
-    protected $enumCount = 18;
+    protected $enumCount = 19;
 }

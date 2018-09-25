@@ -80,6 +80,14 @@ class TimelogResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::GET,
+                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY,
+                    'endpointPath' => sprintf('timelog_categories/%s/timelogs', self::UNIQUE_ID),
+                    'additionalParams' => [self::UNIQUE_ID],
+                ] + $baseData,
+            ],
+            [
+                [
+                    'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_BY_ID,
                     'endpointPath' => sprintf('timelogs/%s', self::UNIQUE_ID),
                     'additionalParams' => [self::UNIQUE_ID],

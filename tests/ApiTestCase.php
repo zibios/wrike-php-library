@@ -25,6 +25,7 @@ use Zibios\WrikePhpLibrary\Resource\GroupResource;
 use Zibios\WrikePhpLibrary\Resource\IdResource;
 use Zibios\WrikePhpLibrary\Resource\InvitationResource;
 use Zibios\WrikePhpLibrary\Resource\TaskResource;
+use Zibios\WrikePhpLibrary\Resource\TimelogCategoryResource;
 use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
@@ -133,9 +134,9 @@ abstract class ApiTestCase extends TestCase
 
         try {
             new $this->sourceClass($client, $responseTransformer, $apiExceptionTransformerMock, $accessToken);
-        } catch (\Throwable $t) {
-            $exceptionOccurred = true;
         } catch (\Exception $e) {
+            $exceptionOccurred = true;
+        } catch (\Throwable $t) {
             $exceptionOccurred = true;
         }
 
@@ -168,6 +169,7 @@ abstract class ApiTestCase extends TestCase
             [$this->object, 'getCommentResource', CommentResource::class],
             [$this->object, 'getDependencyResource', DependencyResource::class],
             [$this->object, 'getTimelogResource', TimelogResource::class],
+            [$this->object, 'getTimelogCategoryResource', TimelogCategoryResource::class],
             [$this->object, 'getAttachmentResource', AttachmentResource::class],
             [$this->object, 'getVersionResource', VersionResource::class],
             [$this->object, 'getIdResource', IdResource::class],

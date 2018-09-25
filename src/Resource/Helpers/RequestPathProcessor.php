@@ -52,6 +52,7 @@ class RequestPathProcessor
             case ResourceMethodEnum::GET_ALL_FOR_FOLDER:
             case ResourceMethodEnum::GET_ALL_FOR_TASK:
             case ResourceMethodEnum::GET_ALL_FOR_CONTACT:
+            case ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY:
             case ResourceMethodEnum::CREATE_FOR_ACCOUNT:
             case ResourceMethodEnum::CREATE_FOR_FOLDER:
             case ResourceMethodEnum::CREATE_FOR_TASK:

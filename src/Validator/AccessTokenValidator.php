@@ -23,7 +23,7 @@ class AccessTokenValidator
      */
     public static function isValid($value)
     {
-        return is_string($value) && '' !== trim($value);
+        return \is_string($value) && '' !== trim($value);
     }
 
     /**

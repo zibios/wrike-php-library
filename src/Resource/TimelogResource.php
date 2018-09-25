@@ -15,6 +15,7 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\CreateForTaskTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForTimelogCategoryTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForAccountTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForContactTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForFolderTrait;
@@ -33,6 +34,7 @@ class TimelogResource extends AbstractResource
     use GetAllForAccountTrait;
     use GetAllForFolderTrait;
     use GetAllForTaskTrait;
+    use GetAllForTimelogCategoryTrait;
     use GetByIdTrait;
     use CreateForTaskTrait;
     use UpdateTrait;
@@ -54,6 +56,7 @@ class TimelogResource extends AbstractResource
             ResourceMethodEnum::GET_ALL_FOR_ACCOUNT => RequestPathFormatEnum::TIMELOGS_FOR_ACCOUNT,
             ResourceMethodEnum::GET_ALL_FOR_FOLDER => RequestPathFormatEnum::TIMELOGS_FOR_FOLDER,
             ResourceMethodEnum::GET_ALL_FOR_TASK => RequestPathFormatEnum::TIMELOGS_FOR_TASK,
+            ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY => RequestPathFormatEnum::TIMELOGS_FOR_TIMELOG_CATEGORY,
             ResourceMethodEnum::GET_BY_ID => RequestPathFormatEnum::TIMELOGS_BY_ID,
             ResourceMethodEnum::CREATE_FOR_TASK => RequestPathFormatEnum::TIMELOGS_FOR_TASK,
             ResourceMethodEnum::UPDATE => RequestPathFormatEnum::TIMELOGS_BY_ID,

@@ -25,25 +25,28 @@ class RequestPathProcessorTest extends TestCase
      */
     public function paramsProvider()
     {
-        $baseData = [
-            'id' => 'id1',
-            'expectedPath' => 'test/id1',
-        ];
-
         return [
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::GET_ALL,
-                    'id' => null,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::GET_ALL => 'test'],
+                    'id' => null,
                     'expectedPath' => 'test',
                 ],
             ],
             [
                 [
+                    'resourceMethod' => ResourceMethodEnum::GET_BY_ID,
+                    'resourceMethodConfiguration' => [ResourceMethodEnum::GET_BY_ID => 'test/%s'],
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
+            ],
+            [
+                [
                     'resourceMethod' => ResourceMethodEnum::GET_BY_IDS,
-                    'id' => ['id1', 'id2'],
                     'resourceMethodConfiguration' => [ResourceMethodEnum::GET_BY_IDS => 'test/%s'],
+                    'id' => ['id1', 'id2'],
                     'expectedPath' => 'test/id1,id2',
                 ],
             ],
@@ -51,97 +54,137 @@ class RequestPathProcessorTest extends TestCase
                 [
                     'resourceMethod' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::GET_ALL_FOR_ACCOUNT => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::GET_ALL_FOR_FOLDER,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::GET_ALL_FOR_FOLDER => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::GET_ALL_FOR_TASK,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::GET_ALL_FOR_TASK => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::GET_ALL_FOR_CONTACT,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::GET_ALL_FOR_CONTACT => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
+            ],
+            [
+                [
+                    'resourceMethod' => ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY,
+                    'resourceMethodConfiguration' => [ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY => 'test/%s'],
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::CREATE_FOR_ACCOUNT,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::CREATE_FOR_ACCOUNT => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::CREATE_FOR_FOLDER,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::CREATE_FOR_FOLDER => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::CREATE_FOR_TASK,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::CREATE_FOR_TASK => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::GET_BY_ID,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::GET_BY_ID => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::UPDATE,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::UPDATE => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::DELETE,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::DELETE => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::COPY,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::COPY => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::DOWNLOAD,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::DOWNLOAD => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::DOWNLOAD_PREVIEW,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::DOWNLOAD_PREVIEW => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::GET_PUBLIC_URL,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::GET_PUBLIC_URL => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::UPLOAD_FOR_FOLDER,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::UPLOAD_FOR_FOLDER => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
             [
                 [
                     'resourceMethod' => ResourceMethodEnum::UPLOAD_FOR_TASK,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::UPLOAD_FOR_TASK => 'test/%s'],
-                ] + $baseData,
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
             ],
         ];
     }
@@ -221,7 +264,7 @@ class RequestPathProcessorTest extends TestCase
      */
     public function test_exceptions(array $params)
     {
-        self::setExpectedException($params['expectedException']);
+        $this->expectException($params['expectedException']);
 
         $processor = new RequestPathProcessor();
         $processor->prepareRequestPathForResourceMethod(

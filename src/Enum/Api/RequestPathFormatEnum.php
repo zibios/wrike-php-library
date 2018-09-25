@@ -72,13 +72,17 @@ class RequestPathFormatEnum extends AbstractEnum
     const TIMELOGS_FOR_ACCOUNT = 'accounts/%s/timelogs';
     const TIMELOGS_FOR_FOLDER = 'folders/%s/timelogs';
     const TIMELOGS_FOR_TASK = 'tasks/%s/timelogs';
+    const TIMELOGS_FOR_TIMELOG_CATEGORY = 'timelog_categories/%s/timelogs';
     const TIMELOGS_BY_ID = 'timelogs/%s';
     const TIMELOGS_BY_IDS = 'timelogs/%s';
+
+    const TIMELOG_CATEGORIES = 'timelog_categories';
 
     const ATTACHMENTS_FOR_ACCOUNT = 'accounts/%s/attachments';
     const ATTACHMENTS_FOR_FOLDER = 'folders/%s/attachments';
     const ATTACHMENTS_FOR_TASK = 'tasks/%s/attachments';
     const ATTACHMENTS_BY_ID = 'attachments/%s';
+    const ATTACHMENTS_BY_IDS = 'attachments/%s';
     const ATTACHMENTS_DOWNLOAD = 'attachments/%s/download';
     const ATTACHMENTS_DOWNLOAD_PREVIEW = 'attachments/%s/preview';
     const ATTACHMENTS_URL = 'attachments/%s/url';

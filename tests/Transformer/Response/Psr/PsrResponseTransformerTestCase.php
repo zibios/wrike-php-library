@@ -66,9 +66,9 @@ abstract class PsrResponseTransformerTestCase extends TestCase
 
         try {
             $this->object->transform($response, $resourceClass);
-        } catch (\Throwable $t) {
-            $exceptionOccurred = true;
         } catch (\Exception $e) {
+            $exceptionOccurred = true;
+        } catch (\Throwable $t) {
             $exceptionOccurred = true;
         }
 

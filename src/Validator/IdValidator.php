@@ -45,7 +45,7 @@ class IdValidator
      */
     public static function isValidIdString($value)
     {
-        return is_string($value) && '' !== trim($value);
+        return \is_string($value) && '' !== trim($value);
     }
 
     /**
@@ -67,7 +67,7 @@ class IdValidator
      */
     public static function isValidIdArray($value)
     {
-        if (false === is_array($value) || 0 === count($value)) {
+        if (false === \is_array($value) || 0 === \count($value)) {
             return false;
         }
 
@@ -89,7 +89,7 @@ class IdValidator
     public static function assertIsValidIdArray($value)
     {
         if (false === self::isValidIdArray($value)) {
-            throw new \InvalidArgumentException();
+            throw new \InvalidArgumentException('Invalid Id, should be not empty array!');
         }
     }
 }
