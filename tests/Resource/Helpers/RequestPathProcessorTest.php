@@ -116,14 +116,6 @@ class RequestPathProcessorTest extends TestCase
             ],
             [
                 [
-                    'resourceMethod' => ResourceMethodEnum::GET_BY_ID,
-                    'resourceMethodConfiguration' => [ResourceMethodEnum::GET_BY_ID => 'test/%s'],
-                    'id' => 'id1',
-                    'expectedPath' => 'test/id1',
-                ],
-            ],
-            [
-                [
                     'resourceMethod' => ResourceMethodEnum::UPDATE,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::UPDATE => 'test/%s'],
                     'id' => 'id1',
