@@ -126,7 +126,7 @@ abstract class AbstractEnum
      */
     public static function isValidValue($value)
     {
-        return in_array($value, static::toArray(), true);
+        return \in_array($value, static::toArray(), true);
     }
 
     /**

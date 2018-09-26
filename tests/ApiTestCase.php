@@ -120,7 +120,7 @@ abstract class ApiTestCase extends TestCase
      * @param mixed $accessToken
      * @param bool  $isValid
      *
-     * @internal param mixed $transformer
+     * @internal     param mixed $transformer
      * @dataProvider constructorParamsProvider
      */
     public function test_constructorParams(
@@ -211,7 +211,7 @@ abstract class ApiTestCase extends TestCase
         ];
 
         foreach ($expectedMethodNames as $expectedMethodName) {
-            if (in_array($expectedMethodName->getName(), $excludedMethods, true)) {
+            if (\in_array($expectedMethodName->getName(), $excludedMethods, true)) {
                 continue;
             }
             self::assertArrayHasKey(

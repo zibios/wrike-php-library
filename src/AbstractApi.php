@@ -288,7 +288,7 @@ abstract class AbstractApi implements ApiInterface
     public function normalizeParams(array $params)
     {
         foreach ($params as $key => $value) {
-            if (false === is_string($value) && false === is_resource($value)) {
+            if (false === \is_string($value) && false === \is_resource($value)) {
                 $params[$key] = json_encode($value);
             }
         }
@@ -298,6 +298,7 @@ abstract class AbstractApi implements ApiInterface
 
     /**
      * @param string $resourceClass
+     *
      * @return AbstractResource
      */
     private function getResource($resourceClass)

@@ -126,7 +126,7 @@ abstract class ResourceTestCase extends TestCase
 
     public function returnExceptionCallback()
     {
-        $args = func_get_args();
+        $args = \func_get_args();
 
         return $args[0];
     }
@@ -180,7 +180,7 @@ abstract class ResourceTestCase extends TestCase
     private function prepareResponseForMethod(array $methodData, AbstractResource $resource)
     {
         $response = null;
-        switch (count($methodData['additionalParams'])) {
+        switch (\count($methodData['additionalParams'])) {
             case 0:
                 $response = $resource->{$methodData['methodName']}();
                 break;
@@ -196,7 +196,7 @@ abstract class ResourceTestCase extends TestCase
                 );
                 break;
             default:
-                self::assertLessThanOrEqual(2, count($methodData['additionalParams']));
+                self::assertLessThanOrEqual(2, \count($methodData['additionalParams']));
         }
 
         return $response;
