@@ -46,17 +46,17 @@ abstract class ApiExceptionTestCase extends TestCase
         self::assertInstanceOf(
             Exception::class,
             $this->object,
-            sprintf('"%s" should extend "%s"', get_class($this->object), Exception::class)
+            sprintf('"%s" should extend "%s"', \get_class($this->object), Exception::class)
         );
         self::assertInstanceOf(
             ApiException::class,
             $this->object,
-            sprintf('"%s" should extend "%s"', get_class($this->object), ApiException::class)
+            sprintf('"%s" should extend "%s"', \get_class($this->object), ApiException::class)
         );
         self::assertInstanceOf(
             $this->sourceClass,
             $this->object,
-            sprintf('"%s" should extend "%s"', get_class($this->object), $this->sourceClass)
+            sprintf('"%s" should extend "%s"', \get_class($this->object), $this->sourceClass)
         );
     }
 }

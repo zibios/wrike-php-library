@@ -33,8 +33,11 @@ class RequestPathProcessor
      *
      * @return string
      */
-    public function prepareRequestPathForResourceMethod($resourceMethod, $id, array $resourceMethodConfiguration)
-    {
+    public function prepareRequestPathForResourceMethod(
+        $resourceMethod,
+        $id,
+        array $resourceMethodConfiguration
+    ) {
         $requestPathFormat = $this->calculateRequestPathFormat($resourceMethod, $resourceMethodConfiguration);
 
         switch ($resourceMethod) {

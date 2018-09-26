@@ -50,11 +50,14 @@ abstract class AbstractApiExceptionTransformer implements ApiExceptionTransforme
      *
      * @return ApiException
      */
-    protected function transformByStatusCodeAndName(\Exception $exception, $errorStatusCode, $errorStatusName)
-    {
+    protected function transformByStatusCodeAndName(
+        \Exception $exception,
+        $errorStatusCode,
+        $errorStatusName
+    ) {
         foreach ($this->supportedApiExceptions as $apiExceptionClass) {
-            $statusCode = \constant($apiExceptionClass.'::STATUS_CODE');
-            $statusName = \constant($apiExceptionClass.'::STATUS_NAME');
+            $statusCode = \constant($apiExceptionClass . '::STATUS_CODE');
+            $statusName = \constant($apiExceptionClass . '::STATUS_NAME');
             if ($errorStatusCode === $statusCode && $errorStatusName === $statusName) {
                 return new $apiExceptionClass($exception);
             }

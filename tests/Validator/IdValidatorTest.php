@@ -115,7 +115,11 @@ class IdValidatorTest extends TestCase
      */
     public function test_isValidIdArrayMethods($value, $isValid)
     {
-        self::assertSame($isValid, IdValidator::isValidIdArray($value), sprintf('validation string "%s"', is_array($value) ? implode(', ', $value) : $value));
+        self::assertSame(
+            $isValid,
+            IdValidator::isValidIdArray($value),
+            sprintf('validation string "%s"', \is_array($value) ? implode(', ', $value) : $value)
+        );
 
         $withoutException = true;
 
@@ -124,6 +128,10 @@ class IdValidatorTest extends TestCase
         } catch (\Exception $e) {
             $withoutException = false;
         }
-        self::assertSame($isValid, $withoutException, sprintf('assert string "%s"', is_array($value) ? implode(', ', $value) : $value));
+        self::assertSame(
+            $isValid,
+            $withoutException,
+            sprintf('assert string "%s"', \is_array($value) ? implode(', ', $value) : $value)
+        );
     }
 }

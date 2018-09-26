@@ -30,7 +30,7 @@ class RequestPathFormatEnum extends AbstractEnum
     const INVITATIONS = 'invitations';
     const INVITATIONS_BY_ID = 'invitations/%s';
 
-    const ACCOUNTS = 'accounts';
+    const ACCOUNTS = 'account';
 
     const WORKFLOWS = 'workflows';
     const WORKFLOWS_BY_ID = 'workflows/%s';
