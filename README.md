@@ -39,14 +39,14 @@ Project status
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b3b1cf6321040fa910c0c1c335b5ba1)](https://www.codacy.com/app/zibios/wrike-php-library)
 [![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/73783acf5037a935c9c8/maintainability)](https://codeclimate.com/github/zibios/wrike-php-library/maintainability)
 
-**Branch 'v1.x'**
+**Branch 'v2.x'**
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/quality-score.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=v1.x)
-[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/build.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/build-status/v1.x)
-[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/coverage.png?b=v1.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=v1.x)
-[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=v1.x)](https://travis-ci.org/zibios/wrike-php-library)
-[![StyleCI](https://styleci.io/repos/80992179/shield?branch=v1.x)](https://styleci.io/repos/80992179)
-[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-library/badge.svg?branch=v1.x)](https://coveralls.io/github/zibios/wrike-php-library?branch=v1.x)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/quality-score.png?b=v2.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=v2.x)
+[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/build.png?b=v2.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/build-status/v2.x)
+[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/coverage.png?b=v2.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=v2.x)
+[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=v2.x)](https://travis-ci.org/zibios/wrike-php-library)
+[![StyleCI](https://styleci.io/repos/80992179/shield?branch=v2.x)](https://styleci.io/repos/80992179)
+[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-library/badge.svg?branch=v2.x)](https://coveralls.io/github/zibios/wrike-php-library?branch=v2.x)
 
 Installation
 ------------
@@ -54,7 +54,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```console
-$ composer require zibios/wrike-php-library "^1.0"
+$ composer require zibios/wrike-php-library "^2.0"
 ```
 
 This command requires you to have Composer installed globally, as explained
