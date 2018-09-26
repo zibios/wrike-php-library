@@ -17,11 +17,11 @@ This package is decoupled from unnecessary dependencies and can't be used withou
 
 Versions
 --------
-| Major Version | Wrike API | PHP Compatibility                  | Initial release | Support                        |
-|:-------------:|:---------:|:----------------------------------:|:---------------:|:------------------------------:|
-| V3            | V4        | PHP 7.1, PHP 7.2, TBD              | October, 2018   | TBD                            |
-| V2            | V4        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | October, 2018   | Support ends on October, 2019  |
-| V1            | V3        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | February, 2018  | Support ends on February, 2019 |
+| Major Version                                           | Wrike API | PHP Compatibility                  | Initial release | Support                        |
+|:-------------------------------------------------------:|:---------:|:----------------------------------:|:---------------:|:------------------------------:|
+| [V3](https://github.com/zibios/wrike-php-sdk/tree/v3.x) | V4        | PHP 7.1, PHP 7.2, TBD              | October, 2018   | TBD                            |
+| [V2](https://github.com/zibios/wrike-php-sdk/tree/v2.x) | V4        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | October, 2018   | Support ends on October, 2019  |
+| [V1](https://github.com/zibios/wrike-php-sdk/tree/v1.x) | V3        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | February, 2018  | Support ends on February, 2019 |
 
 Project status
 --------------
@@ -39,14 +39,14 @@ Project status
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b3b1cf6321040fa910c0c1c335b5ba1)](https://www.codacy.com/app/zibios/wrike-php-library)
 [![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/73783acf5037a935c9c8/maintainability)](https://codeclimate.com/github/zibios/wrike-php-library/maintainability)
 
-**Branch 'master'**
+**Branch 'v3.x'**
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=master)
-[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/build.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/build-status/master)
-[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=master)
-[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=master)](https://travis-ci.org/zibios/wrike-php-library)
-[![StyleCI](https://styleci.io/repos/80992179/shield?branch=master)](https://styleci.io/repos/80992179)
-[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-library/badge.svg?branch=master)](https://coveralls.io/github/zibios/wrike-php-library?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/quality-score.png?b=v3.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=v3.x)
+[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/build.png?b=v3.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/build-status/v3.x)
+[![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/zibios/wrike-php-library/badges/coverage.png?b=v3.x)](https://scrutinizer-ci.com/g/zibios/wrike-php-library/?branch=v3.x)
+[![Travis Build Status](https://travis-ci.org/zibios/wrike-php-library.svg?branch=v3.x)](https://travis-ci.org/zibios/wrike-php-library)
+[![StyleCI](https://styleci.io/repos/80992179/shield?branch=v3.x)](https://styleci.io/repos/80992179)
+[![Coverage Status](https://coveralls.io/repos/github/zibios/wrike-php-library/badge.svg?branch=v3.x)](https://coveralls.io/github/zibios/wrike-php-library?branch=v3.x)
 
 Installation
 ------------
@@ -54,7 +54,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```console
-$ composer require zibios/wrike-php-library "^1.0"
+$ composer require zibios/wrike-php-library "^3.0"
 ```
 
 This command requires you to have Composer installed globally, as explained
@@ -100,6 +100,7 @@ $api->getAttachmentResource()->getAllForAccount($accountId);
 $api->getAttachmentResource()->getAllForFolder($folderId);
 $api->getAttachmentResource()->getAllForTask($taskId);
 $api->getAttachmentResource()->getById($attachmentId);
+$api->getAttachmentResource()->getByIds([$attachmentId]);
 $api->getAttachmentResource()->update($attachmentId, $params);
 $api->getAttachmentResource()->uploadForFolder($attachmentId, $params);
 $api->getAttachmentResource()->uploadForTask($attachmentId, $params);
@@ -178,10 +179,13 @@ $api->getTimelogResource()->getAllForAccount($accountId);
 $api->getTimelogResource()->getAllForFolder($folderId);
 $api->getTimelogResource()->getAllForTask($taskId);
 $api->getTimelogResource()->getAllForContact($contactId);
+$api->getTimelogResource()->getAllForTimelogCategory($timelogCategoryId);
 $api->getTimelogResource()->getById($timelogId);
 $api->getTimelogResource()->update($timelogId, $params);
 $api->getTimelogResource()->createForTask($taskId, $params);
 $api->getTimelogResource()->delete($timelogId);
+
+$api->getTimelogCategoryResource()->getAll();
 
 $api->getUserResource()->getById($userId);
 $api->getUserResource()->update($userId, $params);
@@ -258,12 +262,15 @@ $api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
 
 $newApi = $api->recreateForNewAccessToken(<PermanentToken>);
 
-$responseTransformer = new ArrayBodyTransformer();
+$responseTransformer = new RawResponseTransformer();
 $newApi = $api->recreateForNewResponseTransformer($responseTransformer);
 
 $apiExceptionTransformer = new RawExceptionTransformer();
 $newApi = $api->recreateForNewApiExceptionTransformer($apiExceptionTransformer);
 ```
+
+Response transformers
+---------------------
 
 Response can be returned in various formats according to used response transformer
 
@@ -273,8 +280,39 @@ Response can be returned in various formats according to used response transform
 | PsrBodyTransformer       | Psr\Http\Message\StreamInterface   | PSR response body                       |
 | StringBodyTransformer    | JSON string                        | PSR response body casted to JSON string |
 | ArrayBodyTransformer     | array                              | PSR response body casted to array       |
+| ArrayTransformer         | array                              | JSON response casted to array           |
 | ResponseModelTransformer | ResponseModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
 | ResourceModelTransformer | ResourceModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
+
+ENUM's
+------
+
+**Zibios\WrikePhpLibrary\Enum\Api**
+
+- RequestMethodEnum
+- RequestPathFormatEnum
+- ResourceMethodEnum
+- ResponseFormatEnum
+
+**namespace Zibios\WrikePhpLibrary\Enum**
+
+- AttachmentTypeEnum
+- CustomFieldTypeEnum
+- CustomStatusColorEnum
+- DependencyRelationTypeEnum
+- InvitationStatusEnum
+- LegacyEntityTypeEnum
+- OptionalFieldEnum
+- ProjectStatusEnum
+- ScopeEnum
+- SubscriptionTypeEnum
+- TaskDatesTypeEnum
+- TaskImportanceEnum
+- TaskStatusEnum
+- TreeScopeEnum
+- UserRoleEnum
+- UserTypeEnum
+- WeekDayEnum
 
 Reference
 ---------
