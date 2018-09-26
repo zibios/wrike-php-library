@@ -17,11 +17,11 @@ This package is decoupled from unnecessary dependencies and can't be used withou
 
 Versions
 --------
-| Major Version | Wrike API | PHP Compatibility                  | Initial release | Support                        |
-|:-------------:|:---------:|:----------------------------------:|:---------------:|:------------------------------:|
-| V3            | V4        | PHP 7.1, PHP 7.2, TBD              | October, 2018   | TBD                            |
-| V2            | V4        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | October, 2018   | Support ends on October, 2019  |
-| V1            | V3        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | February, 2018  | Support ends on February, 2019 |
+| Major Version                                           | Wrike API | PHP Compatibility                  | Initial release | Support                        |
+|:-------------------------------------------------------:|:---------:|:----------------------------------:|:---------------:|:------------------------------:|
+| [V3](https://github.com/zibios/wrike-php-sdk/tree/v3.x) | V4        | PHP 7.1, PHP 7.2, TBD              | October, 2018   | TBD                            |
+| [V2](https://github.com/zibios/wrike-php-sdk/tree/v2.x) | V4        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | October, 2018   | Support ends on October, 2019  |
+| [V1](https://github.com/zibios/wrike-php-sdk/tree/v1.x) | V3        | PHP 5.5, PHP 5.6, PHP 7.0, PHP 7.1 | February, 2018  | Support ends on February, 2019 |
 
 Project status
 --------------
@@ -286,6 +286,15 @@ Response can be returned in various formats according to used response transform
 
 ENUM's
 ------
+
+**Zibios\WrikePhpLibrary\Enum\Api**
+
+- RequestMethodEnum
+- RequestPathFormatEnum
+- ResourceMethodEnum
+- ResponseFormatEnum
+
+**namespace Zibios\WrikePhpLibrary\Enum**
 
 - AttachmentTypeEnum
 - CustomFieldTypeEnum

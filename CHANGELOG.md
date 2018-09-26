@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 (2018-10-01)
+* New requests added due to changes in Wrike API
+* Roadmap introduced
+
 ## 1.0.0 (2018-02-25)
 * First stable release 
 
