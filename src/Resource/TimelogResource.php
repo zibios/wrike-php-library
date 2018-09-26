@@ -17,11 +17,11 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\CreateForTaskTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\DeleteTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForTimelogCategoryTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForContactTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForFolderTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForTaskTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForTimelogCategoryTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 

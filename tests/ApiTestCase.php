@@ -97,7 +97,7 @@ abstract class ApiTestCase extends TestCase
      * @param mixed $accessToken
      * @param bool  $isValid
      *
-     * @internal param mixed $transformer
+     * @internal     param mixed $transformer
      * @dataProvider constructorParamsProvider
      */
     public function test_constructorParams(

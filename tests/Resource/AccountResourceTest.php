@@ -43,7 +43,7 @@ class AccountResourceTest extends ResourceTestCase
                 [
                     'requestMethod' => RequestMethodEnum::GET,
                     'methodName' => ResourceMethodEnum::GET_ALL,
-                    'endpointPath' => 'accounts',
+                    'endpointPath' => 'account',
                     'additionalParams' => [],
                 ] + $baseData,
             ],
@@ -51,7 +51,7 @@ class AccountResourceTest extends ResourceTestCase
                 [
                     'requestMethod' => RequestMethodEnum::PUT,
                     'methodName' => ResourceMethodEnum::UPDATE_DEFAULT,
-                    'endpointPath' => 'accounts',
+                    'endpointPath' => 'account',
                     'additionalParams' => [],
                 ] + $baseData,
             ],
