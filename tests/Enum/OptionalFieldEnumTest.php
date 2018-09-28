@@ -28,5 +28,5 @@ class OptionalFieldEnumTest extends EnumTestCase
     /**
      * @var int
      */
-    protected $enumCount = 6;
+    protected $enumCount = 9;
 }
