@@ -32,6 +32,11 @@ class OptionalFieldEnum extends AbstractEnum
     const CUSTOM_FIELDS = 'customFields';
 
     /**
+     * Description.
+     */
+    const DESCRIPTION = 'description';
+
+    /**
      * Brief Description.
      */
     const BRIEF_DESCRIPTION = 'briefDescription';
@@ -40,6 +45,16 @@ class OptionalFieldEnum extends AbstractEnum
      * Custom Column Ids.
      */
     const CUSTOM_COLUMN_IDS = 'customColumnIds';
+
+    /**
+     * List of super parent folder IDs (applicable to 'Selective Sharing' labs feature).
+     */
+    const SUPER_PARENT_IDS = 'superParentIds';
+
+    /**
+     * Has attachments.
+     */
+    const HAS_ATTACHMENTS = 'hasAttachments';
 
     /**
      * Attachment Count.
