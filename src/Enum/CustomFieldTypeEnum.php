@@ -19,9 +19,10 @@ class CustomFieldTypeEnum extends AbstractEnum
     const TEXT = 'Text';
     const DROP_DOWN = 'DropDown';
     const NUMERIC = 'Numeric';
-    const MONEY = 'Money';
+    const CURRENCY = 'Currency';
     const PERCENTAGE = 'Percentage';
     const DATE = 'Date';
     const DURATION = 'Duration';
     const CHECKBOX = 'Checkbox';
+    const CONTACTS = 'Contacts';
 }
