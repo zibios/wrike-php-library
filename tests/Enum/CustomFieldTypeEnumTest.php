@@ -28,5 +28,5 @@ class CustomFieldTypeEnumTest extends EnumTestCase
     /**
      * @var int
      */
-    protected $enumCount = 8;
+    protected $enumCount = 10;
 }

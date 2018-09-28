@@ -18,12 +18,14 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class CustomFieldTypeEnum extends AbstractEnum
 {
-    public const TEXT = 'Text';
-    public const DROP_DOWN = 'DropDown';
-    public const NUMERIC = 'Numeric';
-    public const MONEY = 'Money';
-    public const PERCENTAGE = 'Percentage';
-    public const DATE = 'Date';
-    public const DURATION = 'Duration';
-    public const CHECKBOX = 'Checkbox';
+    const TEXT = 'Text';
+    const DROP_DOWN = 'DropDown';
+    const NUMERIC = 'Numeric';
+    const CURRENCY = 'Currency';
+    const PERCENTAGE = 'Percentage';
+    const DATE = 'Date';
+    const DURATION = 'Duration';
+    const CHECKBOX = 'Checkbox';
+    const CONTACTS = 'Contacts';
+    const MULTIPLE = 'Multiple';
 }
