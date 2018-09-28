@@ -93,10 +93,9 @@ All operations are immutable and stateless.
 $api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
 
 $api->getAccountResource()->getAll();
-$api->getAccountResource()->getById($accountId);
-$api->getAccountResource()->update($accountId, $params);
+$api->getAccountResource()->updateDefault($params);
 
-$api->getAttachmentResource()->getAllForAccount($accountId);
+$api->getAttachmentResource()->getAll();
 $api->getAttachmentResource()->getAllForFolder($folderId);
 $api->getAttachmentResource()->getAllForTask($taskId);
 $api->getAttachmentResource()->getById($attachmentId);
@@ -112,7 +111,6 @@ $api->getAttachmentResource()->getPublicUrl($attachmentId);
 $api->getColorResource()->getAll();
 
 $api->getCommentResource()->getAll();
-$api->getCommentResource()->getAllForAccount($accountId);
 $api->getCommentResource()->getAllForFolder($folderId);
 $api->getCommentResource()->getAllForTask($taskId);
 $api->getCommentResource()->getById($commentId);
@@ -123,17 +121,15 @@ $api->getCommentResource()->createForTask($taskId, $params);
 $api->getCommentResource()->delete($commentId);
 
 $api->getContactResource()->getAll();
-$api->getContactResource()->getAllForAccount($accountId);
 $api->getContactResource()->getById($contactId);
 $api->getContactResource()->getByIds([$contactId]);
 $api->getContactResource()->update($contactId, $params);
 
 $api->getCustomFieldResource()->getAll();
-$api->getCustomFieldResource()->getAllForAccount($accountId);
 $api->getCustomFieldResource()->getById($customFieldId);
 $api->getCustomFieldResource()->getByIds([$customFieldId]);
 $api->getCustomFieldResource()->update($customFieldId, $params);
-$api->getCustomFieldResource()->createForAccount($accountId, $params);
+$api->getCustomFieldResource()->create($params);
 
 $api->getDependencyResource()->getAllForTask($taskId);
 $api->getDependencyResource()->getById($dependencyId);
@@ -143,7 +139,6 @@ $api->getDependencyResource()->createForTask($taskId, $params);
 $api->getDependencyResource()->delete($dependencyId);
 
 $api->getFolderResource()->getAll();
-$api->getFolderResource()->getAllForAccount($accountId);
 $api->getFolderResource()->getAllForFolder($folderId);
 $api->getFolderResource()->getById($folderId);
 $api->getFolderResource()->getByIds([$folderId]);
@@ -152,21 +147,20 @@ $api->getFolderResource()->createForFolder($folderId, $params);
 $api->getFolderResource()->copy($folderId, $params);
 $api->getFolderResource()->delete($folderId);
 
-$api->getGroupResource()->getAllForAccount($accountId);
+$api->getGroupResource()->getAll();
 $api->getGroupResource()->getById($groupId);
 $api->getGroupResource()->update($groupId, $params);
-$api->getGroupResource()->createForAccount($accountId, $params);
+$api->getGroupResource()->create($params);
 $api->getGroupResource()->delete($groupId);
 
 $api->getIdResource()->getAll($params); // $params required
 
-$api->getInvitationResource()->getAllForAccount($accountId);
+$api->getInvitationResource()->getAll();
 $api->getInvitationResource()->update($invitationId, $params);
-$api->getInvitationResource()->createForAccount($accountId, $params);
+$api->getInvitationResource()->create($params);
 $api->getInvitationResource()->delete($invitationId);
 
 $api->getTaskResource()->getAll();
-$api->getTaskResource()->getAllForAccount($accountId);
 $api->getTaskResource()->getAllForFolder($folderId);
 $api->getTaskResource()->getById($taskId);
 $api->getTaskResource()->getByIds([$taskId]);
@@ -175,7 +169,6 @@ $api->getTaskResource()->createForFolder($folderId, $params);
 $api->getTaskResource()->delete($taskId);
 
 $api->getTimelogResource()->getAll();
-$api->getTimelogResource()->getAllForAccount($accountId);
 $api->getTimelogResource()->getAllForFolder($folderId);
 $api->getTimelogResource()->getAllForTask($taskId);
 $api->getTimelogResource()->getAllForContact($contactId);
@@ -192,9 +185,9 @@ $api->getUserResource()->update($userId, $params);
 
 $api->getVersionResource()->getAll();
 
-$api->getWorkflowResource()->getAllForAccount($accountId);
+$api->getWorkflowResource()->getAll();
 $api->getWorkflowResource()->update($workflowId, $params);
-$api->getWorkflowResource()->createForAccount($accountId, $params);
+$api->getWorkflowResource()->create($params);
 ```
 
 ```php
@@ -313,6 +306,30 @@ ENUM's
 - UserRoleEnum
 - UserTypeEnum
 - WeekDayEnum
+
+Breaking Changes
+----------------
+**V2.x due to changes in Wrike API V4**
+
+| Request                                                                | Replacement / Description                           |
+|:---------------------------------------------------------------------- |:--------------------------------------------------- |
+| $api->getAccountResource()->getAll();                                  | Now returns only one (current) account              |
+| $api->getAccountResource()->getById($accountId);                       | Removed                                             |
+| $api->getAccountResource()->update($accountId, $params);               | $api->getAccountResource()->updateDefault($params); |
+| $api->getAttachmentResource()->getAllForAccount($accountId);           | $api->getAttachmentResource()->getAll();            |
+| $api->getCommentResource()->getAllForAccount($accountId);              | $api->getCommentResource()->getAll();               |
+| $api->getContactResource()->getAllForAccount($accountId);              | $api->getContactResource()->getAll();               |
+| $api->getCustomFieldResource()->getAllForAccount($accountId);          | $api->getCustomFieldResource()->getAll();           |
+| $api->getCustomFieldResource()->createForAccount($accountId, $params); | $api->getCustomFieldResource()->create($params);    |
+| $api->getFolderResource()->getAllForAccount($accountId);               | $api->getFolderResource()->getAll();                |
+| $api->getGroupResource()->getAllForAccount($accountId);                | $api->getGroupResource()->getAll();                 |
+| $api->getGroupResource()->createForAccount($accountId, $params);       | $api->getGroupResource()->create($params);          |
+| $api->getInvitationResource()->getAllForAccount($accountId);           | $api->getInvitationResource()->getAll();            |
+| $api->getInvitationResource()->createForAccount($accountId, $params);  | $api->getInvitationResource()->create($params);     |
+| $api->getTaskResource()->getAllForAccount($accountId);                 | $api->getTaskResource()->getAll();                  |
+| $api->getTimelogResource()->getAllForAccount($accountId);              | $api->getTimelogResource()->getAll();               |
+| $api->getWorkflowResource()->getAllForAccount($accountId);             | $api->getWorkflowResource()->getAll();              |
+| $api->getWorkflowResource()->createForAccount($accountId, $params);    | $api->getWorkflowResource()->create($params);       |
 
 Reference
 ---------
