@@ -256,13 +256,18 @@ class RequestPathProcessorTest extends TestCase
      */
     public function test_exceptions(array $params)
     {
-        $this->expectException($params['expectedException']);
-
         $processor = new RequestPathProcessor();
-        $processor->prepareRequestPathForResourceMethod(
-            $params['resourceMethod'],
-            $params['id'],
-            $params['resourceMethodConfiguration']
-        );
+        $exception = null;
+        try {
+            $processor->prepareRequestPathForResourceMethod(
+                $params['resourceMethod'],
+                $params['id'],
+                $params['resourceMethodConfiguration']
+            );
+        } catch (\Throwable $e) {
+            $exception = $e;
+        }
+
+        self::assertInstanceOf($params['expectedException'], $exception);
     }
 }
