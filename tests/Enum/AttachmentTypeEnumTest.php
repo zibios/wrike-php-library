@@ -11,20 +11,20 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\AttachmentTypeEnum;
 
 /**
- * Optional Field Enum Test.
+ * Attachment Type Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class AttachmentTypeEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = AttachmentTypeEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 17;
+    protected $enumCount = 6;
 }

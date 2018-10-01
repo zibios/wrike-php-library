@@ -47,4 +47,9 @@ class AttachmentTypeEnum extends AbstractEnum
      * When deleted, only stored link is removed.
      */
     const ONE_DRIVE = 'OneDrive';
+
+    /**
+     * External attachment.
+     */
+    const EXTERNAL = 'External';
 }

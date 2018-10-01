@@ -11,20 +11,20 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\DependencyRelationTypeEnum;
 
 /**
- * Optional Field Enum Test.
+ * Dependency Relation Type Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class DependencyRelationTypeEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = DependencyRelationTypeEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 17;
+    protected $enumCount = 4;
 }

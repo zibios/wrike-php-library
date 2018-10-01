@@ -11,20 +11,20 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\RescheduleModeEnum;
 
 /**
- * Optional Field Enum Test.
+ * Reschedule Mode Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class RescheduleModeEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = RescheduleModeEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 17;
+    protected $enumCount = 2;
 }
