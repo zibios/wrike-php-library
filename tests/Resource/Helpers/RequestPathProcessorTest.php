@@ -265,6 +265,8 @@ class RequestPathProcessorTest extends TestCase
                 $params['id'],
                 $params['resourceMethodConfiguration']
             );
+        } catch (\Exception $e) {
+            $exception = $e;
         } catch (\Throwable $e) {
             $exception = $e;
         }
