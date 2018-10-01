@@ -289,30 +289,35 @@ ENUM's
 
 **Zibios\WrikePhpLibrary\Enum\Api**
 
-- RequestMethodEnum
-- RequestPathFormatEnum
-- ResourceMethodEnum
-- ResponseFormatEnum
+* RequestMethodEnum
+* RequestPathFormatEnum
+* ResourceMethodEnum
+* ResponseFormatEnum
 
 **namespace Zibios\WrikePhpLibrary\Enum**
 
-- AttachmentTypeEnum
-- CustomFieldTypeEnum
-- CustomStatusColorEnum
-- DependencyRelationTypeEnum
-- InvitationStatusEnum
-- LegacyEntityTypeEnum
-- OptionalFieldEnum
-- ProjectStatusEnum
-- ScopeEnum
-- SubscriptionTypeEnum
-- TaskDatesTypeEnum
-- TaskImportanceEnum
-- TaskStatusEnum
-- TreeScopeEnum
-- UserRoleEnum
-- UserTypeEnum
-- WeekDayEnum
+* AttachmentPreviewSizeEnum
+* AttachmentTypeEnum
+* CustomFieldAggregationEnum
+* CustomFieldCurrencyEnum
+* CustomFieldInheritanceTypeEnum
+* CustomFieldTypeEnum
+* CustomStatusColorEnum
+* DependencyRelationTypeEnum
+* InvitationStatusEnum
+* LegacyEntityTypeEnum
+* OptionalFieldEnum
+* ProjectStatusEnum
+* RescheduleModeEnum
+* ScopeEnum
+* SubscriptionTypeEnum
+* TaskDatesTypeEnum
+* TaskImportanceEnum
+* TaskStatusEnum
+* TreeScopeEnum
+* UserRoleEnum
+* UserTypeEnum
+* WeekDayEnum
 
 Reference
 ---------
