@@ -47,9 +47,39 @@ class OptionalFieldEnum extends AbstractEnum
     const CUSTOM_COLUMN_IDS = 'customColumnIds';
 
     /**
-     * List of super parent folder IDs (applicable to 'Selective Sharing' labs feature).
+     * List of task parent folder.
+     */
+    const PARENT_IDS = 'parentIds';
+
+    /**
+     * List of folder IDs inherited from parent task.
      */
     const SUPER_PARENT_IDS = 'superParentIds';
+
+    /**
+     * List of user IDs, who have task share.
+     */
+    const SHARED_IDS = 'sharedIds';
+
+    /**
+     * List of responsible user IDs.
+     */
+    const RESPONSIBLE_IDS = 'responsibleIds';
+
+    /**
+     * List of supertask IDs.
+     */
+    const SUPER_TASK_IDS = 'superTaskIds';
+
+    /**
+     * List of subtask IDs.
+     */
+    const SUB_TASK_IDS = 'subTaskIds';
+
+    /**
+     * Dependency IDs.
+     */
+    const DEPENDENCY_IDS = 'dependencyIds';
 
     /**
      * Has attachments.
@@ -60,4 +90,14 @@ class OptionalFieldEnum extends AbstractEnum
      * Attachment Count.
      */
     const ATTACHMENT_COUNT = 'attachmentCount';
+
+    /**
+     * Recurrent.
+     */
+    const RECURRENT = 'recurrent';
+
+    /**
+     * Author IDs.
+     */
+    const AUTHOR_IDS = 'authorIds';
 }

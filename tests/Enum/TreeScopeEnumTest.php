@@ -11,20 +11,20 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\TreeScopeEnum;
 
 /**
- * Optional Field Enum Test.
+ * Tree Scope Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class TreeScopeEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = TreeScopeEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 17;
+    protected $enumCount = 6;
 }

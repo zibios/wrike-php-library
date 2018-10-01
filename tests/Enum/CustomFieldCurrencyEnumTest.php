@@ -11,20 +11,20 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\CustomFieldCurrencyEnum;
 
 /**
- * Optional Field Enum Test.
+ * Custom Field Currency Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class CustomFieldCurrencyEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = CustomFieldCurrencyEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 17;
+    protected $enumCount = 42;
 }
