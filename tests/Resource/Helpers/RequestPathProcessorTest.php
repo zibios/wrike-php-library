@@ -258,6 +258,7 @@ class RequestPathProcessorTest extends TestCase
     {
         $processor = new RequestPathProcessor();
         $exception = null;
+
         try {
             $processor->prepareRequestPathForResourceMethod(
                 $params['resourceMethod'],

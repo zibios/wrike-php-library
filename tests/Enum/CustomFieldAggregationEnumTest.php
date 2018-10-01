@@ -16,7 +16,7 @@ use Zibios\WrikePhpLibrary\Enum\CustomFieldAggregationEnum;
 /**
  * Custom Field Aggregation Enum Test.
  */
-class CustomFielAggregationEnumTest extends EnumTestCase
+class CustomFieldAggregationEnumTest extends EnumTestCase
 {
     /**
      * @var string
