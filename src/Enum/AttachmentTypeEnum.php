@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -49,4 +47,9 @@ class AttachmentTypeEnum extends AbstractEnum
      * When deleted, only stored link is removed.
      */
     public const ONE_DRIVE = 'OneDrive';
+
+    /**
+     * External attachment.
+     */
+    public const EXTERNAL = 'External';
 }

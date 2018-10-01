@@ -36,7 +36,7 @@ class OptionalFieldEnum extends AbstractEnum
     /**
      * Description.
      */
-    const DESCRIPTION = 'description';
+    public const DESCRIPTION = 'description';
 
     /**
      * Brief Description.
@@ -49,17 +49,57 @@ class OptionalFieldEnum extends AbstractEnum
     public const CUSTOM_COLUMN_IDS = 'customColumnIds';
 
     /**
-     * List of super parent folder IDs (applicable to 'Selective Sharing' labs feature).
+     * List of task parent folder.
      */
-    const SUPER_PARENT_IDS = 'superParentIds';
+    public const PARENT_IDS = 'parentIds';
+
+    /**
+     * List of folder IDs inherited from parent task.
+     */
+    public const SUPER_PARENT_IDS = 'superParentIds';
+
+    /**
+     * List of user IDs, who have task share.
+     */
+    public const SHARED_IDS = 'sharedIds';
+
+    /**
+     * List of responsible user IDs.
+     */
+    public const RESPONSIBLE_IDS = 'responsibleIds';
+
+    /**
+     * List of supertask IDs.
+     */
+    public const SUPER_TASK_IDS = 'superTaskIds';
+
+    /**
+     * List of subtask IDs.
+     */
+    public const SUB_TASK_IDS = 'subTaskIds';
+
+    /**
+     * Dependency IDs.
+     */
+    public const DEPENDENCY_IDS = 'dependencyIds';
 
     /**
      * Has attachments.
      */
-    const HAS_ATTACHMENTS = 'hasAttachments';
+    public const HAS_ATTACHMENTS = 'hasAttachments';
 
     /**
      * Attachment Count.
      */
     public const ATTACHMENT_COUNT = 'attachmentCount';
+
+    /**
+     * Recurrent.
+     */
+    public const RECURRENT = 'recurrent';
+
+    /**
+     * Author IDs.
+     */
+    public const AUTHOR_IDS = 'authorIds';
 }

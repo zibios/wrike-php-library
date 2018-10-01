@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -13,20 +11,20 @@ declare(strict_types=1);
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\ProjectStatusEnum;
 
 /**
- * Optional Field Enum Test.
+ * Project Status Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class ProjectStatusEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = ProjectStatusEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 17;
+    protected $enumCount = 6;
 }

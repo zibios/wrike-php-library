@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -13,20 +11,20 @@ declare(strict_types=1);
 
 namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\OptionalFieldEnum;
+use Zibios\WrikePhpLibrary\Enum\CustomFieldInheritanceTypeEnum;
 
 /**
- * Optional Field Enum Test.
+ * Custom Field Inheritance Type Enum Test.
  */
-class OptionalFieldEnumTest extends EnumTestCase
+class CustomFieldInheritanceTypeEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = OptionalFieldEnum::class;
+    protected $sourceClass = CustomFieldInheritanceTypeEnum::class;
 
     /**
      * @var int
      */
-    protected $enumCount = 17;
+    protected $enumCount = 3;
 }
