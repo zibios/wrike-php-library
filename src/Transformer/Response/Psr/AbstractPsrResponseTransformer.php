@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -13,7 +15,6 @@ namespace Zibios\WrikePhpLibrary\Transformer\Response\Psr;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
 /**
@@ -22,21 +23,11 @@ use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 abstract class AbstractPsrResponseTransformer implements ResponseTransformerInterface
 {
     /**
-     * @param string $responseFormat
-     *
-     * @return bool
-     */
-    public function isSupportedResponseFormat($responseFormat)
-    {
-        return ResponseFormatEnum::PSR_RESPONSE === $responseFormat;
-    }
-
-    /**
      * @param ResponseInterface $response
      *
      * @return ResponseInterface
      */
-    protected function transformToPsrResponse(ResponseInterface $response)
+    protected function transformToPsrResponse(ResponseInterface $response): ResponseInterface
     {
         return $response;
     }
@@ -46,7 +37,7 @@ abstract class AbstractPsrResponseTransformer implements ResponseTransformerInte
      *
      * @return StreamInterface
      */
-    protected function transformToPsrBody(ResponseInterface $response)
+    protected function transformToPsrBody(ResponseInterface $response): StreamInterface
     {
         return $this->transformToPsrResponse($response)->getBody();
     }
@@ -58,7 +49,7 @@ abstract class AbstractPsrResponseTransformer implements ResponseTransformerInte
      *
      * @return string
      */
-    protected function transformToStringBody(ResponseInterface $response)
+    protected function transformToStringBody(ResponseInterface $response): string
     {
         return $this->transformToPsrBody($response)->getContents();
     }
@@ -70,7 +61,7 @@ abstract class AbstractPsrResponseTransformer implements ResponseTransformerInte
      *
      * @return array
      */
-    protected function transformToArrayBody(ResponseInterface $response)
+    protected function transformToArrayBody(ResponseInterface $response): array
     {
         return json_decode($this->transformToStringBody($response), true);
     }

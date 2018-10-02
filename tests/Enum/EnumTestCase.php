@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -37,7 +39,7 @@ abstract class EnumTestCase extends TestCase
     /**
      * Sets up the exception.
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->object = new $this->sourceClass();
     }
@@ -45,113 +47,113 @@ abstract class EnumTestCase extends TestCase
     /**
      * Test enum inheritance.
      */
-    public function test_EnumExtendProperClasses()
+    public function test_EnumExtendProperClasses(): void
     {
         self::assertInstanceOf(
             AbstractEnum::class,
             $this->object,
-            sprintf('"%s" should extend "%s"', get_class($this->object), AbstractEnum::class)
+            sprintf('"%s" should extend "%s"', \get_class($this->object), AbstractEnum::class)
         );
         self::assertInstanceOf(
             $this->sourceClass,
             $this->object,
-            sprintf('"%s" should extend "%s"', get_class($this->object), $this->sourceClass)
+            sprintf('"%s" should extend "%s"', \get_class($this->object), $this->sourceClass)
         );
     }
 
-    public function test_toArray()
+    public function test_toArray(): void
     {
         // Static access
-        $enums = call_user_func([$this->sourceClass, 'toArray']);
+        $enums = \call_user_func([$this->sourceClass, 'toArray']);
         self::assertInternalType('array', $enums);
         self::assertCount($this->enumCount, $enums, $this->sourceClass);
 
         // Instantiated access
-        $enums = $this->object->toArray();
+        $enums = $this->object::toArray();
         self::assertInternalType('array', $enums);
         self::assertCount($this->enumCount, $enums, $this->sourceClass);
     }
 
-    public function test_getKeys()
+    public function test_getKeys(): void
     {
         // Static access
-        $enums = call_user_func([$this->sourceClass, 'toArray']);
-        $keys = call_user_func([$this->sourceClass, 'getKeys']);
+        $enums = \call_user_func([$this->sourceClass, 'toArray']);
+        $keys = \call_user_func([$this->sourceClass, 'getKeys']);
         self::assertInternalType('array', $keys);
         self::assertSame(array_keys($enums), $keys);
 
         // Instantiated access
-        $enums = $this->object->toArray();
-        $keys = $this->object->getKeys();
+        $enums = $this->object::toArray();
+        $keys = $this->object::getKeys();
         self::assertInternalType('array', $keys);
         self::assertSame(array_keys($enums), $keys);
     }
 
-    public function test_getKey()
+    public function test_getKey(): void
     {
         // Static access
         /** @var array $enums */
-        $enums = call_user_func([$this->sourceClass, 'toArray']);
+        $enums = \call_user_func([$this->sourceClass, 'toArray']);
         /** @var array $values */
-        $values = call_user_func([$this->sourceClass, 'getValues']);
+        $values = \call_user_func([$this->sourceClass, 'getValues']);
         self::assertInternalType('array', $values);
         foreach ($values as $value) {
             self::assertInternalType('string', $value);
-            $key = call_user_func([$this->sourceClass, 'getKey'], $value);
+            $key = \call_user_func([$this->sourceClass, 'getKey'], $value);
             self::assertSame($value, $enums[$key]);
         }
 
         // Instantiated access
         /** @var array $enums */
-        $enums = $this->object->toArray();
+        $enums = $this->object::toArray();
         /** @var array $values */
-        $values = $this->object->getValues();
+        $values = $this->object::getValues();
         self::assertInternalType('array', $values);
         foreach ($values as $value) {
             self::assertInternalType('string', $value);
-            $key = $this->object->getKey($value);
+            $key = $this->object::getKey($value);
             self::assertSame($value, $enums[$key]);
         }
     }
 
-    public function test_getValues()
+    public function test_getValues(): void
     {
         // Static access
-        $enums = call_user_func([$this->sourceClass, 'toArray']);
-        $values = call_user_func([$this->sourceClass, 'getValues']);
+        $enums = \call_user_func([$this->sourceClass, 'toArray']);
+        $values = \call_user_func([$this->sourceClass, 'getValues']);
         self::assertInternalType('array', $values);
         self::assertSame(array_values($enums), $values);
 
         // Instantiated access
-        $enums = $this->object->toArray();
-        $values = $this->object->getValues();
+        $enums = $this->object::toArray();
+        $values = $this->object::getValues();
         self::assertInternalType('array', $values);
         self::assertSame(array_values($enums), $values);
     }
 
-    public function test_getValue()
+    public function test_getValue(): void
     {
         // Static access
         /** @var array $enums */
-        $enums = call_user_func([$this->sourceClass, 'toArray']);
+        $enums = \call_user_func([$this->sourceClass, 'toArray']);
         /** @var array $keys */
-        $keys = call_user_func([$this->sourceClass, 'getKeys']);
+        $keys = \call_user_func([$this->sourceClass, 'getKeys']);
         self::assertInternalType('array', $keys);
         foreach ($keys as $key) {
             self::assertInternalType('string', $key);
-            $value = call_user_func([$this->sourceClass, 'getValue'], $key);
+            $value = \call_user_func([$this->sourceClass, 'getValue'], $key);
             self::assertSame($value, $enums[$key]);
         }
 
         // Instantiated access
         /** @var array $enums */
-        $enums = $this->object->toArray();
+        $enums = $this->object::toArray();
         /** @var array $keys */
-        $keys = $this->object->getKeys();
+        $keys = $this->object::getKeys();
         self::assertInternalType('array', $keys);
         foreach ($keys as $key) {
             self::assertInternalType('string', $key);
-            $value = $this->object->getValue($key);
+            $value = $this->object::getValue($key);
             self::assertSame($value, $enums[$key]);
         }
     }
@@ -159,16 +161,15 @@ abstract class EnumTestCase extends TestCase
     /**
      * @return array
      */
-    public function enumKeysProvider()
+    public function enumKeysProvider(): array
     {
-        $keys = call_user_func([$this->sourceClass, 'getKeys']);
+        $keys = \call_user_func([$this->sourceClass, 'getKeys']);
 
         return [
             // [key, isValid]
             [$keys[0], true],
             ['NotExistedEnumKey', false],
             ['', false],
-            [null, false],
         ];
     }
 
@@ -178,11 +179,11 @@ abstract class EnumTestCase extends TestCase
      *
      * @dataProvider enumKeysProvider
      */
-    public function test_assertIsValidKey($key, $isValid)
+    public function test_assertIsValidKey($key, $isValid): void
     {
-        self::assertEquals(
+        self::assertSame(
             $isValid,
-            call_user_func([$this->sourceClass, 'isValidKey'], $key),
+            \call_user_func([$this->sourceClass, 'isValidKey'], $key),
             sprintf('"%s"', print_r($key, true))
         );
         $e = null;
@@ -190,10 +191,10 @@ abstract class EnumTestCase extends TestCase
         $exceptionClass = '';
 
         try {
-            call_user_func([$this->sourceClass, 'assertIsValidKey'], $key);
-        } catch (\Exception $e) {
+            \call_user_func([$this->sourceClass, 'assertIsValidKey'], $key);
+        } catch (\Throwable $e) {
             $exceptionOccurred = true;
-            $exceptionClass = get_class($e);
+            $exceptionClass = \get_class($e);
         }
 
         if (true === $isValid) {
@@ -222,16 +223,15 @@ abstract class EnumTestCase extends TestCase
     /**
      * @return array
      */
-    public function enumValuesProvider()
+    public function enumValuesProvider(): array
     {
-        $values = call_user_func([$this->sourceClass, 'getValues']);
+        $values = \call_user_func([$this->sourceClass, 'getValues']);
 
         return [
             // [value, isValid]
             [$values[0], true],
             ['NotExistedEnumValue', false],
             ['', false],
-            [null, false],
         ];
     }
 
@@ -241,18 +241,18 @@ abstract class EnumTestCase extends TestCase
      *
      * @dataProvider enumValuesProvider
      */
-    public function test_assertIsValidValue($value, $isValid)
+    public function test_assertIsValidValue($value, $isValid): void
     {
-        self::assertEquals($isValid, call_user_func([$this->sourceClass, 'isValidValue'], $value));
+        self::assertSame($isValid, \call_user_func([$this->sourceClass, 'isValidValue'], $value));
         $e = null;
         $exceptionOccurred = false;
         $exceptionClass = '';
 
         try {
-            call_user_func([$this->sourceClass, 'assertIsValidValue'], $value);
-        } catch (\Exception $e) {
+            \call_user_func([$this->sourceClass, 'assertIsValidValue'], $value);
+        } catch (\Throwable $e) {
             $exceptionOccurred = true;
-            $exceptionClass = get_class($e);
+            $exceptionClass = \get_class($e);
         }
 
         if (true === $isValid) {
@@ -278,7 +278,7 @@ abstract class EnumTestCase extends TestCase
         }
     }
 
-    public function test_testIsValidEnumCount()
+    public function test_testIsValidEnumCount(): void
     {
         $class = new \ReflectionClass($this->sourceClass);
         $expectedConstants = $class->getConstants();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -31,7 +33,7 @@ class ApiExceptionTransformerTest extends TestCase
     /**
      * @return array
      */
-    public function responseExceptionsProvider()
+    public function responseExceptionsProvider(): array
     {
         return [
             // [errorStatusCode, errorStatusName, expectedExceptionClass]
@@ -66,7 +68,7 @@ class ApiExceptionTransformerTest extends TestCase
      *
      * @dataProvider responseExceptionsProvider
      */
-    public function test_transformByStatusCodeAndName($errorStatusCode, $errorStatusName, $expectedExceptionClass)
+    public function test_transformByStatusCodeAndName($errorStatusCode, $errorStatusName, $expectedExceptionClass): void
     {
         $exception = new \Exception();
         $transformer = new ApiExceptionTransformerStub();
@@ -79,12 +81,12 @@ class ApiExceptionTransformerTest extends TestCase
         self::assertInstanceOf(
             $expectedExceptionClass,
             $normalizedException,
-            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, get_class($normalizedException))
+            sprintf('"%s expected, "%s" received"', $expectedExceptionClass, \get_class($normalizedException))
         );
         self::assertInstanceOf(
             ApiException::class,
             $normalizedException,
-            sprintf('"%s expected, "%s" received"', ApiException::class, get_class($normalizedException))
+            sprintf('"%s expected, "%s" received"', ApiException::class, \get_class($normalizedException))
         );
     }
 }

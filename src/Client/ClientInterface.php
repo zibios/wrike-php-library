@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -22,17 +24,6 @@ use Zibios\WrikePhpLibrary\Exception\Api\ApiException;
 interface ClientInterface
 {
     /**
-     * Response Format Identifier.
-     *
-     * Custom name which identify response format: PsrResponse, JsonBody, ...
-     *
-     * @see \Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum
-     *
-     * @return string
-     */
-    public function getResponseFormat();
-
-    /**
      * Request method.
      *
      * Generic format for HTTP client request method.
@@ -45,10 +36,15 @@ interface ClientInterface
      * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum
      * @see \Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum
      *
-     * @throws \Exception
+     * @throws \Throwable
      * @throws ApiException
      *
-     * @return string|ResponseInterface
+     * @return ResponseInterface
      */
-    public function executeRequestForParams($requestMethod, $path, array $params, $accessToken);
+    public function executeRequestForParams(
+        string $requestMethod,
+        string $path,
+        array $params,
+        string $accessToken
+    ): ResponseInterface;
 }

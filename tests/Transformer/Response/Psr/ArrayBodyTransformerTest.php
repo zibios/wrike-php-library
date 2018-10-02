@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -11,6 +13,7 @@
 
 namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response\Psr;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Zibios\WrikePhpLibrary\Transformer\Response\Psr\ArrayBodyTransformer;
@@ -25,12 +28,12 @@ class ArrayBodyTransformerTest extends PsrResponseTransformerTestCase
      */
     protected $object;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->object = new ArrayBodyTransformer();
     }
 
-    public function test_transform()
+    public function test_transform(): void
     {
         $responseArray = ['key' => 'value', 'number' => 100];
         $responseString = json_encode($responseArray);
@@ -38,6 +41,7 @@ class ArrayBodyTransformerTest extends PsrResponseTransformerTestCase
         $bodyMock->expects($this->any())
             ->method('getContents')
             ->willReturn($responseString);
+        /** @var ResponseInterface|MockObject $responseMock */
         $responseMock = $this->getMockForAbstractClass(ResponseInterface::class);
         $responseMock->expects($this->any())
             ->method('getBody')

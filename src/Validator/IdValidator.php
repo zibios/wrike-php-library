@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -21,7 +23,7 @@ class IdValidator
      *
      * @return bool
      */
-    public static function isNull($value)
+    public static function isNull($value): bool
     {
         return null === $value;
     }
@@ -31,7 +33,7 @@ class IdValidator
      *
      * @throws \InvalidArgumentException
      */
-    public static function assertIsNull($value)
+    public static function assertIsNull($value): void
     {
         if (false === self::isNull($value)) {
             throw new \InvalidArgumentException('Null expected!');
@@ -43,9 +45,9 @@ class IdValidator
      *
      * @return bool
      */
-    public static function isValidIdString($value)
+    public static function isValidIdString($value): bool
     {
-        return is_string($value) && '' !== trim($value);
+        return \is_string($value) && '' !== trim($value);
     }
 
     /**
@@ -53,7 +55,7 @@ class IdValidator
      *
      * @throws \InvalidArgumentException
      */
-    public static function assertIsValidIdString($value)
+    public static function assertIsValidIdString($value): void
     {
         if (false === self::isValidIdString($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid Id, should be not empty string!'));
@@ -65,9 +67,9 @@ class IdValidator
      *
      * @return bool
      */
-    public static function isValidIdArray($value)
+    public static function isValidIdArray($value): bool
     {
-        if (false === is_array($value) || 0 === count($value)) {
+        if (false === \is_array($value) || 0 === \count($value)) {
             return false;
         }
 
@@ -86,10 +88,10 @@ class IdValidator
      *
      * @throws \InvalidArgumentException
      */
-    public static function assertIsValidIdArray($value)
+    public static function assertIsValidIdArray($value): void
     {
         if (false === self::isValidIdArray($value)) {
-            throw new \InvalidArgumentException();
+            throw new \InvalidArgumentException('Invalid Id, should be not empty array!');
         }
     }
 }

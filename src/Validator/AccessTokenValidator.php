@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -21,9 +23,9 @@ class AccessTokenValidator
      *
      * @return bool
      */
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
-        return is_string($value) && '' !== trim($value);
+        return \is_string($value) && '' !== trim($value);
     }
 
     /**
@@ -31,7 +33,7 @@ class AccessTokenValidator
      *
      * @throws \InvalidArgumentException
      */
-    public static function assertIsValid($value)
+    public static function assertIsValid($value): void
     {
         if (false === self::isValid($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid Access Token, should be not empty string!'));
@@ -43,7 +45,7 @@ class AccessTokenValidator
      *
      * @return bool
      */
-    public static function isValidOrEmpty($value)
+    public static function isValidOrEmpty($value): bool
     {
         return self::isValid($value) || '' === $value;
     }
@@ -53,7 +55,7 @@ class AccessTokenValidator
      *
      * @throws \InvalidArgumentException
      */
-    public static function assertIsValidOrEmpty($value)
+    public static function assertIsValidOrEmpty($value): void
     {
         if (false === self::isValidOrEmpty($value)) {
             throw new \InvalidArgumentException(sprintf('Invalid Access Token, should be not empty string!'));

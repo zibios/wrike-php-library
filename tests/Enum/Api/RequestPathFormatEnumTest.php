@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -27,5 +29,5 @@ class RequestPathFormatEnumTest extends EnumTestCase
     /**
      * @var int
      */
-    protected $enumCount = 55;
+    protected $enumCount = 51;
 }

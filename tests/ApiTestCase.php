@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -25,6 +27,7 @@ use Zibios\WrikePhpLibrary\Resource\GroupResource;
 use Zibios\WrikePhpLibrary\Resource\IdResource;
 use Zibios\WrikePhpLibrary\Resource\InvitationResource;
 use Zibios\WrikePhpLibrary\Resource\TaskResource;
+use Zibios\WrikePhpLibrary\Resource\TimelogCategoryResource;
 use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
@@ -42,18 +45,11 @@ abstract class ApiTestCase extends TestCase
      */
     protected $object;
 
-    public function setUp()
+    public function setUp(): void
     {
         $accessTokenMock = 'token';
-        $responseFormatMock = 'responseFormat';
         $clientMock = $this->getMockBuilder(ClientInterface::class)->getMock();
-        $clientMock->expects(self::any())
-            ->method('getResponseFormat')
-            ->willReturn($responseFormatMock);
         $responseTransformerMock = $this->getMockBuilder(ResponseTransformerInterface::class)->getMock();
-        $responseTransformerMock->expects(self::any())
-            ->method('isSupportedResponseFormat')
-            ->willReturn(true);
         $apiExceptionTransformerMock = $this->getMockBuilder(ApiExceptionTransformerInterface::class)->getMock();
 
         $this->object = new $this->sourceClass(
@@ -67,25 +63,13 @@ abstract class ApiTestCase extends TestCase
     /**
      * @return array
      */
-    public function constructorParamsProvider()
+    public function constructorParamsProvider(): array
     {
         $accessTokenMock = 'token';
-        $responseFormatMock = 'responseFormat';
         $clientMock = $this->getMockBuilder(ClientInterface::class)->getMock();
-        $clientMock->expects(self::any())
-            ->method('getResponseFormat')
-            ->willReturn($responseFormatMock);
         $responseTransformerMock = $this->getMockBuilder(ResponseTransformerInterface::class)->getMock();
-        $responseTransformerMock->expects(self::any())
-            ->method('isSupportedResponseFormat')
-            ->willReturn(true);
         $apiExceptionTransformerMock = $this->getMockBuilder(ApiExceptionTransformerInterface::class)->getMock();
         $stdClass = new \stdClass();
-
-        $anotherResponseTransformerMock = $this->getMockBuilder(ResponseTransformerInterface::class)->getMock();
-        $anotherResponseTransformerMock->expects(self::any())
-            ->method('isSupportedResponseFormat')
-            ->willReturn(false);
 
         return [
             // [client, responseTransformer, apiExceptionTransformer, accessToken, isValid]
@@ -95,11 +79,6 @@ abstract class ApiTestCase extends TestCase
             // test client params
             [$stdClass, $responseTransformerMock, $apiExceptionTransformerMock, $accessTokenMock, false],
             [null, $responseTransformerMock, $apiExceptionTransformerMock, $accessTokenMock, false],
-
-            // test responseTransformer params
-            [$clientMock, $stdClass, $apiExceptionTransformerMock, $accessTokenMock, false],
-            [$clientMock, null, $apiExceptionTransformerMock, $accessTokenMock, false],
-            [$clientMock, $anotherResponseTransformerMock, $apiExceptionTransformerMock, $accessTokenMock, false],
 
             // test apiExceptionTransformer params
             [$clientMock, $responseTransformerMock, $stdClass, $accessTokenMock, false],
@@ -119,7 +98,7 @@ abstract class ApiTestCase extends TestCase
      * @param mixed $accessToken
      * @param bool  $isValid
      *
-     * @internal param mixed $transformer
+     * @internal     param mixed $transformer
      * @dataProvider constructorParamsProvider
      */
     public function test_constructorParams(
@@ -128,14 +107,12 @@ abstract class ApiTestCase extends TestCase
         $apiExceptionTransformerMock,
         $accessToken,
         $isValid
-    ) {
+    ): void {
         $exceptionOccurred = false;
 
         try {
             new $this->sourceClass($client, $responseTransformer, $apiExceptionTransformerMock, $accessToken);
         } catch (\Throwable $t) {
-            $exceptionOccurred = true;
-        } catch (\Exception $e) {
             $exceptionOccurred = true;
         }
 
@@ -150,27 +127,45 @@ abstract class ApiTestCase extends TestCase
     /**
      * @return array
      */
-    public function resourceProvider()
+    public function resourceProvider(): array
     {
         $this->setUp();
 
         return [
             // [api, getResourceMethod, expectedResourceClass]
+            [$this->object, 'contacts', ContactResource::class],
             [$this->object, 'getContactResource', ContactResource::class],
+            [$this->object, 'users', UserResource::class],
             [$this->object, 'getUserResource', UserResource::class],
+            [$this->object, 'groups', GroupResource::class],
             [$this->object, 'getGroupResource', GroupResource::class],
+            [$this->object, 'invitations', InvitationResource::class],
             [$this->object, 'getInvitationResource', InvitationResource::class],
+            [$this->object, 'account', AccountResource::class],
             [$this->object, 'getAccountResource', AccountResource::class],
+            [$this->object, 'workflows', WorkflowResource::class],
             [$this->object, 'getWorkflowResource', WorkflowResource::class],
+            [$this->object, 'customFields', CustomFieldResource::class],
             [$this->object, 'getCustomFieldResource', CustomFieldResource::class],
+            [$this->object, 'folders', FolderResource::class],
             [$this->object, 'getFolderResource', FolderResource::class],
+            [$this->object, 'tasks', TaskResource::class],
             [$this->object, 'getTaskResource', TaskResource::class],
+            [$this->object, 'comments', CommentResource::class],
             [$this->object, 'getCommentResource', CommentResource::class],
+            [$this->object, 'dependencies', DependencyResource::class],
             [$this->object, 'getDependencyResource', DependencyResource::class],
+            [$this->object, 'timelogs', TimelogResource::class],
             [$this->object, 'getTimelogResource', TimelogResource::class],
+            [$this->object, 'timelogCategories', TimelogCategoryResource::class],
+            [$this->object, 'getTimelogCategoryResource', TimelogCategoryResource::class],
+            [$this->object, 'attachments', AttachmentResource::class],
             [$this->object, 'getAttachmentResource', AttachmentResource::class],
+            [$this->object, 'version', VersionResource::class],
             [$this->object, 'getVersionResource', VersionResource::class],
+            [$this->object, 'ids', IdResource::class],
             [$this->object, 'getIdResource', IdResource::class],
+            [$this->object, 'colors', ColorResource::class],
             [$this->object, 'getColorResource', ColorResource::class],
         ];
     }
@@ -182,14 +177,14 @@ abstract class ApiTestCase extends TestCase
      *
      * @dataProvider resourceProvider
      */
-    public function test_getResource($api, $getResourceMethod, $expectedResourceClass)
+    public function test_getResource($api, $getResourceMethod, $expectedResourceClass): void
     {
         $resourceOriginal = $api->{$getResourceMethod}();
         self::assertInstanceOf($expectedResourceClass, $resourceOriginal);
         self::assertNotSame($resourceOriginal, $api->{$getResourceMethod}());
     }
 
-    public function test_testGetResourceProviderCoverAllMethods()
+    public function test_testGetResourceProviderCoverAllMethods(): void
     {
         $class = new \ReflectionClass($this->sourceClass);
         $expectedMethodNames = $class->getMethods(\ReflectionMethod::IS_PUBLIC);
@@ -209,7 +204,7 @@ abstract class ApiTestCase extends TestCase
         ];
 
         foreach ($expectedMethodNames as $expectedMethodName) {
-            if (in_array($expectedMethodName->getName(), $excludedMethods, true)) {
+            if (\in_array($expectedMethodName->getName(), $excludedMethods, true)) {
                 continue;
             }
             self::assertArrayHasKey(
@@ -220,7 +215,7 @@ abstract class ApiTestCase extends TestCase
         }
     }
 
-    public function test_normalizeParams()
+    public function test_normalizeParams(): void
     {
         $resource = fopen(__FILE__, 'rb');
         $inputParams = [

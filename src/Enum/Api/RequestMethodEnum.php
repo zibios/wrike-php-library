@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -18,9 +20,9 @@ use Zibios\WrikePhpLibrary\Enum\AbstractEnum;
  */
 class RequestMethodEnum extends AbstractEnum
 {
-    const GET = 'GET';
-    const POST = 'POST';
-    const PUT = 'PUT';
-    const DELETE = 'DELETE';
-    const UPLOAD = 'UPLOAD';
+    public const GET = 'GET';
+    public const POST = 'POST';
+    public const PUT = 'PUT';
+    public const DELETE = 'DELETE';
+    public const UPLOAD = 'UPLOAD';
 }

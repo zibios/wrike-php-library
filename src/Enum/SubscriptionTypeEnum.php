@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,10 +18,10 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class SubscriptionTypeEnum extends AbstractEnum
 {
-    const FREE = 'Free';
-    const PREMIUM = 'Premium';
-    const BUSINESS = 'Business';
-    const CREATIVE_BUSINESS = 'CreativeBusiness';
-    const ENTERPRISE = 'Enterprise';
-    const CREATIVE_ENTERPRISE = 'CreativeEnterprise';
+    public const FREE = 'Free';
+    public const PREMIUM = 'Premium';
+    public const BUSINESS = 'Business';
+    public const CREATIVE_BUSINESS = 'CreativeBusiness';
+    public const ENTERPRISE = 'Enterprise';
+    public const CREATIVE_ENTERPRISE = 'CreativeEnterprise';
 }

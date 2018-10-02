@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -21,15 +23,15 @@ use Exception;
  */
 class ApiException extends Exception
 {
-    const STATUS_CODE = null;
-    const STATUS_NAME = null;
+    public const STATUS_CODE = null;
+    public const STATUS_NAME = null;
 
     /**
      * ApiException constructor.
      *
-     * @param Exception $e
+     * @param \Throwable $e
      */
-    public function __construct(\Exception $e)
+    public function __construct(\Throwable $e)
     {
         parent::__construct($e->getMessage(), $e->getCode(), $e);
     }

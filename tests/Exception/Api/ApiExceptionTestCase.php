@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -33,7 +35,7 @@ abstract class ApiExceptionTestCase extends TestCase
     /**
      * Sets up the exception.
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->object = new $this->sourceClass(new \Exception());
     }
@@ -41,22 +43,22 @@ abstract class ApiExceptionTestCase extends TestCase
     /**
      * Test exception inheritance.
      */
-    public function test_ExceptionExtendProperClasses()
+    public function test_ExceptionExtendProperClasses(): void
     {
         self::assertInstanceOf(
             Exception::class,
             $this->object,
-            sprintf('"%s" should extend "%s"', get_class($this->object), Exception::class)
+            sprintf('"%s" should extend "%s"', \get_class($this->object), Exception::class)
         );
         self::assertInstanceOf(
             ApiException::class,
             $this->object,
-            sprintf('"%s" should extend "%s"', get_class($this->object), ApiException::class)
+            sprintf('"%s" should extend "%s"', \get_class($this->object), ApiException::class)
         );
         self::assertInstanceOf(
             $this->sourceClass,
             $this->object,
-            sprintf('"%s" should extend "%s"', get_class($this->object), $this->sourceClass)
+            sprintf('"%s" should extend "%s"', \get_class($this->object), $this->sourceClass)
         );
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,8 +18,8 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class InvitationStatusEnum extends AbstractEnum
 {
-    const PENDING = 'Pending';
-    const ACCEPTED = 'Accepted';
-    const DECLINED = 'Declined';
-    const CANCELLED = 'Cancelled';
+    public const PENDING = 'Pending';
+    public const ACCEPTED = 'Accepted';
+    public const DECLINED = 'Declined';
+    public const CANCELLED = 'Cancelled';
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -13,7 +15,6 @@ namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response\Psr;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
 use Zibios\WrikePhpLibrary\Tests\TestCase;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
@@ -30,7 +31,7 @@ abstract class PsrResponseTransformerTestCase extends TestCase
     /**
      * @return array
      */
-    public function transformParamsProvider()
+    public function transformParamsProvider(): array
     {
         $responseArray = ['key' => 'value', 'number' => 100];
         $responseString = json_encode($responseArray);
@@ -60,15 +61,13 @@ abstract class PsrResponseTransformerTestCase extends TestCase
      *
      * @dataProvider transformParamsProvider
      */
-    public function test_transformParams($response, $resourceClass, $isValid)
+    public function test_transformParams($response, $resourceClass, $isValid): void
     {
         $exceptionOccurred = false;
 
         try {
             $this->object->transform($response, $resourceClass);
         } catch (\Throwable $t) {
-            $exceptionOccurred = true;
-        } catch (\Exception $e) {
             $exceptionOccurred = true;
         }
 
@@ -78,11 +77,5 @@ abstract class PsrResponseTransformerTestCase extends TestCase
         if (true === $isValid) {
             self::assertFalse($exceptionOccurred);
         }
-    }
-
-    public function test_supportedFormat()
-    {
-        self::assertTrue($this->object->isSupportedResponseFormat(ResponseFormatEnum::PSR_RESPONSE));
-        self::assertFalse($this->object->isSupportedResponseFormat(ResponseFormatEnum::JSON_BODY));
     }
 }

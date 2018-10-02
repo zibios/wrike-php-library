@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,8 +18,8 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class TaskStatusEnum extends AbstractEnum
 {
-    const ACTIVE = 'Active';
-    const COMPLETED = 'Completed';
-    const DEFERRED = 'Deferred';
-    const CANCELLED = 'Cancelled';
+    public const ACTIVE = 'Active';
+    public const COMPLETED = 'Completed';
+    public const DEFERRED = 'Deferred';
+    public const CANCELLED = 'Cancelled';
 }

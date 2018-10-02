@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -26,5 +28,5 @@ class OptionalFieldEnumTest extends EnumTestCase
     /**
      * @var int
      */
-    protected $enumCount = 6;
+    protected $enumCount = 17;
 }

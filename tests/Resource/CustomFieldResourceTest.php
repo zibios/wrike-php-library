@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -28,7 +30,7 @@ class CustomFieldResourceTest extends ResourceTestCase
     /**
      * @return array
      */
-    public function methodsProvider()
+    public function methodsProvider(): array
     {
         $baseData = [
             'body' => sprintf('{"data":[{"id":"%s"}]}', self::VALID_ID),
@@ -43,14 +45,6 @@ class CustomFieldResourceTest extends ResourceTestCase
                     'methodName' => ResourceMethodEnum::GET_ALL,
                     'endpointPath' => 'customfields',
                     'additionalParams' => [],
-                ] + $baseData,
-            ],
-            [
-                [
-                    'requestMethod' => RequestMethodEnum::GET,
-                    'methodName' => ResourceMethodEnum::GET_ALL_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/customfields', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
                 ] + $baseData,
             ],
             [
@@ -72,9 +66,9 @@ class CustomFieldResourceTest extends ResourceTestCase
             [
                 [
                     'requestMethod' => RequestMethodEnum::POST,
-                    'methodName' => ResourceMethodEnum::CREATE_FOR_ACCOUNT,
-                    'endpointPath' => sprintf('accounts/%s/customfields', self::UNIQUE_ID),
-                    'additionalParams' => [self::UNIQUE_ID],
+                    'methodName' => ResourceMethodEnum::CREATE,
+                    'endpointPath' => 'customfields',
+                    'additionalParams' => [],
                 ] + $baseData,
             ],
             [

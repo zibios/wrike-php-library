@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -28,9 +30,9 @@ abstract class AbstractEnum
      *
      * @return array
      */
-    public static function toArray()
+    public static function toArray(): array
     {
-        $class = get_called_class();
+        $class = static::class;
         if (!array_key_exists($class, static::$cache)) {
             $reflection = new \ReflectionClass($class);
             static::$cache[$class] = $reflection->getConstants();
@@ -44,7 +46,7 @@ abstract class AbstractEnum
      *
      * @return array|string[]
      */
-    public static function getKeys()
+    public static function getKeys(): array
     {
         return array_keys(static::toArray());
     }
@@ -52,13 +54,13 @@ abstract class AbstractEnum
     /**
      * Return Enum Key for requested Value.
      *
-     * @param mixed $value
+     * @param string $value
      *
      * @throws \InvalidArgumentException
      *
      * @return string
      */
-    public static function getKey($value)
+    public static function getKey(string $value): string
     {
         self::assertIsValidValue($value);
 
@@ -72,7 +74,7 @@ abstract class AbstractEnum
      *
      * @return bool
      */
-    public static function isValidKey($key)
+    public static function isValidKey(string $key): bool
     {
         return array_key_exists($key, self::toArray());
     }
@@ -84,7 +86,7 @@ abstract class AbstractEnum
      *
      * @throws \InvalidArgumentException
      */
-    public static function assertIsValidKey($key)
+    public static function assertIsValidKey(string $key): void
     {
         if (false === self::isValidKey($key)) {
             throw new \InvalidArgumentException('Wrong key.');
@@ -98,9 +100,9 @@ abstract class AbstractEnum
      *
      * @throws \InvalidArgumentException
      *
-     * @return mixed
+     * @return string
      */
-    public static function getValue($key)
+    public static function getValue(string $key): string
     {
         self::assertIsValidKey($key);
 
@@ -112,7 +114,7 @@ abstract class AbstractEnum
      *
      * @return array
      */
-    public static function getValues()
+    public static function getValues(): array
     {
         return array_values(self::toArray());
     }
@@ -120,23 +122,23 @@ abstract class AbstractEnum
     /**
      * Validate if Value is valid.
      *
-     * @param mixed $value
+     * @param string $value
      *
      * @return bool
      */
-    public static function isValidValue($value)
+    public static function isValidValue(string $value): bool
     {
-        return in_array($value, static::toArray(), true);
+        return \in_array($value, static::toArray(), true);
     }
 
     /**
      * Throw exception if Value is not valid.
      *
-     * @param mixed $value
+     * @param string $value
      *
      * @throws \InvalidArgumentException
      */
-    public static function assertIsValidValue($value)
+    public static function assertIsValidValue(string $value): void
     {
         if (false === self::isValidValue($value)) {
             throw new \InvalidArgumentException('Wrong value.');

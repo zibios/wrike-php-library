@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -14,8 +16,7 @@ namespace Zibios\WrikePhpLibrary\Resource;
 use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetByIdTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\UpdateDefaultTrait;
 
 /**
  * Account Resource.
@@ -23,8 +24,7 @@ use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 class AccountResource extends AbstractResource
 {
     use GetAllTrait;
-    use GetByIdTrait;
-    use UpdateTrait;
+    use UpdateDefaultTrait;
 
     /**
      * Return connection array ResourceMethod => RequestPathFormat.
@@ -34,12 +34,11 @@ class AccountResource extends AbstractResource
      *
      * @return array
      */
-    protected function getResourceMethodConfiguration()
+    protected function getResourceMethodConfiguration(): array
     {
         return [
             ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::ACCOUNTS,
-            ResourceMethodEnum::GET_BY_ID => RequestPathFormatEnum::ACCOUNTS_BY_ID,
-            ResourceMethodEnum::UPDATE => RequestPathFormatEnum::ACCOUNTS_BY_ID,
+            ResourceMethodEnum::UPDATE_DEFAULT => RequestPathFormatEnum::ACCOUNTS,
         ];
     }
 }

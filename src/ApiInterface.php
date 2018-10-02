@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -23,6 +25,7 @@ use Zibios\WrikePhpLibrary\Resource\GroupResource;
 use Zibios\WrikePhpLibrary\Resource\IdResource;
 use Zibios\WrikePhpLibrary\Resource\InvitationResource;
 use Zibios\WrikePhpLibrary\Resource\TaskResource;
+use Zibios\WrikePhpLibrary\Resource\TimelogCategoryResource;
 use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
@@ -31,87 +34,92 @@ use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
 /**
  * General Wrike Api Interface for resource getters.
  */
-interface ApiInterface
+interface ApiInterface extends DeprecatedApiInterface
 {
     /**
      * @return ContactResource
      */
-    public function getContactResource();
+    public function contacts(): ContactResource;
 
     /**
      * @return UserResource
      */
-    public function getUserResource();
+    public function users(): UserResource;
 
     /**
      * @return GroupResource
      */
-    public function getGroupResource();
+    public function groups(): GroupResource;
 
     /**
      * @return InvitationResource
      */
-    public function getInvitationResource();
+    public function invitations(): InvitationResource;
 
     /**
      * @return AccountResource
      */
-    public function getAccountResource();
+    public function account(): AccountResource;
 
     /**
      * @return WorkflowResource
      */
-    public function getWorkflowResource();
+    public function workflows(): WorkflowResource;
 
     /**
      * @return CustomFieldResource
      */
-    public function getCustomFieldResource();
+    public function customFields(): CustomFieldResource;
 
     /**
      * @return FolderResource
      */
-    public function getFolderResource();
+    public function folders(): FolderResource;
 
     /**
      * @return TaskResource
      */
-    public function getTaskResource();
+    public function tasks(): TaskResource;
 
     /**
      * @return CommentResource
      */
-    public function getCommentResource();
+    public function comments(): CommentResource;
 
     /**
      * @return DependencyResource
      */
-    public function getDependencyResource();
+    public function dependencies(): DependencyResource;
 
     /**
      * @return TimelogResource
      */
-    public function getTimelogResource();
+    public function timelogs(): TimelogResource;
+
+    /**
+     * @return TimelogCategoryResource
+     */
+    public function timelogCategories(): TimelogCategoryResource;
 
     /**
      * @return AttachmentResource
      */
-    public function getAttachmentResource();
+    public function attachments(): AttachmentResource;
 
     /**
      * @return VersionResource
      */
-    public function getVersionResource();
+    public function version(): VersionResource;
 
     /**
      * @return IdResource
      */
-    public function getIdResource();
+    public function ids(): IdResource;
 
     /**
      * @return ColorResource
      */
-    public function getColorResource();
+    public function colors(): ColorResource;
 
     /**
      * Calculate params in array to format expected by Wrike Api.
@@ -120,5 +128,5 @@ interface ApiInterface
      *
      * @return array
      */
-    public function normalizeParams(array $params);
+    public function normalizeParams(array $params): array;
 }

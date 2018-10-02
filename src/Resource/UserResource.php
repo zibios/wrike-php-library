@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -32,7 +34,7 @@ class UserResource extends AbstractResource
      *
      * @return array
      */
-    protected function getResourceMethodConfiguration()
+    protected function getResourceMethodConfiguration(): array
     {
         return [
             ResourceMethodEnum::GET_BY_ID => RequestPathFormatEnum::USERS_BY_ID,

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -19,11 +21,11 @@ use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 class RawExceptionTransformer implements ApiExceptionTransformerInterface
 {
     /**
-     * @param \Exception $exception
+     * @param \Throwable $exception
      *
-     * @return \Exception
+     * @return \Throwable
      */
-    public function transform(\Exception $exception)
+    public function transform(\Throwable $exception): \Throwable
     {
         return $exception;
     }

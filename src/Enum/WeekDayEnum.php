@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,11 +18,11 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class WeekDayEnum extends AbstractEnum
 {
-    const SUN = 'Sun';
-    const MON = 'Mon';
-    const TUE = 'Tue';
-    const WED = 'Wed';
-    const THU = 'Thu';
-    const FRI = 'Fri';
-    const SAT = 'Sat';
+    public const SUN = 'Sun';
+    public const MON = 'Mon';
+    public const TUE = 'Tue';
+    public const WED = 'Wed';
+    public const THU = 'Thu';
+    public const FRI = 'Fri';
+    public const SAT = 'Sat';
 }

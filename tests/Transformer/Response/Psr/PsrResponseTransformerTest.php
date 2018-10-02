@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -24,13 +26,14 @@ class PsrResponseTransformerTest extends PsrResponseTransformerTestCase
      */
     protected $object;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->object = new PsrResponseTransformer();
     }
 
-    public function test_transform()
+    public function test_transform(): void
     {
+        /** @var ResponseInterface $responseMock */
         $responseMock = $this->getMockForAbstractClass(ResponseInterface::class);
         $returnedResponse = $this->object->transform($responseMock, 'unimportant');
 

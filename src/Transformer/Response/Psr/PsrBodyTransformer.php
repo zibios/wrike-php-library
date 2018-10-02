@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -28,7 +30,7 @@ class PsrBodyTransformer extends AbstractPsrResponseTransformer
      * @return StreamInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function transform($response, $resourceClass)
+    public function transform(ResponseInterface $response, $resourceClass): StreamInterface
     {
         return $this->transformToPsrBody($response);
     }

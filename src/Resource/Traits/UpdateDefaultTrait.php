@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -15,28 +17,27 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestMethodEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 
 /**
- * CreateForAccount Trait.
+ * UpdateDefault Trait.
  */
-trait CreateForAccountTrait
+trait UpdateDefaultTrait
 {
     /**
-     * @param string     $id
      * @param array|null $params
      *
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws \Throwable
      *
      * @return mixed
      */
-    public function createForAccount($id, array $params = [])
+    public function updateDefault(array $params = [])
     {
         return $this->executeRequest(
-            RequestMethodEnum::POST,
-            ResourceMethodEnum::CREATE_FOR_ACCOUNT,
+            RequestMethodEnum::PUT,
+            ResourceMethodEnum::UPDATE_DEFAULT,
             $params,
-            $id
+            null
         );
     }
 
@@ -49,13 +50,13 @@ trait CreateForAccountTrait
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws \Throwable
      *
      * @return mixed
      */
     abstract protected function executeRequest(
-        $requestMethod,
-        $requestScope,
+        string $requestMethod,
+        string $requestScope,
         array $params,
         $id
     );

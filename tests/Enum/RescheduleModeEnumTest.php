@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -9,20 +11,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Zibios\WrikePhpLibrary\Tests\Enum\Api;
+namespace Zibios\WrikePhpLibrary\Tests\Enum;
 
-use Zibios\WrikePhpLibrary\Enum\Api\ResponseFormatEnum;
-use Zibios\WrikePhpLibrary\Tests\Enum\EnumTestCase;
+use Zibios\WrikePhpLibrary\Enum\RescheduleModeEnum;
 
 /**
- * Response Format Enum Test.
+ * Reschedule Mode Enum Test.
  */
-class ResponseFormatEnumTest extends EnumTestCase
+class RescheduleModeEnumTest extends EnumTestCase
 {
     /**
      * @var string
      */
-    protected $sourceClass = ResponseFormatEnum::class;
+    protected $sourceClass = RescheduleModeEnum::class;
 
     /**
      * @var int

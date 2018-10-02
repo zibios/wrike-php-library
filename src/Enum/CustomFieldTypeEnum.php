@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,12 +18,14 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class CustomFieldTypeEnum extends AbstractEnum
 {
-    const TEXT = 'Text';
-    const DROP_DOWN = 'DropDown';
-    const NUMERIC = 'Numeric';
-    const MONEY = 'Money';
-    const PERCENTAGE = 'Percentage';
-    const DATE = 'Date';
-    const DURATION = 'Duration';
-    const CHECKBOX = 'Checkbox';
+    public const TEXT = 'Text';
+    public const DROP_DOWN = 'DropDown';
+    public const NUMERIC = 'Numeric';
+    public const CURRENCY = 'Currency';
+    public const PERCENTAGE = 'Percentage';
+    public const DATE = 'Date';
+    public const DURATION = 'Duration';
+    public const CHECKBOX = 'Checkbox';
+    public const CONTACTS = 'Contacts';
+    public const MULTIPLE = 'Multiple';
 }

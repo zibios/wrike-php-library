@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -13,8 +15,8 @@ namespace Zibios\WrikePhpLibrary\Resource;
 
 use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
-use Zibios\WrikePhpLibrary\Resource\Traits\CreateForAccountTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\GetAllForAccountTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\CreateTrait;
+use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 
 /**
@@ -22,8 +24,8 @@ use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
  */
 class WorkflowResource extends AbstractResource
 {
-    use GetAllForAccountTrait;
-    use CreateForAccountTrait;
+    use GetAllTrait;
+    use CreateTrait;
     use UpdateTrait;
 
     /**
@@ -34,11 +36,11 @@ class WorkflowResource extends AbstractResource
      *
      * @return array
      */
-    protected function getResourceMethodConfiguration()
+    protected function getResourceMethodConfiguration(): array
     {
         return [
-            ResourceMethodEnum::GET_ALL_FOR_ACCOUNT => RequestPathFormatEnum::WORKFLOWS_FOR_ACCOUNT,
-            ResourceMethodEnum::CREATE_FOR_ACCOUNT => RequestPathFormatEnum::WORKFLOWS_FOR_ACCOUNT,
+            ResourceMethodEnum::GET_ALL => RequestPathFormatEnum::WORKFLOWS,
+            ResourceMethodEnum::CREATE => RequestPathFormatEnum::WORKFLOWS,
             ResourceMethodEnum::UPDATE => RequestPathFormatEnum::WORKFLOWS_BY_ID,
         ];
     }

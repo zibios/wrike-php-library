@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -22,7 +24,7 @@ class IdValidatorTest extends TestCase
     /**
      * @return array
      */
-    public function nullIdProvider()
+    public function nullIdProvider(): array
     {
         return [
             // value, isValid
@@ -38,7 +40,7 @@ class IdValidatorTest extends TestCase
      *
      * @dataProvider nullIdProvider
      */
-    public function test_isNullMethods($value, $isValid)
+    public function test_isNullMethods($value, $isValid): void
     {
         self::assertSame($isValid, IdValidator::isNull($value), sprintf('validation null "%s"', $value));
 
@@ -46,7 +48,7 @@ class IdValidatorTest extends TestCase
 
         try {
             IdValidator::assertIsNull($value);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $withoutException = false;
         }
         self::assertSame($isValid, $withoutException, sprintf('assert null "%s"', $value));
@@ -55,7 +57,7 @@ class IdValidatorTest extends TestCase
     /**
      * @return array
      */
-    public function stringIdProvider()
+    public function stringIdProvider(): array
     {
         return [
             // value, isValid
@@ -74,7 +76,7 @@ class IdValidatorTest extends TestCase
      *
      * @dataProvider stringIdProvider
      */
-    public function test_isValidIdStringMethods($value, $isValid)
+    public function test_isValidIdStringMethods($value, $isValid): void
     {
         self::assertSame($isValid, IdValidator::isValidIdString($value), sprintf('validation string "%s"', $value));
 
@@ -82,7 +84,7 @@ class IdValidatorTest extends TestCase
 
         try {
             IdValidator::assertIsValidIdString($value);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $withoutException = false;
         }
         self::assertSame($isValid, $withoutException, sprintf('assert string "%s"', $value));
@@ -91,7 +93,7 @@ class IdValidatorTest extends TestCase
     /**
      * @return array
      */
-    public function arrayIdProvider()
+    public function arrayIdProvider(): array
     {
         return [
             // value, isValid
@@ -113,17 +115,25 @@ class IdValidatorTest extends TestCase
      *
      * @dataProvider arrayIdProvider
      */
-    public function test_isValidIdArrayMethods($value, $isValid)
+    public function test_isValidIdArrayMethods($value, $isValid): void
     {
-        self::assertSame($isValid, IdValidator::isValidIdArray($value), sprintf('validation string "%s"', is_array($value) ? implode(', ', $value) : $value));
+        self::assertSame(
+            $isValid,
+            IdValidator::isValidIdArray($value),
+            sprintf('validation string "%s"', \is_array($value) ? implode(', ', $value) : $value)
+        );
 
         $withoutException = true;
 
         try {
             IdValidator::assertIsValidIdArray($value);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $withoutException = false;
         }
-        self::assertSame($isValid, $withoutException, sprintf('assert string "%s"', is_array($value) ? implode(', ', $value) : $value));
+        self::assertSame(
+            $isValid,
+            $withoutException,
+            sprintf('assert string "%s"', \is_array($value) ? implode(', ', $value) : $value)
+        );
     }
 }
