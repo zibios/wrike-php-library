@@ -39,6 +39,7 @@ interface DeprecatedApiInterface
 {
     /**
      * @deprecated getContactResource is deprecated and will be removed in 3.0.0. Use contacts().
+     *
      * @return ContactResource
      */
     public function getContactResource(): ContactResource;
