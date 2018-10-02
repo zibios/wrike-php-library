@@ -94,6 +94,11 @@ interface ApiInterface
     public function getTimelogResource();
 
     /**
+     * @return TimelogCategoryResource
+     */
+    public function getTimelogCategoryResource();
+
+    /**
      * @return AttachmentResource
      */
     public function getAttachmentResource();
