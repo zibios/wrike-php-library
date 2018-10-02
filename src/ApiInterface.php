@@ -35,85 +35,85 @@ use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
  */
 interface ApiInterface extends DeprecatedApiInterface
 {
-//    /**
-//     * @return ContactResource
-//     */
-//    public function contacts(): ContactResource;
-//
-//    /**
-//     * @return UserResource
-//     */
-//    public function users(): UserResource;
-//
-//    /**
-//     * @return GroupResource
-//     */
-//    public function groups(): GroupResource;
-//
-//    /**
-//     * @return InvitationResource
-//     */
-//    public function invitations(): InvitationResource;
-//
-//    /**
-//     * @return AccountResource
-//     */
-//    public function accounts(): AccountResource;
-//
-//    /**
-//     * @return WorkflowResource
-//     */
-//    public function workflows(): WorkflowResource;
-//
-//    /**
-//     * @return CustomFieldResource
-//     */
-//    public function customFields(): CustomFieldResource;
-//
-//    /**
-//     * @return FolderResource
-//     */
-//    public function folders(): FolderResource;
-//
-//    /**
-//     * @return TaskResource
-//     */
-//    public function tasks(): TaskResource;
-//
-//    /**
-//     * @return CommentResource
-//     */
-//    public function comments(): CommentResource;
-//
-//    /**
-//     * @return DependencyResource
-//     */
-//    public function dependencies(): DependencyResource;
-//
-//    /**
-//     * @return TimelogResource
-//     */
-//    public function timelogs(): TimelogResource;
-//
-//    /**
-//     * @return AttachmentResource
-//     */
-//    public function attachments(): AttachmentResource;
-//
-//    /**
-//     * @return VersionResource
-//     */
-//    public function versions(): VersionResource;
-//
-//    /**
-//     * @return IdResource
-//     */
-//    public function ids(): IdResource;
-//
-//    /**
-//     * @return ColorResource
-//     */
-//    public function colors(): ColorResource;
+    /**
+     * @return ContactResource
+     */
+    public function contacts(): ContactResource;
+
+    /**
+     * @return UserResource
+     */
+    public function users(): UserResource;
+
+    /**
+     * @return GroupResource
+     */
+    public function groups(): GroupResource;
+
+    /**
+     * @return InvitationResource
+     */
+    public function invitations(): InvitationResource;
+
+    /**
+     * @return AccountResource
+     */
+    public function accounts(): AccountResource;
+
+    /**
+     * @return WorkflowResource
+     */
+    public function workflows(): WorkflowResource;
+
+    /**
+     * @return CustomFieldResource
+     */
+    public function customFields(): CustomFieldResource;
+
+    /**
+     * @return FolderResource
+     */
+    public function folders(): FolderResource;
+
+    /**
+     * @return TaskResource
+     */
+    public function tasks(): TaskResource;
+
+    /**
+     * @return CommentResource
+     */
+    public function comments(): CommentResource;
+
+    /**
+     * @return DependencyResource
+     */
+    public function dependencies(): DependencyResource;
+
+    /**
+     * @return TimelogResource
+     */
+    public function timelogs(): TimelogResource;
+
+    /**
+     * @return AttachmentResource
+     */
+    public function attachments(): AttachmentResource;
+
+    /**
+     * @return VersionResource
+     */
+    public function versions(): VersionResource;
+
+    /**
+     * @return IdResource
+     */
+    public function ids(): IdResource;
+
+    /**
+     * @return ColorResource
+     */
+    public function colors(): ColorResource;
 
     /**
      * Calculate params in array to format expected by Wrike Api.

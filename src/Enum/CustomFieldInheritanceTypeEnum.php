@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,7 +18,7 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class CustomFieldInheritanceTypeEnum extends AbstractEnum
 {
-    const ALL = 'All';
-    const FOLDERS = 'Folders';
-    const PROJECTS = 'Projects';
+    public const ALL = 'All';
+    public const FOLDERS = 'Folders';
+    public const PROJECTS = 'Projects';
 }

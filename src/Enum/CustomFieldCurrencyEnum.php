@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,46 +18,46 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class CustomFieldCurrencyEnum extends AbstractEnum
 {
-    const CURRENCY_USD = 'USD';
-    const CURRENCY_EUR = 'EUR';
-    const CURRENCY_GBP = 'GBP';
-    const CURRENCY_RUB = 'RUB';
-    const CURRENCY_BRL = 'BRL';
-    const CURRENCY_AED = 'AED';
-    const CURRENCY_ARS = 'ARS';
-    const CURRENCY_BYR = 'BYR';
-    const CURRENCY_CAD = 'CAD';
-    const CURRENCY_CLP = 'CLP';
-    const CURRENCY_COP = 'COP';
-    const CURRENCY_CZK = 'CZK';
-    const CURRENCY_DKK = 'DKK';
-    const CURRENCY_HKD = 'HKD';
-    const CURRENCY_HUF = 'HUF';
-    const CURRENCY_INR = 'INR';
-    const CURRENCY_IDR = 'IDR';
-    const CURRENCY_ILS = 'ILS';
-    const CURRENCY_JPY = 'JPY';
-    const CURRENCY_KRW = 'KRW';
-    const CURRENCY_MYR = 'MYR';
-    const CURRENCY_MXN = 'MXN';
-    const CURRENCY_NZD = 'NZD';
-    const CURRENCY_NOK = 'NOK';
-    const CURRENCY_PEN = 'PEN';
-    const CURRENCY_PHP = 'PHP';
-    const CURRENCY_PLN = 'PLN';
-    const CURRENCY_QAR = 'QAR';
-    const CURRENCY_RON = 'RON';
-    const CURRENCY_SAR = 'SAR';
-    const CURRENCY_SGD = 'SGD';
-    const CURRENCY_ZAR = 'ZAR';
-    const CURRENCY_SEK = 'SEK';
-    const CURRENCY_CHF = 'CHF';
-    const CURRENCY_TWD = 'TWD';
-    const CURRENCY_THB = 'THB';
-    const CURRENCY_TRY = 'TRY';
-    const CURRENCY_UAH = 'UAH';
-    const CURRENCY_VND = 'VND';
-    const CURRENCY_CNY = 'CNY';
-    const CURRENCY_AUD = 'AUD';
-    const CURRENCY_AMD = 'AMD';
+    public const CURRENCY_USD = 'USD';
+    public const CURRENCY_EUR = 'EUR';
+    public const CURRENCY_GBP = 'GBP';
+    public const CURRENCY_RUB = 'RUB';
+    public const CURRENCY_BRL = 'BRL';
+    public const CURRENCY_AED = 'AED';
+    public const CURRENCY_ARS = 'ARS';
+    public const CURRENCY_BYR = 'BYR';
+    public const CURRENCY_CAD = 'CAD';
+    public const CURRENCY_CLP = 'CLP';
+    public const CURRENCY_COP = 'COP';
+    public const CURRENCY_CZK = 'CZK';
+    public const CURRENCY_DKK = 'DKK';
+    public const CURRENCY_HKD = 'HKD';
+    public const CURRENCY_HUF = 'HUF';
+    public const CURRENCY_INR = 'INR';
+    public const CURRENCY_IDR = 'IDR';
+    public const CURRENCY_ILS = 'ILS';
+    public const CURRENCY_JPY = 'JPY';
+    public const CURRENCY_KRW = 'KRW';
+    public const CURRENCY_MYR = 'MYR';
+    public const CURRENCY_MXN = 'MXN';
+    public const CURRENCY_NZD = 'NZD';
+    public const CURRENCY_NOK = 'NOK';
+    public const CURRENCY_PEN = 'PEN';
+    public const CURRENCY_PHP = 'PHP';
+    public const CURRENCY_PLN = 'PLN';
+    public const CURRENCY_QAR = 'QAR';
+    public const CURRENCY_RON = 'RON';
+    public const CURRENCY_SAR = 'SAR';
+    public const CURRENCY_SGD = 'SGD';
+    public const CURRENCY_ZAR = 'ZAR';
+    public const CURRENCY_SEK = 'SEK';
+    public const CURRENCY_CHF = 'CHF';
+    public const CURRENCY_TWD = 'TWD';
+    public const CURRENCY_THB = 'THB';
+    public const CURRENCY_TRY = 'TRY';
+    public const CURRENCY_UAH = 'UAH';
+    public const CURRENCY_VND = 'VND';
+    public const CURRENCY_CNY = 'CNY';
+    public const CURRENCY_AUD = 'AUD';
+    public const CURRENCY_AMD = 'AMD';
 }

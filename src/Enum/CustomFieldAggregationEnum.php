@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -16,7 +18,7 @@ namespace Zibios\WrikePhpLibrary\Enum;
  */
 class CustomFieldAggregationEnum extends AbstractEnum
 {
-    const NONE = 'None';
-    const SUM = 'Sum';
-    const AVERAGE = 'Average';
+    public const NONE = 'None';
+    public const SUM = 'Sum';
+    public const AVERAGE = 'Average';
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -19,10 +21,10 @@ class RescheduleModeEnum extends AbstractEnum
     /**
      * Tasks in scope are rescheduled starting from reschedule date.
      */
-    const START = 'Start';
+    public const START = 'Start';
 
     /**
      * Tasks in scope are rescheduled ending with reschedule date.
      */
-    const END = 'End';
+    public const END = 'End';
 }

@@ -17,7 +17,6 @@ use Zibios\WrikePhpLibrary\Enum\Api\RequestPathFormatEnum;
 use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 use Zibios\WrikePhpLibrary\Resource\Traits\GetAllTrait;
 use Zibios\WrikePhpLibrary\Resource\Traits\UpdateDefaultTrait;
-use Zibios\WrikePhpLibrary\Resource\Traits\UpdateTrait;
 
 /**
  * Account Resource.

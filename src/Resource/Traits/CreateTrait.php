@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the zibios/wrike-php-library package.
  *
@@ -20,7 +22,6 @@ use Zibios\WrikePhpLibrary\Enum\Api\ResourceMethodEnum;
 trait CreateTrait
 {
     /**
-     * @param string     $id
      * @param array|null $params
      *
      * @throws \Zibios\WrikePhpLibrary\Exception\Api\ApiException

@@ -41,5 +41,10 @@ interface ClientInterface
      *
      * @return ResponseInterface
      */
-    public function executeRequestForParams(string $requestMethod, string $path, array $params, string $accessToken): ResponseInterface;
+    public function executeRequestForParams(
+        string $requestMethod,
+        string $path,
+        array $params,
+        string $accessToken
+    ): ResponseInterface;
 }

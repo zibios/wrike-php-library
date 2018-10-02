@@ -181,7 +181,7 @@ abstract class EnumTestCase extends TestCase
      */
     public function test_assertIsValidKey($key, $isValid): void
     {
-        self::assertEquals(
+        self::assertSame(
             $isValid,
             \call_user_func([$this->sourceClass, 'isValidKey'], $key),
             sprintf('"%s"', print_r($key, true))
