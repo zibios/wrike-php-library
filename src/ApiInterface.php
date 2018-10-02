@@ -25,6 +25,7 @@ use Zibios\WrikePhpLibrary\Resource\GroupResource;
 use Zibios\WrikePhpLibrary\Resource\IdResource;
 use Zibios\WrikePhpLibrary\Resource\InvitationResource;
 use Zibios\WrikePhpLibrary\Resource\TaskResource;
+use Zibios\WrikePhpLibrary\Resource\TimelogCategoryResource;
 use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
@@ -58,7 +59,7 @@ interface ApiInterface extends DeprecatedApiInterface
     /**
      * @return AccountResource
      */
-    public function accounts(): AccountResource;
+    public function account(): AccountResource;
 
     /**
      * @return WorkflowResource
@@ -96,6 +97,11 @@ interface ApiInterface extends DeprecatedApiInterface
     public function timelogs(): TimelogResource;
 
     /**
+     * @return TimelogCategoryResource
+     */
+    public function timelogCategories(): TimelogCategoryResource;
+
+    /**
      * @return AttachmentResource
      */
     public function attachments(): AttachmentResource;
@@ -103,7 +109,7 @@ interface ApiInterface extends DeprecatedApiInterface
     /**
      * @return VersionResource
      */
-    public function versions(): VersionResource;
+    public function version(): VersionResource;
 
     /**
      * @return IdResource

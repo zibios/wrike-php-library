@@ -27,6 +27,7 @@ use Zibios\WrikePhpLibrary\Resource\GroupResource;
 use Zibios\WrikePhpLibrary\Resource\IdResource;
 use Zibios\WrikePhpLibrary\Resource\InvitationResource;
 use Zibios\WrikePhpLibrary\Resource\TaskResource;
+use Zibios\WrikePhpLibrary\Resource\TimelogCategoryResource;
 use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
@@ -109,14 +110,31 @@ abstract class AbstractApi implements ApiInterface
     /**
      * @return UserResource
      */
+    public function users(): UserResource
+    {
+        /** @var UserResource $resource */
+        $resource = $this->getResource(UserResource::class);
+
+        return $resource;
+    }
+
+    /**
+     * @return UserResource
+     */
     public function getUserResource(): UserResource
     {
-        return new UserResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->users();
+    }
+
+    /**
+     * @return GroupResource
+     */
+    public function groups(): GroupResource
+    {
+        /** @var GroupResource $resource */
+        $resource = $this->getResource(GroupResource::class);
+
+        return $resource;
     }
 
     /**
@@ -124,12 +142,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getGroupResource(): GroupResource
     {
-        return new GroupResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->groups();
+    }
+
+    /**
+     * @return InvitationResource
+     */
+    public function invitations(): InvitationResource
+    {
+        /** @var InvitationResource $resource */
+        $resource = $this->getResource(InvitationResource::class);
+
+        return $resource;
     }
 
     /**
@@ -137,12 +161,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getInvitationResource(): InvitationResource
     {
-        return new InvitationResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->invitations();
+    }
+
+    /**
+     * @return AccountResource
+     */
+    public function account(): AccountResource
+    {
+        /** @var AccountResource $resource */
+        $resource = $this->getResource(AccountResource::class);
+
+        return $resource;
     }
 
     /**
@@ -150,12 +180,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getAccountResource(): AccountResource
     {
-        return new AccountResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->account();
+    }
+
+    /**
+     * @return WorkflowResource
+     */
+    public function workflows(): WorkflowResource
+    {
+        /** @var WorkflowResource $resource */
+        $resource = $this->getResource(WorkflowResource::class);
+
+        return $resource;
     }
 
     /**
@@ -163,12 +199,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getWorkflowResource(): WorkflowResource
     {
-        return new WorkflowResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->workflows();
+    }
+
+    /**
+     * @return CustomFieldResource
+     */
+    public function customFields(): CustomFieldResource
+    {
+        /** @var CustomFieldResource $resource */
+        $resource = $this->getResource(CustomFieldResource::class);
+
+        return $resource;
     }
 
     /**
@@ -176,12 +218,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getCustomFieldResource(): CustomFieldResource
     {
-        return new CustomFieldResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->customFields();
+    }
+
+    /**
+     * @return FolderResource
+     */
+    public function folders(): FolderResource
+    {
+        /** @var FolderResource $resource */
+        $resource = $this->getResource(FolderResource::class);
+
+        return $resource;
     }
 
     /**
@@ -189,12 +237,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getFolderResource(): FolderResource
     {
-        return new FolderResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->folders();
+    }
+
+    /**
+     * @return TaskResource
+     */
+    public function tasks(): TaskResource
+    {
+        /** @var TaskResource $resource */
+        $resource = $this->getResource(TaskResource::class);
+
+        return $resource;
     }
 
     /**
@@ -202,12 +256,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getTaskResource(): TaskResource
     {
-        return new TaskResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->tasks();
+    }
+
+    /**
+     * @return CommentResource
+     */
+    public function comments(): CommentResource
+    {
+        /** @var CommentResource $resource */
+        $resource = $this->getResource(CommentResource::class);
+
+        return $resource;
     }
 
     /**
@@ -215,12 +275,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getCommentResource(): CommentResource
     {
-        return new CommentResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->comments();
+    }
+
+    /**
+     * @return DependencyResource
+     */
+    public function dependencies(): DependencyResource
+    {
+        /** @var DependencyResource $resource */
+        $resource = $this->getResource(DependencyResource::class);
+
+        return $resource;
     }
 
     /**
@@ -228,12 +294,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getDependencyResource(): DependencyResource
     {
-        return new DependencyResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->dependencies();
+    }
+
+    /**
+     * @return TimelogResource
+     */
+    public function timelogs(): TimelogResource
+    {
+        /** @var TimelogResource $resource */
+        $resource = $this->getResource(TimelogResource::class);
+
+        return $resource;
     }
 
     /**
@@ -241,12 +313,37 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getTimelogResource(): TimelogResource
     {
-        return new TimelogResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->timelogs();
+    }
+
+    /**
+     * @return TimelogCategoryResource
+     */
+    public function timelogCategories(): TimelogCategoryResource
+    {
+        /** @var TimelogCategoryResource $resource */
+        $resource = $this->getResource(TimelogCategoryResource::class);
+
+        return $resource;
+    }
+
+    /**
+     * @return TimelogCategoryResource
+     */
+    public function getTimelogCategoryResource(): TimelogCategoryResource
+    {
+        return $this->timelogCategories();
+    }
+
+    /**
+     * @return AttachmentResource
+     */
+    public function attachments(): AttachmentResource
+    {
+        /** @var AttachmentResource $resource */
+        $resource = $this->getResource(AttachmentResource::class);
+
+        return $resource;
     }
 
     /**
@@ -254,12 +351,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getAttachmentResource(): AttachmentResource
     {
-        return new AttachmentResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->attachments();
+    }
+
+    /**
+     * @return VersionResource
+     */
+    public function version(): VersionResource
+    {
+        /** @var VersionResource $resource */
+        $resource = $this->getResource(VersionResource::class);
+
+        return $resource;
     }
 
     /**
@@ -267,12 +370,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getVersionResource(): VersionResource
     {
-        return new VersionResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->version();
+    }
+
+    /**
+     * @return IdResource
+     */
+    public function ids(): IdResource
+    {
+        /** @var IdResource $resource */
+        $resource = $this->getResource(IdResource::class);
+
+        return $resource;
     }
 
     /**
@@ -280,12 +389,18 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getIdResource(): IdResource
     {
-        return new IdResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->ids();
+    }
+
+    /**
+     * @return ColorResource
+     */
+    public function colors(): ColorResource
+    {
+        /** @var ColorResource $resource */
+        $resource = $this->getResource(ColorResource::class);
+
+        return $resource;
     }
 
     /**
@@ -293,12 +408,7 @@ abstract class AbstractApi implements ApiInterface
      */
     public function getColorResource(): ColorResource
     {
-        return new ColorResource(
-            $this->client,
-            $this->responseTransformer,
-            $this->apiExceptionTransformer,
-            $this->accessToken
-        );
+        return $this->colors();
     }
 
     /**
@@ -317,6 +427,11 @@ abstract class AbstractApi implements ApiInterface
         return $params;
     }
 
+    /**
+     * @param string $resourceClass
+     *
+     * @return AbstractResource
+     */
     private function getResource(string $resourceClass): AbstractResource
     {
         return new $resourceClass(

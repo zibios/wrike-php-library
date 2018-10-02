@@ -33,6 +33,7 @@ class PsrResponseTransformerTest extends PsrResponseTransformerTestCase
 
     public function test_transform(): void
     {
+        /** @var ResponseInterface $responseMock */
         $responseMock = $this->getMockForAbstractClass(ResponseInterface::class);
         $returnedResponse = $this->object->transform($responseMock, 'unimportant');
 

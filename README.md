@@ -92,102 +92,102 @@ All operations are immutable and stateless.
  */
 $api = ApiFactory::create(<PermanentToken>); // @see zibios/wrike-php-sdk
 
-$api->getAccountResource()->getAll();
-$api->getAccountResource()->updateDefault($params);
+$api->account()->getAll();
+$api->account()->updateDefault($params);
 
-$api->getAttachmentResource()->getAll();
-$api->getAttachmentResource()->getAllForFolder($folderId);
-$api->getAttachmentResource()->getAllForTask($taskId);
-$api->getAttachmentResource()->getById($attachmentId);
-$api->getAttachmentResource()->getByIds([$attachmentId]);
-$api->getAttachmentResource()->update($attachmentId, $params);
-$api->getAttachmentResource()->uploadForFolder($attachmentId, $params);
-$api->getAttachmentResource()->uploadForTask($attachmentId, $params);
-$api->getAttachmentResource()->delete($attachmentId);
-$api->getAttachmentResource()->download($attachmentId);
-$api->getAttachmentResource()->downloadPreview($attachmentId);
-$api->getAttachmentResource()->getPublicUrl($attachmentId);
+$api->attachments()->getAll();
+$api->attachments()->getAllForFolder($folderId);
+$api->attachments()->getAllForTask($taskId);
+$api->attachments()->getById($attachmentId);
+$api->attachments()->getByIds([$attachmentId]);
+$api->attachments()->update($attachmentId, $params);
+$api->attachments()->uploadForFolder($attachmentId, $params);
+$api->attachments()->uploadForTask($attachmentId, $params);
+$api->attachments()->delete($attachmentId);
+$api->attachments()->download($attachmentId);
+$api->attachments()->downloadPreview($attachmentId);
+$api->attachments()->getPublicUrl($attachmentId);
 
-$api->getColorResource()->getAll();
+$api->colors()->getAll();
 
-$api->getCommentResource()->getAll();
-$api->getCommentResource()->getAllForFolder($folderId);
-$api->getCommentResource()->getAllForTask($taskId);
-$api->getCommentResource()->getById($commentId);
-$api->getCommentResource()->getByIds([$commentId]);
-$api->getCommentResource()->update($commentId, $params);
-$api->getCommentResource()->createForFolder($folderId, $params);
-$api->getCommentResource()->createForTask($taskId, $params);
-$api->getCommentResource()->delete($commentId);
+$api->comments()->getAll();
+$api->comments()->getAllForFolder($folderId);
+$api->comments()->getAllForTask($taskId);
+$api->comments()->getById($commentId);
+$api->comments()->getByIds([$commentId]);
+$api->comments()->update($commentId, $params);
+$api->comments()->createForFolder($folderId, $params);
+$api->comments()->createForTask($taskId, $params);
+$api->comments()->delete($commentId);
 
-$api->getContactResource()->getAll();
-$api->getContactResource()->getById($contactId);
-$api->getContactResource()->getByIds([$contactId]);
-$api->getContactResource()->update($contactId, $params);
+$api->contacts()->getAll();
+$api->contacts()->getById($contactId);
+$api->contacts()->getByIds([$contactId]);
+$api->contacts()->update($contactId, $params);
 
-$api->getCustomFieldResource()->getAll();
-$api->getCustomFieldResource()->getById($customFieldId);
-$api->getCustomFieldResource()->getByIds([$customFieldId]);
-$api->getCustomFieldResource()->update($customFieldId, $params);
-$api->getCustomFieldResource()->create($params);
+$api->customFields()->getAll();
+$api->customFields()->getById($customFieldId);
+$api->customFields()->getByIds([$customFieldId]);
+$api->customFields()->update($customFieldId, $params);
+$api->customFields()->create($params);
 
-$api->getDependencyResource()->getAllForTask($taskId);
-$api->getDependencyResource()->getById($dependencyId);
-$api->getDependencyResource()->getByIds([$dependencyId]);
-$api->getDependencyResource()->update($dependencyId, $params);
-$api->getDependencyResource()->createForTask($taskId, $params);
-$api->getDependencyResource()->delete($dependencyId);
+$api->dependencies()->getAllForTask($taskId);
+$api->dependencies()->getById($dependencyId);
+$api->dependencies()->getByIds([$dependencyId]);
+$api->dependencies()->update($dependencyId, $params);
+$api->dependencies()->createForTask($taskId, $params);
+$api->dependencies()->delete($dependencyId);
 
-$api->getFolderResource()->getAll();
-$api->getFolderResource()->getAllForFolder($folderId);
-$api->getFolderResource()->getById($folderId);
-$api->getFolderResource()->getByIds([$folderId]);
-$api->getFolderResource()->update($folderId, $params);
-$api->getFolderResource()->createForFolder($folderId, $params);
-$api->getFolderResource()->copy($folderId, $params);
-$api->getFolderResource()->delete($folderId);
+$api->folders()->getAll();
+$api->folders()->getAllForFolder($folderId);
+$api->folders()->getById($folderId);
+$api->folders()->getByIds([$folderId]);
+$api->folders()->update($folderId, $params);
+$api->folders()->createForFolder($folderId, $params);
+$api->folders()->copy($folderId, $params);
+$api->folders()->delete($folderId);
 
-$api->getGroupResource()->getAll();
-$api->getGroupResource()->getById($groupId);
-$api->getGroupResource()->update($groupId, $params);
-$api->getGroupResource()->create($params);
-$api->getGroupResource()->delete($groupId);
+$api->groups()->getAll();
+$api->groups()->getById($groupId);
+$api->groups()->update($groupId, $params);
+$api->groups()->create($params);
+$api->groups()->delete($groupId);
 
-$api->getIdResource()->getAll($params); // $params required
+$api->ids()->getAll($params); // $params required
 
-$api->getInvitationResource()->getAll();
-$api->getInvitationResource()->update($invitationId, $params);
-$api->getInvitationResource()->create($params);
-$api->getInvitationResource()->delete($invitationId);
+$api->invitations()->getAll();
+$api->invitations()->update($invitationId, $params);
+$api->invitations()->create($params);
+$api->invitations()->delete($invitationId);
 
-$api->getTaskResource()->getAll();
-$api->getTaskResource()->getAllForFolder($folderId);
-$api->getTaskResource()->getById($taskId);
-$api->getTaskResource()->getByIds([$taskId]);
-$api->getTaskResource()->update($taskId, $params);
-$api->getTaskResource()->createForFolder($folderId, $params);
-$api->getTaskResource()->delete($taskId);
+$api->tasks()->getAll();
+$api->tasks()->getAllForFolder($folderId);
+$api->tasks()->getById($taskId);
+$api->tasks()->getByIds([$taskId]);
+$api->tasks()->update($taskId, $params);
+$api->tasks()->createForFolder($folderId, $params);
+$api->tasks()->delete($taskId);
 
-$api->getTimelogResource()->getAll();
-$api->getTimelogResource()->getAllForFolder($folderId);
-$api->getTimelogResource()->getAllForTask($taskId);
-$api->getTimelogResource()->getAllForContact($contactId);
-$api->getTimelogResource()->getAllForTimelogCategory($timelogCategoryId);
-$api->getTimelogResource()->getById($timelogId);
-$api->getTimelogResource()->update($timelogId, $params);
-$api->getTimelogResource()->createForTask($taskId, $params);
-$api->getTimelogResource()->delete($timelogId);
+$api->timelogs()->getAll();
+$api->timelogs()->getAllForFolder($folderId);
+$api->timelogs()->getAllForTask($taskId);
+$api->timelogs()->getAllForContact($contactId);
+$api->timelogs()->getAllForTimelogCategory($timelogCategoryId);
+$api->timelogs()->getById($timelogId);
+$api->timelogs()->update($timelogId, $params);
+$api->timelogs()->createForTask($taskId, $params);
+$api->timelogs()->delete($timelogId);
 
-$api->getTimelogCategoryResource()->getAll();
+$api->timelogCategories()->getAll();
 
-$api->getUserResource()->getById($userId);
-$api->getUserResource()->update($userId, $params);
+$api->users()->getById($userId);
+$api->users()->update($userId, $params);
 
-$api->getVersionResource()->getAll();
+$api->version()->getAll();
 
-$api->getWorkflowResource()->getAll();
-$api->getWorkflowResource()->update($workflowId, $params);
-$api->getWorkflowResource()->create($params);
+$api->workflows()->getAll();
+$api->workflows()->update($workflowId, $params);
+$api->workflows()->create($params);
 ```
 
 ```php
@@ -214,7 +214,7 @@ $params = $api->normalizeParams([
     'fields' => ['metadata'],
     'metadata' => ['key' => 'importantMetadataKey'],
 ]);
-$allContacts = $api->getContactResource()->getAll($params);
+$allContacts = $api->contacts()->getAll($params);
 
 $params = $api->normalizeParams([
     'metadata' => [
@@ -224,7 +224,7 @@ $params = $api->normalizeParams([
         ]
     ],
 ]);
-$updatedContact = $api->getContactResource()->update($contactId, $params);
+$updatedContact = $api->contacts()->update($contactId, $params);
 ```
 
 ```php
@@ -235,14 +235,14 @@ $params = $api->normalizeParams([
     'resource' => fopen(__FILE__, 'rb'),
     'name' => 'name.png',
 ]);
-$updatedContact = $api->getAttachmentResource()->uploadForFolder($folderId, $params);
-$updatedContact = $api->getAttachmentResource()->uploadForTask($taskId, $params);
+$updatedContact = $api->attachments()->uploadForFolder($folderId, $params);
+$updatedContact = $api->attachments()->uploadForTask($taskId, $params);
 
 /**
  * Download Attachment Requests returns none transformed Psr\Http\Message\ResponseInterface
  */
-$response = $api->getAttachmentResource()->download($attachmentId);
-$response = $api->getAttachmentResource()->downloadPreview($attachmentId);
+$response = $api->attachments()->download($attachmentId);
+$response = $api->attachments()->downloadPreview($attachmentId);
 ```
 
 ```php
@@ -273,7 +273,6 @@ Response can be returned in various formats according to used response transform
 | PsrBodyTransformer       | Psr\Http\Message\StreamInterface   | PSR response body                       |
 | StringBodyTransformer    | JSON string                        | PSR response body casted to JSON string |
 | ArrayBodyTransformer     | array                              | PSR response body casted to array       |
-| ArrayTransformer         | array                              | JSON response casted to array           |
 | ResponseModelTransformer | ResponseModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
 | ResourceModelTransformer | ResourceModelInterface             | check [Response transformer plugin](https://github.com/zibios/wrike-php-jmsserializer) |
 
@@ -335,6 +334,31 @@ Breaking Changes
 | $api->getTimelogResource()->getAllForAccount($accountId);              | $api->getTimelogResource()->getAll();               |
 | $api->getWorkflowResource()->getAllForAccount($accountId);             | $api->getWorkflowResource()->getAll();              |
 | $api->getWorkflowResource()->createForAccount($accountId, $params);    | $api->getWorkflowResource()->create($params);       |
+
+**V3.x due to refactoring for PHP >=7.1**
+
+* ArrayTransformer for Client JSON response is removed, only PSR response is accepted
+* Strict types for method params and responses
+
+| Deprecated methods                  | New methods                |
+|:----------------------------------- |:-------------------------- |
+| $api->getAccountResource();         | $api->account();           |
+| $api->getAttachmentResource();      | $api->attachments();       |
+| $api->getColorResource();           | $api->colors();            |
+| $api->getCommentResource();         | $api->comments();          |
+| $api->getContactResource();         | $api->contacts();          |
+| $api->getCustomFieldResource();     | $api->customFields();      |
+| $api->getDependencyResource();      | $api->dependencies();      |
+| $api->getFolderResource();          | $api->folders();           |
+| $api->getGroupResource();           | $api->groups();            |
+| $api->getIdResource();              | $api->ids();               |
+| $api->getInvitationResource();      | $api->invitations();       |
+| $api->getTaskResource();            | $api->tasks();             |
+| $api->getTimelogResource();         | $api->timelogs();          |
+| $api->getTimelogCategoryResource(); | $api->timelogCategories(); |
+| $api->getUserResource();            | $api->users();             |
+| $api->getVersionResource();         | $api->version();           |
+| $api->getWorkflowResource();        | $api->workflows();         |
 
 Reference
 ---------

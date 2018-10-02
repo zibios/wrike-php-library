@@ -27,6 +27,7 @@ use Zibios\WrikePhpLibrary\Resource\GroupResource;
 use Zibios\WrikePhpLibrary\Resource\IdResource;
 use Zibios\WrikePhpLibrary\Resource\InvitationResource;
 use Zibios\WrikePhpLibrary\Resource\TaskResource;
+use Zibios\WrikePhpLibrary\Resource\TimelogCategoryResource;
 use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
@@ -134,20 +135,37 @@ abstract class ApiTestCase extends TestCase
             // [api, getResourceMethod, expectedResourceClass]
             [$this->object, 'contacts', ContactResource::class],
             [$this->object, 'getContactResource', ContactResource::class],
+            [$this->object, 'users', UserResource::class],
             [$this->object, 'getUserResource', UserResource::class],
+            [$this->object, 'groups', GroupResource::class],
             [$this->object, 'getGroupResource', GroupResource::class],
+            [$this->object, 'invitations', InvitationResource::class],
             [$this->object, 'getInvitationResource', InvitationResource::class],
+            [$this->object, 'account', AccountResource::class],
             [$this->object, 'getAccountResource', AccountResource::class],
+            [$this->object, 'workflows', WorkflowResource::class],
             [$this->object, 'getWorkflowResource', WorkflowResource::class],
+            [$this->object, 'customFields', CustomFieldResource::class],
             [$this->object, 'getCustomFieldResource', CustomFieldResource::class],
+            [$this->object, 'folders', FolderResource::class],
             [$this->object, 'getFolderResource', FolderResource::class],
+            [$this->object, 'tasks', TaskResource::class],
             [$this->object, 'getTaskResource', TaskResource::class],
+            [$this->object, 'comments', CommentResource::class],
             [$this->object, 'getCommentResource', CommentResource::class],
+            [$this->object, 'dependencies', DependencyResource::class],
             [$this->object, 'getDependencyResource', DependencyResource::class],
+            [$this->object, 'timelogs', TimelogResource::class],
             [$this->object, 'getTimelogResource', TimelogResource::class],
+            [$this->object, 'timelogCategories', TimelogCategoryResource::class],
+            [$this->object, 'getTimelogCategoryResource', TimelogCategoryResource::class],
+            [$this->object, 'attachments', AttachmentResource::class],
             [$this->object, 'getAttachmentResource', AttachmentResource::class],
+            [$this->object, 'version', VersionResource::class],
             [$this->object, 'getVersionResource', VersionResource::class],
+            [$this->object, 'ids', IdResource::class],
             [$this->object, 'getIdResource', IdResource::class],
+            [$this->object, 'colors', ColorResource::class],
             [$this->object, 'getColorResource', ColorResource::class],
         ];
     }

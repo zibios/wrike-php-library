@@ -35,6 +35,7 @@ class PsrBodyTransformerTest extends PsrResponseTransformerTestCase
     public function test_transform(): void
     {
         $bodyMock = $this->getMockForAbstractClass(StreamInterface::class);
+        /** @var ResponseInterface|MockObject $responseMock */
         $responseMock = $this->getMockForAbstractClass(ResponseInterface::class);
         $responseMock->expects($this->any())
             ->method('getBody')

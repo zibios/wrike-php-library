@@ -25,6 +25,7 @@ use Zibios\WrikePhpLibrary\Resource\GroupResource;
 use Zibios\WrikePhpLibrary\Resource\IdResource;
 use Zibios\WrikePhpLibrary\Resource\InvitationResource;
 use Zibios\WrikePhpLibrary\Resource\TaskResource;
+use Zibios\WrikePhpLibrary\Resource\TimelogCategoryResource;
 use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
@@ -38,6 +39,7 @@ interface DeprecatedApiInterface
 {
     /**
      * @deprecated getContactResource is deprecated and will be removed in 3.0.0. Use contacts().
+     * @return ContactResource
      */
     public function getContactResource(): ContactResource;
 
@@ -95,6 +97,11 @@ interface DeprecatedApiInterface
      * @return TimelogResource
      */
     public function getTimelogResource(): TimelogResource;
+
+    /**
+     * @return TimelogCategoryResource
+     */
+    public function getTimelogCategoryResource(): TimelogCategoryResource;
 
     /**
      * @return AttachmentResource

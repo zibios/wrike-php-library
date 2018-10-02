@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Zibios\WrikePhpLibrary\Tests\Transformer\Response\Psr;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Zibios\WrikePhpLibrary\Transformer\Response\Psr\ArrayBodyTransformer;
@@ -40,6 +41,7 @@ class ArrayBodyTransformerTest extends PsrResponseTransformerTestCase
         $bodyMock->expects($this->any())
             ->method('getContents')
             ->willReturn($responseString);
+        /** @var ResponseInterface|MockObject $responseMock */
         $responseMock = $this->getMockForAbstractClass(ResponseInterface::class);
         $responseMock->expects($this->any())
             ->method('getBody')

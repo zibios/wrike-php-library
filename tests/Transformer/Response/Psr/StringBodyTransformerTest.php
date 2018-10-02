@@ -39,6 +39,7 @@ class StringBodyTransformerTest extends PsrResponseTransformerTestCase
         $bodyMock->expects($this->any())
             ->method('getContents')
             ->willReturn($responseString);
+        /** @var ResponseInterface|MockObject $responseMock */
         $responseMock = $this->getMockForAbstractClass(ResponseInterface::class);
         $responseMock->expects($this->any())
             ->method('getBody')
