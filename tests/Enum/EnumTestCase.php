@@ -65,12 +65,12 @@ abstract class EnumTestCase extends TestCase
     {
         // Static access
         $enums = \call_user_func([$this->sourceClass, 'toArray']);
-        self::assertInternalType('array', $enums);
+        self::assertIsArray($enums);
         self::assertCount($this->enumCount, $enums, $this->sourceClass);
 
         // Instantiated access
         $enums = $this->object::toArray();
-        self::assertInternalType('array', $enums);
+        self::assertIsArray($enums);
         self::assertCount($this->enumCount, $enums, $this->sourceClass);
     }
 
@@ -79,13 +79,13 @@ abstract class EnumTestCase extends TestCase
         // Static access
         $enums = \call_user_func([$this->sourceClass, 'toArray']);
         $keys = \call_user_func([$this->sourceClass, 'getKeys']);
-        self::assertInternalType('array', $keys);
+        self::assertIsArray($keys);
         self::assertSame(array_keys($enums), $keys);
 
         // Instantiated access
         $enums = $this->object::toArray();
         $keys = $this->object::getKeys();
-        self::assertInternalType('array', $keys);
+        self::assertIsArray($keys);
         self::assertSame(array_keys($enums), $keys);
     }
 
@@ -96,9 +96,9 @@ abstract class EnumTestCase extends TestCase
         $enums = \call_user_func([$this->sourceClass, 'toArray']);
         /** @var array $values */
         $values = \call_user_func([$this->sourceClass, 'getValues']);
-        self::assertInternalType('array', $values);
+        self::assertIsArray($values);
         foreach ($values as $value) {
-            self::assertInternalType('string', $value);
+            self::assertIsString($value);
             $key = \call_user_func([$this->sourceClass, 'getKey'], $value);
             self::assertSame($value, $enums[$key]);
         }
@@ -108,9 +108,9 @@ abstract class EnumTestCase extends TestCase
         $enums = $this->object::toArray();
         /** @var array $values */
         $values = $this->object::getValues();
-        self::assertInternalType('array', $values);
+        self::assertIsArray($values);
         foreach ($values as $value) {
-            self::assertInternalType('string', $value);
+            self::assertIsString($value);
             $key = $this->object::getKey($value);
             self::assertSame($value, $enums[$key]);
         }
@@ -121,13 +121,13 @@ abstract class EnumTestCase extends TestCase
         // Static access
         $enums = \call_user_func([$this->sourceClass, 'toArray']);
         $values = \call_user_func([$this->sourceClass, 'getValues']);
-        self::assertInternalType('array', $values);
+        self::assertIsArray($values);
         self::assertSame(array_values($enums), $values);
 
         // Instantiated access
         $enums = $this->object::toArray();
         $values = $this->object::getValues();
-        self::assertInternalType('array', $values);
+        self::assertIsArray($values);
         self::assertSame(array_values($enums), $values);
     }
 
@@ -138,9 +138,9 @@ abstract class EnumTestCase extends TestCase
         $enums = \call_user_func([$this->sourceClass, 'toArray']);
         /** @var array $keys */
         $keys = \call_user_func([$this->sourceClass, 'getKeys']);
-        self::assertInternalType('array', $keys);
+        self::assertIsArray($keys);
         foreach ($keys as $key) {
-            self::assertInternalType('string', $key);
+            self::assertIsString($key);
             $value = \call_user_func([$this->sourceClass, 'getValue'], $key);
             self::assertSame($value, $enums[$key]);
         }
@@ -150,9 +150,9 @@ abstract class EnumTestCase extends TestCase
         $enums = $this->object::toArray();
         /** @var array $keys */
         $keys = $this->object::getKeys();
-        self::assertInternalType('array', $keys);
+        self::assertIsArray($keys);
         foreach ($keys as $key) {
-            self::assertInternalType('string', $key);
+            self::assertIsString($key);
             $value = $this->object::getValue($key);
             self::assertSame($value, $enums[$key]);
         }
