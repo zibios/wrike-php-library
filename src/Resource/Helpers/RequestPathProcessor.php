@@ -43,6 +43,7 @@ class RequestPathProcessor
         $requestPathFormat = $this->calculateRequestPathFormat($resourceMethod, $resourceMethodConfiguration);
 
         switch ($resourceMethod) {
+
             case ResourceMethodEnum::GET_ALL:
             case ResourceMethodEnum::CREATE:
             case ResourceMethodEnum::UPDATE_DEFAULT:
@@ -60,6 +61,8 @@ class RequestPathProcessor
             case ResourceMethodEnum::GET_ALL_FOR_CONTACT:
             case ResourceMethodEnum::GET_ALL_FOR_TIMELOG_CATEGORY:
             case ResourceMethodEnum::CREATE_FOR_FOLDER:
+            case ResourceMethodEnum::CREATE_WEBHOOK_FOR_FOLDER:
+            case ResourceMethodEnum::CREATE_FOR_SPACE:
             case ResourceMethodEnum::CREATE_FOR_TASK:
             case ResourceMethodEnum::GET_BY_ID:
             case ResourceMethodEnum::UPDATE:

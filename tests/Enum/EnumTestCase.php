@@ -184,7 +184,8 @@ abstract class EnumTestCase extends TestCase
         self::assertSame(
             $isValid,
             \call_user_func([$this->sourceClass, 'isValidKey'], $key),
-            sprintf('"%s"', print_r($key, true))
+            sprintf('"%s"', $key)
+            // sprintf('"%s"', print_r($key, true))
         );
         $e = null;
         $exceptionOccurred = false;

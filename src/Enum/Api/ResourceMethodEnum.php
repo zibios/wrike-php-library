@@ -29,6 +29,8 @@ class ResourceMethodEnum extends AbstractEnum
     public const GET_BY_IDS = 'getByIds';
     public const CREATE = 'create';
     public const CREATE_FOR_FOLDER = 'createForFolder';
+    public const CREATE_WEBHOOK_FOR_FOLDER = 'createWebhookForFolder';
+    public const CREATE_FOR_SPACE = 'createForSpace';
     public const CREATE_FOR_TASK = 'createForTask';
     public const COPY = 'copy';
     public const UPDATE = 'update';

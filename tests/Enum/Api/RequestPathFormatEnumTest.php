@@ -29,5 +29,5 @@ class RequestPathFormatEnumTest extends EnumTestCase
     /**
      * @var int
      */
-    protected $enumCount = 51;
+    protected $enumCount = 57;
 }
