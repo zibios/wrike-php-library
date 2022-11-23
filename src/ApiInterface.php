@@ -30,6 +30,7 @@ use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
 use Zibios\WrikePhpLibrary\Resource\WebhookResource;
+use Zibios\WrikePhpLibrary\Resource\SpaceResource;
 use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
 
 /**
@@ -46,6 +47,11 @@ interface ApiInterface extends DeprecatedApiInterface
      * @return WebhookResource
      */
     public function webhooks(): WebhookResource;
+
+    /**
+     * @return SpacesResoure
+     */
+    public function spaces(): SpaceResource;
 
     /**
      * @return UserResource

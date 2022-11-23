@@ -33,6 +33,7 @@ use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
 use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
 use Zibios\WrikePhpLibrary\Resource\WebhookResource;
+use Zibios\WrikePhpLibrary\Resource\SpaceResource;
 use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
 
@@ -134,6 +135,7 @@ abstract class ApiTestCase extends TestCase
 
         return [
             // [api, getResourceMethod, expectedResourceClass]
+            [$this->object, 'spaces', SpaceResource::class],
             [$this->object, 'contacts', ContactResource::class],
             [$this->object, 'webhooks', WebhookResource::class],
             [$this->object, 'getContactResource', ContactResource::class],
