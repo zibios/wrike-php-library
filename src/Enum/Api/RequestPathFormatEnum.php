@@ -89,6 +89,10 @@ class RequestPathFormatEnum extends AbstractEnum
     public const WEBHOOKS_BY_ID = 'webhooks/%s';
     public const WEBHOOKS_BY_IDS = 'webhooks/%s';
 
+    public const SPACES = 'spaces';
+    public const SPACES_BY_ID = 'spaces/%s';
+
+
     public const VERSIONS = 'version';
 
     public const IDS = 'ids';
