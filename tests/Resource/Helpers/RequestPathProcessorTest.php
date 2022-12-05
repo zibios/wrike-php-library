@@ -94,6 +94,22 @@ class RequestPathProcessorTest extends TestCase
             ],
             [
                 [
+                    'resourceMethod' => ResourceMethodEnum::CREATE_FOR_SPACE,
+                    'resourceMethodConfiguration' => [ResourceMethodEnum::CREATE_FOR_SPACE => 'test/%s'],
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
+            ],
+            [
+                [
+                    'resourceMethod' => ResourceMethodEnum::CREATE_WEBHOOK_FOR_FOLDER,
+                    'resourceMethodConfiguration' => [ResourceMethodEnum::CREATE_WEBHOOK_FOR_FOLDER => 'test/%s'],
+                    'id' => 'id1',
+                    'expectedPath' => 'test/id1',
+                ],
+            ],
+            [
+                [
                     'resourceMethod' => ResourceMethodEnum::CREATE_FOR_TASK,
                     'resourceMethodConfiguration' => [ResourceMethodEnum::CREATE_FOR_TASK => 'test/%s'],
                     'id' => 'id1',

@@ -82,6 +82,17 @@ class RequestPathFormatEnum extends AbstractEnum
     public const ATTACHMENTS_DOWNLOAD_PREVIEW = 'attachments/%s/preview';
     public const ATTACHMENTS_URL = 'attachments/%s/url';
 
+    public const WEBHOOKS = 'webhooks';
+    public const WEBHOOKS_FOR_FOLDER = 'folders/%s/webhooks'; // folder id
+    public const WEBHOOKS_FOR_SPACE = 'spaces/%s/webhooks'; // space id
+    public const WEBHOOKS_FOR_ACCOUNTS = 'webhooks';
+    public const WEBHOOKS_BY_ID = 'webhooks/%s';
+    public const WEBHOOKS_BY_IDS = 'webhooks/%s';
+
+    public const SPACES = 'spaces';
+    public const SPACES_BY_ID = 'spaces/%s';
+
+
     public const VERSIONS = 'version';
 
     public const IDS = 'ids';

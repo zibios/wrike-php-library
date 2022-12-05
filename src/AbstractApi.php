@@ -31,6 +31,8 @@ use Zibios\WrikePhpLibrary\Resource\TimelogCategoryResource;
 use Zibios\WrikePhpLibrary\Resource\TimelogResource;
 use Zibios\WrikePhpLibrary\Resource\UserResource;
 use Zibios\WrikePhpLibrary\Resource\VersionResource;
+use Zibios\WrikePhpLibrary\Resource\WebhookResource;
+use Zibios\WrikePhpLibrary\Resource\SpaceResource;
 use Zibios\WrikePhpLibrary\Resource\WorkflowResource;
 use Zibios\WrikePhpLibrary\Transformer\ApiExceptionTransformerInterface;
 use Zibios\WrikePhpLibrary\Transformer\ResponseTransformerInterface;
@@ -98,7 +100,20 @@ abstract class AbstractApi implements ApiInterface
 
         return $resource;
     }
+    public function webhooks(): WebhookResource
+    {
+        /** @var $resource ContactResource */
+        $resource = $this->getResource(WebhookResource::class);
 
+        return $resource;
+    }
+    public function spaces(): SpaceResource
+    {
+        /** @var $resource ContactResource */
+        $resource = $this->getResource(SpaceResource::class);
+
+        return $resource;
+    }
     /**
      * @deprecated getContactResource is deprecated and will be removed in 3.0.0. Use contacts().
      */
